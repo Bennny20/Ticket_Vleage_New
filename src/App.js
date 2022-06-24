@@ -3,6 +3,9 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import Profile from "./pages/profile/Profile"
+import Stadium from "./pages/Stadium/Stadium"
+import Club from "./pages/Club/Club"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
@@ -27,13 +30,14 @@ function App() {
                 element={<New inputs={userInputs} title="Add New User" />}
               />
             </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route
-                path="new"
-                element={<New inputs={productInputs} title="Add New Product" />}
-              />
+            <Route path="profile">
+              <Route index element={<Profile />} />
+            </Route>
+            <Route path="stadium">
+              <Route index element={<Stadium />} />
+            </Route>
+            <Route path="club">
+              <Route index element={<Club />} />
             </Route>
           </Route>
         </Routes>

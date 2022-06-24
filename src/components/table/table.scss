@@ -15,16 +15,26 @@
   .status {
     padding: 5px;
     border-radius: 5px;
+    border-color: black;
 
     &.Coming {
-      color: green;
-      background-color: rgba(0, 128, 0, 0.151);
+      color: yellow;
+      background-color: rgba(189, 189, 3, 0.103);
     }
     &.Ending {
-      color: goldenrod;
+      color: red;
       background-color: rgba(189, 189, 3, 0.103);
     }
     &.On-going {
+      color: green;
+      background-color: rgba(189, 189, 3, 0.103);
+    }
+    &.Update {
+      color: red;
+      background-color: rgba(189, 189, 3, 0.103);
+    }
+
+    &.Unavailable {
       color: red;
       background-color: rgba(189, 189, 3, 0.103);
     }

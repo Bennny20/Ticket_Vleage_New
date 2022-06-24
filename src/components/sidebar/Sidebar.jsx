@@ -42,38 +42,29 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/products" style={{ textDecoration: "none" }}>
+          <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
               <span>Profile</span>
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Orders</span>
-          </li>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
+
+
+          <p className="title">Manager</p>
+          <Link to="/stadium" style={{ textDecoration: "none" }}>
+            <li>
+              <SettingsSystemDaydreamOutlinedIcon className="icon" />
+              <span>Stadium</span>
+            </li>
+          </Link>
+
+          <Link to="/club" style={{ textDecoration: "none" }}>
+            <li>
+              <PsychologyOutlinedIcon className="icon" />
+              <span>Club</span>
+            </li>
+          </Link>
+
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>

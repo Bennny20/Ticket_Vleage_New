@@ -13,7 +13,7 @@ const Widget = ({ type }) => {
   const diff = 20;
 
   switch (type) {
-    case "user":
+    case "users":
       data = {
         title: "USERS",
         isMoney: false,
