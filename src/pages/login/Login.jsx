@@ -21,6 +21,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log(user);
         dispatch({type:"LOGIN", payload:user})
         navitage("/")
       })
@@ -35,12 +36,12 @@ const Login = () => {
         <input
           type="email"
           placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e=> setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e=> setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
         {error && <span>Wrong email or password!</span>}
