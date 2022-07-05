@@ -2,13 +2,34 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
+var path = "https://jsonplaceholder.typicode.com/";
 const Datatable = () => {
-  const [data, setData] = useState(userRows);
+  //load data
+  useEffect(
+    function () {
+      axios
+        .get(path + 'users')
+        .then(function (data) {
+          console.log(data.data);
+          setData(data.data);
+          // console.log(list);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
+    },
+    []
+  );
 
+  const [data, setData] = useState([]);
+
+  // xóa
   const handleDelete = (email) => {
     setData(data.filter((item) => item.email !== email));
+    console.log(email)
   };
 
   const actionColumn = [
@@ -24,7 +45,7 @@ const Datatable = () => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.email)}
+              onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </div>
