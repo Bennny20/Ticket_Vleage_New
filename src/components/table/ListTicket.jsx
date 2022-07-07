@@ -12,49 +12,53 @@ const ListStadium = () => {
     const rows = [
         {
             id: "1",
-            name: "Thong Nhat Stadium",
-            location: "Q10 TP HCM",
-            capcity: "Ho Chi Minh City FC",
-            status: "On-going",
+            orderID: "TK001",
+            account: "PhienSE140851",
+            ticket: "A",
+            date: "30/06/2022",
+            quantity: "2",
+            total: "210000",
         },
         {
-            id: "2",
-            name: "Thien Truong Stadium",
-            location: "TP Nam Dinh",
-            capcity: "Nam Dinh Club",
-            status: "Update",
+            id: "1",
+            orderID: "TK002",
+            account: "PhienSE140851",
+            ticket: "B",
+            date: "30/06/2022",
+            quantity: "2",
+            total: "200000",
         },
-        
+
 
     ];
+
+
     return (
         <TableContainer component={Paper} className="table">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell className="tableCell">ID</TableCell>
-                        <TableCell className="tableCell">Name</TableCell>
-                        <TableCell className="tableCell">Localtion</TableCell>
-                        <TableCell className="tableCell">Capacity</TableCell>
-                        <TableCell className="tableCell">Status</TableCell>
-                        <TableCell className="tableCell"></TableCell>
+                        <TableCell className="tableCell">OrderID</TableCell>
+                        <TableCell className="tableCell">Account</TableCell>
+                        <TableCell className="tableCell">Ticket</TableCell>
+                        <TableCell className="tableCell">Date</TableCell>
+                        <TableCell className="tableCell">Quantity</TableCell>
+                        <TableCell className="tableCell">Total</TableCell>
+                        
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell className="tableCell">
-                                {row.id}
-                            </TableCell>
-                            <TableCell className="tableCell">
-                                {row.name}
-                            </TableCell>
-                            <TableCell className="tableCell">{row.location}</TableCell>
-                            <TableCell className="tableCell">{row.capcity}</TableCell>
-                            <TableCell className="tableCell">
-                                <span className={`status ${row.status}`}>{row.status}</span>
-                            </TableCell>
-                            <TableCell className="tableCell">
+                            <TableCell className="tableCell">{row.id}</TableCell>
+                            <TableCell className="tableCell">{row.orderID}</TableCell>
+                            <TableCell className="tableCell">{row.account}</TableCell>
+                            <TableCell className="tableCell">{row.ticket}</TableCell>
+                            <TableCell className="tableCell">{row.date}</TableCell>
+                            <TableCell className="tableCell">{row.quantity}</TableCell>
+                            <TableCell className="tableCell">{row.total}</TableCell>
+                            {/* <TableCell className="tableCell">
                                 <div className="cellAction">
                                     <Link to="/stadium/updateStadium" style={{ textDecoration: "none" }}>
                                         <div className="viewButton">Edit</div>
@@ -63,7 +67,7 @@ const ListStadium = () => {
                                         <div className="deleteButton">Delete</div>
                                     </Link>
                                 </div>
-                            </TableCell>
+                            </TableCell> */}
                         </TableRow>
                     ))}
                 </TableBody>

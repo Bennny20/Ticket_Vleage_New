@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 const ListStadium = () => {
     const rows = [
@@ -38,18 +39,14 @@ const ListStadium = () => {
                         <TableCell className="tableCell">Localtion</TableCell>
                         <TableCell className="tableCell">Stadium</TableCell>
                         <TableCell className="tableCell">Logo</TableCell>
-                        <TableCell className="tableCell"></TableCell>
+                        <TableCell className="tableCell">Status</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell className="tableCell">
-                                {row.id}
-                            </TableCell>
-                            <TableCell className="tableCell">
-                                {row.name}
-                            </TableCell>
+                            <TableCell className="tableCell">{row.id}</TableCell>
+                            <TableCell className="tableCell">{row.name}</TableCell>
                             <TableCell className="tableCell">{row.location}</TableCell>
                             <TableCell className="tableCell">{row.stadium}</TableCell>
                             <TableCell className="tableCell">
@@ -59,6 +56,16 @@ const ListStadium = () => {
                             </TableCell>
                             <TableCell className="tableCell">
                                 <span className={`status ${row.status}`}>{row.status}</span>
+                            </TableCell>
+                            <TableCell className="tableCell">
+                                <div className="cellAction">
+                                    <Link to="/club/updateClub" style={{ textDecoration: "none" }}>
+                                        <div className="viewButton">Edit</div>
+                                    </Link>
+                                    <Link to="/users/test" style={{ textDecoration: "none" }}>
+                                        <div className="deleteButton">Delete</div>
+                                    </Link>
+                                </div>
                             </TableCell>
                         </TableRow>
                     ))}

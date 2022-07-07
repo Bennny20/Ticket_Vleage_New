@@ -42,36 +42,64 @@ export const userInputs = [
     },
   ];
   
-  export const productInputs = [
+  export const clubInput = [
     {
       id: 1,
-      label: "Title",
+      label: "ID",
       type: "text",
-      placeholder: "Apple Macbook Pro",
+      placeholder: "Club01",
     },
     {
       id: 2,
-      label: "Description",
+      label: "Name",
       type: "text",
-      placeholder: "Description",
+      placeholder: "Name of club",
     },
     {
       id: 3,
-      label: "Category",
+      label: "Location",
       type: "text",
-      placeholder: "Computers",
+      placeholder: "Localtion of club",
     },
     {
       id: 4,
-      label: "Price",
+      label: "Stadium",
       type: "text",
-      placeholder: "100",
+      placeholder: "Thong Nhat",
     },
     {
       id: 5,
-      label: "Stock",
+      label: "Logo",
       type: "text",
-      placeholder: "in stock",
+      placeholder: "Thong Nhat",
+    },
+  ];
+  
+  
+  export const stadiumInput = [
+    {
+      id: 1,
+      label: "ID",
+      type: "text",
+      placeholder: "Stadium01",
+    },
+    {
+      id: 2,
+      label: "Name",
+      type: "text",
+      placeholder: "Name of stadium",
+    },
+    {
+      id: 3,
+      label: "Location",
+      type: "text",
+      placeholder: "Localtion of stadiun",
+    },
+    {
+      id: 4,
+      label: "Capcity",
+      type: "text",
+      placeholder: "Thong Nhat",
     },
   ];
   

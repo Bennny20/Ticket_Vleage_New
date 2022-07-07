@@ -12,6 +12,36 @@
     }
   }
 
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .ticketButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: crimson;
+      border: 1px dotted rgba(0, 0, 139, 0.596);
+      cursor: pointer;
+    }
+
+    .viewButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: darkblue;
+      border: 1px dotted rgba(0, 0, 139, 0.596);
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: crimson;
+      border: 1px dotted rgba(220, 20, 60, 0.6);
+      cursor: pointer;
+    }
+  }
+
   .status {
     padding: 5px;
     border-radius: 5px;
@@ -21,14 +51,17 @@
       color: yellow;
       background-color: rgba(189, 189, 3, 0.103);
     }
+
     &.Ending {
       color: red;
       background-color: rgba(189, 189, 3, 0.103);
     }
+
     &.On-going {
       color: green;
       background-color: rgba(189, 189, 3, 0.103);
     }
+
     &.Update {
       color: red;
       background-color: rgba(189, 189, 3, 0.103);

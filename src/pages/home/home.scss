@@ -26,6 +26,24 @@
         color: gray;
         margin-bottom: 15px;
       }
+
+
+      .formInput {
+        select {
+          width: 20%;
+          padding:10px;
+          border: none;
+          border-bottom: 1px solid gray;
+          margin-bottom: 15px;
+
+          option {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid gray;
+          }
+        }
+      }
     }
 
     .search {

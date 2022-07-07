@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 const List = () => {
   const rows = [
@@ -39,8 +40,8 @@ const List = () => {
       ticket: "400/500",
       status: "On-going",
     },
-    
-    
+
+
   ];
   return (
     <TableContainer component={Paper} className="table">
@@ -72,9 +73,25 @@ const List = () => {
               </TableCell>
               <TableCell className="tableCell">{row.stadium}</TableCell>
               <TableCell className="tableCell">{row.date}</TableCell>
-              <TableCell className="tableCell">{row.ticket}</TableCell>
+              <TableCell className="tableCell">
+                <div className="cellAction">
+                  <Link to="/ticket" style={{ textDecoration: "none" }}>
+                    <div className="ticketButton">{row.ticket}</div>
+                  </Link>
+                </div>
+              </TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${row.status}`}>{row.status}</span>
+              </TableCell>
+              <TableCell className="tableCell">
+                <div className="cellAction">
+                  <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
+                    <div className="viewButton">Edit</div>
+                  </Link>
+                  <Link to="" style={{ textDecoration: "none" }}>
+                    <div className="deleteButton">Delete</div>
+                  </Link>
+                </div>
               </TableCell>
             </TableRow>
           ))}

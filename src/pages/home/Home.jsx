@@ -13,22 +13,18 @@ const Home = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        {/* <div className="widgets">
-          <Widget type="user" />
-          <Widget type="order" />
-          <Widget type="earning" />
-          <Widget type="balance" />
-        </div> */}
-        {/* <div className="charts">
-          <Featured />
-          <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
-        </div> */}
         <div className="search">
           <input type="text" placeholder="Search..." />
           <SearchOutlinedIcon />
         </div>
         <div className="listContainer">
           <div className="listTitle">List Math</div>
+          <div className="formInput" >
+            <select>
+              <option value="CO2">Round 1</option>
+              <option value="CO2">Round 1</option>
+            </select>
+          </div>
           <Table />
         </div>
       </div>
