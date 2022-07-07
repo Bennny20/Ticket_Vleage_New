@@ -16,8 +16,8 @@ const club = () => {
           <SearchOutlinedIcon />
         </div>
         <div className="listContainer">
-          <div className="listTitle">List club</div>
-          <div style={{ marginBottom: "20px" }}>
+          <div className="listTitle">
+            List club
             <Link to="/club/newClub" className="link">
               Add New
             </Link>

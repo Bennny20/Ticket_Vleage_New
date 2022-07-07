@@ -10,6 +10,7 @@ import UpdateMatch from "./pages/Update/UpdateMatch"
 import Ticket from "./pages/Ticket/Ticket"
 import UpdateStadium from "./pages/Update/UpdateStadium";
 import UpdateClub from "./pages/Update/UpdateClub";
+import UpdateUser from "./pages/Update/UpdateUser";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { stadiumInput, userInputs, clubInput } from "./formSource";
 import "./style/dark.scss";
@@ -49,7 +50,7 @@ function App() {
             {/* User */}
             <Route path="users">
               <Route index element={<RequiredAuth><List /></RequiredAuth>} />
-              <Route path=":userId" element={<RequiredAuth><Single /></RequiredAuth>} />
+              <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
               <Route
                 path="new"
                 element={<New inputs={userInputs} title="Add New User" />}
