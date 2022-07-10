@@ -55,7 +55,7 @@ const ListStadium = () => {
                         <TableCell className="tableCell">Name</TableCell>
                         <TableCell className="tableCell">Localtion</TableCell>
                         <TableCell className="tableCell">Capacity</TableCell>
-                        <TableCell className="tableCell">Status</TableCell>
+                        {/* <TableCell className="tableCell">Status</TableCell> */}
                         <TableCell className="tableCell"></TableCell>
                     </TableRow>
                 </TableHead>
@@ -70,9 +70,9 @@ const ListStadium = () => {
                             </TableCell>
                             <TableCell className="tableCell">{row.location}</TableCell>
                             <TableCell className="tableCell">{row.capacity}</TableCell>
-                            <TableCell className="tableCell">
+                            {/* <TableCell className="tableCell">
                                 <span className={`status ${row.status}`}>{row.status}</span>
-                            </TableCell>
+                            </TableCell> */}
                             <TableCell className="tableCell">
                                 <div className="cellAction">
                                     <Link to="/stadium/updateStadium" style={{ textDecoration: "none" }}>
