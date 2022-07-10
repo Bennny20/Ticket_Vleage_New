@@ -7,26 +7,45 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "../AxiosConfig";
 
+var path = "stadium";
 const ListStadium = () => {
-    const rows = [
-        {
-            id: "1",
-            name: "Thong Nhat Stadium",
-            location: "Q10 TP HCM",
-            capcity: "Ho Chi Minh City FC",
-            status: "On-going",
+    //load data
+    useEffect(
+        function () {
+            axios
+                .get(path)
+                .then(function (data) {
+                    console.log(data.data.stadiums);
+                    setData(data.data.stadiums);
+                    // console.log(list);
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
         },
-        {
-            id: "2",
-            name: "Thien Truong Stadium",
-            location: "TP Nam Dinh",
-            capcity: "Nam Dinh Club",
-            status: "Update",
-        },
-        
+        []
+    );
+    const [data, setData] = useState([]);
+    const rows =  data ;
+    // {
+    //     id: "1",
+    //     name: "Thong Nhat Stadium",
+    //     location: "Q10 TP HCM",
+    //     capcity: "Ho Chi Minh City FC",
+    //     status: "On-going",
+    // },
+    // {
+    //     id: "2",
+    //     name: "Thien Truong Stadium",
+    //     location: "TP Nam Dinh",
+    //     capcity: "Nam Dinh Club",
+    //     status: "Update",
+    // },
 
-    ];
+
     return (
         <TableContainer component={Paper} className="table">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -47,10 +66,10 @@ const ListStadium = () => {
                                 {row.id}
                             </TableCell>
                             <TableCell className="tableCell">
-                                {row.name}
+                                {row.stadiumName}
                             </TableCell>
                             <TableCell className="tableCell">{row.location}</TableCell>
-                            <TableCell className="tableCell">{row.capcity}</TableCell>
+                            <TableCell className="tableCell">{row.capacity}</TableCell>
                             <TableCell className="tableCell">
                                 <span className={`status ${row.status}`}>{row.status}</span>
                             </TableCell>
@@ -68,7 +87,7 @@ const ListStadium = () => {
                     ))}
                 </TableBody>
             </Table>
-        </TableContainer>
+         </TableContainer>     
     );
 };
 
