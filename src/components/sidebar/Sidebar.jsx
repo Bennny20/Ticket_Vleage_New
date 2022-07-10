@@ -13,9 +13,36 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { auth } from "../../firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  const signOutFirebase = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      const user = null;
+      dispatch({ type: "LOGOUT", payload: user })
+      navigate("/login");
+      console.log("user is logged out");
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
   const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
@@ -64,14 +91,25 @@ const Sidebar = () => {
               <span>Club</span>
             </li>
           </Link>
+<<<<<<< HEAD
+          <p className="title"><hr></hr></p>
+=======
+
+          <Link to="/match" style={{ textDecoration: "none" }}>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>Math</span>
+            </li>
+          </Link>
           <p className="title"><hr></hr></p>  
+>>>>>>> 41ec28f3cff43ef9967275243197de8324249746
           <li>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <span onClick={signOutFirebase}>Logout</span>
           </li>
-        </ul>
-      </div>
-    </div>
+        </ul >
+      </div >
+    </div >
   );
 };
 

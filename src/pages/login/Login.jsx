@@ -12,7 +12,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navitage = useNavigate()
+  const navigate = useNavigate()
 
   const { dispatch } = useContext(AuthContext)
 
@@ -26,7 +26,7 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         dispatch({ type: "LOGIN", payload: user })
-        navitage("/")
+        navigate("/")
       })
       .catch((error) => {
         setError(true);

@@ -2,6 +2,11 @@
 
 export const userColumns = [
   {
+    field: "id",
+    headerName: "ID",
+    width: 200,
+  },
+  {
     field: "email",
     headerName: "Email",
     width: 200,
@@ -9,12 +14,12 @@ export const userColumns = [
   {
     field: "first",
     headerName: "Firstname",
-    width: 200,
+    width: 150,
   },
   {
     field: "last",
     headerName: "Lastname",
-    width: 200,
+    width: 150,
   },
   {
     field: "phone",

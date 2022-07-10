@@ -32,16 +32,18 @@ const New = ({ inputs, title }) => {
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+                  <input 
+                  type={input.type} 
+                  placeholder={input.placeholder} 
+                  pattern={input.pattern} 
+                  title={input.title}/>
                 </div>
               ))}
 
-
             </form>
-            <div className="btnSend">   
+            <div className="btnSend">
               <button>Send</button>
             </div>
-
           </div>
         </div>
       </div>

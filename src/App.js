@@ -1,10 +1,13 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
-import Single from "./pages/single/Single";
+import NewRound from "./pages/new/NewRound"
+import NewTournament from "./pages/new/NewTournament"
+import NewMatch from "./pages/new/NewMatch"
 import New from "./pages/new/New";
 import Profile from "./pages/profile/Profile"
 import Stadium from "./pages/Stadium/Stadium"
+import Match from"./pages/Match/Match"
 import Club from "./pages/Club/Club"
 import UpdateMatch from "./pages/Update/UpdateMatch"
 import Ticket from "./pages/Ticket/Ticket"
@@ -29,6 +32,8 @@ function App() {
   };
   console.log(currentUser);
 
+
+
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -39,7 +44,11 @@ function App() {
 
             {/* Match */}
             <Route path="match">
+            <Route index element={<RequiredAuth><Match /></RequiredAuth>} />
               <Route path="updateMatch" element={<RequiredAuth><UpdateMatch /></RequiredAuth>} />
+              <Route path="newMatch"element={<NewMatch/>}/>
+              <Route path="newRound"element={<NewRound/>}/>
+              <Route path="newTournament"element={<NewTournament/>}/>
             </Route>
 
             {/* Ticket */}

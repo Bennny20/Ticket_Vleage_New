@@ -1,45 +1,43 @@
 export const userInputs = [
-    {
+  {
+    id: 1,
+    label: "ID",
+    type: "text",
+    placeholder: "john_doe@gmail.com",
+    pattern: "[A-Za-z]{3}",
+    
+  },  
+  
+  {
       id: 1,
-      label: "Username",
-      type: "text",
-      placeholder: "john_doe",
+      label: "Email",
+      type: "mail",
+      placeholder: "john_doe@gmail.com",
+      pattern: "[A-Za-z]{3}",
+      
     },
     {
       id: 2,
-      label: "Name and surname",
+      label: "Firstname",
       type: "text",
       placeholder: "John Doe",
     },
     {
       id: 3,
-      label: "Email",
-      type: "mail",
-      placeholder: "john_doe@gmail.com",
+      label: "Lastname",
+      type: "text",
+      placeholder: "",
     },
     {
       id: 4,
       label: "Phone",
       type: "text",
-      placeholder: "+1 234 567 89",
+      placeholder: "0838-228-607",
+      pattern: "[0-9]{4}-[0-9]{3}-[0-9]{3}",
+      title:"Phone just number",
+      
     },
-    {
-      id: 5,
-      label: "Password",
-      type: "password",
-    },
-    {
-      id: 6,
-      label: "Address",
-      type: "text",
-      placeholder: "Elton St. 216 NewYork",
-    },
-    {
-      id: 7,
-      label: "Country",
-      type: "text",
-      placeholder: "USA",
-    },
+    
   ];
   
   export const clubInput = [
@@ -103,3 +101,30 @@ export const userInputs = [
     },
   ];
   
+
+  export const matchInput = [
+    {
+      id: 1,
+      label: "ID",
+      type: "text",
+      placeholder: "Stadium01",
+    },
+    {
+      id: 2,
+      label: "Name",
+      type: "text",
+      placeholder: "Name of stadium",
+    },
+    {
+      id: 3,
+      label: "Location",
+      type: "text",
+      placeholder: "Localtion of stadiun",
+    },
+    {
+      id: 4,
+      label: "Capcity",
+      type: "text",
+      placeholder: "Thong Nhat",
+    },
+  ];

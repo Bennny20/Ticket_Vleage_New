@@ -1,10 +1,14 @@
-import "./update.scss";
+import "./match.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import { useState } from "react";
 
-const UpdateClub = () => {
+const New = ({ inputs, title }) => {
+    const [file, setFile] = useState("");
+
     return (
-        <div className="update">
+        <div className="new">
             <Sidebar />
             <div className="newContainer">
                 <Navbar />
@@ -15,33 +19,24 @@ const UpdateClub = () => {
                     <div className="right">
                         <form>
                             <div className="formInput" >
-                                <label>ID</label>
-                                <input type="text" placeholder="ID of club" value="01" readOnly />
+                                <label>Tournament Name</label>
+                                <input type="text" placeholder="V.League 1 - 2021" />
                             </div>
 
                             <div className="formInput" >
-                                <label>Name</label>
-                                <input type="text" placeholder="Name of club" value="Hoang Anh Gia Lai" />
+                                <label>Start Date</label>
+                                <input type="Date" placeholder="" />
                             </div>
 
                             <div className="formInput" >
-                                <label>Localtion</label>
-                                <input type="text" placeholder="" value="Q10 TP HCM" />
-                            </div>
-
-                            <div className="formInput" >
-                                <label>Stadium</label>
-                                <input type="text" placeholder="" value="Thong Nhat Stadium" />
-                            </div>
-
-                            <div className="formInput" >
-                                <label>Logo</label>
-                                <input type="text" placeholder="" value="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png" />
+                                <label>End Date</label>
+                                <input type="Date" placeholder="" />
                             </div>
                             <div className="formInput" >
                                 <label>Status</label>
                                 <select>
-                                    <option value="CO2">Unavailable</option>
+                                    <option value="CO1">Coming</option>
+                                    <option value="CO2">Ending</option>
                                     <option value="CO2">On-going</option>
                                 </select>
                             </div>
@@ -56,4 +51,4 @@ const UpdateClub = () => {
     );
 };
 
-export default UpdateClub;
+export default New;
