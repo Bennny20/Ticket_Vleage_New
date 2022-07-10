@@ -4,20 +4,20 @@ export const userColumns = [
   {
     field: "id",
     headerName: "ID",
-    width: 200,
+    width: 100,
   },
   {
-    field: "email",
+    field: "username",
     headerName: "Email",
-    width: 200,
+    width: 300,
   },
   {
-    field: "first",
+    field: "firstname",
     headerName: "Firstname",
     width: 150,
   },
   {
-    field: "last",
+    field: "lastname",
     headerName: "Lastname",
     width: 150,
   },

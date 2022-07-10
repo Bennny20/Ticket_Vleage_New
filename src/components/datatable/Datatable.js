@@ -3,18 +3,18 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../AxiosConfig";
 
-var path = "http://localhost:8081/api/v1/";
+var path = "account";
 const Datatable = () => {
   //load data
   useEffect(
     function () {
       axios
-        .get(path + 'account')
+        .get(path)
         .then(function (data) {
-          console.log(data.data);
-          setData(data.data);
+          console.log(data.data.accounts);
+          setData(data.data.accounts);
           // console.log(list);
         })
         .catch(function (err) {

@@ -7,102 +7,125 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "../AxiosConfig";
 
+var path = "match";
 const List = () => {
-  const rows = [
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "Coming",
+  //load data
+  useEffect(
+    function () {
+        axios
+            .get(path)
+            .then(function (data) {
+                console.log(data.data.matches);
+                // setData(data.data.matches);
+                // console.log(list);
+            })
+            .catch(function (err) {
+                console.log(32, err);
+            });
     },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "Ending",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
+    []
+);
+// const [data, setData] = useState([]);
+// const rows =  data ;
 
 
-  ];
+  // const rows = [
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "Coming",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "Ending",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+  //   {
+  //     home: "Ho Chi Minh City FC",
+  //     imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
+  //     away: "Hoang Anh Gia Lai",
+  //     imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
+  //     stadium: "Thong Nhat",
+  //     date: "1 March",
+  //     ticket: "400/500",
+  //     status: "On-going",
+  //   },
+
+
+  // ];
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -116,7 +139,7 @@ const List = () => {
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        {/* <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
               <TableCell className="tableCell">
@@ -136,7 +159,7 @@ const List = () => {
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton">{row.ticket}</div>
+                    <div className="ticketButton">{row.capacity}</div>
                   </Link>
                 </div>
               </TableCell>
@@ -155,7 +178,7 @@ const List = () => {
               </TableCell>
             </TableRow>
           ))}
-        </TableBody>
+        </TableBody> */}
       </Table>
     </TableContainer>
   );
