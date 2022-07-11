@@ -90,7 +90,8 @@ const Sidebar = () => {
               <span>Club</span>
             </li>
           </Link>
-          <p className="title"><hr></hr></p>
+          <p className="title"></p>
+          <hr></hr>
 
           <Link to="/match" style={{ textDecoration: "none" }}>
             <li>
@@ -98,7 +99,8 @@ const Sidebar = () => {
               <span>Math</span>
             </li>
           </Link>
-          <p className="title"><hr></hr></p>
+          <p className="title"></p>
+          <hr></hr>
           <li>
             <ExitToAppIcon className="icon" />
             <span onClick={signOutFirebase}>Logout</span>

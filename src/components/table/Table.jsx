@@ -7,27 +7,27 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "../AxiosConfig";
+// import { useState, useEffect } from "react";
+// import axios from "../AxiosConfig";
 
-var path = "match";
+// var path = "match";
 const List = () => {
   //load data
-  useEffect(
-    function () {
-        axios
-            .get(path)
-            .then(function (data) {
-                console.log(data.data.matches);
-                // setData(data.data.stadiums);
-                // console.log(list);
-            })
-            .catch(function (err) {
-                console.log(32, err);
-            });
-    },
-    []
-);
+//   useEffect(
+//     function () {
+//         axios
+//             .get(path)
+//             .then(function (data) {
+//                 console.log(data.data.matches);
+//                 // setData(data.data.stadiums);
+//                 // console.log(list);
+//             })
+//             .catch(function (err) {
+//                 console.log(32, err);
+//             });
+//     },
+//     []
+// );
 // const [data, setData] = useState([]);
 // const rows =  data ;
   const rows = [
