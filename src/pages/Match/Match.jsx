@@ -7,6 +7,41 @@ import { Link } from "react-router-dom";
 
 
 const Match = () => {
+
+  const rowsTournament = [
+    {
+      id: "1",
+      name: "NIGHT WOLF V.LEAGUE 1 - 2022"
+    },
+    {
+      id: "2",
+      name: "LS V.League 1 - 2021"
+    },
+    {
+      id: "3",
+      name: "LS V.League 1 - 2020"
+    }, 
+    {
+      id: "4",
+      name: "LS V.League 1 - 2019"
+    }
+  ];
+
+
+  const rowsRound = [
+    {
+      id: "1",
+      name: "Round 1"
+    },
+    {
+      id: "2",
+      name: "Round 2"
+    },
+    {
+      id: "3",
+      name: "Round 3"
+    }
+  ];
   return (
     <div className="match">
       <Sidebar />
@@ -29,15 +64,28 @@ const Match = () => {
             </Link>
           </div>
 
-          <div className="listTitle" style={{fontSize:"20px"}}>Tournament: NIGHT WOLF V.LEAGUE 1 - 2022</div>
+          <div className="listTitle" style={{ fontSize: "20px" }}>
+            Tournament: </div>
+
+          <div className="formInput1" >
+            <select>
+              {rowsTournament.map((entity) => (
+                <option id="{entity.id}">{entity.name}</option>
+              ))
+              }
+            </select>
+          </div>
 
           <div className="formInput" >
             <select>
-              <option value="CO2">Round 1</option>
-              <option value="CO2">Round 2</option>
+              {rowsRound.map((entity) => (
+                <option id={entity.id}>{entity.name}</option>
+              ))
+              }
+
             </select>
           </div>
-          
+
           <Table />
         </div>
       </div>
