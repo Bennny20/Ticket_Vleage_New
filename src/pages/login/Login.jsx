@@ -43,7 +43,9 @@ const Login = () => {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        dispatch({ type: "LOGIN", payload: user })
         console.log(user);
+        navigate("/")
         // ...
       }).catch((error) => {
         // Handle Errors here.

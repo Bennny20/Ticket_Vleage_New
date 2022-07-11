@@ -25,8 +25,7 @@ const Sidebar = () => {
   const signOutFirebase = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
-      const user = null;
-      dispatch({ type: "LOGOUT", payload: user })
+      localStorage.removeItem('user');
       navigate("/login");
       console.log("user is logged out");
     }).catch((error) => {
