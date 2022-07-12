@@ -7,123 +7,32 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-// import { useState, useEffect } from "react";
-// import axios from "../AxiosConfig";
-
-// var path = "match";
-const List = () => {
-  //load data
-//   useEffect(
-//     function () {
-//         axios
-//             .get(path)
-//             .then(function (data) {
-//                 console.log(data.data.matches);
-//                 // setData(data.data.stadiums);
-//                 // console.log(list);
-//             })
-//             .catch(function (err) {
-//                 console.log(32, err);
-//             });
-//     },
-//     []
-// );
-// const [data, setData] = useState([]);
-// const rows =  data ;
-  const rows = [
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "Coming",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "Ending",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
-    {
-      home: "Ho Chi Minh City FC",
-      imgHome: "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png",
-      away: "Hoang Anh Gia Lai",
-      imgAway: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Hoang_Anh_Gia_Lai_FC_logo.svg/300px-Hoang_Anh_Gia_Lai_FC_logo.svg.png",
-      stadium: "Thong Nhat",
-      date: "1 March",
-      ticket: "400/500",
-      status: "On-going",
-    },
+import { useState, useEffect } from "react";
+import axios from "../AxiosConfig";
 
 
-  ];
+
+function List() {
+  const [data, setData] = useState([]);
+  const [count, setCount] = useState(0);
+  var path = "match";
+
+  //load data page list match
+  useEffect(() =>{
+      axios
+        .get(path)
+        .then(function (data) {
+          console.log(28, data.data.matches);
+          setData(data.data.matches);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
+    },
+    [count]
+  );
+
+  
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -138,31 +47,31 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
+          {data.map((value, index) => (
+            <TableRow key={index}>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.imgHome} alt="" className="image" />
-                  {row.home}
+                  <img src={value.clubHome.img} alt="" className="image" />
+                  {value.clubHome.clubName}
                 </div>
               </TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.imgAway} alt="" className="image" />
-                  {row.away}
+                  <img src={value.clubVisitor.img} alt="" className="image" />
+                  {value.clubVisitor.clubName}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{row.stadium}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
+              <TableCell className="tableCell">{value.stadium.stadiumName}</TableCell>
+              <TableCell className="tableCell">{value.timeStart}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton">{row.ticket}</div>
+                    <div className="ticketButton">{ }</div>
                   </Link>
                 </div>
               </TableCell>
               <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
+                <span className={`status ${value.status} `}>{value.status}</span>
               </TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
