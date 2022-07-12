@@ -34,30 +34,30 @@ const Login = () => {
   };
 
   //sign in with google firebase ====> chưa check role admin => ai cũng login được
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        dispatch({ type: "LOGIN", payload: user })
-        console.log(user);
-        navigate("/")
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
-  };
+  // const signInWithGoogle = () => {
+  //   const provider = new GoogleAuthProvider();
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       // This gives you a Google Access Token. You can use it to access the Google API.
+  //       const credential = GoogleAuthProvider.credentialFromResult(result);
+  //       const token = credential.accessToken;
+  //       // The signed-in user info.
+  //       const user = result.user;
+  //       dispatch({ type: "LOGIN", payload: user })
+  //       console.log(user);
+  //       navigate("/")
+  //       // ...
+  //     }).catch((error) => {
+  //       // Handle Errors here.
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // The email of the user's account used.
+  //       const email = error.customData.email;
+  //       // The AuthCredential type that was used.
+  //       const credential = GoogleAuthProvider.credentialFromError(error);
+  //       // ...
+  //     });
+  // };
 
 
 
@@ -76,12 +76,12 @@ const Login = () => {
         />
         <button type="submit">Login</button>
 
-        <div className="google-btn" onClick={signInWithGoogle} >
+        {/* <div className="google-btn" onClick={signInWithGoogle} >
           <div className="google-icon-wrapper">
             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
           </div>
           <p class="btn-text"><b>Sign in with google</b></p>
-        </div>
+        </div> */}
         {error && <span>Wrong email or password!</span>}
       </form>
 
