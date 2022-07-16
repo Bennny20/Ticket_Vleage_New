@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "../AxiosConfig";
+import axios from "../../AxiosConfig";
 
 var path = "account";
 const Datatable = () => {

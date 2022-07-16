@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "../AxiosConfig";
+import axios from "../../AxiosConfig";
 
 
 
@@ -66,12 +66,12 @@ function List() {
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton">{ }</div>
+                    <div className="ticketButton">{value.stadium.capacity}</div>
                   </Link>
                 </div>
               </TableCell>
               <TableCell className="tableCell">
-                <span className={`status ${value.status} `}>{value.status}</span>
+                <span className={`status ${value.status}`}>{value.status} On-going</span>
               </TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
