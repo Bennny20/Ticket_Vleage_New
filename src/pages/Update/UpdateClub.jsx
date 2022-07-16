@@ -1,22 +1,25 @@
 import "./update.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
+import { useForm } from "react-hook-form";
+import axios from "../../AxiosConfig";
+
 
 const UpdateClub = () => {
 
-    handleSubmit = event => {
-        event.preventDefault();
+    // handleSubmit = event => {
+    //     event.preventDefault();
     
-        const user = {
-          name: this.state.name
-        };
+    //     const user = {
+    //       name: this.state.name
+    //     };
     
-        axios.post(`##`, { user })
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
-      }
+    //     axios.post(`##`, { user })
+    //       .then(res => {
+    //         console.log(res);
+    //         console.log(res.data);
+    //       })
+    //   }
 
     return (
         <div className="update">
@@ -28,7 +31,7 @@ const UpdateClub = () => {
                 </div>
                 <div className="bottom">
                     <div className="right">
-                        <form onSubmit={this.handleSubmit}>
+                        <form>
                             <div className="formInput" >
                                 <label>ID</label>
                                 <input id="txtID" type="text" placeholder="ID of club" value="01" readOnly />
