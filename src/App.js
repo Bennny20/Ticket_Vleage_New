@@ -1,21 +1,25 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
+//Add new
 import NewRound from "./pages/new/NewRound"
 import NewTournament from "./pages/new/NewTournament"
 import NewMatch from "./pages/new/NewMatch"
 import NewUser from "./pages/new/NewUser";
 import NewStadium from "./pages/new/NewStadium";
 import NewClub from "./pages/new/NewClub";
+//View List
+import List from "./pages/list/List";
 import Profile from "./pages/profile/Profile"
 import Stadium from "./pages/Stadium/Stadium"
 import Match from"./pages/Match/Match"
 import Club from "./pages/Club/Club"
-import UpdateMatch from "./pages/Update/UpdateMatch"
 import Ticket from "./pages/Ticket/Ticket"
+//Update
+import UpdateMatch from "./pages/Update/UpdateMatch"
 import UpdateStadium from "./pages/Update/UpdateStadium";
 import UpdateClub from "./pages/Update/UpdateClub";
 import UpdateUser from "./pages/Update/UpdateUser";
+//More libary
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { stadiumInput, userInputs, clubInput } from "./formSource";
 import "./style/dark.scss";
