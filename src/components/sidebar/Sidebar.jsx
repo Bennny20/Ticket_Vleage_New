@@ -90,15 +90,13 @@ const Sidebar = () => {
               <span>Club</span>
             </li>
           </Link>
-          <p className="title"></p>
-          <hr></hr>
-
           <Link to="/match" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
               <span>Math</span>
             </li>
           </Link>
+          <p className="title"></p>
           <p className="title"></p>
           <hr></hr>
           <li>

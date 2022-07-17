@@ -5,7 +5,7 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
+import background from "./backgroundLogin.png"
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -63,28 +63,53 @@ const Login = () => {
 
   return (
     <div className="login">
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="email"
-          onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-
         {/* <div className="google-btn" onClick={signInWithGoogle} >
           <div className="google-icon-wrapper">
             <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
           </div>
           <p class="btn-text"><b>Sign in with google</b></p>
         </div> */}
-        {error && <span>Wrong email or password!</span>}
-      </form>
+        <div className='container'>
+          <div className='row-login'>
+            <div className='col-2'>
+              <img
+                src={background}
+                style={{ width: "100%" }}
+              />
+            </div>
 
+            <div className='col-2'>
+              <div className='form-container'>
+                <div className='form-btn'>
+                  <span >Login</span>
+                  <hr id='Indicator' />
+                </div>
+                <form id="LoginForm" onSubmit={handleLogin}>
+                  <input
+                    type="email"
+                    placeholder="email"
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                  <input
+                    type="password"
+                    placeholder="password"
+                    onChange={e => setPassword(e.target.value)}
+                  />
+                  <button type="submit">Login</button>
+                  <br>
+                  </br>
+                  {error && <span>Wrong email or password!</span>}
+                  <a href='#' >
+                    <img src='http://www.testyou.in/sign-in-with-google.png' style={{ borderImage: "revert" }} >
+                    </img>
+                  </a>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+     
     </div>
   );
 };

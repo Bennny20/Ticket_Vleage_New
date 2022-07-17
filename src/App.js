@@ -4,7 +4,9 @@ import List from "./pages/list/List";
 import NewRound from "./pages/new/NewRound"
 import NewTournament from "./pages/new/NewTournament"
 import NewMatch from "./pages/new/NewMatch"
-import New from "./pages/new/New";
+import NewUser from "./pages/new/NewUser";
+import NewStadium from "./pages/new/NewStadium";
+import NewClub from "./pages/new/NewClub";
 import Profile from "./pages/profile/Profile"
 import Stadium from "./pages/Stadium/Stadium"
 import Match from"./pages/Match/Match"
@@ -60,10 +62,7 @@ function App() {
             <Route path="users">
               <Route index element={<RequiredAuth><List /></RequiredAuth>} />
               <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
-              <Route
-                path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
-              />
+              <Route path="newUser"element={<NewUser/>}/>
             </Route>
 
             {/* Profile */}
@@ -75,20 +74,14 @@ function App() {
             <Route path="stadium">
               <Route index element={<RequiredAuth><Stadium /></RequiredAuth>} />
               <Route path="updateStadium" element={<RequiredAuth><UpdateStadium /></RequiredAuth>} />
-              <Route
-                path="newStadium"
-                element={<New inputs={stadiumInput} title="Add New Stadium" />}
-              />
+              <Route path="newStadium"element={<NewStadium/>}/>
             </Route>
 
             {/* Club */}
             <Route path="club">
               <Route index element={<RequiredAuth><Club /></RequiredAuth>} />
               <Route path="updateClub" index element={<RequiredAuth><UpdateClub /></RequiredAuth>} />
-              <Route
-                path="newClub"
-                element={<New inputs={clubInput} title="Add New Club" />}
-              />
+              <Route path="newClub"element={<NewClub/>}/>
             </Route>
 
           </Route>

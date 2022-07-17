@@ -1,36 +1,118 @@
 .login{
-    height: 100vh;
+  adding: 50px 0;
+  background: radial-gradient(rgb(0, 0, 0), #e30d0d);
+
+
+  .container {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .row-login {
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-    form{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  .col-2 {
+    flex-basis: 50%;
+    min-width: 300px;
+  }
+  
+  .col-2 img {
+    max-width: 100%;
+    padding: 50px 0;
+  }
 
-      input{
-        width: 200px;
-        height: 30px;
-        margin: 10px;
-      }
+  .form-container {
+    background: #fff;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .form-container span {
+    font-weight: bold;
+    padding: 0 10px;
+    color: #555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+  }
+  
+  .form-btn {
+    display: inline-block;
+  }
+  
+  .form-container form {
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    top: 130px;
+    transition: transform 1s;
+  }
+  
+  #Indicator {
+    width: 100px;
+    border: none;
+    background: #ff523b;
+    height: 3px;
+    margin-top: 8px;
+    transition: transform 1s;
+  }
 
-      button{
-        width: 200px;
-        height: 30px;
-        border: none;
-        background-color: purple;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-      }
+  form input {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+  }
+  
+  form .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+  }
 
-      span{
-        font-size: 12px;
-        color: red;
-        margin-top: 10px;
-      }
-    }
+  
+
+    // form{
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+
+    //   input{
+    //     width: 200px;
+    //     height: 30px;
+    //     margin: 10px;
+    //   }
+
+    //   button{
+    //     width: 200px;
+    //     height: 30px;
+    //     border: none;
+    //     background-color: purple;
+    //     color: white;
+    //     font-weight: bold;
+    //     cursor: pointer;
+    //   }
+
+    //   span{
+    //     font-size: 12px;
+    //     color: red;
+    //     margin-top: 10px;
+    //   }
+    // }
 
 $white: #fff;
 $google-blue: #4285f4;

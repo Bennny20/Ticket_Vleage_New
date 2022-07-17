@@ -1,4 +1,4 @@
-import "./match.scss";
+import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
@@ -13,7 +13,7 @@ const New = ({ inputs, title }) => {
             <div className="newContainer">
                 <Navbar />
                 <div className="top">
-                    <h1>Update club</h1>
+                    <h1>New match</h1>
                 </div>
                 <div className="bottom">
                     <div className="right">

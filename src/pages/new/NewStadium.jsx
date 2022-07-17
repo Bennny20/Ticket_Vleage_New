@@ -13,27 +13,37 @@ const New = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>{title}</h1>
+          <h1>New Stadium</h1>
         </div>
         <div className="bottom">
           <div className="right">
             <form>
-              <div className="formInput">
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
-                />
+            <div className="formInput" >
+                <label>ID of Stadium</label>
+                <input type="text" placeholder="" />
               </div>
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
-                </div>
-              ))}
-              <button>Send</button>
+
+              <div className="formInput" >
+                <label>Name of Stadium</label>
+                <input type="text" placeholder="Ho Chi Minh City FC" />
+              </div>
+
+              <div className="formInput" >
+                <label>Location of Stadium</label>
+                <input type="text" placeholder="" />
+              </div>
+
+              <div className="formInput" >
+                <label>Capcity</label>
+                <input type="text" placeholder="" />
+              </div>
+
+             
+
             </form>
+            <div className="btnSend">
+              <button>Send</button>
+            </div>
           </div>
         </div>
       </div>

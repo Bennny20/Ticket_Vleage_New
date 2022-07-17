@@ -13,31 +13,30 @@ const New = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>New club</h1>
+          <h1>New user</h1>
         </div>
         <div className="bottom">
           <div className="right">
             <form>
               <div className="formInput" >
-                <label>Name of club</label>
-                <input type="text" placeholder="Ho Chi Minh City FC" />
+                <label>Email</label>
+                <input type="text" placeholder="john_doe@gmail.com" />
               </div>
 
               <div className="formInput" >
-                <label>Location of club</label>
-                <input type="text" placeholder="" />
+                <label>Firstname</label>
+                <input type="text" placeholder="John" />
               </div>
 
               <div className="formInput" >
-                <label>Stadium</label>
-                <input type="text" placeholder="" />
+                <label>Lastname</label>
+                <input type="text" placeholder="Doe" />
               </div>
 
               <div className="formInput" >
-                <label>Logo</label>
-                <input type="text" placeholder="" />
+                <label>Phone</label>
+                <input type="text" placeholder="0838-228-607" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" />
               </div>
-
             </form>
             <div className="btnSend">
               <button>Send</button>

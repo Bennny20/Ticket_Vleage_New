@@ -18,7 +18,7 @@ const Stadium = () => {
         <div className="listContainer">
           <div className="listTitle">
             List stadium
-            <Link to="/club/newClub" className="link">
+            <Link to="/stadium/newStadium" className="link">
               Add New
             </Link>
           </div>
