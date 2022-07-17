@@ -45,9 +45,13 @@ const New = () => {
         alert(error)
         console.log(error);
       });
+    //end to do code
   }
 
   //render
+  //Add onSubmit in tag form
+  //Add onChange={handleChange}
+  //HandleChange lấy value theo name của thuộc tính trong state
   return (
     <div className="new">
       <Sidebar />
