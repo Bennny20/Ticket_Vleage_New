@@ -63,6 +63,7 @@ const New = () => {
         <div className="bottom">
           <div className="right">
             <form onSubmit={handleSubmit}>
+              {/* Name of club */}
               <div className="formInput" >
                 <label>Name of club</label>
                 <input type="text"
@@ -71,6 +72,7 @@ const New = () => {
                 />
               </div>
 
+              {/* Location of club */}
               <div className="formInput" >
                 <label>Location of club</label>
                 <input type="text"
@@ -79,6 +81,7 @@ const New = () => {
                 />
               </div>
 
+              {/* Stadium */}
               <div className="formInput" >
                 <label>Stadium</label>
                 <input type="text"
@@ -87,6 +90,7 @@ const New = () => {
                 />
               </div>
 
+              {/* Logo */}
               <div className="formInput" >
                 <label>Logo</label>
                 <input type="text"
@@ -94,6 +98,8 @@ const New = () => {
                   onChange={handleChange}
                 />
               </div>
+
+              {/* Button Send to Add new */}
               <div className="btnSend">
                 <button>Send</button>
               </div>
