@@ -93,7 +93,7 @@ const Sidebar = () => {
           <Link to="/match" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
-              <span>Math</span>
+              <span>Match</span>
             </li>
           </Link>
           <p className="title"></p>

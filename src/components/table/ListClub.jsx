@@ -31,6 +31,12 @@ const ListStadium = () => {
     const [data, setData] = useState([]);
     const rows = data;
 
+
+    const handleEditUser = (user) => {
+        console.log('check edit user: ', user);
+
+    }
+
     // const rows = [
     //     {
     //         id: "1",
@@ -81,7 +87,7 @@ const ListStadium = () => {
                             <TableCell className="tableCell">
                                 <div className="cellAction">
                                     <Link to="/club/updateClub" style={{ textDecoration: "none" }}>
-                                        <div className="viewButton">Edit</div>
+                                        <button className="viewButton" onClick={() => handleEditUser(row)} >Edit</button>
                                     </Link>
                                     <Link to="/users/test" style={{ textDecoration: "none" }}>
                                         <div className="deleteButton">Delete</div>
@@ -94,6 +100,8 @@ const ListStadium = () => {
             </Table>
         </TableContainer>
     );
+
+
 };
 
 export default ListStadium;

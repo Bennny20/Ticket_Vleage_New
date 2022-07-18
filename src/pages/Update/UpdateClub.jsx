@@ -1,25 +1,55 @@
 import "./update.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { useForm } from "react-hook-form";
 import axios from "../../AxiosConfig";
+import { useState } from "react";
 
 
+var path = "club";
 const UpdateClub = () => {
 
-    // handleSubmit = event => {
-    //     event.preventDefault();
-    
-    //     const user = {
-    //       name: this.state.name
-    //     };
-    
-    //     axios.post(`##`, { user })
-    //       .then(res => {
-    //         console.log(res);
-    //         console.log(res.data);
-    //       })
-    //   }
+    const [formValue, setFormValue] = useState({
+        name: "",
+        location: "",
+        stadium: "",
+        logo: ""
+    });
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormValue((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            };
+        });
+    };
+
+    const { name, location, stadium, logo } = formValue;
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        //To do code here
+        alert("Update Club : " + name + "-" + location + "-" + stadium + "-" + logo)
+        axios.put(path, {
+            "clubName": name,
+            "country": location,
+            "id": 18,
+            "img": logo,
+            "stadiumId": stadium
+
+        })
+            .then(response => {
+                alert("Updated")
+                //Go to club page
+                return window.location.href = "../club"
+            })
+            .catch(error => {
+                alert(error)
+                console.log(error);
+            });
+        //end to do code
+    }
 
     return (
         <div className="update">
@@ -31,30 +61,29 @@ const UpdateClub = () => {
                 </div>
                 <div className="bottom">
                     <div className="right">
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="formInput" >
                                 <label>ID</label>
-                                <input id="txtID" type="text" placeholder="ID of club" value="01" readOnly />
+                                <input id="txtNameClub" type="text" name="id" placeholder="ID" onChange={handleChange} />
                             </div>
-
                             <div className="formInput" >
                                 <label>Name</label>
-                                <input id="txtNameClub" type="text" placeholder="Name of club" value="Hoang Anh Gia Lai" />
+                                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" onChange={handleChange} />
                             </div>
 
                             <div className="formInput" >
-                                <label>Localtion</label>
-                                <input id="txtLocation" type="text" placeholder="" value="Q10 TP HCM" />
+                                <label>Location</label>
+                                <input id="txtLocation" type="text" name="location" placeholder="Location" onChange={handleChange} />
                             </div>
 
                             <div className="formInput" >
                                 <label>Stadium</label>
-                                <input id="txtStadium" type="text" placeholder="" value="Thong Nhat Stadium" />
+                                <input id="txtStadium" type="text" name="stadium" placeholder="Stadium" onChange={handleChange} />
                             </div>
 
                             <div className="formInput" >
                                 <label>Logo</label>
-                                <input id="txtLogoUrl" type="text" placeholder="" value="https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Ho_Chi_Minh_City_FC_logo.svg/360px-Ho_Chi_Minh_City_FC_logo.svg.png" />
+                                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" onChange={handleChange} />
                             </div>
                             <div className="formInput" >
                                 <label>Status</label>
@@ -63,10 +92,11 @@ const UpdateClub = () => {
                                     <option value="CO2">On-going</option>
                                 </select>
                             </div>
+                            <div className="btnSend">
+                                <button type="submit" >Save</button>
+                            </div>
                         </form>
-                        <div className="btnSend">
-                            <button type="submit">Save</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
