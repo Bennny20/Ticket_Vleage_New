@@ -3,7 +3,9 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
+import axios from "../../AxiosConfig";
 
+var pathTournament = "tournament";
 const New = () => {
     const [formValue, setFormValue] = useState({
         tournamentname: "",
@@ -28,7 +30,22 @@ const New = () => {
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Round : " + tournamentname + "-" + startDate + "-" + endDate + "-" + selectsStatus)
+        alert("Add New Tournament : " + tournamentname + "-" + startDate + "-" + endDate + "-" + selectsStatus)
+        axios.post(pathTournament, {
+            "endDate": endDate,
+            "startDate": startDate,
+            "status": selectsStatus,
+            "tournamentName": tournamentname
+          })
+            .then(response => {
+              alert("Add success")
+              //Go to club page
+              return window.location.href = "../match"
+            })
+            .catch(error => {
+              alert(error)
+              console.log(error);
+            });
         //end to do code
     }
 
@@ -76,9 +93,9 @@ const New = () => {
                                 <label>Status</label>
                                 <select name="selectsStatus"
                                     onChange={handleChange}>
-                                    <option value="CO1">Coming</option>
-                                    <option value="CO2">Ending</option>
-                                    <option value="CO2">On-going</option>
+                                    <option value="true">Coming</option>
+                                    <option value="false">Ending</option>
+                                    <option value="true">On-going</option>
                                 </select>
                             </div>
 
