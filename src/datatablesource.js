@@ -69,8 +69,9 @@ export const clubColumns = [
     width: 150,
     renderCell: (img) => {
       return (
-        <div>
-          <img src={img.value} alt="" className="image" style="./club.scss"/>
+        <div className="allImage">
+          <img style={{width: "32px",height: "32px", borderRadius: "50%",marginRight: "10px",objectFit: "cover"}}
+           src={img.value} alt="" className="image"/>
         </div>
       );
     },

@@ -1,7 +1,6 @@
 import "./table.scss";
-
 import { DataGrid } from "@mui/x-data-grid";
-import { clubColumns, userColumns, userRows } from "../../datatablesource";
+import { clubColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
