@@ -25,10 +25,18 @@ const ListStadium = () => {
     );
     const [data, setData] = useState([]);
 
-    // xóa
+    // Delete function
     const handleDelete = (id) => {
-        // setData(data.filter((item) => item.id !== id));
+        setData(data.filter((item) => item.id !== id));
+        alert(id)
         console.log(id)
+    };
+
+    // Delete function
+    const handleUpdate = (id, clubName, country, stadiumId, img) => {
+        alert(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
+        console.log(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
+        return window.location.href = "/club/updateClub"
     };
 
     const actionColumn = [
@@ -39,9 +47,12 @@ const ListStadium = () => {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <Link to="/club/updateClub" style={{ textDecoration: "none" }}>
-                            <div className="viewButton">Update</div>
-                        </Link>
+                        <div
+                            className="viewButton"
+                            onClick={() => handleUpdate(params.row.id, params.row.clubName, params.row.country, params.row.stadiumId, params.row.img)}
+                        >
+                            Update
+                        </div>
                         <div
                             className="deleteButton"
                             onClick={() => handleDelete(params.row.id)}
@@ -56,20 +67,20 @@ const ListStadium = () => {
     return (
         //new code
         <div className="datatable">
-      <div className="datatableTitle">
-        List Club
-        <Link to="/club/newClub" className="link">
-          Add New
-        </Link>
-      </div>
-      <DataGrid
-        className="datagrid"
-        rows={data}
-        columns={clubColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-      />
-    </div>
+            <div className="datatableTitle">
+                List Club
+                <Link to="/club/newClub" className="link">
+                    Add New
+                </Link>
+            </div>
+            <DataGrid
+                className="datagrid"
+                rows={data}
+                columns={clubColumns.concat(actionColumn)}
+                pageSize={9}
+                rowsPerPageOptions={[9]}
+            />
+        </div>
     );
 
 
