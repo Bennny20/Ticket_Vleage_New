@@ -1,9 +1,33 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "../../AxiosConfig";
 
+
+var pathTournament = "tournament";
+var pathRound = "round";
 const New = () => {
+    //Tournament list
+    useEffect(
+        function getTournament() {
+            axios
+                .get(pathTournament)
+                .then(function (data) {
+                    console.log(data.data.tournaments);
+                    setData(data.data.tournaments);
+                    // console.log(list);
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
+        },
+        []
+    );
+    const [data, setData] = useState([]);
+    const rowsTournament = data;
+
+    //State Round
     const [formValue, setFormValue] = useState({
         roundname: "",
         startDate: "",
@@ -29,6 +53,22 @@ const New = () => {
         event.preventDefault();
         //To do code here
         alert("Add New Round : " + roundname + "-" + startDate + "-" + endDate + "-" + selectsTournament + "-" + selectsStatus)
+        axios.post(pathRound, {
+            "endDate": endDate,
+            "roundName": roundname,
+            "startDate": startDate,
+            "status": selectsStatus,
+            "tournamentId": selectsTournament
+          })
+            .then(response => {
+              alert("Add success")
+              //Go to club page
+              return window.location.href = "../match"
+            })
+            .catch(error => {
+              alert(error)
+              console.log(error);
+            });
         //end to do code
     }
 
@@ -56,11 +96,12 @@ const New = () => {
                             {/* Tournament */}
                             <div className="formInput" >
                                 <label>Tournament</label>
-                                <select name="selectsTournament" 
-                                onChange={handleChange}>
-                                    <option value="CO2">NIGHT WOLF V.LEAGUE 1 - 2022</option>
-                                    <option value="CO2">LS V.League 1 - 2021</option>
-                                    <option value="CO2">LS V.League 1- 2020</option>
+                                <select name="selectsTournament"
+                                    onChange={handleChange}>
+                                    {rowsTournament.map((entity) => (
+                                        <option key={entity.id}>{entity.tournamentName}</option>
+                                    ))
+                                    }
                                 </select>
                             </div>
 
@@ -87,17 +128,17 @@ const New = () => {
                             {/* Status */}
                             <div className="formInput" >
                                 <label>Status</label>
-                                <select name="selectsStatus" 
-                                onChange={handleChange}>
-                                    <option value="CO1">Coming</option>
-                                    <option value="CO2">Ending</option>
-                                    <option value="CO2">On-going</option>
+                                <select name="selectsStatus"
+                                    onChange={handleChange}>
+                                    <option value="true">Coming</option>
+                                    <option value="false">Ending</option>
+                                    <option value="true">On-going</option>
                                 </select>
                             </div>
 
                             {/* Button Send to add new */}
                             <div className="btnSend">
-                                <button>Save</button>
+                                <button>Save Round</button>
                             </div>
                         </form>
                     </div>

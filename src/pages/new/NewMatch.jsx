@@ -4,47 +4,8 @@ import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 
-const New = () => {
-    // const [formValue, setFormValue] = useState({
-    //     idStadium: "",
-    //     nameStadium: "",
-    //     locationStadium: "",
-    //     capcity: ""
-    //   });
-    
-    //   //handle Change value
-    //   const handleChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setFormValue((prevState) => {
-    //       return {
-    //         ...prevState,
-    //         [name]: value,
-    //       };
-    //     });
-    //   };
-    
-    //   const { idStadium, nameStadium, locationStadium, capcity} = formValue;
-    //   //function
-    //   function handleSubmit(event) {
-    //     event.preventDefault();
-    //     //To do code here
-    //     alert("Add New Round : " + idStadium + "-" + nameStadium + "-" + locationStadium + "-" + capcity)
-    //     axios.post(path, {    
-    //         "capacity": capcity,
-    //         "location": locationStadium,
-    //         "stadiumName": nameStadium  
-    //     })
-    //       .then(response => {
-    //         alert("Add success")
-    //         //Go to Stadium page
-    //         return window.location.href = "../stadium"
-    //       })
-    //       .catch(error => {
-    //         alert(error)
-    //         console.log(error);
-    //       });
-    //     //end to do code
-    //   }
+const New = ({ inputs, title }) => {
+    const [file, setFile] = useState("");
 
 
     const rowsTournament = [
@@ -142,27 +103,16 @@ const New = () => {
                         <form>
                             <div className="formInput" >
                                 <label>Home</label>
-<<<<<<< HEAD
                                 <select>
                                     {rowsClubHome.map((entity) => (
                                         <option id="{entity.id}">{entity.name}</option>
                                     ))
                                     }
-=======
-
-                                {/* Selects Club Home */}
-                                <select >
-                                    <option value="CO2">Hò Chi Minh City</option>
-                                    <option value="CO2">Ha Noi</option>
-                                    <option value="CO2">Hoang Anh Gia Lai</option>
->>>>>>> fb24add9c1ac20d5538fd04fd14cd304c732a683
                                 </select>
                             </div>
 
                             <div className="formInput" >
                                 <label>Away</label>
-
-                                {/* Select club Visitor */}
                                 <select>
                                     {rowsClubAways.map((entity) => (
                                         <option id="{entity.id}">{entity.name}</option>
@@ -173,8 +123,6 @@ const New = () => {
 
                             <div className="formInput" >
                                 <label>Stadium</label>
-
-                                {/* Selects Stadium */}
                                 <select>
                                     {rowsStadium.map((entity) => (
                                         <option id="{entity.id}">{entity.name}</option>
