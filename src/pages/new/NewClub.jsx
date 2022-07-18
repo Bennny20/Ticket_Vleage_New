@@ -10,7 +10,7 @@ const New = () => {
 
   const [formValue, setFormValue] = useState({
     name: "",
-    location: "",
+    locationClub: "",
     stadium: "",
     logo: ""
   });
@@ -26,20 +26,22 @@ const New = () => {
     });
   };
 
-  const { name, location, stadium, logo } = formValue;
+  const { name, locationClub, stadium, logo } = formValue;
   //function
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New Club : " + name + "-" + location + "-" + stadium + "-" + logo)
+    alert("Add New Club : " + name + "-" + locationClub + "-" + stadium + "-" + logo)
     axios.post(path, {
       "clubName": name,
-      "country": location,
+      "country": locationClub,
       "img": logo,
       "stadiumId": stadium
     })
       .then(response => {
         alert("Add success")
+        //Go to club page
+        return window.location.href = "../club"
       })
       .catch(error => {
         alert(error)
@@ -76,7 +78,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Location of club</label>
                 <input type="text"
-                  name="location"
+                  name="locationClub"
                   onChange={handleChange}
                 />
               </div>
