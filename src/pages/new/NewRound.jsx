@@ -53,22 +53,22 @@ const New = () => {
         event.preventDefault();
         //To do code here
         alert("Add New Round : " + roundname + "-" + startDate + "-" + endDate + "-" + selectsTournament + "-" + selectsStatus)
-        axios.post(pathRound, {
-            "endDate": endDate,
-            "roundName": roundname,
-            "startDate": startDate,
-            "status": selectsStatus,
-            "tournamentId": selectsTournament
-          })
-            .then(response => {
-              alert("Add success")
-              //Go to club page
-              return window.location.href = "../match"
-            })
-            .catch(error => {
-              alert(error)
-              console.log(error);
-            });
+        // axios.post(pathRound, {
+        //     "endDate": endDate,
+        //     "roundName": roundname,
+        //     "startDate": startDate,
+        //     "status": selectsStatus,
+        //     "tournamentId": selectsTournament
+        //   })
+        //     .then(response => {
+        //       alert("Add success")
+        //       //Go to club page
+        //       return window.location.href = "../match"
+        //     })
+        //     .catch(error => {
+        //       alert(error)
+        //       console.log(error);
+        //     });
         //end to do code
     }
 
@@ -99,7 +99,7 @@ const New = () => {
                                 <select name="selectsTournament"
                                     onChange={handleChange}>
                                     {rowsTournament.map((entity) => (
-                                        <option key={entity.id}>{entity.tournamentName}</option>
+                                        <option key={entity.id} id={entity.id}>{entity.tournamentName}</option>
                                     ))
                                     }
                                 </select>
