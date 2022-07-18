@@ -1,32 +1,18 @@
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import ListClub from "../../components/table/ListClub"
-import { Link } from "react-router-dom";
+import Datatable from "../../components/table/ListClub"
 import "./club.scss";
 
 const club = () => {
-  return (
-    <div className="home">
-      <Sidebar />
-      <div className="homeContainer">
-        <Navbar />
-        <div className="search">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div>
+    return (
+      <div className="list">
+        <Sidebar/>
         <div className="listContainer">
-          <div className="listTitle">
-            List club
-            <Link to="/club/newClub" className="link">
-              Add New
-            </Link>
-          </div>
-          <ListClub />
+          <Navbar/>
+          <Datatable/>
         </div>
       </div>
-    </div>
-  );
-};
+    )
+  }
 
 export default club;

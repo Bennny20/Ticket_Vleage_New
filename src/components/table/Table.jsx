@@ -48,7 +48,7 @@ function List() {
         </TableHead>
         <TableBody>
           {data.map((value, index) => (
-            <TableRow key={index}>
+            <TableRow key={value.id}>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                   <img src={value.clubHome.img} alt="" className="image" />
