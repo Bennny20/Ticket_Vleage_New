@@ -12,26 +12,11 @@ import axios from "../../AxiosConfig";
 
 
 
-function List() {
+function List(props) {
   const [data, setData] = useState([]);
-  const [count, setCount] = useState(0);
-  var path = "match";
-
+  console.log(props)
   //load data page list match
-  useEffect(() =>{
-      axios
-        .get(path)
-        .then(function (data) {
-          console.log(28, data.data.matches);
-          setData(data.data.matches);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
-    },
-    [count]
-  );
-
+ 
   
   return (
     <TableContainer component={Paper} className="table">
@@ -47,7 +32,7 @@ function List() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((value, index) => (
+          {props.props.map((value, index) => (
             <TableRow key={value.id}>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
@@ -79,7 +64,7 @@ function List() {
                     <div className="viewButton">Edit</div>
                   </Link>
                   <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="deleteButton">Delete</div>
+                    <div className="deleteButton">delete</div>
                   </Link>
                 </div>
               </TableCell>
