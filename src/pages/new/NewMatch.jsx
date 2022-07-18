@@ -7,6 +7,89 @@ import { useState } from "react";
 const New = ({ inputs, title }) => {
     const [file, setFile] = useState("");
 
+
+    const rowsTournament = [
+        {
+            id: "1",
+            name: "NIGHT WOLF V.LEAGUE 1 - 2022"
+        },
+        {
+            id: "2",
+            name: "LS V.League 1 - 2021"
+        },
+        {
+            id: "3",
+            name: "LS V.League 1 - 2020"
+        },
+        {
+            id: "4",
+            name: "LS V.League 1 - 2019"
+        }
+    ];
+
+
+    const rowsRound = [
+        {
+            id: "1",
+            name: "Round 1"
+        },
+        {
+            id: "2",
+            name: "Round 2"
+        },
+        {
+            id: "3",
+            name: "Round 3"
+        }
+    ];
+
+
+    const rowsClubHome = [
+        {
+            id: "1",
+            name: "Ha Noi"
+        },
+        {
+            id: "2",
+            name: "Ho Chi Minh City"
+        },
+        {
+            id: "3",
+            name: "Hoang ANh Gia Lai"
+        }
+    ];
+
+
+    const rowsClubAways = [
+        {
+            id: "1",
+            name: "Ha Noi"
+        },
+        {
+            id: "2",
+            name: "Ho Chi Minh City"
+        },
+        {
+            id: "3",
+            name: "Hoang ANh Gia Lai"
+        }
+    ];
+
+    const rowsStadium = [
+        {
+            id: "1",
+            name: "Thong Nhat"
+        },
+        {
+            id: "2",
+            name: "Cam Pha"
+        },
+        {
+            id: "3",
+            name: "Lach Tray"
+        }
+    ];
+
     return (
         <div className="new">
             <Sidebar />
@@ -21,27 +104,30 @@ const New = ({ inputs, title }) => {
                             <div className="formInput" >
                                 <label>Home</label>
                                 <select>
-                                    <option value="CO2">Hò Chi Minh City</option>
-                                    <option value="CO2">Ha Noi</option>
-                                    <option value="CO2">Hoang Anh Gia Lai</option>
+                                    {rowsClubHome.map((entity) => (
+                                        <option id="{entity.id}">{entity.name}</option>
+                                    ))
+                                    }
                                 </select>
                             </div>
 
                             <div className="formInput" >
                                 <label>Away</label>
                                 <select>
-                                    <option value="CO2">Hò Chi Minh City</option>
-                                    <option value="CO2">Ha Noi</option>
-                                    <option value="CO2">Hoang Anh Gia Lai</option>
+                                    {rowsClubAways.map((entity) => (
+                                        <option id="{entity.id}">{entity.name}</option>
+                                    ))
+                                    }
                                 </select>
                             </div>
 
                             <div className="formInput" >
                                 <label>Stadium</label>
                                 <select>
-                                    <option value="CO2">Thong Nhat</option>
-                                    <option value="CO2">Hang Day</option>
-                                    <option value="CO2">Thien Truong</option>
+                                    {rowsStadium.map((entity) => (
+                                        <option id="{entity.id}">{entity.name}</option>
+                                    ))
+                                    }
                                 </select>
                             </div>
 
@@ -66,18 +152,20 @@ const New = ({ inputs, title }) => {
                             <div className="formInput" >
                                 <label>Round</label>
                                 <select>
-                                    <option value="CO1">Round 1</option>
-                                    <option value="CO2">Round 2</option>
-                                    <option value="CO2">Round 3</option>
+                                    {rowsRound.map((entity) => (
+                                        <option id={entity.id}>{entity.name}</option>
+                                    ))
+                                    }
                                 </select>
                             </div>
 
                             <div className="formInput" >
                                 <label>Tournament</label>
                                 <select>
-                                    <option value="CO2">NIGHT WOLF V.LEAGUE 1 - 2022</option>
-                                    <option value="CO2">LS V.League 1 - 2021</option>
-                                    <option value="CO2">LS V.League 1- 2020</option>
+                                    {rowsTournament.map((entity) => (
+                                        <option id="{entity.id}">{entity.name}</option>
+                                    ))
+                                    }
                                 </select>
                             </div>
 
