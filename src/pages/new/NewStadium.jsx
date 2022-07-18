@@ -3,13 +3,15 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
+import axios from "../../AxiosConfig";
 
+var path = "/stadium";
 const New = () => {
   const [formValue, setFormValue] = useState({
     idStadium: "",
     nameStadium: "",
-    location: "",
-    capcity: "",
+    locationStadium: "",
+    capcity: ""
   });
 
   //handle Change value
@@ -23,12 +25,26 @@ const New = () => {
     });
   };
 
-  const { idStadium, nameStadium, location, capcity} = formValue;
+  const { idStadium, nameStadium, locationStadium, capcity} = formValue;
   //function
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New Round : " + idStadium + "-" + nameStadium + "-" + location + "-" + capcity)
+    alert("Add New Round : " + idStadium + "-" + nameStadium + "-" + locationStadium + "-" + capcity)
+    axios.post(path, {    
+        "capacity": capcity,
+        "location": locationStadium,
+        "stadiumName": nameStadium  
+    })
+      .then(response => {
+        alert("Add success")
+        //Go to Stadium page
+        return window.location.href = "../stadium"
+      })
+      .catch(error => {
+        alert(error)
+        console.log(error);
+      });
     //end to do code
   }
 
@@ -66,7 +82,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Location of Stadium</label>
                 <input type="text"
-                name="location"
+                name="locationStadium"
                 onChange={handleChange}
                  placeholder="" />
               </div>
