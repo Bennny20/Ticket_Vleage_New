@@ -52,7 +52,7 @@ const Match = () => {
           <SearchOutlinedIcon />
         </div>
         <div className="listContainer">
-          <div className="listTitle">List Math
+          <div className="listTitle">List Match
             <Link to="/match/newMatch" className="link">
               Add New Match
             </Link>
@@ -82,7 +82,6 @@ const Match = () => {
                 <option id={entity.id}>{entity.name}</option>
               ))
               }
-
             </select>
           </div>
 
