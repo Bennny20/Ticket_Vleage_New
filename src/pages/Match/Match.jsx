@@ -9,12 +9,12 @@ import axios from "../../AxiosConfig";
 //path
 var pathTournament = "tournament";
 var pathRound = "round/tournamentId/";
-var pathMatch = "match/stadiumId/";
+var pathMatch = "match/roundId/";
 var roundId = null;
 const Match = () => {
   //Const-----------------------------------------------------
   const [dataTournament, setDataTournament] = useState([]);
-  var [DataRoundbyId, setDataRoundbId] = useState([]);
+  const [DataRoundbyId, setDataRoundbId] = useState([]);
   const [dataRound, setDataRound] = useState([]);
   const rowsRound = dataRound;
   const rowsTournament = dataTournament;
@@ -46,7 +46,7 @@ const Match = () => {
     []
   );
 
-    //handle Change Search round by Tournament-----------------------------------------------------
+  //handle Change Search round by Tournament-----------------------------------------------------
   const handleChange = (event) => {
     var select = document.querySelector('.NameTour');
     var value = select.options[select.selectedIndex].value;
@@ -66,7 +66,7 @@ const Match = () => {
 
 
 
-//handle Change search Match by Round-----------------------------------------------------
+  //handle Change search Match by Round-----------------------------------------------------
   const handleChangeRound = (event) => {
     var select = document.querySelector('.Round');
     var valueRound = select.options[select.selectedIndex].value;
