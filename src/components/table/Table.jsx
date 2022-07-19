@@ -13,6 +13,11 @@ import { useState } from "react";
 function List(props) {
   console.log(props)
 
+  const handleOnClick = (id) => {
+      localStorage.setItem("idClickTicket", id)
+      console.log("Local store " + id)
+  }
+
 
   return (
     <TableContainer component={Paper} className="table">
@@ -47,7 +52,7 @@ function List(props) {
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton">{value.stadium.capacity}</div>
+                    <div className="ticketButton" onClick={() =>handleOnClick(value.id)}>{value.stadium.capacity}</div>
                   </Link>
                 </div>
               </TableCell>
