@@ -4,6 +4,7 @@ import { clubColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
+import Update from "../../pages/Update/UpdateClub";
 
 var path = "club";
 const ListStadium = () => {
@@ -24,6 +25,8 @@ const ListStadium = () => {
         []
     );
     const [data, setData] = useState([]);
+    const [formValue, setDataFormvalue] = useState();
+    const [isShow, setisShow] = useState(true);
 
     // Delete function
     const handleDelete = (id) => {
@@ -42,10 +45,9 @@ const ListStadium = () => {
     };
 
     // Update function
-    const handleUpdate = (id, clubName, country, stadiumId, img) => {
-        alert(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
-        console.log(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
-        return window.location.href = "/club/updateClub"
+    const handleUpdate = (id) => {
+        setDataFormvalue(id)
+        setisShow(!isShow)
     };
 
     const actionColumn = [
@@ -58,7 +60,7 @@ const ListStadium = () => {
                     <div className="cellAction">
                         <div
                             className="viewButton"
-                            onClick={() => handleUpdate(params.row.id, params.row.clubName, params.row.country, params.row.stadiumId, params.row.img)}
+                            onClick={() => handleUpdate(params.row.id)}
                         >
                             Update
                         </div>
@@ -76,19 +78,19 @@ const ListStadium = () => {
     return (
         //new code
         <div className="datatable">
-            <div className="datatableTitle">
+            {isShow ? <><div className="datatableTitle">
                 List Club
                 <Link to="/club/newClub" className="link">
                     Add New
                 </Link>
             </div>
-            <DataGrid
-                className="datagrid"
-                rows={data}
-                columns={clubColumns.concat(actionColumn)}
-                pageSize={9}
-                rowsPerPageOptions={[9]}
-            />
+                <DataGrid
+                    className="datagrid"
+                    rows={data}
+                    columns={clubColumns.concat(actionColumn)}
+                    pageSize={9}
+                    rowsPerPageOptions={[9]} /></> : <Update props={formValue} />}
+
         </div>
     );
 

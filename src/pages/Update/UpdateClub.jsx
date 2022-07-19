@@ -2,41 +2,49 @@ import "./update.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import axios from "../../AxiosConfig";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 var path = "club";
-const UpdateClub = () => {
+const UpdateClub = (props) => {
+    console.log(7, props)
 
-    const [formValue, setFormValue] = useState({
-        name: "",
-        location: "",
-        stadium: "",
-        logo: ""
-    });
+    useEffect(
+        function () {
+            axios
+                .get(path + "/" + props.props)
+                .then(function (data) {
+                    console.log("data", data.data);
+                    setClubId(data.data.id)
+                    setClubName(data.data.clubName)
+                    setLogo(data.data.img)
+                    setStadiumId(data.data.stadiumId)
+                    setLocation(data.data.country)
+                    // console.log(list);
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
+        },
+        []
+    );
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormValue((prevState) => {
-            return {
-                ...prevState,
-                [name]: value,
-            };
-        });
-    };
-
-    const { name, location, stadium, logo } = formValue;
+    const [logo, setLogo] = useState([]);
+    const [clubId, setClubId] = useState();
+    const [stadiumId, setStadiumId] = useState();
+    const [clubName, setClubName] = useState();
+    const [location, setLocation] = useState();
 
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Update Club : " + name + "-" + location + "-" + stadium + "-" + logo)
+        alert("Update Club : " + clubId + " - " + clubName + " - " + location + " - " + stadiumId + " - " + logo)
         axios.put(path, {
-            "clubName": name,
+            "clubName": clubName,
             "country": location,
-            "id": 18,
+            "id": clubId,
             "img": logo,
-            "stadiumId": stadium
+            "stadiumId": stadiumId
 
         })
             .then(response => {
@@ -53,9 +61,7 @@ const UpdateClub = () => {
 
     return (
         <div className="update">
-            <Sidebar />
             <div className="newContainer">
-                <Navbar />
                 <div className="top">
                     <h1>Update club</h1>
                 </div>
@@ -64,33 +70,26 @@ const UpdateClub = () => {
                         <form onSubmit={handleSubmit}>
                             <div className="formInput" >
                                 <label>ID</label>
-                                <input id="txtNameClub" type="text" name="id" placeholder="ID" onChange={handleChange} />
+                                <input id="txtNameClub" type="text" name="id" placeholder="ID" value={clubId} readOnly />
                             </div>
                             <div className="formInput" >
                                 <label>Name</label>
-                                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" onChange={handleChange} />
+                                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" value={clubName} onChange={e => setClubName(e.target.value)} />
                             </div>
 
                             <div className="formInput" >
                                 <label>Location</label>
-                                <input id="txtLocation" type="text" name="location" placeholder="Location" onChange={handleChange} />
+                                <input id="txtLocation" type="text" name="location" placeholder="Location" value={location} onChange={e => setLocation(e.target.value)} />
                             </div>
 
                             <div className="formInput" >
                                 <label>Stadium</label>
-                                <input id="txtStadium" type="text" name="stadium" placeholder="Stadium" onChange={handleChange} />
+                                <input id="txtStadium" type="text" name="stadium" placeholder="Stadium" value={stadiumId} onChange={e => setStadiumId(e.target.value)} />
                             </div>
 
                             <div className="formInput" >
                                 <label>Logo</label>
-                                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" onChange={handleChange} />
-                            </div>
-                            <div className="formInput" >
-                                <label>Status</label>
-                                <select id="FormSelectStatus">
-                                    <option value="CO2">Unavailable</option>
-                                    <option value="CO2">On-going</option>
-                                </select>
+                                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" value={logo} onChange={e => setLogo(e.target.value)} />
                             </div>
                             <div className="btnSend">
                                 <button type="submit" >Save</button>
