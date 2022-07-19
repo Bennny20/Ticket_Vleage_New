@@ -1,34 +1,41 @@
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import "./match.scss";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Table from "../../components/table/Table";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
+//path
 var pathTournament = "tournament";
 var pathRound = "round/tournamentId/";
 var pathMatch = "match/stadiumId/";
 var roundId = null;
 const Match = () => {
+  //Const-----------------------------------------------------
+  const [dataTournament, setDataTournament] = useState([]);
+  var [DataRoundbyId, setDataRoundbId] = useState([]);
+  const [dataRound, setDataRound] = useState([]);
+  const rowsRound = dataRound;
+  const rowsTournament = dataTournament;
+  //useEffect-----------------------------------------------------
   useEffect(
     function () {
-      if(roundId == null){
+      if (roundId == null) {
         axios.get("match")
-        .then(function (data) {
-          console.log(data.data.matches);
-          setDataRoundbId(data.data.matches);
-          // console.log(list);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
+          .then(function (data) {
+            console.log(data.data.matches);
+            setDataRoundbId(data.data.matches);
+            // console.log(list);
+          })
+          .catch(function (err) {
+            console.log(32, err);
+          });
       }
       axios
         .get(pathTournament)
         .then(function (data) {
-          console.log(18,data.data.tournaments);
+          console.log(18, data.data.tournaments);
           setDataTournament(data.data.tournaments);
           // console.log(list);
         })
@@ -38,56 +45,54 @@ const Match = () => {
     },
     []
   );
-  const [dataTournament, setDataTournament] = useState([]);
-  const rowsTournament = dataTournament;
 
-  var [DataRoundbyId, setDataRoundbId] = useState([])
+    //handle Change Search round by Tournament-----------------------------------------------------
   const handleChange = (event) => {
     var select = document.querySelector('.NameTour');
     var value = select.options[select.selectedIndex].value;
-    console.log(value); 
+    console.log(value);
     //to do search
     axios
-        .get(pathRound + value)
-        .then(function (data) {
-          console.log(40,data.data);
-          setDataRound(data.data);
-          // console.log(list);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
-    }
-    
+      .get(pathRound + value)
+      .then(function (data) {
+        console.log(40, data.data);
+        setDataRound(data.data);
+        // console.log(list);
+      })
+      .catch(function (err) {
+        console.log(32, err);
+      });
+  }
 
-  const [dataRound, setDataRound] = useState([]);
-  const rowsRound = dataRound;
-  
-  const handleChangeRound = (event) =>{
+
+
+//handle Change search Match by Round-----------------------------------------------------
+  const handleChangeRound = (event) => {
     var select = document.querySelector('.Round');
     var valueRound = select.options[select.selectedIndex].value;
-    console.log(57,valueRound);
+    console.log(57, valueRound);
     roundId = valueRound;
     axios
-        .get(pathMatch + roundId)
-        .then(function (data) {
-          console.log(62, data.data);
-          setDataRoundbId(data.data)
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        })
-    }
-   
+      .get(pathMatch + roundId)
+      .then(function (data) {
+        console.log(62, data.data);
+        setDataRoundbId(data.data)
+      })
+      .catch(function (err) {
+        console.log(32, err);
+      })
+  }
+
+  //-----------------------------------------------------------------------------------------------
   return (
     <div className="match">
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        <div className="search">
+        {/* <div className="search">
           <input type="text" placeholder="Search..." />
           <SearchOutlinedIcon />
-        </div>
+        </div> */}
         <div className="listContainer">
           <div className="listTitle">List Match
             <Link to="/match/newMatch" className="link">
@@ -122,7 +127,7 @@ const Match = () => {
             </select>
           </div>
 
-          <Table props={DataRoundbyId}/>
+          <Table props={DataRoundbyId} />
         </div>
       </div>
     </div>
