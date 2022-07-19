@@ -25,16 +25,27 @@ const ListStadium = () => {
     );
     const [data, setData] = useState([]);
 
-    // xóa
+    // Delete function
     const handleDelete = (id) => {
         // setData(data.filter((item) => item.id !== id));
         console.log(id);
         axios.delete(path + "/" + id)
             .then(res => {
                 console.log(res);
-                //setData(data.filter((item) => item.id !== id));
-            })
+                alert('Deleted club by id: ' + id);
+                setData(data.filter((item) => item.id !== id));
 
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    };
+
+    // Delete function
+    const handleUpdate = (id, clubName, country, stadiumId, img) => {
+        alert(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
+        console.log(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
+        return window.location.href = "/club/updateClub"
     };
 
     const actionColumn = [
@@ -45,9 +56,12 @@ const ListStadium = () => {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <Link to="/club/updateClub" style={{ textDecoration: "none" }}>
-                            <div className="viewButton">Update</div>
-                        </Link>
+                        <div
+                            className="viewButton"
+                            onClick={() => handleUpdate(params.row.id, params.row.clubName, params.row.country, params.row.stadiumId, params.row.img)}
+                        >
+                            Update
+                        </div>
                         <div
                             className="deleteButton"
                             onClick={() => handleDelete(params.row.id)}

@@ -27,9 +27,7 @@ const ListStadium = () => {
             date: "30/06/2022",
             quantity: "2",
             total: "200000",
-        },
-
-
+        }
     ];
 
 
@@ -44,8 +42,7 @@ const ListStadium = () => {
                         <TableCell className="tableCell">Ticket</TableCell>
                         <TableCell className="tableCell">Date</TableCell>
                         <TableCell className="tableCell">Quantity</TableCell>
-                        <TableCell className="tableCell">Total</TableCell>
-                        
+                        <TableCell className="tableCell">Total</TableCell>                        
                     </TableRow>
                 </TableHead>
                 <TableBody>
