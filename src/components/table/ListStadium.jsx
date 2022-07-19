@@ -28,7 +28,17 @@ const ListStadium = () => {
     // xóa
     const handleDelete = (id) => {
         // setData(data.filter((item) => item.id !== id));
-        console.log(id)
+        console.log(id);
+        axios.delete(path + "/" + id)
+            .then(res => {
+                console.log(res);
+                alert('Deleted stadium by id: ' + id);
+                setData(data.filter((item) => item.id !== id));
+
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
     };
 
     const actionColumn = [
@@ -57,20 +67,20 @@ const ListStadium = () => {
 
     return (
         <div className="datatable">
-      <div className="datatableTitle">
-        List Stadium
-        <Link to="/stadium/newStadium" className="link">
-          Add New
-        </Link>
-      </div>
-      <DataGrid
-        className="datagrid"
-        rows={data}
-        columns={stadiumColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-      />
-    </div>    
+            <div className="datatableTitle">
+                List Stadium
+                <Link to="/stadium/newStadium" className="link">
+                    Add New
+                </Link>
+            </div>
+            <DataGrid
+                className="datagrid"
+                rows={data}
+                columns={stadiumColumns.concat(actionColumn)}
+                pageSize={9}
+                rowsPerPageOptions={[9]}
+            />
+        </div>
     );
 };
 

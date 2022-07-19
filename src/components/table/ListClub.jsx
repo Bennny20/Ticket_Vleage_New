@@ -41,7 +41,7 @@ const ListStadium = () => {
             });
     };
 
-    // Delete function
+    // Update function
     const handleUpdate = (id, clubName, country, stadiumId, img) => {
         alert(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
         console.log(id + "-" + clubName + "-" + country + "-" + stadiumId + "-" + img)
