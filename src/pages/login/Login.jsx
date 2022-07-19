@@ -4,8 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext"
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import background from "./backgroundLogin.png"
+import background from "./backgroundLogin.jpeg"
+
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -62,55 +62,55 @@ const Login = () => {
 
 
   return (
-    <div className="login">
-        {/* <div className="google-btn" onClick={signInWithGoogle} >
-          <div className="google-icon-wrapper">
-            <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-          </div>
-          <p class="btn-text"><b>Sign in with google</b></p>
-        </div> */}
-        <div className='container'>
-          <div className='row-login'>
-            <div className='col-2'>
-              <img
-                src={background}
-                style={{ width: "100%" }}
-              />
-            </div>
 
-            <div className='col-2'>
-              <div className='form-container'>
-                <div className='form-btn'>
-                  <span >Login</span>
-                  <hr id='Indicator' />
+    <section className="vh-100" style={{ backgroundColor: "#55efc4" }}>
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col col-xl-10">
+            <div className="card" style={{ borderRadius: "1rem" }}>
+              <div className="row g-0">
+                <div className="col-md-6 col-lg-5 d-none d-md-block">
+                  <img src={background} className="img-fluid" style={{ borderRadius: "1rem 0 0 1rem" }} />
                 </div>
-                <form id="LoginForm" onSubmit={handleLogin}>
-                  <input
-                    type="email"
-                    placeholder="email"
-                    onChange={e => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="password"
-                    placeholder="password"
-                    onChange={e => setPassword(e.target.value)}
-                  />
-                  <button type="submit">Login</button>
-                  <br>
-                  </br>
-                  {error && <span>Wrong email or password!</span>}
-                  <a href='#' >
-                    <img src='http://www.testyou.in/sign-in-with-google.png' style={{ borderImage: "revert" }} >
-                    </img>
-                  </a>
-                  
-                </form>
+                <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div className="card-body p-4 p-lg-5 text-black">
+
+                    <form id="LoginForm" onSubmit={handleLogin}>
+                      <div className="d-flex align-items-center mb-3 pb-1">
+                        <i className="fas fa-cubes fa-2x me-3" style={{ color: "#ff6219" }}></i>
+                        <span className="h1 fw-bold mb-0">Admin Page</span>
+                      </div>
+
+                      <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>Sign into your admin account</h5>
+
+                      <div className="form-outline mb-4">
+                        <input type="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} className="form-control form-control-lg" />
+                        <label className="form-label" >Email address</label>
+                      </div>
+
+                      <div className="form-outline mb-4">
+                        <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} className="form-control form-control-lg" />
+                        <label className="form-label"  >Password</label>
+                      </div>
+
+                      <button className="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+
+                      {error && <span>Wrong email or password!</span>}
+                      <br />
+                      <a href="#!" className="small text-muted">Terms of use.</a>
+                      <a href="#!" className="small text-muted">Privacy policy</a>
+                    </form>
+
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-     
-    </div>
+      </div >
+    </section >
+
+
   );
 };
 
