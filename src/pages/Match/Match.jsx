@@ -10,6 +10,7 @@ import axios from "../../AxiosConfig";
 var pathTournament = "tournament";
 var pathRound = "round/tournamentId/";
 var pathMatch = "match/stadiumId/";
+var roundId = null;
 const Match = () => {
   useEffect(
     function () {
@@ -40,12 +41,8 @@ const Match = () => {
   const [dataTournament, setDataTournament] = useState([]);
   const rowsTournament = dataTournament;
 
-  var roundId;
   var [DataRoundbyId, setDataRoundbId] = useState([])
   const handleChange = (event) => {
-  //
-
-
     var select = document.querySelector('.NameTour');
     var value = select.options[select.selectedIndex].value;
     console.log(value); 

@@ -7,15 +7,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "../../AxiosConfig";
-
 
 
 function List(props) {
-  const [data, setData] = useState([]);
   console.log(props)
-  //load data page list match
+
  
   
   return (
@@ -32,7 +28,7 @@ function List(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.props.map((value, index) => (
+          {props.props.map((value) => (
             <TableRow key={value.id}>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
