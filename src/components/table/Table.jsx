@@ -16,8 +16,8 @@ function List(props) {
   const [data, setData] = useState([]);
   console.log(props)
   //load data page list match
- 
-  
+
+
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
