@@ -2,13 +2,13 @@ import "./update.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 
-const UpdateStadium = () => {
-
+const UpdateStadium = (props) => {
+ console.log(7,props)
   return (
     <div className="update">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="newContainer">
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="top">
           <h1>Update Stadium</h1>
         </div>
@@ -17,22 +17,22 @@ const UpdateStadium = () => {
             <form>
               <div className="formInput" >
                 <label>ID</label>
-                <input type="text" placeholder="ID of stadium" value="01" readOnly />
+                <input type="text"  value={props.props}/>
               </div>
 
               <div className="formInput" >
                 <label>Name</label>
-                <input type="text" placeholder="Name of stadium" value="Thong Nhat Stadium" />
+                <input type="text" placeholder="" value="Thong Nhat Stadium" />
               </div>
 
               <div className="formInput" >
                 <label>Localtion</label>
-                <input type="text" placeholder="" value="Q10 TP HCM" />
+                <input type="text" placeholder=""  />
               </div>
 
               <div className="formInput" >
                 <label>Capacity</label>
-                <input type="text" placeholder="" value="Ho Chi Minh City FC" />
+                <input type="text" placeholder="" />
               </div>
 
               <div className="formInput" >

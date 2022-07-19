@@ -46,7 +46,7 @@ export const clubColumns = [
   {
     field: "id",
     headerName: "ID",
-    width: 100,
+    width: 70,
   },
   {
     field: "clubName",
@@ -56,7 +56,7 @@ export const clubColumns = [
   {
     field: "country",
     headerName: "Localtion",
-    width: 150,
+    width: 300,
   },
   {
     field: "stadiumId",
@@ -77,18 +77,18 @@ export const clubColumns = [
     },
   },
 
-  {
-    field: "status",
-    headerName: "Status",
-    width: 160,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
-  },
+  // {
+  //   field: "status",
+  //   headerName: "Status",
+  //   width: 160,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
 ];
 
 //const of stadium
@@ -96,7 +96,7 @@ export const stadiumColumns = [
   {
     field: "id",
     headerName: "ID",
-    width: 100,
+    width: 70,
   },
   {
     field: "stadiumName",
@@ -106,23 +106,23 @@ export const stadiumColumns = [
   {
     field: "location",
     headerName: "Localtion",
-    width: 150,
+    width: 300,
   },
   {
     field: "capacity",
     headerName: "Capacity",
     width: 150,
   },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 160,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
-  },
+  // {
+  //   field: "status",
+  //   headerName: "Status",
+  //   width: 160,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
 ];
