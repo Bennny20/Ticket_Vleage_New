@@ -9,12 +9,12 @@ import axios from "../../AxiosConfig";
 //path
 var pathTournament = "tournament";
 var pathRound = "round/tournamentId/";
-var pathMatch = "match/stadiumId/";
+var pathMatch = "match/roundId/";
 var roundId = null;
 const Match = () => {
   //Const-----------------------------------------------------
   const [dataTournament, setDataTournament] = useState([]);
-  var [DataRoundbyId, setDataRoundbId] = useState([]);
+  const [DataRoundbyId, setDataRoundbId] = useState([]);
   const [dataRound, setDataRound] = useState([]);
   const rowsRound = dataRound;
   const rowsTournament = dataTournament;
