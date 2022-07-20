@@ -88,8 +88,8 @@ const ListStadium = () => {
                     className="datagrid"
                     rows={data}
                     columns={stadiumColumns.concat(actionColumn)}
-                    pageSize={7}
-                    rowsPerPageOptions={[7]} /></> : <Update props={formvalue} />}
+                    pageSize={8}
+                    rowsPerPageOptions={[8]} /></> : <Update props={formvalue} />}
         </div>
     );
 };

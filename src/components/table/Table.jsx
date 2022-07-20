@@ -16,11 +16,7 @@ function List(props) {
 
   const handleOnClick = (id) => {
     localStorage.setItem("idClickTicket", id)
-    if (localStorage.getItem("idClickTicket") != 0) {
-      console.log("Local store " + id)
-      return window.location.href = "/ticket"
-    }
-
+    return window.location.href = "/ticket"
   }
 
   const handleStatus = (status) => {
@@ -98,7 +94,7 @@ function List(props) {
                 <div className="cellAction">
                   {/* <Link to="/ticket" style={{ textDecoration: "none" }}> */}
                   <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton">Ticket</div>
+                    <div className="ticketButton" onClick={e => (handleOnClick(value.id))}>Ticket</div>
                   </Link>
 
                 </div>

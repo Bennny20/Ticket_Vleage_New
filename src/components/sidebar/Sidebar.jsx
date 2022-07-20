@@ -61,19 +61,19 @@ const Sidebar = () => {
               <span>Home</span>
             </li>
           </Link>
-          <p className="title">Account and user</p>
+          <p className="title">Account & User</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/profile" style={{ textDecoration: "none" }}>
+          {/* <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
               <span>Profile</span>
             </li>
-          </Link>
+          </Link> */}
 
 
           <p className="title">Manager</p>

@@ -106,11 +106,62 @@ export const stadiumColumns = [
   {
     field: "location",
     headerName: "Localtion",
-    width: 300,
+    width: 500,
   },
   {
     field: "capacity",
     headerName: "Capacity",
+    width: 150,
+  },
+  // {
+  //   field: "status",
+  //   headerName: "Status",
+  //   width: 160,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
+];
+
+//const of ticket list
+export const ticketColumns = [
+  {
+    field: "id",
+    headerName: "ID",
+    width: 70,
+  },
+  {
+    field: "orderID",
+    headerName: "Oder ID",
+    width: 300,
+  },
+  {
+    field: "account",
+    headerName: "Account",
+    width: 500,
+  },
+  {
+    field: "ticket",
+    headerName: "Ticket",
+    width: 150,
+  },
+  {
+    field: "date",
+    headerName: "Date",
+    width: 150,
+  },
+  {
+    field: "quantity",
+    headerName: "Quantity",
+    width: 150,
+  },
+  {
+    field: "total",
+    headerName: "Total",
     width: 150,
   },
   // {
