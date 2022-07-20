@@ -1,12 +1,19 @@
 import "./new.scss";
-
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
 
 const New = () => {
 
   return (
     <div className="new">
-      New Ticket Here
-       {/* Note here : - */}
+      <Sidebar />
+      <div className="newContainer">
+        <Navbar />
+
+
+        <h1>New Ticket</h1>
+        {/* Note here : - */}
+      </div>
     </div>
   );
 };
