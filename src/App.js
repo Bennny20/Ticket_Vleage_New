@@ -14,6 +14,7 @@ import Stadium from "./pages/Stadium/Stadium"
 import Match from"./pages/Match/Match"
 import Club from "./pages/Club/Club"
 import Ticket from "./pages/Ticket/Ticket"
+import Oder from "./pages/oder/Oder"
 //Update
 import UpdateMatch from "./pages/Update/UpdateMatch"
 import UpdateStadium from "./pages/Update/UpdateStadium";
@@ -67,6 +68,13 @@ function App() {
               <Route index element={<RequiredAuth><List /></RequiredAuth>} />
               <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
               <Route path="newUser"element={<NewUser/>}/>
+            </Route>
+
+            {/* Oder */}
+            <Route path="oder">
+              <Route index element={<RequiredAuth><Oder /></RequiredAuth>} />
+              {/* <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
+              <Route path="newUser"element={<NewUser/>}/> */}
             </Route>
 
             {/* Profile */}

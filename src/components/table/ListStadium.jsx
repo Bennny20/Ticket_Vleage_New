@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
+import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "stadium";
 const ListStadium = () => {
+    const [isRender, setisRender] = useState(true);
     //load data
     useEffect(
         function () {
@@ -16,6 +18,7 @@ const ListStadium = () => {
                 .then(function (data) {
                     console.log(data.data.stadiums);
                     setData(data.data.stadiums);
+                    setisRender(false)
                     // console.log(list);
                 })
                 .catch(function (err) {
@@ -76,20 +79,25 @@ const ListStadium = () => {
         },
     ];
 
+    const dataGrid = (<><div className="datatableTitle">
+        List Stadium
+        <Link to="/stadium/newStadium" className="link">
+            Add New
+        </Link>
+    </div>
+        <DataGrid
+            className="datagrid"
+            rows={data}
+            columns={stadiumColumns.concat(actionColumn)}
+            pageSize={8}
+            rowsPerPageOptions={[8]} /></>)
 
+    const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
     return (
+        //new code
         <div className="datatable">
-            {isShow ? <><div className="datatableTitle">
-                List Stadium
-                <Link to="/stadium/newStadium" className="link">
-                    Add New
-                </Link>
-            </div><DataGrid
-                    className="datagrid"
-                    rows={data}
-                    columns={stadiumColumns.concat(actionColumn)}
-                    pageSize={8}
-                    rowsPerPageOptions={[8]} /></> : <Update props={formvalue}/>}
+            {isShow ? loading : <Update props={formvalue} />}
+
         </div>
     );
 };
