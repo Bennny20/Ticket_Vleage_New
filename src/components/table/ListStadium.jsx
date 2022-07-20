@@ -96,22 +96,8 @@ const ListStadium = () => {
     return (
         //new code
         <div className="datatable">
-<<<<<<< HEAD
-            {isShow ? <><div className="datatableTitle">
-                List Stadium
-                <Link to="/stadium/newStadium" className="link">
-                    Add New
-                </Link>
-            </div><DataGrid
-                    className="datagrid"
-                    rows={data}
-                    columns={stadiumColumns.concat(actionColumn)}
-                    pageSize={8}
-                    rowsPerPageOptions={[8]} /></> : <Update props={formvalue} />}
-=======
             {isShow ? loading : <Update props={formvalue} />}
 
->>>>>>> 45167b1127207f204bf0a3fd7f6d7db1ded23d32
         </div>
     );
 };

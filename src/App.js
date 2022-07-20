@@ -7,6 +7,7 @@ import NewMatch from "./pages/new/NewMatch"
 import NewUser from "./pages/new/NewUser";
 import NewStadium from "./pages/new/NewStadium";
 import NewClub from "./pages/new/NewClub";
+import NewTicket from "./pages/new/NewTicket";
 //View List
 import List from "./pages/list/List";
 import Profile from "./pages/profile/Profile"
@@ -61,6 +62,7 @@ function App() {
             {/* Ticket */}
             <Route path="ticket">
               <Route index element={<Ticket />} />
+              <Route path="newTicket"element={<NewTicket/>}/>
             </Route>
 
             {/* User */}
