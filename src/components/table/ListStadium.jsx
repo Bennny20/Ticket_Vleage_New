@@ -1,6 +1,6 @@
 import "./table.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { stadiumColumns} from "../../datatablesource";
+import { stadiumColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
@@ -89,7 +89,7 @@ const ListStadium = () => {
                     rows={data}
                     columns={stadiumColumns.concat(actionColumn)}
                     pageSize={7}
-                    rowsPerPageOptions={[7]} /></> : <Update props={formvalue}/>}
+                    rowsPerPageOptions={[7]} /></> : <Update props={formvalue} />}
         </div>
     );
 };
