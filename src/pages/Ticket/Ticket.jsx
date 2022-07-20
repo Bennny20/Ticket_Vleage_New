@@ -16,19 +16,32 @@ var pathTicketByMatch = "ticket/matchId/";
 const Single = () => {
   var id = null;
   id = localStorage.getItem("idClickTicket")
+  console.log("test", id)
+
   const [isloading, setloading] = useState();
-  if(id == null){
+  const [clubHome, setClubHome] = useState([]);
+  const [clubVisitor, setClubVisitor] = useState([]);
+  const [stadium, setStadium] = useState([]);
+  const [status, setStatus] = useState();
+  const [timeStart, setTimeStart] = useState();
+
+
+
+  if (id == null) {
     setloading(true)
   }
   useEffect(
-    async function () {
+    function () {
       //Load Match
       axios
         .get(path + id)
         .then(function (data) {
-          console.log(data.data);
-         setData(data.data);
-         sleep(5000);
+          console.log("test data ", data.data.status);
+          setClubHome(data.data.clubHome);
+          setClubVisitor(data.data.clubVisitor);
+          setStadium(data.data.stadium);
+          setStatus(data.data.status);
+          setTimeStart(data.data.timeStart);
           setloading(false);
           // console.log(list);
         })
@@ -41,7 +54,7 @@ const Single = () => {
 
   const [data, setData] = useState([]);
 
-  const renderTicket = (<><div className="top">
+  const renderTicket = (<> <div className="top">
     <div className="left">
       <h1 className="title">Information</h1>
       <div className="item">
@@ -51,20 +64,21 @@ alt=""
 className="itemImg"
 /> */}
         <div className="details">
-          <h1 className="itemTitle">{data.clubHome.clubName}</h1>
+          <h1 className="itemTitle" name="clubHome"></h1>
           <h4 className="itemTitle">VS</h4>
-          {/* <h1 className="itemTitle">{data.clubVisitor.clubName}</h1> */}
-          {/* <div className="detailItem">
-<span className="itemKey">Time:</span>
-{/* <span className="itemValue">{data.clubHome.clubName}</span> */}
+          <h1 className="itemTitle">{clubVisitor.clubName}</h1>
+          <div className="detailItem">
+            <span className="itemKey">Time:</span>
+            <span className="itemValue">{clubHome.clubName}</span>
+          </div>
           <div className="detailItem">
             <span className="itemKey">Date:</span>
-            {/* <span className="itemValue">{data.timeStart}</span> */}
+            <span className="itemValue">{timeStart}</span>
           </div>
           <div className="detailItem">
             <span className="itemKey">Stadium:</span>
             <span className="itemValue">
-              {/* {data.stadium.stadiumName} */}
+              {stadium.stadiumName}
             </span>
           </div>
         </div>
@@ -74,7 +88,8 @@ className="itemImg"
   </div><div className="bottom">
       <h1 className="title">List Ticket</h1>
       <ListTicket />
-    </div></>
+    </div>
+  </>
   );
 
   return (
