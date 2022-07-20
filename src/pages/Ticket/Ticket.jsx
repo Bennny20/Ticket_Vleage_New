@@ -12,6 +12,7 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 var path = "match/";
+var pathTicket = "ticket/matchId/";
 var pathTicketByMatch = "ticket/matchId/";
 const Single = () => {
   var id = null;
@@ -24,8 +25,6 @@ const Single = () => {
   const [stadium, setStadium] = useState([]);
   const [status, setStatus] = useState();
   const [timeStart, setTimeStart] = useState();
-
-
 
   if (id == null) {
     setloading(true)
@@ -48,6 +47,17 @@ const Single = () => {
         .catch(function (err) {
           console.log(32, err);
         });
+
+      axios
+        .get(pathTicket + id)
+        .then(function (data) {
+          console.log(56, data);
+          setData(data)
+          // console.log(list);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
     },
     []
   );
@@ -64,13 +74,13 @@ alt=""
 className="itemImg"
 /> */}
         <div className="details">
-          <h1 className="itemTitle" name="clubHome"></h1>
+          <h1 className="itemTitle" name="clubHome">{clubHome.clubName}</h1>
           <h4 className="itemTitle">VS</h4>
-          <h1 className="itemTitle">{clubVisitor.clubName}</h1>
-          <div className="detailItem">
+          <h1 className="itemTitle" name="clubVisitor">{clubVisitor.clubName}</h1>
+          {/* <div className="detailItem">
             <span className="itemKey">Time:</span>
-            <span className="itemValue">{clubHome.clubName}</span>
-          </div>
+            <span className="itemValue"></span>
+          </div> */}
           <div className="detailItem">
             <span className="itemKey">Date:</span>
             <span className="itemValue">{timeStart}</span>
@@ -87,7 +97,7 @@ className="itemImg"
 
   </div><div className="bottom">
       <h1 className="title">List Ticket</h1>
-      <ListTicket />
+      <ListTicket props={data} />
     </div>
   </>
   );

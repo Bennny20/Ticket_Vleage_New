@@ -8,27 +8,23 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 
-const ListStadium = () => {
+const ListStadium = (props) => {
+    console.log(props.props.data)
     const rows = [
         {
-            id: "1",
-            orderID: "TK001",
-            account: "PhienSE140851",
-            ticket: "A",
-            date: "30/06/2022",
-            quantity: "2",
-            total: "210000",
-        },
-        {
-            id: "2",
-            orderID: "TK002",
-            account: "PhienSE140851",
-            ticket: "B",
-            date: "30/06/2022",
-            quantity: "2",
-            total: "200000",
+            id: "",
+            orderID: "",
+            account: "",
+            ticket: "",
+            date: "",
+            quantity: "",
+            total: "",
         }
     ];
+    if(props.props.data){
+        rows =  props.props.data
+    }
+    
 
 
     return (
@@ -42,7 +38,7 @@ const ListStadium = () => {
                         <TableCell className="tableCell">Ticket</TableCell>
                         <TableCell className="tableCell">Date</TableCell>
                         <TableCell className="tableCell">Quantity</TableCell>
-                        <TableCell className="tableCell">Total</TableCell>                        
+                        <TableCell className="tableCell">Price</TableCell>                        
                     </TableRow>
                 </TableHead>
                 <TableBody>

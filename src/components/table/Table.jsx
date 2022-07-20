@@ -17,7 +17,7 @@ function List(props) {
       localStorage.setItem("idClickTicket", id)
       if(localStorage.getItem("idClickTicket") != 0){
         console.log("Local store " + id)
-        return window.location.href = "/ticket"
+        // return window.location.href = "/ticket"
       }
      
   }
