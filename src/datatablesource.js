@@ -177,3 +177,54 @@ export const ticketColumns = [
   //   },
   // },
 ];
+
+//const of oder list
+export const oderColumns = [
+  {
+    field: "id",
+    headerName: "Oder ID",
+    width: 100,
+  },
+  {
+    field: "account.firstname",
+    headerName: "Fisrt Name",
+    width: 300,
+  },
+  {
+    field: "account.lastname",
+    headerName: "Last Name",
+    width: 300,
+  },
+  {
+    field: "ticket",
+    headerName: "Ticket",
+    width: 150,
+  },
+  {
+    field: "orderDate",
+    headerName: "Date",
+    width: 150,
+  },
+  {
+    field: "quantity",
+    headerName: "Quantity",
+    width: 150,
+  },
+  {
+    field: "total",
+    headerName: "Total",
+    width: 150,
+  },
+  // {
+  //   field: "status",
+  //   headerName: "Status",
+  //   width: 160,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className={`cellWithStatus ${params.row.status}`}>
+  //         {params.row.status}
+  //       </div>
+  //     );
+  //   },
+  // },
+];

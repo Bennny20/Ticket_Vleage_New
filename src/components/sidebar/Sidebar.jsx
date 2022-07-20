@@ -68,6 +68,12 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
+          <Link to="/oder" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonOutlineIcon className="icon" />
+              <span>Oder List</span>
+            </li>
+          </Link>
           {/* <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
