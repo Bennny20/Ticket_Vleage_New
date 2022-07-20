@@ -15,7 +15,11 @@ function List(props) {
 
   const handleOnClick = (id) => {
       localStorage.setItem("idClickTicket", id)
-      console.log("Local store " + id)
+      if(localStorage.getItem("idClickTicket") != 0){
+        console.log("Local store " + id)
+        return window.location.href = "/ticket"
+      }
+     
   }
 
 
@@ -51,9 +55,11 @@ function List(props) {
               <TableCell className="tableCell">{value.timeStart}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
-                  <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={() =>handleOnClick(value.id)}>{value.stadium.capacity}</div>
-                  </Link>
+                  {/* <Link to="/ticket" style={{ textDecoration: "none" }}> */}
+                    <div className="ticketButton" onClick={() =>handleOnClick(value.id)}>
+                    {value.stadium.capacity}
+                    </div>
+                
                 </div>
               </TableCell>
               <TableCell className="tableCell">
