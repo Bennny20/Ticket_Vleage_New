@@ -14,7 +14,7 @@ const ListStadium = () => {
     useEffect(
         function () {
             axios
-                .get(path + "?page=0&size=20&sort=id%2Cdesc")
+                .get(path + "?page=0&size=100&sort=id%2Cdesc")
                 .then(function (data) {
                     console.log(data.data.stadiums);
                     setData(data.data.stadiums);

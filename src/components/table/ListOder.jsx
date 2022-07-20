@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "orderDetail";
+var path = "order/all?page=0&size=100&sort=id%2Cdesc";
 const Datatable = () => {
 
   const [isShow, setShow] = useState(true)
@@ -21,7 +21,7 @@ const Datatable = () => {
       axios.get(path)
         .then(function (data) {
           console.log(data.data);
-          setData(data.data);
+          setData(data.data.orderList);
           setShow(false)
         })
         .catch(function (err) {
@@ -39,22 +39,22 @@ const Datatable = () => {
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">ID.</TableCell>
-            <TableCell className="tableCell">Oder ID</TableCell>
-            <TableCell className="tableCell">Ticket Type</TableCell>
-            <TableCell className="tableCell">Seat</TableCell>
-            <TableCell className="tableCell">Match</TableCell>
-            <TableCell className="tableCell">Price</TableCell>
+            <TableCell className="tableCell">Last Name</TableCell>
+            <TableCell className="tableCell">First Name</TableCell>
+            <TableCell className="tableCell">Email</TableCell>
+            <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((value) => (
             <TableRow key={value.id}>
               <TableCell className="tableCell">{value.id}</TableCell>
-              <TableCell className="tableCell">{value.orderId}</TableCell>
-              <TableCell className="tableCell">{value.ticket.area.areaName}</TableCell>
-              <TableCell className="tableCell">{value.ticketId}</TableCell>
-              <TableCell className="tableCell">{value.ticket.matchId}</TableCell>
-              <TableCell className="tableCell">{value.ticket.price} .vnd</TableCell>
+              <TableCell className="tableCell">{value.account.firstname}</TableCell>
+              <TableCell className="tableCell">{value.account.lastname}</TableCell>
+              <TableCell className="tableCell">{value.account.username}</TableCell>
+              <TableCell className="tableCell">{value.orderDate}</TableCell>
+              <TableCell className="tableCell">{value.total}</TableCell>
             </TableRow>
           ))}
         </TableBody>
