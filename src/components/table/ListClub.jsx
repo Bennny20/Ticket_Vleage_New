@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateClub";
+import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "club";
 const ListStadium = () => {
+    const [isRender, setisRender] = useState(true);
     //load data
     useEffect(
         function () {
@@ -16,6 +18,7 @@ const ListStadium = () => {
                 .then(function (data) {
                     console.log(data.data.clubs);
                     setData(data.data.clubs);
+                    setisRender(false)
                     // console.log(list);
                 })
                 .catch(function (err) {
@@ -27,6 +30,7 @@ const ListStadium = () => {
     const [data, setData] = useState([]);
     const [formValue, setDataFormvalue] = useState();
     const [isShow, setisShow] = useState(true);
+
 
     // Delete function
     const handleDelete = (id) => {
@@ -75,21 +79,25 @@ const ListStadium = () => {
             },
         },
     ];
+
+    const dataGrid = (<><div className="datatableTitle">
+        List Club
+        <Link to="/club/newClub" className="link">
+            Add New
+        </Link>
+    </div>
+        <DataGrid
+            className="datagrid"
+            rows={data}
+            columns={clubColumns.concat(actionColumn)}
+            pageSize={9}
+            rowsPerPageOptions={[9]} /></>)
+
+    const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
     return (
         //new code
         <div className="datatable">
-            {isShow ? <><div className="datatableTitle">
-                List Club
-                <Link to="/club/newClub" className="link">
-                    Add New
-                </Link>
-            </div>
-                <DataGrid
-                    className="datagrid"
-                    rows={data}
-                    columns={clubColumns.concat(actionColumn)}
-                    pageSize={9}
-                    rowsPerPageOptions={[9]} /></> : <Update props={formValue} />}
+            {isShow ? loading : <Update props={formValue} />}
 
         </div>
     );

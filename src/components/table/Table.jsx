@@ -7,20 +7,49 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import axios from "../../AxiosConfig";
 import { useState } from "react";
 
-
+var path = "match";
 function List(props) {
   console.log(props)
 
   const handleOnClick = (id) => {
-      localStorage.setItem("idClickTicket", id)
-      if(localStorage.getItem("idClickTicket") != 0){
-        console.log("Local store " + id)
-        // return window.location.href = "/ticket"
-      }
-     
+    localStorage.setItem("idClickTicket", id)
+    if (localStorage.getItem("idClickTicket") != 0) {
+      console.log("Local store " + id)
+      return window.location.href = "/ticket"
+    }
+
   }
+
+  const handleStatus = (status) => {
+    if (status == true) {
+      return "On-Going";
+    }
+    return "Ending";
+  }
+
+  // var idData, stadiumNameData, locationData, capacityData;
+
+  const handleUpdate = (id) => {
+    localStorage.setItem("editMatchId", JSON.stringify(id));
+    return window.location.href = "../match/updateMatch"
+  };
+
+  const handleDelete = (id) => {
+    // setData(data.filter((item) => item.id !== id));
+    console.log(id);
+    axios.delete("match/" + id)
+      .then(res => {
+        console.log("check delete ", res);
+        alert('Deleted club by id: ' + id);
+
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  };
 
 
   return (
@@ -32,7 +61,7 @@ function List(props) {
             <TableCell className="tableCell">Away</TableCell>
             <TableCell className="tableCell">Stadium</TableCell>
             <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Ticket</TableCell>
+            <TableCell className="tableCell">Capacity</TableCell>
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
@@ -55,23 +84,32 @@ function List(props) {
               <TableCell className="tableCell">{value.timeStart}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
-                  {/* <Link to="/ticket" style={{ textDecoration: "none" }}> */}
-                    <div className="ticketButton" onClick={() =>handleOnClick(value.id)}>
+                  <div className="cellWrapper">
                     {value.stadium.capacity}
-                    </div>
-                
+                  </div>
+
                 </div>
               </TableCell>
+
               <TableCell className="tableCell">
-                <span className={`status ${value.status}`}>{value.status} On-going</span>
+                <span className={`status ${value.status}`}>{handleStatus(value.status)} </span>
+              </TableCell>
+              <TableCell className="tableCell">
+                <div className="cellAction">
+                  {/* <Link to="/ticket" style={{ textDecoration: "none" }}> */}
+                  <Link to="" style={{ textDecoration: "none" }}>
+                    <div className="ticketButton">Ticket</div>
+                  </Link>
+
+                </div>
               </TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
-                    <div className="viewButton">Edit</div>
+                    <div className="viewButton" onClick={e => (handleUpdate(value.id))}> Update</div>
                   </Link>
                   <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="deleteButton">delete</div>
+                    <div className="deleteButton" onClick={() => (handleDelete(value.id))}>Delete</div>
                   </Link>
                 </div>
               </TableCell>

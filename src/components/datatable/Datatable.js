@@ -1,12 +1,15 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
+import { userColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
+import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "account";
 const Datatable = () => {
+
+  const [isShow, setShow] = useState(true)
   //load data
   useEffect(
     function () {
@@ -15,6 +18,7 @@ const Datatable = () => {
         .then(function (data) {
           console.log(data.data.accounts);
           setData(data.data.accounts);
+          setShow(false)
           // console.log(list);
         })
         .catch(function (err) {
@@ -54,8 +58,9 @@ const Datatable = () => {
       },
     },
   ];
-  return (
-    <div className="datatable">
+
+  const render = (
+    <>
       <div className="datatableTitle">
         List user
         <Link to="/users/newUser" className="link">
@@ -69,7 +74,12 @@ const Datatable = () => {
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
+    </>);
+  return (
+    <><div className="datatable">
+      {isShow ? <div className="spinner"><LoadingSpinner /></div> : render}
     </div>
+    </>
   );
 };
 
