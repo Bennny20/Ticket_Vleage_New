@@ -5,31 +5,29 @@ import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 import { ticketColumns } from "../../datatablesource";
 
-const ListStadium = (props) => {
+var path = "ticket";
+var matchId = localStorage.getItem("idClickTicket");
+const ListStadium = () => {
+    const [data, setData] = useState([]);
 
-    const [isShow, setisShow] = useState(true);
-
-    setisShow(false);
-    const rows = [
-        {
-            id: "1",
-            orderID: "ID3009",
-            account: "LongP",
-            ticket: "A3",
-            date: "30-09-2022",
-            quantity: "100",
-            total: "200$",
+    useEffect(
+        function () {
+            axios
+                .get(path + "/matchId/" + matchId)
+                .then(function (data) {
+                    console.log("check data ", data.data);
+                    setData(data.data);
+                    // console.log(list);
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
         },
-        {
-            id: "2",
-            orderID: "ID3009",
-            account: "LongP",
-            ticket: "A3",
-            date: "30-09-2022",
-            quantity: "100",
-            total: "200$",
-        }
-    ];
+        []
+    );
+
+
+
 
 
     const actionColumn = [
@@ -59,7 +57,7 @@ const ListStadium = (props) => {
             <div className="datatableTitle">
                 <DataGrid
                     className="datagrid"
-                    rows={rows}
+                    rows={data}
                     columns={ticketColumns.concat(actionColumn)}
                     pageSize={8}
                     rowsPerPageOptions={[8]} />

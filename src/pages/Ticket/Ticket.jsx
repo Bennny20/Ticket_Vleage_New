@@ -14,9 +14,8 @@ const sleep = (milliseconds) => {
 var path = "match/";
 var pathTicket = "ticket/matchId/";
 var pathTicketByMatch = "ticket/matchId/";
-const Single = () => {
-  var id = null;
-  id = localStorage.getItem("idClickTicket")
+const Ticket = () => {
+  var id = localStorage.getItem("idClickTicket");
   console.log("test", id)
 
   const [isloading, setloading] = useState();
@@ -25,6 +24,7 @@ const Single = () => {
   const [stadium, setStadium] = useState([]);
   const [status, setStatus] = useState();
   const [timeStart, setTimeStart] = useState();
+  const [matchId, setMatchId] = useState();
 
   if (id == null) {
     setloading(true)
@@ -97,7 +97,7 @@ className="itemImg"
 
   </div><div className="bottom">
       <h1 className="title">List Ticket</h1>
-      <ListTicket props={data} />
+      <ListTicket props={matchId} />
     </div>
   </>
   );
@@ -113,4 +113,4 @@ className="itemImg"
   );
 };
 
-export default Single;
+export default Ticket;
