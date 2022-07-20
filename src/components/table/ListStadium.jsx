@@ -7,14 +7,14 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "stadium";
+var path = "stadium?page=0&size=100&sort=id%2Cdesc";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     //load data
     useEffect(
         function () {
             axios
-                .get(path + "?page=0&size=100&sort=id%2Cdesc")
+                .get(path)
                 .then(function (data) {
                     console.log(data.data.stadiums);
                     setData(data.data.stadiums);
