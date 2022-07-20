@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "account";
+var path = "account?page=0&size=100&sort=id%2Cdesc";
 const Datatable = () => {
 
   const [isShow, setShow] = useState(true)
@@ -63,9 +63,9 @@ const Datatable = () => {
     <>
       <div className="datatableTitle">
         List user
-        <Link to="/users/newUser" className="link">
+        {/* <Link to="/users/newUser" className="link">
           Add New
-        </Link>
+        </Link> */}
       </div>
       <DataGrid
         className="datagrid"

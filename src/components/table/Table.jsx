@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import axios from "../../AxiosConfig";
 import { useState } from "react";
 
-var path = "match";
+var path = "match?page=0&size=10&sort=id%2Cdesc";
 function List(props) {
   console.log(props)
 
