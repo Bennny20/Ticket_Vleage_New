@@ -7,7 +7,7 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateClub";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "club";
+var path = "club?page=0&size=100&sort=id%2Cdesc";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     //load data
@@ -90,8 +90,8 @@ const ListStadium = () => {
             className="datagrid"
             rows={data}
             columns={clubColumns.concat(actionColumn)}
-            pageSize={9}
-            rowsPerPageOptions={[9]} /></>)
+            pageSize={8}
+            rowsPerPageOptions={[8]} /></>)
 
     const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
     return (
