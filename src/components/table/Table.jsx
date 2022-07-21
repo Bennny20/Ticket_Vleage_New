@@ -91,20 +91,11 @@ function List(props) {
               </TableCell>
               <TableCell className="tableCell">
                 <div className="cellAction">
-                  {/* <Link to="/ticket" style={{ textDecoration: "none" }}> */}
-                  <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={e => (handleOnClick(value.id))}>Ticket</div>
-                  </Link>
-
-                </div>
-              </TableCell>
-              <TableCell className="tableCell">
-                <div className="cellAction">
                   <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
                     <div className="viewButton" onClick={e => (handleUpdate(value.id))}> Update</div>
                   </Link>
                   <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="deleteButton" onClick={() => (handleOnClick(value.id))}>Delete</div>
+                    <div className="ticketButton" onClick={() => (handleOnClick(value.id))}>Ticket</div>
                   </Link>
                 </div>
               </TableCell>

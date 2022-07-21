@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
 var ticketId = JSON.parse(localStorage.getItem("editTicketId"));
-var pathArea = "area/";
 var pathUpdate = "ticket";
 const UpdateTicket = () => {
 
@@ -15,7 +14,6 @@ const UpdateTicket = () => {
 
     const [amount, setAmount] = useState();
     const [price, setPrice] = useState();
-    const [stadiumId, setStadiumId] = useState();
     const [area, setArea] = useState([]);
 
     //useEffect
@@ -25,7 +23,9 @@ const UpdateTicket = () => {
             axios.get(pathUpdate + "/" + ticketId)
                 .then(function (data) {
                     console.log("Test search ticket by id", data.data);
-
+                    setAmount(data.data.amount);
+                    setPrice(data.data.price);
+                    setArea(data.data.area);
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -96,7 +96,7 @@ const UpdateTicket = () => {
                             {/* Club Visitor */}
                             <div className="formInput" >
                                 <label>Amount</label>
-                                <input type="number" value={amount} maxLength={area.capacity} />
+                                <input type="number" value={amount} onChange={e => setAmount(e.target.value)} maxLength={area.capacity} />
                             </div>
 
                             {/* Stadium for match */}
