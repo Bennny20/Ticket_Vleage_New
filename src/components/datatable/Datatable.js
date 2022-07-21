@@ -61,22 +61,20 @@ const Datatable = () => {
 
   const render = (
     <>
-      <div className="datatableTitle">
-        List user
-        {/* <Link to="/users/newUser" className="link">
-          Add New
-        </Link> */}
-      </div>
+
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns.concat(actionColumn)}
+        columns={userColumns}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
     </>);
   return (
     <><div className="datatable">
+      <div className="datatableTitle">
+        List user
+      </div>
       {isShow ? <div className="spinner"><LoadingSpinner /></div> : render}
     </div>
     </>

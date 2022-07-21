@@ -66,7 +66,7 @@ const New = () => {
                 <input type="text"
                 name="idStadium"
                 onChange={handleChange}
-                 placeholder="" />
+                 placeholder=""  disabled/>
               </div>
 
               {/* Name of Stadium */}

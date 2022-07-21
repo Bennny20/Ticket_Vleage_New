@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
 //path
-var pathClub = "club";
+var pathClub = "club?page=0&size=100&sort=id%2Cdesc";
 var pathStadium = "stadium?page=0&size=20&sort=id%2Cdesc";
 var pathTournament = "tournament";
 var pathRound = "round/tournamentId/";
@@ -139,7 +139,7 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Home</label>
                                 <select name="clubHomeId"
-                                    onChange={handleChange}>
+                                    onClick={handleChange}>
                                     {dataClub.map((entity) => (
                                         <option value={entity.id} id={entity.id}>{entity.clubName}</option>
                                     ))
@@ -151,7 +151,7 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Away</label>
                                 <select name="clubVisitorId"
-                                    onChange={handleChange}>
+                                    onClick={handleChange}>
                                     {dataClub.map((entity) => (
                                         <option value={entity.id} id={entity.id}>{entity.clubName}</option>
                                     ))
@@ -163,7 +163,7 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Stadium</label>
                                 <select name="stadiumId"
-                                    onChange={handleChange}>
+                                    onClick={handleChange}>
                                     {dataStadium.map((entity) => (
                                         <option value={entity.id} id={entity.id}>{entity.stadiumName}</option>
                                     ))
@@ -189,7 +189,7 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Status</label>
                                 <select name="selectStatus"
-                                    onChange={handleChange}>
+                                    onClick={handleChange}>
                                     <option value="true">Coming</option>
                                     <option value="false">Ending</option>
                                     <option value="true">On-going</option>
@@ -201,7 +201,7 @@ const New = () => {
                                 onChange={handleChange}>
                                 <label>Tournament</label>
                                 <select name="tournamentId"
-                                    onChange={handleChange}>
+                                    onClick={handleChange}>
                                     {dataTournament.map((entity) => (
                                         <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
                                     ))
@@ -213,7 +213,7 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Round</label>
                                 <select name="roundId"
-                                    onChange={handleChange}>
+                                    onClick={handleChange}>
                                     {DataRound.map((entity) => (
                                         <option value={entity.id} id={entity.id}>{entity.roundName}</option>
                                     ))

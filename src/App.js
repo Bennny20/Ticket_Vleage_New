@@ -15,7 +15,7 @@ import Stadium from "./pages/Stadium/Stadium"
 import Match from "./pages/Match/Match"
 import Club from "./pages/Club/Club"
 import Ticket from "./pages/Ticket/Ticket"
-import Oder from "./pages/order/Order"
+import Order from "./pages/order/Order"
 
 //Update
 import UpdateMatch from "./pages/Update/UpdateMatch"
@@ -77,8 +77,8 @@ function App() {
             </Route>
 
             {/* Oder */}
-            <Route path="oder">
-              <Route index element={<RequiredAuth><Oder /></RequiredAuth>} />
+            <Route path="order">
+              <Route index element={<RequiredAuth><Order /></RequiredAuth>} />
               {/* <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
               <Route path="newUser"element={<NewUser/>}/> */}
             </Route>

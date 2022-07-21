@@ -41,6 +41,8 @@ const Datatable = () => {
             <TableCell className="tableCell">First Name</TableCell>
             <TableCell className="tableCell">Email</TableCell>
             <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell">Ticket Type</TableCell>
+            <TableCell className="tableCell">Quantity</TableCell>
             <TableCell className="tableCell">Total</TableCell>
           </TableRow>
         </TableHead>
@@ -52,6 +54,8 @@ const Datatable = () => {
               <TableCell className="tableCell">{value.account.lastname}</TableCell>
               <TableCell className="tableCell">{value.account.username}</TableCell>
               <TableCell className="tableCell">{value.orderDate}</TableCell>
+              <TableCell className="tableCell">{value.orderDetails.map((value) => value.ticket.area.areaName + "/")}</TableCell>
+              <TableCell className="tableCell">{value.orderDetails.map((value) => value.quantity + "/")}</TableCell>
               <TableCell className="tableCell">{value.total}</TableCell>
             </TableRow>
           ))}

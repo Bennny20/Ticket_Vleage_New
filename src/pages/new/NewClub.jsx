@@ -1,10 +1,11 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 
 var path = "club";
+var pathStadium = "stadium?page=0&size=20&sort=id%2Cdesc";
 const New = () => {
   const [formValue, setFormValue] = useState({
     name: "",
@@ -13,6 +14,22 @@ const New = () => {
     logo: ""
   });
   const { name, locationClub, stadium, logo } = formValue;
+  const [data, setData] = useState([]);
+  //UseEffect here-----------------------------------------------------------------------------
+  useEffect(
+    function () {
+      axios
+        .get(pathStadium)
+        .then(function (data) {
+          console.log(data.data);
+          setData(data.data.stadiums);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
+    },
+    []
+  );
   //handle Change value here-----------------------------------------------------------------------------
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -80,10 +97,13 @@ const New = () => {
               {/* Stadium */}
               <div className="formInput" >
                 <label>Stadium</label>
-                <input type="text"
+                <select type="text"
                   name="stadium"
-                  onChange={handleChange}
-                />
+                  onClick={handleChange}>
+                  {data.map((value) => (
+                    <option value={value.id} key={value.id}>{value.stadiumName}</option>
+                  ))}
+                </select>
               </div>
 
               {/* Logo */}

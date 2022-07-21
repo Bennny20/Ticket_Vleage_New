@@ -5,6 +5,7 @@ import Table from "../../components/table/Table";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
+import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 
 //path
 var pathTournament = "tournament";
@@ -18,6 +19,7 @@ const Match = () => {
   const [dataRound, setDataRound] = useState([]);
   const rowsRound = dataRound;
   const rowsTournament = dataTournament;
+  const [isShow, setShow] = useState(true)
   //useEffect-----------------------------------------------------
   useEffect(
     function () {
@@ -46,7 +48,7 @@ const Match = () => {
       .then(function (data) {
         console.log(40, data.data);
         setDataRound(data.data);
-        handleChangeRound()
+        handleChangeRound(event)
       })
       .catch(function (err) {
         console.log(32, err);
@@ -55,6 +57,7 @@ const Match = () => {
 
   //handle Change search Match by Round-----------------------------------------------------
   const handleChangeRound = (event) => {
+    setShow(true)
     var select = document.querySelector('.Round');
     var valueRound = select.options[select.selectedIndex].value;
     console.log(57, valueRound);
@@ -64,6 +67,7 @@ const Match = () => {
       .then(function (data) {
         console.log(62, data.data);
         setDataRoundbId(data.data)
+        setShow(false)
       })
       .catch(function (err) {
         console.log(32, err);
@@ -98,8 +102,7 @@ const Match = () => {
 
           <div className="formInput1" >
             <select className="NameTour"
-            value="1"
-             onClick={handleChange}>
+              onChange={handleChange}>
               {rowsTournament.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
               ))
@@ -109,14 +112,14 @@ const Match = () => {
 
           <div className="formInput" >
             <select className="Round"
-             onClick={handleChangeRound}>
+              onChange={handleChangeRound}>
               {rowsRound.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.roundName}</option>
               ))}
             </select>
           </div>
+          {isShow ? <LoadingSpinner /> : <Table props={DataRoundbyId} />}
 
-          <Table props={DataRoundbyId} />
         </div>
       </div>
     </div>

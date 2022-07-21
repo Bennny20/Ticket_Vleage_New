@@ -7,7 +7,7 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateClub";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "club?page=0&size=100&sort=id%2Cdesc";
+var path = "club";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     const [data, setData] = useState([]);
@@ -18,7 +18,7 @@ const ListStadium = () => {
     useEffect(
         function () {
             axios
-                .get(path)
+                .get(path + "?page=0&size=100&sort=id%2Cdesc")
                 .then(function (data) {
                     console.log(data.data.clubs);
                     setData(data.data.clubs);

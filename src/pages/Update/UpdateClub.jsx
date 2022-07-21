@@ -1,6 +1,4 @@
 import "./update.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
 import axios from "../../AxiosConfig";
 import { useState, useEffect } from "react";
 
@@ -20,7 +18,6 @@ const UpdateClub = (props) => {
                     setLogo(data.data.img)
                     setStadiumId(data.data.stadiumId)
                     setLocation(data.data.country)
-                    // console.log(list);
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -45,7 +42,6 @@ const UpdateClub = (props) => {
             "id": clubId,
             "img": logo,
             "stadiumId": stadiumId
-
         })
             .then(response => {
                 alert("Updated")
@@ -56,7 +52,6 @@ const UpdateClub = (props) => {
                 alert(error)
                 console.log(error);
             });
-        //end to do code
     }
 
     return (
