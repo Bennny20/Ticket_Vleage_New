@@ -43,6 +43,25 @@ const ListStadium = (props) => {
     };
 
 
+    const handleSoldOut = (id, areaId, areaName, capacity, stadiumId, matchId, price) => {
+        alert("Update amount = 0: ")
+        console.log("id checking ", id);
+        console.log("check", areaId + " " + areaName + " " + capacity + " " + stadiumId + " " + matchId + " " + price)
+        axios.put(path + "/" + id, {
+            "amount": 0,
+            "area": {
+                "areaName": areaName,
+                "capacity": capacity,
+                "id": areaId,
+                "stadiumId": stadiumId
+            },
+            "areaId": areaId,
+            "id": id,
+            "matchId": matchId,
+            "price": price
+        })
+    }
+
     return (
         //new code
         <div className="datatable">
@@ -107,7 +126,15 @@ const ListStadium = (props) => {
                                             <div className="viewButton" onClick={e => (handleUpdate(value.id))} > Update</div>
                                         </Link>
                                         <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="deleteButton" >Delete</div>
+                                            <div className="deleteButton" onClick={e => handleSoldOut(
+                                                value.id,
+                                                value.areaId,
+                                                value.area.areaName,
+                                                value.area.capacity,
+                                                value.area.stadiumId,
+                                                value.matchId,
+                                                value.price
+                                            )} >Sold Out</div>
                                         </Link>
                                     </div>
                                 </TableCell>
