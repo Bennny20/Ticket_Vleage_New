@@ -34,7 +34,7 @@ const Home = () => {
 
           <div className="listTitle" style={{ fontSize: "20px" }}>Tournament: NIGHT WOLF V.LEAGUE 1 - 2022</div>
           <div className="listTitle" style={{ fontSize: "20px", color: "red" }}>Round: 01</div>
-          <Table props={data}/>
+          <Table props={data} />
         </div>
       </div>
     </div>

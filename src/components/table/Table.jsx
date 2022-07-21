@@ -6,24 +6,37 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import TablePagination from '@mui/material/TablePagination';
 import { Link } from "react-router-dom";
 import axios from "../../AxiosConfig";
 import { useState } from "react";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 import { useEffect } from "react";
+import { alignProperty } from "@mui/material/styles/cssUtils";
 
 var path = "match?page=0&size=10&sort=id%2Cdesc";
 function List(props) {
   console.log(props)
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isShow, setShow] = useState(true)
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   useEffect(
-    function(){
+    function () {
       if (props.props.length > 0) {
         setShow(false)
       }
     }
   )
- 
+
 
 
   const handleOnClick = (id) => {
@@ -110,10 +123,23 @@ function List(props) {
                   </Link>
                 </div>
               </TableCell>
+
             </TableRow>
+
           ))}
+
         </TableBody>
+
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={props.props.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </TableContainer>)
   return (
     <>
