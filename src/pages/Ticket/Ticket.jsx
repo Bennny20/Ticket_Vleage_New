@@ -67,11 +67,11 @@ const Ticket = () => {
   const renderTicket = (<> <div className="top">
     <div className="left">
       <h1 className="title">Information</h1>
-      {/* <div>
+      <div>
         <Link to="/ticket/newTicket" className="link">
           Add New
         </Link>
-      </div> */}
+      </div>
       <div className="item">
 
         <div className="details">

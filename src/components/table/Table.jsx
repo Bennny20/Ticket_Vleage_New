@@ -39,8 +39,11 @@ function List(props) {
 
 
 
-  const handleOnClick = (id) => {
-    localStorage.setItem("idClickTicket", id)
+  const handleOnClick = ( matchId, stadiumId) => {
+    localStorage.setItem("idClickTicket", matchId)
+    localStorage.setItem("idClickTicketStadium", stadiumId)
+    console.log("Click ticket", matchId, stadiumId)
+    return window.location.href = "/ticket"
   }
 
   const handleStatus = (status) => {
@@ -118,8 +121,8 @@ function List(props) {
                   <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
                     <div className="viewButton" onClick={e => (handleUpdate(value.id))}> Update</div>
                   </Link>
-                  <Link to="/ticket" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={() => (handleOnClick(value.id))}>Ticket</div>
+                  <Link to="" style={{ textDecoration: "none" }}>
+                    <div className="ticketButton" onClick={() => (handleOnClick(value.id , value.stadiumId))}>Ticket</div>
                   </Link>
                 </div>
               </TableCell>
