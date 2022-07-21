@@ -62,7 +62,7 @@ const Datatable = () => {
     </TableContainer>);
   return (
     <><div className="datatable">
-      <div className="datatableTitle">List Oder</div>
+      <div className="datatableTitle">List Order</div>
 
       {isShow ? <div className="spinner"><LoadingSpinner /></div> : render}
     </div>

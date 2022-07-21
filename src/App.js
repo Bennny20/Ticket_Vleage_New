@@ -15,7 +15,7 @@ import Stadium from "./pages/Stadium/Stadium"
 import Match from "./pages/Match/Match"
 import Club from "./pages/Club/Club"
 import Ticket from "./pages/Ticket/Ticket"
-import Oder from "./pages/oder/Oder"
+import Oder from "./pages/order/Order"
 
 //Update
 import UpdateMatch from "./pages/Update/UpdateMatch"

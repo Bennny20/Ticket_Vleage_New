@@ -71,7 +71,7 @@ const Sidebar = () => {
           <Link to="/oder" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Oder List</span>
+              <span>Order List</span>
             </li>
           </Link>
           {/* <Link to="/profile" style={{ textDecoration: "none" }}>
@@ -100,6 +100,12 @@ const Sidebar = () => {
             <li>
               <CreditCardIcon className="icon" />
               <span>Match</span>
+            </li>
+          </Link>
+          <Link to="/ticket/newTicket" style={{ textDecoration: "none" }}>
+            <li>
+              <StoreIcon className="icon" />
+              <span>New ticket</span>
             </li>
           </Link>
           <p className="title"></p>

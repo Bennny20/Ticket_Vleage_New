@@ -21,22 +21,23 @@ const Match = () => {
   //useEffect-----------------------------------------------------
   useEffect(
     function () {
-      if (roundId == null) {
-        axios.get("match")
-          .then(function (data) {
-            console.log(data.data.matches);
-            setDataRoundbId(data.data.matches);
-            // console.log(list);
-          })
-          .catch(function (err) {
-            console.log(32, err);
-          });
-      }
+      // if (roundId == null) {
+      //   axios.get("match")
+      //     .then(function (data) {
+      //       console.log(data.data.matches);
+      //       setDataRoundbId(data.data.matches);
+      //       // console.log(list);
+      //     })
+      //     .catch(function (err) {
+      //       console.log(32, err);
+      //     });
+      // }
       axios
         .get(pathTournament)
         .then(function (data) {
           console.log(18, data.data.tournaments);
           setDataTournament(data.data.tournaments);
+          handleChange();
           // console.log(list);
         })
         .catch(function (err) {
@@ -110,7 +111,7 @@ const Match = () => {
             Tournament: </div>
 
           <div className="formInput1" >
-            <select className="NameTour" onChange={handleChange}>
+            <select className="NameTour" onClick={handleChange} select="1">
               {rowsTournament.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
               ))
@@ -119,7 +120,7 @@ const Match = () => {
           </div>
 
           <div className="formInput" >
-            <select className="Round" onChange={handleChangeRound} >
+            <select className="Round" onClick={handleChangeRound}>
               {rowsRound.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.roundName}</option>
               ))
