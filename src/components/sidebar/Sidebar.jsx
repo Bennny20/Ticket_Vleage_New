@@ -102,12 +102,12 @@ const Sidebar = () => {
               <span>Match</span>
             </li>
           </Link>
-          {/* <Link to="/ticket/newTicket" style={{ textDecoration: "none" }}>
+          <Link to="/ticket/newTicket" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>New ticket</span>
             </li>
-          </Link> */}
+          </Link>
           <p className="title"></p>
           <p className="title"></p>
           <hr></hr>
