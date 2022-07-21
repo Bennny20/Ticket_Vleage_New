@@ -8,6 +8,7 @@ import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "stadium?page=0&size=100&sort=id%2Cdesc";
+var pathDelete = "stadium/";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     const [isShow, setisShow] = useState(true);
@@ -34,12 +35,11 @@ const ListStadium = () => {
     //Handle Delete here ----------------------------------------------------------------------------
     const handleDelete = (id) => {
         console.log(id);
-        axios.delete(path + "/" + id)
+        axios.delete(pathDelete + id)
             .then(res => {
                 console.log(res);
                 alert('Deleted stadium by id: ' + id);
                 setData(data.filter((item) => item.id !== id));
-
             })
             .catch(function (err) {
                 console.log(err);

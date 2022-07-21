@@ -68,7 +68,7 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/oder" style={{ textDecoration: "none" }}>
+          <Link to="/order" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Order List</span>

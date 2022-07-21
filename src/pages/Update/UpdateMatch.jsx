@@ -15,8 +15,6 @@ const UpdateMatch = () => {
   //data--------------------------------------------------------
   const [dataClub, setDataClub] = useState([]);
   const [dataStadium, setDataStadium] = useState([]);
-
-
   const [matchClubHomeId, setMatchClubHomeId] = useState();
   const [matchClubVisitorId, setMathClubVisitorId] = useState();
   const [matchStadiumId, setMatchStadiumId] = useState();
@@ -64,7 +62,6 @@ const UpdateMatch = () => {
           console.log(32, err);
         });
       //get data api Round
-
     },
     []
   );

@@ -98,7 +98,6 @@ const Match = () => {
 
           <div className="formInput1" >
             <select className="NameTour"
-            value="1"
              onClick={handleChange}>
               {rowsTournament.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>

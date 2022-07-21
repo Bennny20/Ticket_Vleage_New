@@ -149,7 +149,6 @@ const New = () => {
           <h1>New Ticket</h1>
         </div>
         {form}
-        {/* Note here : - */}
       </div>
     </div>
   );
