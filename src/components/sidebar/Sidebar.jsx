@@ -44,38 +44,37 @@ const Sidebar = () => {
 
   const { dispatch } = useContext(DarkModeContext);
   return (
-
-
     <div className="sidebar">
-      <nav>
-        <div className="logo-name">
-          <span className="logo-name">Ticket V-League</span>
-        </div>
-        <hr />
-        <div className="center">
-          <ul>
-            <p className="title">Main</p>
+      <div className="top">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">V-League</span>
+        </Link>
+      </div>
+      <hr />
+      <div className="center">
+        <ul>
+          <p className="title">Main</p>
 
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <li>
-                <DashboardIcon className="icon" />
-                <span>Home</span>
-              </li>
-            </Link>
-            <p className="title">Account & User</p>
-            <Link to="/users" style={{ textDecoration: "none" }}>
-              <li>
-                <PersonOutlineIcon className="icon" />
-                <span>Users</span>
-              </li>
-            </Link>
-            <Link to="/oder" style={{ textDecoration: "none" }}>
-              <li>
-                <PersonOutlineIcon className="icon" />
-                <span>Order List</span>
-              </li>
-            </Link>
-            {/* <Link to="/profile" style={{ textDecoration: "none" }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Home</span>
+            </li>
+          </Link>
+          <p className="title">Account & User</p>
+          <Link to="/users" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonOutlineIcon className="icon" />
+              <span>Users</span>
+            </li>
+          </Link>
+          <Link to="/oder" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonOutlineIcon className="icon" />
+              <span>Order List</span>
+            </li>
+          </Link>
+          {/* <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
               <span>Profile</span>
@@ -83,42 +82,41 @@ const Sidebar = () => {
           </Link> */}
 
 
-            <p className="title">Manager</p>
-            <Link to="/stadium" style={{ textDecoration: "none" }}>
-              <li>
-                <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                <span>Stadium</span>
-              </li>
-            </Link>
+          <p className="title">Manager</p>
+          <Link to="/stadium" style={{ textDecoration: "none" }}>
+            <li>
+              <SettingsSystemDaydreamOutlinedIcon className="icon" />
+              <span>Stadium</span>
+            </li>
+          </Link>
 
-            <Link to="/club" style={{ textDecoration: "none" }}>
-              <li>
-                <PsychologyOutlinedIcon className="icon" />
-                <span>Club</span>
-              </li>
-            </Link>
-            <Link to="/match" style={{ textDecoration: "none" }}>
-              <li>
-                <CreditCardIcon className="icon" />
-                <span>Match</span>
-              </li>
-            </Link>
-            {/* <Link to="/ticket/newTicket" style={{ textDecoration: "none" }}>
+          <Link to="/club" style={{ textDecoration: "none" }}>
+            <li>
+              <PsychologyOutlinedIcon className="icon" />
+              <span>Club</span>
+            </li>
+          </Link>
+          <Link to="/match" style={{ textDecoration: "none" }}>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>Match</span>
+            </li>
+          </Link>
+          {/* <Link to="/ticket/newTicket" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>New ticket</span>
             </li>
           </Link> */}
-            <p className="title"></p>
-            <p className="title"></p>
-            <hr></hr>
-            <li>
-              <ExitToAppIcon className="icon" />
-              <span onClick={signOutFirebase}>Logout</span>
-            </li>
-          </ul >
-        </div >
-      </nav >
+          <p className="title"></p>
+          <p className="title"></p>
+          <hr></hr>
+          <li>
+            <ExitToAppIcon className="icon" />
+            <span onClick={signOutFirebase}>Logout</span>
+          </li>
+        </ul >
+      </div >
     </div >
   );
 };
