@@ -14,21 +14,13 @@ import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 import { useEffect } from "react";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 
-var path = "match?page=0&size=10&sort=id%2Cdesc";
 function List(props) {
   console.log(props)
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isShow, setShow] = useState(true)
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
+  //UseEffect here ----------------------------------------------------------------------
   useEffect(
     function () {
       if (props.props.length > 0) {
@@ -37,15 +29,15 @@ function List(props) {
     }
   )
 
-
-
-  const handleOnClick = ( matchId, stadiumId) => {
+  //Handle on click ticket here ----------------------------------------------------------------------
+  const handleOnClick = (matchId, stadiumId) => {
     localStorage.setItem("idClickTicket", matchId)
     localStorage.setItem("idClickTicketStadium", stadiumId)
     console.log("Click ticket", matchId, stadiumId)
     return window.location.href = "/ticket"
   }
 
+  //Handle on click status here ----------------------------------------------------------------------
   const handleStatus = (status) => {
     if (status == true) {
       return "On-Going";
@@ -53,13 +45,13 @@ function List(props) {
     return "Ending";
   }
 
-  // var idData, stadiumNameData, locationData, capacityData;
-
+  //Handle update here ----------------------------------------------------------------------
   const handleUpdate = (id) => {
     localStorage.setItem("editMatchId", JSON.stringify(id));
     return window.location.href = "../match/updateMatch"
   };
 
+  //Handle delete here ----------------------------------------------------------------------
   const handleDelete = (id) => {
     // setData(data.filter((item) => item.id !== id));
     console.log(id);
@@ -74,6 +66,7 @@ function List(props) {
       });
   };
 
+  //Form data here ----------------------------------------------------------------------
   const table = (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -109,10 +102,8 @@ function List(props) {
                   <div className="cellWrapper">
                     {value.stadium.capacity}
                   </div>
-
                 </div>
               </TableCell>
-
               <TableCell className="tableCell">
                 <span className={`status ${value.status}`}>{handleStatus(value.status)} </span>
               </TableCell>
@@ -122,7 +113,7 @@ function List(props) {
                     <div className="viewButton" onClick={e => (handleUpdate(value.id))}> Update</div>
                   </Link>
                   <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={() => (handleOnClick(value.id , value.stadiumId))}>Ticket</div>
+                    <div className="ticketButton" onClick={() => (handleOnClick(value.id, value.stadiumId))}>Ticket</div>
                   </Link>
                 </div>
               </TableCell>
@@ -134,16 +125,10 @@ function List(props) {
         </TableBody>
 
       </Table>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={props.props.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </TableContainer>)
+    </TableContainer>
+  )
+
+  //Render here ----------------------------------------------------------------------
   return (
     <>
       {isShow ? <LoadingSpinner /> : table}

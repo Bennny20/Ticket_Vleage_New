@@ -1,21 +1,19 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import axios from "../../AxiosConfig";
 
 var path = "club";
 const New = () => {
-
   const [formValue, setFormValue] = useState({
     name: "",
     locationClub: "",
     stadium: "",
     logo: ""
   });
-
-  //handle Change value
+  const { name, locationClub, stadium, logo } = formValue;
+  //handle Change value here-----------------------------------------------------------------------------
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue((prevState) => {
@@ -25,9 +23,7 @@ const New = () => {
       };
     });
   };
-
-  const { name, locationClub, stadium, logo } = formValue;
-  //function
+  //Handle Submit here--------------------------------------------------------------------------------------
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
@@ -40,14 +36,12 @@ const New = () => {
     })
       .then(response => {
         alert("Add success")
-        //Go to club page
         return window.location.href = "../club"
       })
       .catch(error => {
         alert(error)
         console.log(error);
       });
-    //end to do code
   }
 
   //render
