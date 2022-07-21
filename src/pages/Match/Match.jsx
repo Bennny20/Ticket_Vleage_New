@@ -21,24 +21,12 @@ const Match = () => {
   //useEffect-----------------------------------------------------
   useEffect(
     function () {
-      // if (roundId == null) {
-      //   axios.get("match")
-      //     .then(function (data) {
-      //       console.log(data.data.matches);
-      //       setDataRoundbId(data.data.matches);
-      //       // console.log(list);
-      //     })
-      //     .catch(function (err) {
-      //       console.log(32, err);
-      //     });
-      // }
       axios
         .get(pathTournament)
         .then(function (data) {
           console.log(18, data.data.tournaments);
           setDataTournament(data.data.tournaments);
           handleChange();
-          // console.log(list);
         })
         .catch(function (err) {
           console.log(32, err);
@@ -59,14 +47,11 @@ const Match = () => {
         console.log(40, data.data);
         setDataRound(data.data);
         handleChangeRound()
-        // console.log(list);
       })
       .catch(function (err) {
         console.log(32, err);
       });
   }
-
-
 
   //handle Change search Match by Round-----------------------------------------------------
   const handleChangeRound = (event) => {
@@ -124,12 +109,10 @@ const Match = () => {
 
           <div className="formInput" >
             <select className="Round"
-            value="1"
              onClick={handleChangeRound}>
               {rowsRound.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.roundName}</option>
-              ))
-              }
+              ))}
             </select>
           </div>
 

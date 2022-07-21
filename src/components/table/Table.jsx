@@ -12,27 +12,28 @@ import { useState } from "react";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 import { useEffect } from "react";
 
-var path = "match?page=0&size=10&sort=id%2Cdesc";
 function List(props) {
   console.log(props)
   const [isShow, setShow] = useState(true)
+
+  //UseEffect here ----------------------------------------------------------------------
   useEffect(
-    function(){
+    function () {
       if (props.props.length > 0) {
         setShow(false)
       }
     }
   )
- 
 
-
-  const handleOnClick = ( matchId, stadiumId) => {
+  //Handle on click ticket here ----------------------------------------------------------------------
+  const handleOnClick = (matchId, stadiumId) => {
     localStorage.setItem("idClickTicket", matchId)
     localStorage.setItem("idClickTicketStadium", stadiumId)
     console.log("Click ticket", matchId, stadiumId)
     return window.location.href = "/ticket"
   }
 
+  //Handle on click status here ----------------------------------------------------------------------
   const handleStatus = (status) => {
     if (status == true) {
       return "On-Going";
@@ -40,13 +41,13 @@ function List(props) {
     return "Ending";
   }
 
-  // var idData, stadiumNameData, locationData, capacityData;
-
+  //Handle update here ----------------------------------------------------------------------
   const handleUpdate = (id) => {
     localStorage.setItem("editMatchId", JSON.stringify(id));
     return window.location.href = "../match/updateMatch"
   };
 
+  //Handle delete here ----------------------------------------------------------------------
   const handleDelete = (id) => {
     // setData(data.filter((item) => item.id !== id));
     console.log(id);
@@ -61,6 +62,7 @@ function List(props) {
       });
   };
 
+  //Form data here ----------------------------------------------------------------------
   const table = (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -96,10 +98,8 @@ function List(props) {
                   <div className="cellWrapper">
                     {value.stadium.capacity}
                   </div>
-
                 </div>
               </TableCell>
-
               <TableCell className="tableCell">
                 <span className={`status ${value.status}`}>{handleStatus(value.status)} </span>
               </TableCell>
@@ -109,7 +109,7 @@ function List(props) {
                     <div className="viewButton" onClick={e => (handleUpdate(value.id))}> Update</div>
                   </Link>
                   <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={() => (handleOnClick(value.id , value.stadiumId))}>Ticket</div>
+                    <div className="ticketButton" onClick={() => (handleOnClick(value.id, value.stadiumId))}>Ticket</div>
                   </Link>
                 </div>
               </TableCell>
@@ -117,7 +117,10 @@ function List(props) {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>)
+    </TableContainer>
+  )
+
+  //Render here ----------------------------------------------------------------------
   return (
     <>
       {isShow ? <LoadingSpinner /> : table}

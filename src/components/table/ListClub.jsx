@@ -10,7 +10,11 @@ import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 var path = "club?page=0&size=100&sort=id%2Cdesc";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
-    //load data
+    const [data, setData] = useState([]);
+    const [formValue, setDataFormvalue] = useState();
+    const [isShow, setisShow] = useState(true);
+
+    //UseEffect load data ----------------------------------------------------------
     useEffect(
         function () {
             axios
@@ -19,7 +23,6 @@ const ListStadium = () => {
                     console.log(data.data.clubs);
                     setData(data.data.clubs);
                     setisRender(false)
-                    // console.log(list);
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -27,33 +30,28 @@ const ListStadium = () => {
         },
         []
     );
-    const [data, setData] = useState([]);
-    const [formValue, setDataFormvalue] = useState();
-    const [isShow, setisShow] = useState(true);
 
-
-    // Delete function
+    // Delete function ----------------------------------------------------------
     const handleDelete = (id) => {
-        // setData(data.filter((item) => item.id !== id));
         console.log(id);
         axios.delete(path + "/" + id)
             .then(res => {
                 console.log(res);
                 alert('Deleted club by id: ' + id);
                 setData(data.filter((item) => item.id !== id));
-
             })
             .catch(function (err) {
                 console.log(err);
             });
     };
 
-    // Update function
+    // Handle Update ----------------------------------------------------------
     const handleUpdate = (id) => {
         setDataFormvalue(id)
         setisShow(!isShow)
     };
 
+    // Form action of data grid----------------------------------------------------------
     const actionColumn = [
         {
             field: "action",
@@ -80,25 +78,29 @@ const ListStadium = () => {
         },
     ];
 
-    const dataGrid = (<><div className="datatableTitle">
-        List Club
-        <Link to="/club/newClub" className="link">
-            Add New
-        </Link>
-    </div>
-        <DataGrid
+    // Form data grid----------------------------------------------------------
+    const dataGrid = (
+        <><DataGrid
             className="datagrid"
             rows={data}
             columns={clubColumns.concat(actionColumn)}
             pageSize={8}
-            rowsPerPageOptions={[8]} /></>)
+            rowsPerPageOptions={[8]} /></>
+    )
 
+    // Form check show loading if undefine data----------------------------------------------------------
     const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
-    return (
-        //new code
-        <div className="datatable">
-            {isShow ? loading : <Update props={formValue} />}
 
+    // Form render here----------------------------------------------------------
+    return (
+        <div className="datatable">
+            <div className="datatableTitle">
+                List Club
+                <Link to="/club/newClub" className="link">
+                    Add New
+                </Link>
+            </div>
+            {isShow ? loading : <Update props={formValue} />}
         </div>
     );
 

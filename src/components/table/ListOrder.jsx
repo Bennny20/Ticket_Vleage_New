@@ -6,16 +6,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "order/all?page=0&size=100&sort=id%2Cdesc";
 const Datatable = () => {
-
+  const [data, setData] = useState([]);
   const [isShow, setShow] = useState(true)
-  //load data
+  //UseEffect here ------------------------------------------------------------------------------
   useEffect(
     function () {
       axios.get(path)
@@ -31,8 +30,7 @@ const Datatable = () => {
     []
   );
 
-  const [data, setData] = useState([]);
-
+  // Form table data ------------------------------------------------------------------------------
   const render = (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -59,11 +57,15 @@ const Datatable = () => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>);
+    </TableContainer>
+  );
+
+  //Render here--------------------------------------------------------------------
   return (
     <><div className="datatable">
-      <div className="datatableTitle">List Order</div>
-
+      <div className="datatableTitle">
+        List Order
+      </div>
       {isShow ? <div className="spinner"><LoadingSpinner /></div> : render}
     </div>
     </>

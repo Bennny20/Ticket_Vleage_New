@@ -11,14 +11,12 @@ import { Link } from "react-router-dom";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "ticket";
-var matchId = localStorage.getItem("idClickTicket");
+var path = "ticket"
+var matchId = localStorage.getItem("idClickTicket")
 const ListStadium = (props) => {
-    const [data, setData] = useState([]);
-
-
-
-
+    const [data, setData] = useState([])
+    const [isShow, setShow] = useState(true)
+    //UseEffect here ----------------------------------------------------------------------------
     useEffect(
         function () {
             axios
@@ -26,7 +24,7 @@ const ListStadium = (props) => {
                 .then(function (data) {
                     console.log("check data ", data.data);
                     setData(data.data);
-                    // console.log(list);
+                    setShow(false)
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -34,15 +32,14 @@ const ListStadium = (props) => {
         },
         []
     );
-
-    console.log("test", data)
-
+    
+    //Handle Update here ----------------------------------------------------------------------------
     const handleUpdate = (id) => {
         localStorage.setItem("editTicketId", JSON.stringify(id));
         return window.location.href = "../ticket/updateTicket"
     };
 
-
+    //Handle Sold Out here ----------------------------------------------------------------------------
     const handleSoldOut = (id, areaId, areaName, capacity, stadiumId, matchId, price) => {
         alert("Update amount = 0: ")
         console.log("id checking ", id);
@@ -61,11 +58,10 @@ const ListStadium = (props) => {
             "price": price
         })
         return window.location.href = "../ticket"
-
     }
 
-    return (
-        //new code
+    //Form table here ----------------------------------------------------------------------------
+    const render = (
         <div className="datatable">
             <div className="datatableTitle"><TableContainer component={Paper} className="table">
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -147,6 +143,15 @@ const ListStadium = (props) => {
             </TableContainer>
             </div>
         </div>
+    )
+
+    //Loading page wait data here ----------------------------------------------------------------------------    
+    //Render here ----------------------------------------------------------------------------
+    return (
+        <>
+        {isShow ? <LoadingSpinner /> : render}
+        </>
+
     );
 };
 
