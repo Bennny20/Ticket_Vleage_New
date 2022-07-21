@@ -60,6 +60,8 @@ const ListStadium = (props) => {
             "matchId": matchId,
             "price": price
         })
+        return window.location.href = "../ticket"
+
     }
 
     return (

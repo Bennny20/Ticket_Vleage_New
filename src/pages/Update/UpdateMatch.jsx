@@ -6,7 +6,7 @@ import axios from "../../AxiosConfig";
 
 const UpdateMatch = () => {
 
-  var pathClub = "club";
+  var pathClub = "club?page=0&size=20&sort=id%2Cdesc";
   var pathStadium = "stadium?page=0&size=20&sort=id%2Cdesc";
   var pathUpdate = "match";
   var matchID = JSON.parse(localStorage.getItem("editMatchId"));
