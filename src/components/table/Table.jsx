@@ -110,7 +110,7 @@ function List(props) {
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
-                    <div className="viewButton" onClick={e => (handleUpdate(value.id))}> Update</div>
+                    <div className="updateButton" onClick={e => (handleUpdate(value.id))}> Update</div>
                   </Link>
                   <Link to="" style={{ textDecoration: "none" }}>
                     <div className="ticketButton" onClick={() => (handleOnClick(value.id, value.stadiumId))}>Ticket</div>

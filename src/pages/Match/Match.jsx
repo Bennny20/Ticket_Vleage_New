@@ -86,13 +86,13 @@ const Match = () => {
         </div> */}
         <div className="listContainer">
           <div className="listTitle">List Match
-            <Link to="/match/newMatch" className="link">
+            <Link to="/match/newMatch" className="newButton">
               Add New Match
             </Link>
-            <Link to="/match/newRound" className="link">
+            <Link to="/match/newRound" className="newButton">
               Add New Round
             </Link>
-            <Link to="/match/newTournament" className="link">
+            <Link to="/match/newTournament" className="newButton">
               Add New Tournament
             </Link>
           </div>

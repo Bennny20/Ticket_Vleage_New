@@ -60,17 +60,18 @@ const ListStadium = () => {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <div
-                            className="viewButton"
-                            onClick={() => handleUpdate(params.row.id)}
-                        >
-                            Update
+                        <div>
+                            <button
+                                className="updateButton"
+                                onClick={() => handleUpdate(params.row.id)}>
+                                Update
+                            </button>
                         </div>
-                        <div
-                            className="deleteButton"
-                            onClick={() => handleDelete(params.row.id)}
-                        >
-                            Delete
+                        <div>
+                            <button className="deleteButtonn"
+                                onClick={() => handleDelete(params.row.id)}>
+                                Delete
+                            </button>
                         </div>
                     </div>
                 );
@@ -96,8 +97,10 @@ const ListStadium = () => {
         <div className="datatable">
             <div className="datatableTitle">
                 List Club
-                <Link to="/club/newClub" className="link">
-                    Add New
+                <Link to="/club/newClub" >
+                    <button className="newButton">
+                        Add New
+                    </button>
                 </Link>
             </div>
             {isShow ? loading : <Update props={formValue} />}

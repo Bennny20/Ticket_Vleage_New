@@ -39,7 +39,6 @@ const Home = () => {
           <MatchWidget />
         </div>
         <div className="listContainer">
-
           <div className="listTitle" style={{ fontSize: "20px" }}>Tournament: NIGHT WOLF V.LEAGUE 1 - 2022</div>
           <div className="listTitle" style={{ fontSize: "20px" }}>Round: 01</div>
           <Table props={data} />

@@ -61,17 +61,19 @@ const ListStadium = () => {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <div
-                            className="viewButton"
-                            onClick={() => handleUpdate(params.row.id)}
-                        >
-                            Update
+                        <div>
+                            <button
+                                className="updateButton"
+                                onClick={() => handleUpdate(params.row.id)}>
+                                Update
+                            </button>
                         </div>
-                        <div
-                            className="deleteButton"
-                            onClick={() => handleDelete(params.row.id)}
-                        >
-                            Delete
+                        <div>
+                            <button
+                                className="deleteButtonn"
+                                onClick={() => handleDelete(params.row.id)}>
+                                Delete
+                            </button>
                         </div>
                     </div>
                 );
@@ -91,13 +93,13 @@ const ListStadium = () => {
 
     //Check show loading wait here ----------------------------------------------------------------------------
     const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
-    
+
     //Render here ----------------------------------------------------------------------------
     return (
         <div className="datatable">
             <div className="datatableTitle">
                 List Stadium
-                <Link to="/stadium/newStadium" className="link">
+                <Link to="/stadium/newStadium" className="newButton">
                     Add New
                 </Link>
             </div>
