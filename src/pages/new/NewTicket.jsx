@@ -1,15 +1,29 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "../../AxiosConfig"
 
+var pathMatch = "match?page=0&size=100&sort=id%2Cdesc";
 const New = () => {
   useEffect(
     function () {
-
-    }
+      //Get Data Match
+      axios
+        .get(pathMatch)
+        .then(function (data) {
+          console.log(data.data.matches);
+          setData(data.data.matches);
+          // console.log(list);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
+    },
+    []
   )
 
+  const [data, setData] = useState([])
   const form = (
     <div className="bottom">
       <div className="right">
@@ -18,16 +32,19 @@ const New = () => {
           <div className="formInput" >
             <label>Match</label>
             <select>
-              <option>Ho Chi Minh FC - Hoang Anh Gia Lai FC  |  Date: 30-09-2022 </option>
-              <option>Ho Chi Minh FC - Hoang Anh Gia Lai FC  |  Date: 30-09-2022</option>
-              <option>Ho Chi Minh FC - Hoang Anh Gia Lai FC  |  Date: 30-09-2022</option>
-              <option>Ho Chi Minh FC - Hoang Anh Gia Lai FC  |  Date: 30-09-2022</option>
+              {data.map((value) => (
+                <option>{value.clubHome.clubName} - {value.clubVisitor.clubName}  |  {value.timeStart} </option>
+              ))}
             </select>
           </div>
 
           <div className="formInput" >
             <label> Area </label>
-            <input type="text" />
+            <select>
+              {data.map((value) => (
+                <option>{value.clubHome.clubName} - {value.clubVisitor.clubName}  |  {value.timeStart} </option>
+              ))}
+            </select>
           </div>
 
           {/* Club Visitor */}

@@ -58,6 +58,7 @@ const Match = () => {
       .then(function (data) {
         console.log(40, data.data);
         setDataRound(data.data);
+        handleChangeRound()
         // console.log(list);
       })
       .catch(function (err) {
@@ -111,7 +112,9 @@ const Match = () => {
             Tournament: </div>
 
           <div className="formInput1" >
-            <select className="NameTour" onClick={handleChange} select="1">
+            <select className="NameTour"
+            value="1"
+             onClick={handleChange}>
               {rowsTournament.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
               ))
@@ -120,7 +123,9 @@ const Match = () => {
           </div>
 
           <div className="formInput" >
-            <select className="Round" onClick={handleChangeRound}>
+            <select className="Round"
+            value="1"
+             onClick={handleChangeRound}>
               {rowsRound.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.roundName}</option>
               ))

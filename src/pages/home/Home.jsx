@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
 
-var path = "match";
+var path = "match?page=0&size=100&sort=id%2Cdesc";
 const Home = () => {
   //load data page list match defaul
   useEffect(
