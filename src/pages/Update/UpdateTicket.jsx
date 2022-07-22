@@ -61,6 +61,7 @@ const UpdateTicket = () => {
         })
             .then(response => {
                 alert("Success")
+                return window.location.href = "../ticket"
                 //Go to club page
             })
             .catch(error => {
@@ -102,7 +103,7 @@ const UpdateTicket = () => {
                             {/* Stadium for match */}
                             <div className="formInput" >
                                 <label>Price</label>
-                                <input type="number" value={price} />
+                                <input type="number" value={price} onChange={e => setPrice(e.target.value)} />
                             </div>
 
                             <div className="btnSend">

@@ -66,11 +66,11 @@ const New = () => {
     event.preventDefault();
     //To do code here
     alert("Add New Ticket : " + idMatch + "-" + idArea + "-" + amount + "-" + price)
-    axios.post(pathAdd, {    
+    axios.post(pathAdd, {
       "amount": amount,
       "areaId": idArea,
       "matchId": idMatch,
-      "price": price 
+      "price": price
     })
       .then(response => {
         alert("Add success")
@@ -110,7 +110,7 @@ const New = () => {
           <div className="formInput" >
             <label> Area </label>
             <select name="idArea"
-              onChange={handleChange}>
+              onClick={handleChange}>
               {data.map((entity) => (
                 <option value={entity.id} id={entity.id}>{entity.areaName}</option>
               ))}
