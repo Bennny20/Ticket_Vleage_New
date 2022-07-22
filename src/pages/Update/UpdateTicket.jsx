@@ -14,7 +14,9 @@ const UpdateTicket = () => {
 
     const [amount, setAmount] = useState();
     const [price, setPrice] = useState();
+    const [matchId, setMatchId] = useState();
     const [area, setArea] = useState([]);
+    const [areaId, setAreaId] = useState();
 
     //useEffect
     useEffect(
@@ -26,6 +28,8 @@ const UpdateTicket = () => {
                     setAmount(data.data.amount);
                     setPrice(data.data.price);
                     setArea(data.data.area);
+                    setMatchId(data.data.matchId)
+                    setAreaId(data.data.areaId);
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -45,22 +49,17 @@ const UpdateTicket = () => {
         event.preventDefault();
         //To do code here
         alert("Update matchs: ")
-        axios.put(pathUpdate, {
-            "amount": "",
-            "area": {
-                "areaName": "",
-                "capacity": "",
-                "id": "",
-                "stadiumId": ""
-            },
-            "areaId": "",
-            "id": "",
-            "matchId": "",
-            "price": ""
+        axios.put(pathUpdate + "/" + ticketId, {
+            "amount": amount,
+            "areaId": areaId,
+            "id": ticketId,
+            "matchId": matchId,
+            "price": price
 
         })
             .then(response => {
                 alert("Success")
+                console.log(amount + " " + areaId + " " + ticketId + " " + matchId + " " + price)
                 return window.location.href = "../ticket"
                 //Go to club page
             })
@@ -82,7 +81,7 @@ const UpdateTicket = () => {
                 </div>
                 <div className="bottom">
                     <div className="right">
-                        <form onSubmit={e => (handleSubmit)}>
+                        <form onSubmit={handleSubmit}>
                             {/* Club Home */}
                             <div className="formInput" >
                                 <label>Ticket ID</label>
