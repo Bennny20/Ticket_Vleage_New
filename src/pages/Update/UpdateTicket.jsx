@@ -48,7 +48,6 @@ const UpdateTicket = () => {
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Update matchs: ")
         axios.put(pathUpdate + "/" + ticketId, {
             "amount": amount,
             "areaId": areaId,
