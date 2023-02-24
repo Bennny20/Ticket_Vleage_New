@@ -22,7 +22,7 @@ const Sidebar = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
       localStorage.removeItem('user');
-      navigate("/login");
+      navigate("/");
       console.log("user is logged out");
     }).catch((error) => {
       console.log(error);
@@ -41,7 +41,7 @@ const Sidebar = () => {
         <ul>
           <p className="title">Main</p>
 
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/admin" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />
               <span>Dashboard</span>
@@ -54,12 +54,10 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
-          <Link to="/order" style={{ textDecoration: "none" }}>
-            <li>
-              <FactCheckIcon className="icon" />
-              <span>Order List</span>
-            </li>
-          </Link>
+          <li>
+            <FactCheckIcon className="icon" />
+            <span>Order List</span>
+          </li>
           {/* <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />
@@ -97,10 +95,12 @@ const Sidebar = () => {
           <p className="title"></p>
           <p className="title"></p>
           <hr></hr>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span onClick={signOutFirebase}>Logout</span>
-          </li>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <ExitToAppIcon className="icon" />
+              <span onClick={signOutFirebase}>Logout</span>
+            </li>
+          </Link>
         </ul >
       </div >
     </div >

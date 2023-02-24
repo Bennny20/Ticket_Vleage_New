@@ -26,7 +26,7 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         dispatch({ type: "LOGIN", payload: user })
-        navigate("/")
+        navigate("/admin")
       })
       .catch((error) => {
         setError(true);
@@ -63,7 +63,7 @@ const Login = () => {
 
   return (
 
-    <section className="vh-100" style={{ backgroundColor: "#55efc4" }}>
+    <section className="vh-100" style={{ backgroundColor: "#c7ecee" }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">

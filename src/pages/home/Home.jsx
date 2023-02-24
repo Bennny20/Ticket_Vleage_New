@@ -11,23 +11,23 @@ import UserWidget from "../../components/widget/UserWidget"
 
 var path = "match?page=0&size=100&sort=id%2Cdesc";
 const Home = () => {
-  //load data page list match defaul
-  useEffect(
-    function () {
-      axios.get("match")
-        .then(function (data) {
-          console.log(data.data.matches);
-          setData(data.data.matches);
-          // console.log(list);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
-    },
-    []
-  );
+  // //load data page list match defaul
+  // useEffect(
+  //   function () {
+  //     axios.get("match")
+  //       .then(function (data) {
+  //         console.log(data.data.matches);
+  //         setData(data.data.matches);
+  //         // console.log(list);
+  //       })
+  //       .catch(function (err) {
+  //         console.log(32, err);
+  //       });
+  //   },
+  //   []
+  // );
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   return (
     <div className="home">
       <Sidebar />
@@ -41,7 +41,7 @@ const Home = () => {
         <div className="listContainer">
           <div className="listTitle" style={{ fontSize: "20px" }}>Tournament: NIGHT WOLF V.LEAGUE 1 - 2022</div>
           <div className="listTitle" style={{ fontSize: "20px" }}>Round: 01</div>
-          <Table props={data} />
+          {/* <Table props={data} /> */}
         </div>
       </div>
     </div>
