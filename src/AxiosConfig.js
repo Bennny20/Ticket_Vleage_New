@@ -1,6 +1,6 @@
 import axios from 'axios';
 // var path = "https://jsonplaceholder.typicode.com/";
-var path = "http://localhost:8081/api/v1/";
+var path = "http://localhost:8800/api/";
 
 const instance = axios.create({
   baseURL: path,

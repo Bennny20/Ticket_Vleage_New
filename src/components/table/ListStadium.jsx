@@ -7,8 +7,8 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "stadium?page=0&size=100&sort=id%2Cdesc";
-var pathDelete = "stadium/";
+var path = "stadium";
+var pathDelete = "stadium";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     const [isShow, setisShow] = useState(true);
@@ -21,8 +21,8 @@ const ListStadium = () => {
             axios
                 .get(path)
                 .then(function (data) {
-                    console.log(data.data.stadiums);
-                    setData(data.data.stadiums);
+                    console.log(data.data);
+                    setData(data.data);
                     setisRender(false)
                 })
                 .catch(function (err) {
@@ -87,6 +87,7 @@ const ListStadium = () => {
             className="datagrid"
             rows={data}
             columns={stadiumColumns.concat(actionColumn)}
+            getRowId={(row) => row._id}
             pageSize={8}
             rowsPerPageOptions={[8]} /></>
     )

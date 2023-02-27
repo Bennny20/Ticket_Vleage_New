@@ -44,17 +44,17 @@ export const userColumns = [
 //const of club
 export const clubColumns = [
   {
-    field: "id",
+    field: "_id",
     headerName: "ID",
     width: 70,
   },
   {
-    field: "clubName",
+    field: "name",
     headerName: "Name",
     width: 300,
   },
   {
-    field: "country",
+    field: "location",
     headerName: "Localtion",
     width: 300,
   },
@@ -64,7 +64,7 @@ export const clubColumns = [
     width: 150,
   },
   {
-    field: "img",
+    field: "logo",
     headerName: "Logo",
     width: 150,
     renderCell: (img) => {
@@ -94,25 +94,25 @@ export const clubColumns = [
 //const of stadium
 export const stadiumColumns = [
   {
-    field: "id",
+    field: "_id",
     headerName: "ID",
     width: 70,
   },
   {
-    field: "stadiumName",
+    field: "name",
     headerName: "Name",
     width: 300,
   },
   {
-    field: "location",
+    field: "city",
     headerName: "Localtion",
     width: 500,
   },
   {
-    field: "capacity",
+    field: "capcity",
     headerName: "Capacity",
     width: 150,
-  },
+  }
   // {
   //   field: "status",
   //   headerName: "Status",

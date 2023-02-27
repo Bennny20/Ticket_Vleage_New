@@ -7,7 +7,7 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateClub";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "club";
+var path = "clubs";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     const [data, setData] = useState([]);
@@ -18,10 +18,10 @@ const ListStadium = () => {
     useEffect(
         function () {
             axios
-                .get(path + "?page=0&size=100&sort=id%2Cdesc")
+                .get(path)
                 .then(function (data) {
-                    console.log(data.data.clubs);
-                    setData(data.data.clubs);
+                    console.log(data.data);
+                    setData(data.data);
                     setisRender(false)
                 })
                 .catch(function (err) {
@@ -85,6 +85,7 @@ const ListStadium = () => {
             className="datagrid"
             rows={data}
             columns={clubColumns.concat(actionColumn)}
+            getRowId={(row) => row._id}
             pageSize={8}
             rowsPerPageOptions={[8]} /></>
     )
