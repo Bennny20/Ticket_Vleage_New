@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import "./login.scss";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext"
 import background from "./backgroundLogin.jpeg"
@@ -9,30 +8,43 @@ import background from "./backgroundLogin.jpeg"
 
 const Login = () => {
   const [error, setError] = useState(false);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
 
   const navigate = useNavigate()
 
   const { dispatch } = useContext(AuthContext)
 
   //sign in bằng account được cấp qua firebase
-  const handleLogin = (e) => {
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       console.log(user);
+  //       dispatch({ type: "LOGIN", payload: user })
+  //       navigate("/admin")
+  //     })
+  //     .catch((error) => {
+  //       setError(true);
+  //     });
+  // };
+
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        dispatch({ type: "LOGIN", payload: user })
-        navigate("/admin")
-      })
-      .catch((error) => {
-        setError(true);
-      });
+    try {
+      const res = await axios.post("/login", { username, password });
+      setUser(res.data);
+      dispatch({ type: "LOGIN", payload: user })
+      navigate("/admin")
+    } catch (err) {
+      console.log(err);
+    }
   };
-
   //sign in with google firebase ====> chưa check role admin => ai cũng login được
   // const signInWithGoogle = () => {
   //   const provider = new GoogleAuthProvider();
@@ -84,8 +96,8 @@ const Login = () => {
                       <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>Sign into your admin account</h5>
 
                       <div className="form-outline mb-4">
-                        <input type="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} className="form-control form-control-lg" />
-                        <label className="form-label" >Email address</label>
+                        <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="form-control form-control-lg" />
+                        <label className="form-label" >Username</label>
                       </div>
 
                       <div className="form-outline mb-4">

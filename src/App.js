@@ -43,19 +43,21 @@ function App() {
   };
   console.log(currentUser);
 
-
+  const RequiredAdmin = ({ children }) => {
+    return currentUser.isAdmin ? children : <Navigate to="/" />;
+  };
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route path="login" element={<Login />} />
             <Route index element={<Landing />} />
+            <Route path="login" element={<Login />} />
 
             {/* Admin */}
             <Route path="admin">
-              <Route index element={<RequiredAuth><Home /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><Home /></RequiredAdmin>} />
             </Route>
 
             {/* Match */}
@@ -98,7 +100,7 @@ function App() {
             <Route path="stadium">
               <Route index element={<RequiredAuth><Stadium /></RequiredAuth>} />
               <Route path="updateStadium" element={<RequiredAuth><UpdateStadium /></RequiredAuth>} />
-              <Route path="newStadium" element={<NewStadium />} />
+              <Route path="newStadium" element={<RequiredAuth><NewStadium /></RequiredAuth>} />
             </Route>
 
 
@@ -107,7 +109,7 @@ function App() {
             <Route path="club">
               <Route index element={<RequiredAuth><Club /></RequiredAuth>} />
               <Route path="updateClub" index element={<RequiredAuth><UpdateClub /></RequiredAuth>} />
-              <Route path="newClub" element={<NewClub />} />
+              <Route path="newClub" element={<RequiredAuth><NewClub /></RequiredAuth>} />
             </Route>
 
           </Route>

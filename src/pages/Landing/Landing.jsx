@@ -1,4 +1,7 @@
 import "./landing.scss"
+import Sidebar from "../../components/sidebar/Sidebar"
+import Navbar from "../../components/navbar/Navbar"
+import Datatable from "../../components/datatable/Datatable"
 import Home from "../../components/landing/Home";
 import About from "../../components/landing/About";
 import Work from "../../components/landing/Work";
