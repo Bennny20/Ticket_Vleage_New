@@ -57,7 +57,7 @@ function App() {
 
             {/* Admin */}
             <Route path="admin">
-              <Route index element={<RequiredAdmin><Home /></RequiredAdmin>} />
+              <Route index element={<RequiredAuth><Home /></RequiredAuth>} />
             </Route>
 
             {/* Match */}

@@ -16,9 +16,14 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [open, setOpen] = useState(false)
+  // const products = useSelector((state) => state.cart.products);
+
   const menuOptions = [
     {
       text: "Home",
@@ -53,6 +58,12 @@ const Navbar = () => {
         <a href="#">Contact</a>
         <a href="#">
           <BsCart2 className="navbar-cart-icon" />
+
+          {/* <div onClick={() => setOpen(!open)}>
+            <ShoppingCartOutlinedIcon />
+            <span>{products.length}</span>
+          </div> */}
+
         </a>
         <a className="primary-button" href="/login">Login</a>
       </div>
