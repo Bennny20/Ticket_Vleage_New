@@ -6,11 +6,11 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
 //path
-var pathClub = "club?page=0&size=100&sort=id%2Cdesc";
-var pathStadium = "stadium?page=0&size=20&sort=id%2Cdesc";
-var pathTournament = "tournament";
+var pathClub = "clubs/";
+var pathStadium = "stadium/";
+var pathTournament = "tournaments/";
 var pathRound = "round/tournamentId/";
-var pathUpdate = "match";
+var pathUpdate = "matchs/";
 const New = () => {
     //data--------------------------------------------------------
     const [dataTournament, setDataTournament] = useState([]);
@@ -32,8 +32,8 @@ const New = () => {
             //get data api Club
             axios.get(pathClub)
                 .then(function (data) {
-                    console.log(data.data.clubs);
-                    setDataClub(data.data.clubs);
+                    console.log(data.data);
+                    setDataClub(data.data);
                     // console.log(list);
                 })
                 .catch(function (err) {
@@ -43,8 +43,8 @@ const New = () => {
             //get data api Stadium
             axios.get(pathStadium)
                 .then(function (data) {
-                    console.log(data.data.stadiums);
-                    setDataStadium(data.data.stadiums);
+                    console.log(data.data);
+                    setDataStadium(data.data);
                     // console.log(list);
                 })
                 .catch(function (err) {
@@ -54,8 +54,8 @@ const New = () => {
             axios
                 .get(pathTournament)
                 .then(function (data) {
-                    console.log(18, data.data.tournaments);
-                    setDataTournament(data.data.tournaments);
+                    console.log(18, data.data);
+                    setDataTournament(data.data);
                     // console.log(list);
                 })
                 .catch(function (err) {
@@ -141,7 +141,7 @@ const New = () => {
                                 <select name="clubHomeId"
                                     onClick={handleChange}>
                                     {dataClub.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.clubName}</option>
+                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -153,7 +153,7 @@ const New = () => {
                                 <select name="clubVisitorId"
                                     onClick={handleChange}>
                                     {dataClub.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.clubName}</option>
+                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -165,7 +165,7 @@ const New = () => {
                                 <select name="stadiumId"
                                     onClick={handleChange}>
                                     {dataStadium.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.stadiumName}</option>
+                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -203,7 +203,7 @@ const New = () => {
                                 <select name="tournamentId"
                                     onClick={handleChange}>
                                     {dataTournament.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
+                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -215,7 +215,7 @@ const New = () => {
                                 <select name="roundId"
                                     onClick={handleChange}>
                                     {DataRound.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.roundName}</option>
+                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>

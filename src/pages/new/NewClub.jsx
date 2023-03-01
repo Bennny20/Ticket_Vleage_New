@@ -4,8 +4,8 @@ import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 
-var path = "club";
-var pathStadium = "stadium?page=0&size=20&sort=id%2Cdesc";
+var path = "clubs/";
+var pathStadium = "stadium/";
 const New = () => {
   const [formValue, setFormValue] = useState({
     name: "",
@@ -22,7 +22,7 @@ const New = () => {
         .get(pathStadium)
         .then(function (data) {
           console.log(data.data);
-          setData(data.data.stadiums);
+          setData(data.data);
         })
         .catch(function (err) {
           console.log(32, err);
@@ -101,7 +101,7 @@ const New = () => {
                   name="stadium"
                   onClick={handleChange}>
                   {data.map((value) => (
-                    <option value={value.id} key={value.id}>{value.stadiumName}</option>
+                    <option value={value._id} key={value._id}>{value.name}</option>
                   ))}
                 </select>
               </div>

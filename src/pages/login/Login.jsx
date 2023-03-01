@@ -70,7 +70,7 @@ const Login = () => {
           localStorage.setItem("access_token", response.data.token)
           if (response.data.isAdmin) {
             console.log("Admin")
-            // navigate("/admin")
+            navigate("/admin")
           }
           else {
             console.log("User")
