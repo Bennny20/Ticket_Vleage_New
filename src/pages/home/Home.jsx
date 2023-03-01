@@ -9,7 +9,7 @@ import OrderWidget from "../../components/widget/OrderWidget"
 import MatchWidget from "../../components/widget/MatchWidget"
 import UserWidget from "../../components/widget/UserWidget"
 
-var path = "match?page=0&size=100&sort=id%2Cdesc";
+var path = "matchs/";
 const Home = () => {
   // //load data page list match defaul
   // useEffect(

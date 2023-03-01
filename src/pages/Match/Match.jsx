@@ -8,8 +8,8 @@ import axios from "../../AxiosConfig";
 import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 
 //path
-var pathTournament = "tournament";
-var pathRound = "round/tournamentId/";
+var pathTournament = "tournaments/";
+var pathRound = "rounds/";
 var pathMatch = "match/roundId/";
 var roundId = null;
 const Match = () => {
@@ -26,8 +26,8 @@ const Match = () => {
       axios
         .get(pathTournament)
         .then(function (data) {
-          console.log(18, data.data.tournaments);
-          setDataTournament(data.data.tournaments);
+          console.log(18, data.data);
+          setDataTournament(data.data);
           handleChange();
         })
         .catch(function (err) {
@@ -104,7 +104,7 @@ const Match = () => {
             <select className="NameTour"
               onChange={handleChange}>
               {rowsTournament.map((entity) => (
-                <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
+                <option value={entity._id} id={entity._id}>{entity.name}</option>
               ))
               }
             </select>
@@ -114,7 +114,7 @@ const Match = () => {
             <select className="Round"
               onChange={handleChangeRound}>
               {rowsRound.map((entity) => (
-                <option value={entity.id} id={entity.id}>{entity.roundName}</option>
+                <option value={entity._id} id={entity._id}>{entity.numberRound}</option>
               ))}
             </select>
           </div>

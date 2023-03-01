@@ -2,30 +2,30 @@
 //const of user
 export const userColumns = [
   {
-    field: "id",
+    field: "_id",
     headerName: "ID",
     width: 100,
   },
   {
     field: "username",
-    headerName: "Email",
+    headerName: "Name",
     width: 300,
   },
   {
-    field: "firstname",
-    headerName: "Firstname",
+    field: "email",
+    headerName: "email",
     width: 150,
   },
   {
-    field: "lastname",
-    headerName: "Lastname",
+    field: "createdAt",
+    headerName: "Date Created",
     width: 150,
   },
-  {
-    field: "phone",
-    headerName: "Phone",
-    width: 150,
-  },
+  // {
+  //   field: "phone",
+  //   headerName: "Phone",
+  //   width: 150,
+  // },
 
   // {
   //   field: "status",

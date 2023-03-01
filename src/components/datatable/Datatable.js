@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "account?page=0&size=100&sort=id%2Cdesc";
+var path = "users";
 const Datatable = () => {
 
   const [isShow, setShow] = useState(true)
@@ -16,14 +16,17 @@ const Datatable = () => {
       axios
         .get(path)
         .then(function (data) {
-          console.log(data.data.accounts);
-          setData(data.data.accounts);
+          console.log(data.data);
+          setData(data.data);
           setShow(false)
           // console.log(list);
         })
         .catch(function (err) {
           console.log(32, err);
         });
+
+        var  x =5;
+        
     },
     []
   );
@@ -66,6 +69,7 @@ const Datatable = () => {
         className="datagrid"
         rows={data}
         columns={userColumns}
+        getRowId={(row) => row._id}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />

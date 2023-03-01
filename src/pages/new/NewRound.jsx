@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
 
-var pathTournament = "tournament";
-var pathRound = "round";
+var pathTournament = "tournaments/";
+var pathRound = "rounds/";
 const New = () => {
     //Tournament list
     useEffect(
@@ -14,8 +14,8 @@ const New = () => {
             axios
                 .get(pathTournament)
                 .then(function (data) {
-                    console.log(data.data.tournaments);
-                    setData(data.data.tournaments);
+                    console.log(data.data);
+                    setData(data.data);
                     // console.log(list);
                 })
                 .catch(function (err) {
@@ -100,7 +100,7 @@ const New = () => {
                                 <select name="selectsTournament"
                                     onChange={handleChange}>
                                     {rowsTournament.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.tournamentName}</option>
+                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>

@@ -55,7 +55,7 @@ function List(props) {
   const handleDelete = (id) => {
     // setData(data.filter((item) => item.id !== id));
     console.log(id);
-    axios.delete("match/" + id)
+    axios.delete("matchs/" + id)
       .then(res => {
         console.log("check delete ", res);
         alert('Deleted club by id: ' + id);
