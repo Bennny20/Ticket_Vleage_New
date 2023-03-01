@@ -8,12 +8,16 @@ import Work from "../../components/landing/Work";
 import Testimonial from "../../components/landing/Testimonial";
 import Contact from "../../components/landing/Contact";
 import Footer from "../../components/landing/Footer";
+import MatchCard from "../../components/landing/matchCard";
+import ClubCard from "../../components/landing/clubCard";
 
 
 const Landing = () => {
     return (
         <div className="App">
             <Home />
+            <MatchCard />
+            <ClubCard />
             <About />
             <Work />
             <Testimonial />
