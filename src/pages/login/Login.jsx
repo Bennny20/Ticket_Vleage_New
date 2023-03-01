@@ -19,39 +19,49 @@ const Login = () => {
   const { dispatch } = useContext(AuthContext)
 
   //sign in bằng account được cấp qua firebase
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        dispatch({ type: "LOGIN", payload: user })
-        navigate("/admin")
-      })
-      .catch((error) => {
-        setError(true);
-      });
-  };
-
-
   // const handleLogin = (e) => {
   //   e.preventDefault();
-  //   try {
-  //     axios.post("auth/login", { username, password })
-  //     dispatch({ type: "LOGIN", payload: user })
-  //     navigate("/admin")
-  //       .then(response => {
-  //         console.log(response)
-  //         alert("Login")
-  //       })
 
-  //   } catch (err) {
-  //     alert(error)
-  //     console.log(error);
-  //   }
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       console.log(user);
+  //       dispatch({ type: "LOGIN", payload: user })
+  //       navigate("/admin")
+  //     })
+  //     .catch((error) => {
+  //       setError(true);
+  //     });
   // };
+
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    try {
+        axios.post("auth/login", { username, password})
+          .then(response => {
+            console.log(response.data)
+            if(response.data.isAdmin){
+              console.log("Admin")
+              return window.location.href = "/admin"
+            } 
+            else{
+              console.log("User")
+              // return window.location.href = "/landing"
+            }
+            
+          })
+          .catch(error => {
+            alert(error)
+            console.log(error);
+          });
+    } catch (err) {
+      alert(error)
+      console.log(error);
+    }
+  };
+
   //sign in with google firebase ====> chưa check role admin => ai cũng login được
   // const signInWithGoogle = () => {
   //   const provider = new GoogleAuthProvider();
@@ -103,7 +113,7 @@ const Login = () => {
                       <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>Sign into your admin account</h5>
 
                       <div className="form-outline mb-4">
-                        <input type="text" placeholder="Username" onChange={(e) => setEmail(e.target.value)} className="form-control form-control-lg" />
+                        <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="form-control form-control-lg" />
                         <label className="form-label" >Username</label>
                       </div>
 
