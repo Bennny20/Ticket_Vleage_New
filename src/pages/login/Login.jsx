@@ -13,8 +13,6 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
 
   const navigate = useNavigate()
 
@@ -63,23 +61,29 @@ const Login = () => {
     e.preventDefault();
     try {
       axios.post("auth/login", { username, password })
-        .then(response => {
-          console.log(response.data)
-          console.log(JSON.stringify(response.data.token))
-          localStorage.setItem("user", JSON.stringify(response.data))
-          localStorage.setItem("access_token", response.data.token)
-          if (response.data.isAdmin) {
-            console.log("Admin")
-            navigate("/admin")
-          }
-          else {
-            console.log("User")
-            // return window.location.href = "/landing"
-          }
+        .then(
+          response => {
+            console.log(response.data)
+            const isAdmin = response.data.isAdmin
+            const user = response.data
+            console.log(isAdmin)
+            console.log(JSON.stringify(response.data.token))
+            // localStorage.setItem("user", JSON.stringify(response.data))
+            localStorage.setItem("access_token", response.data.token)
+            dispatch({ type: "LOGIN", payload: user })
 
-        })
+            if (isAdmin) {
+              console.log("Admin")
+              navigate("/admin")
+            }
+            else {
+              console.log("User")
+              navigate("/")
+            }
+
+          })
         .catch(error => {
-          alert(error)
+          alert("Wrong username or password!")
           console.log(error);
         });
     } catch (err) {
@@ -88,37 +92,11 @@ const Login = () => {
     }
   };
 
-  //sign in with google firebase ====> chưa check role admin => ai cũng login được
-  // const signInWithGoogle = () => {
-  //   const provider = new GoogleAuthProvider();
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       // This gives you a Google Access Token. You can use it to access the Google API.
-  //       const credential = GoogleAuthProvider.credentialFromResult(result);
-  //       const token = credential.accessToken;
-  //       // The signed-in user info.
-  //       const user = result.user;
-  //       dispatch({ type: "LOGIN", payload: user })
-  //       console.log(user);
-  //       navigate("/")
-  //       // ...
-  //     }).catch((error) => {
-  //       // Handle Errors here.
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       // The email of the user's account used.
-  //       const email = error.customData.email;
-  //       // The AuthCredential type that was used.
-  //       const credential = GoogleAuthProvider.credentialFromError(error);
-  //       // ...
-  //     });
-  // };
-
 
 
   return (
 
-    <section className="vh-100" style={{ backgroundColor: "#c7ecee" }}>
+    <section className="vh-100" >
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">
@@ -133,19 +111,19 @@ const Login = () => {
                     <form id="LoginForm" onSubmit={handleLogin}>
                       <div className="d-flex align-items-center mb-3 pb-1">
                         <i className="fas fa-cubes fa-2x me-3" style={{ color: "#ff6219" }}></i>
-                        <span className="h1 fw-bold mb-0">Admin Page</span>
+                        <span className="h1 fw-bold mb-0">Sign In</span>
                       </div>
 
-                      <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>Sign into your admin account</h5>
-
                       <div className="form-outline mb-4">
-                        <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="form-control form-control-lg" />
                         <label className="form-label" >Username</label>
+                        <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} className="form-control form-control-lg" />
+
                       </div>
 
                       <div className="form-outline mb-4">
-                        <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} className="form-control form-control-lg" />
                         <label className="form-label"  >Password</label>
+                        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} className="form-control form-control-lg" />
+
                       </div>
 
                       <button className="btn btn-dark btn-lg btn-block" type="submit">Login</button>

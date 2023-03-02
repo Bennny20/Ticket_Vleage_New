@@ -1,0 +1,39 @@
+body {
+    padding: 20px;
+    
+  
+    #app {
+      .btn-primary{
+        color: black;
+        padding: 0.9rem 1.75rem;
+        background-color: #fe9e0d;
+        outline: none;
+        border: none;
+        border-radius: 5rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+      .card {
+        width: 250px;
+        // height: 300px;
+        // overflow: auto;
+      }
+  
+      #circle-avatar {
+        display: grid;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #ffbd30;
+        place-items: center;
+  
+        span {
+          font-size: 48px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  

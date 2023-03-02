@@ -9,8 +9,6 @@ import SportsIcon from '@mui/icons-material/Sports';
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useState } from "react";
-import { auth } from "../../firebase";
-import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import logo from "./logo.png"
 
@@ -18,20 +16,16 @@ const Sidebar = () => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
-  const signOutFirebase = () => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      localStorage.removeItem('user');
-      navigate("/");
-      console.log("user is logged out");
-    }).catch((error) => {
-      console.log(error);
-    });
+  const handleLogout = () => {
+    localStorage.removeItem("user")
+    localStorage.removeItem("access_token")
+    navigate("/");
+    console.log("user is logged out")
   }
-
 
   const { dispatch } = useContext(DarkModeContext);
   return (
+
     <div className="sidebar">
       <div className="top">
         <img src={logo} alt="" className="logo-img" />
@@ -98,7 +92,7 @@ const Sidebar = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
               <ExitToAppIcon className="icon" />
-              <span onClick={signOutFirebase}>Logout</span>
+              <span onClick={handleLogout}>Logout</span>
             </li>
           </Link>
         </ul >
