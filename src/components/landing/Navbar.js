@@ -34,11 +34,9 @@ const Navbar = () => {
             <span>{products.length}</span>
           </div> */}
         </a>
-        <a>
-          {
-            currentUser ? <Profile /> : <LoginButton />
-          }
-        </a>
+        {
+          currentUser ? <Profile /> : <LoginButton />
+        }
 
 
 

@@ -1,52 +1,45 @@
-import React from "react";
+import axios from "../../AxiosConfig";
+import React, { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import "./clubCard.scss"
 import AboutBackgroundImage from "../assets/about-background-image.png";
 
-function ClubCard() {
+
+var path = "/clubs";
+const ClubCard = ({ club, showDetails = true }) => {
+    const [isRender, setisRender] = useState(true);
+    const [data, setData] = useState([]);
+    const [formValue, setDataFormvalue] = useState();
+    const [isShow, setisShow] = useState(true);
+
+    useEffect(
+        function () {
+            axios
+                .get(path)
+                .then(function (data) {
+                    console.log(data.data);
+                    setData(data.data);
+                    localStorage.setItem("clubs", JSON.stringify(data.data))
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
+        },
+        []
+    );
+
+
     return (
-        <div>
-            <h1> Clubs</h1>
-            <Row className="w-md-50 p-3 mt-5 mb-3">
-                <Col>
-                    <Card className="justify-content-center" style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={AboutBackgroundImage} style={{ width: '200px' }} />
-                        <Card.Body>
-                            <Card.Title>Club 1</Card.Title>
-                            <Card.Text>
-                                Club Description
-                            </Card.Text>
-                            <Button variant="primary">Detail</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={AboutBackgroundImage} style={{ width: '200px' }} />
-                        <Card.Body>
-                            <Card.Title>Club 1</Card.Title>
-                            <Card.Text>
-                                Club Description
-                            </Card.Text>
-                            <Button variant="primary">Detail </Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={AboutBackgroundImage} style={{ width: '200px' }} />
-                        <Card.Body>
-                            <Card.Title>Club 1</Card.Title>
-                            <Card.Text>
-                                Club Description
-                            </Card.Text>
-                            <Button variant="primary">Detail</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+        <div className="container">
+            <img src="/img/pizza.png" alt="" width="500" height="500" />
+            <h1 className="title">CLUB NAME</h1>
+            <span className="price">LOCATION</span>
+            <p className="desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
         </div>
     );
 }
