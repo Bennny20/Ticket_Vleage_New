@@ -16,14 +16,13 @@ import { alignProperty } from "@mui/material/styles/cssUtils";
 
 function List(props) {
   console.log(props)
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isShow, setShow] = useState(true)
 
   //UseEffect here ----------------------------------------------------------------------
   useEffect(
     function () {
       if (props.props.length > 0) {
+        console.log(props.props)
         setShow(false)
       }
     }
@@ -82,27 +81,27 @@ function List(props) {
         </TableHead>
         <TableBody>
           {props.props.map((value) => (
-            <TableRow key={value.id}>
+            <TableRow key={value._id}>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={value.clubHome.img} alt="" className="image" />
-                  {value.clubHome.clubName}
+                  <img src={value.logoHomeClub} alt="" className="image" />
+                  {value.nameHomeClub}
                 </div>
               </TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={value.clubVisitor.img} alt="" className="image" />
-                  {value.clubVisitor.clubName}
+                  <img src={value.logoAwayClub} alt="" className="image" />
+                  {value.nameAwayClub}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{value.stadium.stadiumName}</TableCell>
-              <TableCell className="tableCell">{value.timeStart}</TableCell>
+              <TableCell className="tableCell">{value.nameStadium}</TableCell>
+              <TableCell className="tableCell">{value.date}</TableCell>
               <TableCell className="tableCell">
-                <div className="cellAction">
+                {/* <div className="cellAction">
                   <div className="cellWrapper">
                     {value.stadium.capacity}
                   </div>
-                </div>
+                </div> */}
               </TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${value.status}`}>{handleStatus(value.status)} </span>
@@ -110,10 +109,10 @@ function List(props) {
               <TableCell className="tableCell">
                 <div className="cellAction">
                   <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
-                    <div className="updateButton" onClick={e => (handleUpdate(value.id))}> Update</div>
+                    <div className="updateButton" onClick={e => (handleUpdate(value._id))}> Update</div>
                   </Link>
                   <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={() => (handleOnClick(value.id, value.stadiumId))}>Ticket</div>
+                    <div className="ticketButton" onClick={() => (handleOnClick(value._id, value.stadiumId))}>Ticket</div>
                   </Link>
                 </div>
               </TableCell>
