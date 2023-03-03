@@ -6,55 +6,13 @@ import axios from "../../AxiosConfig";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext"
 import background from "./backgroundLogin.jpeg"
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
 
 const Login = () => {
   const [error, setError] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate()
-
   const { dispatch } = useContext(AuthContext)
-
-  //sign in bằng account được cấp qua firebase
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       const user = userCredential.user;
-  //       console.log(user);
-  //       dispatch({ type: "LOGIN", payload: user })
-  //       navigate("/admin")
-  //     })
-  //     .catch((error) => {
-  //       setError(true);
-  //     });
-  // };
-
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     console.log(username + password)
-  //     axios.post("auth/login", JSON.stringify({ username, password }))
-
-
-  //       .then(response => {
-  //         console.log(response);
-  //         dispatch({ type: "LOGIN", payload: response })
-  //         alert("Login")
-  //         navigate("/admin")
-  //       })
-
-  //   } catch (err) {
-  //     alert(error)
-  //     console.log(error);
-  //   }
-  // };
-
 
 
   const handleLogin = (e) => {
@@ -68,7 +26,6 @@ const Login = () => {
             const user = response.data
             console.log(isAdmin)
             console.log(JSON.stringify(response.data.token))
-            // localStorage.setItem("user", JSON.stringify(response.data))
             localStorage.setItem("access_token", response.data.token)
             dispatch({ type: "LOGIN", payload: user })
 
@@ -107,7 +64,6 @@ const Login = () => {
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black">
-
                     <form id="LoginForm" onSubmit={handleLogin}>
                       <div className="d-flex align-items-center mb-3 pb-1">
                         <i className="fas fa-cubes fa-2x me-3" style={{ color: "#ff6219" }}></i>
@@ -131,6 +87,7 @@ const Login = () => {
                       {error && <span>Wrong email or password!</span>}
                       <br />
                       <a href="#!" className="small text-muted">Terms of use.</a>
+                      <br />
                       <a href="#!" className="small text-muted">Privacy policy</a>
                     </form>
 
@@ -141,6 +98,23 @@ const Login = () => {
           </div>
         </div>
       </div >
+
+      <div className="form">
+        <form >
+          <div className="input-container">
+            <label>Username </label>
+            <input type="text" name="uname" required />
+
+          </div>
+          <div className="input-container">
+            <label>Password </label>
+            <input type="password" name="pass" required />
+          </div>
+          <div className="button-container">
+            <input type="submit" />
+          </div>
+        </form>
+      </div>
     </section >
 
 

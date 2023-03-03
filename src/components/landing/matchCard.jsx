@@ -7,11 +7,7 @@ import moment from 'moment';
 
 
 const MatchCard = ({ match, showDetails = true }) => {
-
     console.log(match)
-
-
-
 
     return (
 

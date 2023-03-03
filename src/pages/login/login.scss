@@ -1,7 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 .login{
-  adding: 50px 0;
   background: radial-gradient(rgb(0, 0, 0), #e30d0d);
 
   .row-login {
@@ -65,33 +64,6 @@
   }
 
 
-    // form{
-    //   display: flex;
-    //   flex-direction: column;
-    //   align-items: center;
-
-    //   input{
-    //     width: 200px;
-    //     height: 30px;
-    //     margin: 10px;
-    //   }
-
-    //   button{
-    //     width: 200px;
-    //     height: 30px;
-    //     border: none;
-    //     background-color: purple;
-    //     color: white;
-    //     font-weight: bold;
-    //     cursor: pointer;
-    //   }
-
-    //   span{
-    //     font-size: 12px;
-    //     color: red;
-    //     margin-top: 10px;
-    //   }
-    // }
 
 $white: #fff;
 $google-blue: #4285f4;
@@ -136,5 +108,4 @@ $button-active-blue: #1669F2;
   }
 }
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:500);
 }

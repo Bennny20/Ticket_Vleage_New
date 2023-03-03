@@ -19,21 +19,23 @@ import axios from "../../AxiosConfig";
 
 const Landing = () => {
 
-    var path = "/matchs";
-    const [data, setData] = useState([]);
+    var pathMatch = "/matchs";
+    var pathClub = "/clubs";
+    const [dataMatches, setDataMatches] = useState([]);
+    const [dataClubs, setDataClubs] = useState([]);
     const [matches, setMatches] = useState([]);
     const [clubs, setClubs] = useState([]);
 
     useEffect(
         function () {
-            axios
-                .get(path)
-                .then(function (data) {
-                    console.log(data.data);
-                    setData(data.data);
-                    setMatches(data.data)
-                    matches.map((match) => console.log("test: " + match))
-                })
+            axios.get(pathMatch).then(function (dataMatches) {
+                setMatches(dataMatches.data)
+                console.log("test matches:" + JSON.stringify(matches))
+            })
+            axios.get(pathClub).then(function (dataClubs) {
+                setClubs(dataClubs.data)
+                console.log("test clubs:" + JSON.stringify(clubs))
+            })
                 .catch(function (err) {
                     console.log(32, err);
                 });
@@ -46,6 +48,7 @@ const Landing = () => {
     return (
         <div className="App">
             <Home />
+
             <Row className="d-flex justify-content-center">
                 <Col xs={12} md={10}>
                     <div className="text-center mt-5">
@@ -62,7 +65,20 @@ const Landing = () => {
                     }
                 </Col>
             </Row>
-            <MatchCard />
+
+            <div className="col mt-5">
+                <h1>Clubs</h1>
+
+                {clubs.length === 0 ? (
+                    <Alert className="mt-5" variant="info">
+                        No clubs found Managers Will add soon
+                    </Alert>
+                )
+                    : (
+                        Array.from(clubs).map((x) => <ClubCard key={x._id} club={x} />)
+                    )
+                }
+            </div>
 
             <ClubCard />
             <About />

@@ -8,39 +8,23 @@ import "./clubCard.scss"
 import AboutBackgroundImage from "../assets/about-background-image.png";
 
 
-var path = "/clubs";
 const ClubCard = ({ club, showDetails = true }) => {
-    const [isRender, setisRender] = useState(true);
-    const [data, setData] = useState([]);
-    const [formValue, setDataFormvalue] = useState();
-    const [isShow, setisShow] = useState(true);
-
-    useEffect(
-        function () {
-            axios
-                .get(path)
-                .then(function (data) {
-                    console.log(data.data);
-                    setData(data.data);
-                    localStorage.setItem("clubs", JSON.stringify(data.data))
-                })
-                .catch(function (err) {
-                    console.log(32, err);
-                });
-        },
-        []
-    );
-
-
+    console.log(club)
     return (
-        <div className="container">
-            <img src="/img/pizza.png" alt="" width="500" height="500" />
-            <h1 className="title">CLUB NAME</h1>
-            <span className="price">LOCATION</span>
-            <p className="desc">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
+
+        <div>
+            {club ? <div className="container-club-card">
+                <img src={club.logo} alt="" width="500" height="500" />
+                <h1 className="title">{club.name}</h1>
+                <span className="price">{club.location}</span>
+                <p className="desc">
+                    {club.nameStadium} is a football stadium in {club.location} and the home of {club.name}.
+                </p>
+            </div> : <a></a>}
+
         </div>
+
+
     );
 }
 

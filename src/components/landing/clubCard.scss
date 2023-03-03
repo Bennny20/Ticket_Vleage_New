@@ -1,5 +1,5 @@
-.container {
-    width: 22%;
+.container-club-card {
+    width: 30%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -7,6 +7,9 @@
     justify-content: center;
     padding: 20px 40px;
     cursor: pointer;
+    border-radius: 5px;
+    background-color: silver;
+    margin-right: 10px;
   }
   
   .title {
