@@ -9,7 +9,7 @@ import axios from "../../AxiosConfig";
 var pathClub = "clubs/";
 var pathStadium = "stadium/";
 var pathTournament = "tournaments/";
-var pathRound = "round/tournamentId/";
+var pathRound = "round/";
 var pathUpdate = "matchs/";
 const New = () => {
     //data--------------------------------------------------------
@@ -87,37 +87,36 @@ const New = () => {
         });
     };
 
-    const { clubHomeId, clubVisitorId, roundId, stadiumId, selectStatus, timeStart, capacity } = formValue;
+    const { homeClubId, awayClubId, roundId, stadiumId, status, date } = formValue;
     //handle Change Search round by Tournament-----------------------------------------------------
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
         alert("Add New matchs: "
-            + "\n -Club home: " + clubHomeId
-            + "\n- club Away:" + clubVisitorId
-            + "\n- club StadiumId:" + stadiumId
+            + "\n -Club home: " + homeClubId
+            + "\n- club Away:" + awayClubId
+            + "\n- club StadiumId:" +  stadiumId
             + "\n- club RoundId:" + roundId
-            + "\n- club Status:" + selectStatus
-            + "\n- club Time Start:" + timeStart
-            + "\n- club Quantity:" + capacity)
-        axios.post(pathUpdate, {
-            "clubHomeId": clubHomeId,
-            "clubVisitorId": clubVisitorId,
-            "roundId": roundId,
-            "stadiumId": stadiumId,
-            "capacity": capacity,
-            "status": selectStatus,
-            "timeStart": timeStart
-        })
-            .then(response => {
-                alert("Add success")
-                //Go to club page
-                return window.location.href = "../match"
-            })
-            .catch(error => {
-                alert(error)
-                console.log(error);
-            });
+            + "\n- club Status:" + status
+            + "\n- club Time Start:" + date)
+        // axios.post(pathUpdate, {
+        //     "clubHomeId": clubHomeId,
+        //     "clubVisitorId": clubVisitorId,
+        //     "roundId": roundId,
+        //     "stadiumId": stadiumId,
+        //     "capacity": capacity,
+        //     "status": selectStatus,
+        //     "timeStart": timeStart
+        // })
+        //     .then(response => {
+        //         alert("Add success")
+        //         //Go to club page
+        //         return window.location.href = "../match"
+        //     })
+        //     .catch(error => {
+        //         alert(error)
+        //         console.log(error);
+        //     });
 
         //end to do code
     }
@@ -138,10 +137,10 @@ const New = () => {
                             {/* Club Home */}
                             <div className="formInput" >
                                 <label>Home</label>
-                                <select name="clubHomeId"
+                                <select name="homeClubId"
                                     onClick={handleChange}>
                                     {dataClub.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
+                                        <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -150,10 +149,10 @@ const New = () => {
                             {/* Club Visitor */}
                             <div className="formInput" >
                                 <label>Away</label>
-                                <select name="clubVisitorId"
+                                <select name="awayClubId"
                                     onClick={handleChange}>
                                     {dataClub.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
+                                        <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -165,7 +164,7 @@ const New = () => {
                                 <select name="stadiumId"
                                     onClick={handleChange}>
                                     {dataStadium.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
+                                        <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -175,17 +174,11 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Date</label>
                                 <input type="Date" placeholder=""
-                                    name="timeStart"
+                                    name="date"
                                     onChange={handleChange} />
                             </div>
 
                             {/* Quantity ticket */}
-                            <div className="formInput" >
-                                <label>Quantity ticket</label>
-                                <input type="text" placeholder=""
-                                    name="capacity"
-                                    onChange={handleChange} />
-                            </div>
                             <div className="formInput" >
                                 <label>Status</label>
                                 <select name="selectStatus"
@@ -203,7 +196,7 @@ const New = () => {
                                 <select name="tournamentId"
                                     onClick={handleChange}>
                                     {dataTournament.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
+                                        <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))
                                     }
                                 </select>
@@ -215,7 +208,7 @@ const New = () => {
                                 <select name="roundId"
                                     onClick={handleChange}>
                                     {DataRound.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
+                                        <option value={entity._id} id={entity._id}>{entity.numberRound}</option>
                                     ))
                                     }
                                 </select>

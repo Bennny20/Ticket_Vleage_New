@@ -8,7 +8,7 @@ import axios from "../../AxiosConfig";
 import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 import Chart from "../../components/chart/Chart";
 
-var path = "match/";
+var path = "match/ticketTypes/";
 const Ticket = () => {
   var id = localStorage.getItem("idClickTicket");
   const [isloading, setloading] = useState(true);
@@ -24,11 +24,11 @@ const Ticket = () => {
       axios
         .get(path + id)
         .then(function (data) {
-          console.log("test data ", data.data.status);
-          setClubHome(data.data.clubHome);
-          setClubVisitor(data.data.clubVisitor);
-          setStadium(data.data.stadium);
-          setTimeStart(data.data.timeStart);
+          console.log("test data ", data.data);
+          // setClubHome(data.data.clubHome);
+          // setClubVisitor(data.data.clubVisitor);
+          // setStadium(data.data.stadium);
+          // setTimeStart(data.data.timeStart);
           setloading(false);
         })
         .catch(function (err) {
@@ -95,7 +95,6 @@ const Ticket = () => {
       </div>
 
       <div className="single">
-        <Sidebar />
         <div className="singleContainer">
           <Navbar />
           <div className="top">
