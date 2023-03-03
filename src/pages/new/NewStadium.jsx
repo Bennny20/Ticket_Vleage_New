@@ -8,9 +8,8 @@ import axios from "../../AxiosConfig";
 var path = "stadium/";
 const New = () => {
   const [formValue, setFormValue] = useState({
-    idStadium: "",
-    nameStadium: "",
-    locationStadium: "",
+    name: "",
+    city: "",
     capcity: ""
   });
 
@@ -25,16 +24,16 @@ const New = () => {
     });
   };
 
-  const { idStadium, nameStadium, locationStadium, capcity} = formValue;
+  const { name, city, capcity} = formValue;
   //function
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New Round : " + idStadium + "-" + nameStadium + "-" + locationStadium + "-" + capcity)
+    alert("Add New Round : "  + name + "-" + city + "-" + capcity)
     axios.post(path, {    
         "capacity": capcity,
-        "location": locationStadium,
-        "stadiumName": nameStadium  
+        "city": city,
+        "capcity": capcity  
     })
       .then(response => {
         alert("Add success")
@@ -60,20 +59,11 @@ const New = () => {
           <div className="right">
             <form onSubmit={handleSubmit}>
 
-              {/* ID of Stadium */}
-              <div className="formInput" >
-                <label>ID of Stadium</label>
-                <input type="text"
-                name="idStadium"
-                onChange={handleChange}
-                 placeholder=""  disabled/>
-              </div>
-
               {/* Name of Stadium */}
               <div className="formInput" >
                 <label>Name of Stadium</label>
                 <input type="text"
-                name="nameStadium"
+                name="name"
                 onChange={handleChange}
                  placeholder="Ho Chi Minh City FC" />
               </div>
@@ -82,7 +72,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Location of Stadium</label>
                 <input type="text"
-                name="locationStadium"
+                name="city"
                 onChange={handleChange}
                  placeholder="" />
               </div>

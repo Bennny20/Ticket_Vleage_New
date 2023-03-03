@@ -9,11 +9,11 @@ var pathStadium = "stadium/";
 const New = () => {
   const [formValue, setFormValue] = useState({
     name: "",
-    locationClub: "",
-    stadium: "",
+    location: "",
+    stadiumId: "",
     logo: ""
   });
-  const { name, locationClub, stadium, logo } = formValue;
+  const { name, location, stadiumId, logo } = formValue;
   const [data, setData] = useState([]);
   //UseEffect here-----------------------------------------------------------------------------
   useEffect(
@@ -44,12 +44,12 @@ const New = () => {
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New Club : " + name + "-" + locationClub + "-" + stadium + "-" + logo)
+    alert("Add New Club : " + name + "-" + location + "-" + stadiumId + "-" + logo)
     axios.post(path, {
-      "clubName": name,
-      "country": locationClub,
+      "name": name,
+      "location": location,
       "img": logo,
-      "stadiumId": stadium
+      "stadiumId": stadiumId
     })
       .then(response => {
         alert("Add success")
@@ -89,7 +89,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Location of club</label>
                 <input type="text"
-                  name="locationClub"
+                  name="location"
                   onChange={handleChange}
                 />
               </div>
@@ -98,7 +98,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Stadium</label>
                 <select type="text"
-                  name="stadium"
+                  name="stadiumId"
                   onClick={handleChange}>
                   {data.map((value) => (
                     <option value={value._id} key={value._id}>{value.name}</option>
