@@ -32,6 +32,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import Landing from "./pages/Landing/Landing";
+import BuyTicket from "./pages/BuyTicket/buyTicket";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -76,7 +77,7 @@ function App() {
               <Route index element={<RequiredAuth><TicketByMatch /></RequiredAuth>} />
             </Route>
 
-            
+
             {/* Ticket  */}
             <Route path="ticket">
               <Route index element={<RequiredAuth><Ticket /></RequiredAuth>} />
@@ -108,6 +109,10 @@ function App() {
               <Route path="newStadium" element={<RequiredAuth><NewStadium /></RequiredAuth>} />
             </Route>
 
+            {/* Buy Ticket */}
+            <Route path="buyticket">
+              <Route index element={<RequiredAuth><BuyTicket /></RequiredAuth>} />
+            </Route>
 
 
             {/* Club */}
