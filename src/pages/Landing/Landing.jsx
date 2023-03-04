@@ -82,8 +82,6 @@ const Landing = () => {
 
             <ClubCard />
             <About />
-            <Work />
-            <Testimonial />
             <Contact />
             <Footer />
         </div>

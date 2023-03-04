@@ -19,8 +19,8 @@ const Sidebar = () => {
   const handleLogout = () => {
     localStorage.removeItem("user")
     localStorage.removeItem("access_token")
-    navigate("/");
     console.log("user is logged out")
+    window.location.href = "/"
   }
 
   const { dispatch } = useContext(DarkModeContext);
@@ -49,10 +49,10 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/order" style={{ textDecoration: "none" }}>
-          <li>
-            <FactCheckIcon className="icon" />
-            <span>Order List</span>
-          </li>
+            <li>
+              <FactCheckIcon className="icon" />
+              <span>Order List</span>
+            </li>
           </Link>
           {/* <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
