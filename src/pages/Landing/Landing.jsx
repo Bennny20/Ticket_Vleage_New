@@ -19,7 +19,7 @@ import axios from "../../AxiosConfig";
 
 const Landing = () => {
 
-    var pathMatch = "/matchs";
+    var pathMatch = "/matches";
     var pathClub = "/clubs";
     const [dataMatches, setDataMatches] = useState([]);
     const [dataClubs, setDataClubs] = useState([]);
