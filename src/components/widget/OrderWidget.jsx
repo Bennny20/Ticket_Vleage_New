@@ -13,10 +13,10 @@ const Widget = () => {
     const [data, setData] = useState([]);
     useEffect(
         function () {
-            axios.get("order/all?page=0&size=100&sort=id%2Cdesc")
+            axios.get("order/")
                 .then(function (data) {
-                    console.log(data.data.orderList);
-                    setData(data.data.orderList);
+                    console.log(data.data);
+                    setData(data.data);
                     // console.log(list);
                 })
                 .catch(function (err) {

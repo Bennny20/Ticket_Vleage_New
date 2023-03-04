@@ -10,7 +10,7 @@ import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 //path
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
-var pathMatch = "matchs/round/";
+var pathMatch = "matches/round/";
 var roundId = null;
 const Match = () => {
   //Const-----------------------------------------------------

@@ -14,10 +14,10 @@ const Widget = () => {
     const [data, setData] = useState([]);
     useEffect(
         function () {
-            axios.get("match?page=0&size=100&sort=id%2Cdesc")
+            axios.get("matches/")
                 .then(function (data) {
-                    console.log("match", data.data.matches);
-                    setData(data.data.matches);
+                    console.log("match", data.data);
+                    setData(data.data);
                     // console.log(list);
                 })
                 .catch(function (err) {

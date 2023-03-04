@@ -3,7 +3,7 @@ import axios from "../../AxiosConfig";
 import { useState, useEffect } from "react";
 
 
-var path = "club";
+var path = "clubs/";
 const UpdateClub = (props) => {
     console.log(7, props)
 
@@ -13,11 +13,11 @@ const UpdateClub = (props) => {
                 .get(path + "/" + props.props)
                 .then(function (data) {
                     console.log("data", data.data);
-                    setClubId(data.data.id)
-                    setClubName(data.data.clubName)
-                    setLogo(data.data.img)
+                    setClubId(data.data._id)
+                    setClubName(data.data.name)
+                    setLogo(data.data.logo)
                     setStadiumId(data.data.stadiumId)
-                    setLocation(data.data.country)
+                    setLocation(data.data.location)
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -37,10 +37,10 @@ const UpdateClub = (props) => {
         //To do code here
         alert("Update Club : " + clubId + " - " + clubName + " - " + location + " - " + stadiumId + " - " + logo)
         axios.put(path, {
-            "clubName": clubName,
-            "country": location,
-            "id": clubId,
-            "img": logo,
+            "name": clubName,
+            "location": location,
+            "_id": clubId,
+            "logo": logo,
             "stadiumId": stadiumId
         })
             .then(response => {

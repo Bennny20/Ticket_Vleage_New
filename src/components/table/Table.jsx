@@ -33,7 +33,7 @@ function List(props) {
     localStorage.setItem("idClickTicket", matchId)
     localStorage.setItem("idClickTicketStadium", stadiumId)
     console.log("Click ticket", matchId, stadiumId)
-    return window.location.href = "/ticket"
+    return window.location.href = "/ticketbymatch"
   }
 
   //Handle on click status here ----------------------------------------------------------------------
@@ -54,7 +54,7 @@ function List(props) {
   const handleDelete = (id) => {
     // setData(data.filter((item) => item.id !== id));
     console.log(id);
-    axios.delete("matchs/" + id)
+    axios.delete("matches/" + id)
       .then(res => {
         console.log("check delete ", res);
         alert('Deleted club by id: ' + id);
@@ -75,7 +75,6 @@ function List(props) {
             <TableCell className="tableCell">Away</TableCell>
             <TableCell className="tableCell">Stadium</TableCell>
             <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Capacity</TableCell>
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
@@ -96,13 +95,7 @@ function List(props) {
               </TableCell>
               <TableCell className="tableCell">{value.nameStadium}</TableCell>
               <TableCell className="tableCell">{value.date}</TableCell>
-              <TableCell className="tableCell">
-                {/* <div className="cellAction">
-                  <div className="cellWrapper">
-                    {value.stadium.capacity}
-                  </div>
-                </div> */}
-              </TableCell>
+          
               <TableCell className="tableCell">
                 <span className={`status ${value.status}`}>{handleStatus(value.status)} </span>
               </TableCell>

@@ -48,10 +48,12 @@ const Sidebar = () => {
               <span>Users</span>
             </li>
           </Link>
+          <Link to="/order" style={{ textDecoration: "none" }}>
           <li>
             <FactCheckIcon className="icon" />
             <span>Order List</span>
           </li>
+          </Link>
           {/* <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
               <AccountCircleOutlinedIcon className="icon" />

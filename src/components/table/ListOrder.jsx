@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "order/all?page=0&size=100&sort=id%2Cdesc";
+var path = "order/";
 const Datatable = () => {
   const [data, setData] = useState([]);
   const [isShow, setShow] = useState(true)
@@ -20,7 +20,7 @@ const Datatable = () => {
       axios.get(path)
         .then(function (data) {
           console.log(data.data);
-          setData(data.data.orderList);
+          setData(data.data);
           setShow(false)
         })
         .catch(function (err) {
@@ -48,16 +48,17 @@ const Datatable = () => {
         </TableHead>
         <TableBody>
           {data.map((value) => (
-            <TableRow key={value.id}>
-              <TableCell className="tableCell">{value.id}</TableCell>
-              <TableCell className="tableCell">{value.account.firstname}</TableCell>
-              <TableCell className="tableCell">{value.account.lastname}</TableCell>
-              <TableCell className="tableCell">{value.account.username}</TableCell>
-              <TableCell className="tableCell">{value.orderDate}</TableCell>
-              <TableCell className="tableCell">{value.orderDetails.map((value) => value.ticket.area.areaName + "/")}</TableCell>
-              <TableCell className="tableCell">{value.orderDetails.map((value) => value.quantity + "/")}</TableCell>
-              <TableCell className="tableCell">{value.total}</TableCell>
-            </TableRow>
+            <></>
+            // <TableRow key={value.id}>
+            //   <TableCell className="tableCell">{value.id}</TableCell>
+            //   <TableCell className="tableCell">{value.account.firstname}</TableCell>
+            //   <TableCell className="tableCell">{value.account.lastname}</TableCell>
+            //   <TableCell className="tableCell">{value.account.username}</TableCell>
+            //   <TableCell className="tableCell">{value.orderDate}</TableCell>
+            //   <TableCell className="tableCell">{value.orderDetails.map((value) => value.ticket.area.areaName + "/")}</TableCell>
+            //   <TableCell className="tableCell">{value.orderDetails.map((value) => value.quantity + "/")}</TableCell>
+            //   <TableCell className="tableCell">{value.total}</TableCell>
+            // </TableRow>
           ))}
         </TableBody>
       </Table>

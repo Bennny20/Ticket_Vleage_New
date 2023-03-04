@@ -56,12 +56,12 @@ export const clubColumns = [
   {
     field: "location",
     headerName: "Localtion",
-    width: 300,
+    width: 200,
   },
   {
-    field: "stadiumId",
+    field: "nameStadium",
     headerName: "Stadium",
-    width: 150,
+    width: 250,
   },
   {
     field: "logo",

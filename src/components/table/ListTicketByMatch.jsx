@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "ticket"
+var path = "match/tickets/"
 var matchId = localStorage.getItem("idClickTicket")
 const ListStadium = (props) => {
     const [data, setData] = useState([])
@@ -20,7 +20,7 @@ const ListStadium = (props) => {
     useEffect(
         function () {
             axios
-                .get(path + "/matchId/" + matchId)
+                .get(path + matchId)
                 .then(function (data) {
                     console.log("check data ", data.data);
                     setData(data.data);

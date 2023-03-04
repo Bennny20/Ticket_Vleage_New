@@ -14,6 +14,7 @@ import Profile from "./pages/profile/Profile"
 import Stadium from "./pages/Stadium/Stadium"
 import Match from "./pages/Match/Match"
 import Club from "./pages/Club/Club"
+import TicketByMatch from "./pages/Ticket/Ticket"
 import Ticket from "./pages/Ticket/Ticket"
 import Order from "./pages/order/Order"
 
@@ -70,7 +71,13 @@ function App() {
             </Route>
 
 
-            {/* Ticket */}
+            {/* Ticket  By Match*/}
+            <Route path="ticketbymatch">
+              <Route index element={<RequiredAuth><TicketByMatch /></RequiredAuth>} />
+            </Route>
+
+            
+            {/* Ticket  */}
             <Route path="ticket">
               <Route index element={<RequiredAuth><Ticket /></RequiredAuth>} />
               <Route path="updateTicket" element={<RequiredAuth><UpdateTicket /></RequiredAuth>} />
@@ -87,8 +94,6 @@ function App() {
             {/* Oder */}
             <Route path="order">
               <Route index element={<RequiredAuth><Order /></RequiredAuth>} />
-              {/* <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
-              <Route path="newUser"element={<NewUser/>}/> */}
             </Route>
 
             {/* Profile */}

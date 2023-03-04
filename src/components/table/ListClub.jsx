@@ -63,13 +63,13 @@ const ListStadium = () => {
                         <div>
                             <button
                                 className="updateButton"
-                                onClick={() => handleUpdate(params.row.id)}>
+                                onClick={() => handleUpdate(params.row._id)}>
                                 Update
                             </button>
                         </div>
                         <div>
                             <button className="deleteButtonn"
-                                onClick={() => handleDelete(params.row.id)}>
+                                onClick={() => handleDelete(params.row._id)}>
                                 Delete
                             </button>
                         </div>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 
 var path = "clubs/";
-var pathStadium = "stadium/";
+var pathStadium = "stadiums/";
 const New = () => {
   const [formValue, setFormValue] = useState({
     name: "",

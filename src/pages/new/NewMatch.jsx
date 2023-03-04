@@ -7,9 +7,9 @@ import axios from "../../AxiosConfig";
 
 //path
 var pathClub = "clubs/";
-var pathStadium = "stadium/";
+var pathStadium = "stadiums/";
 var pathTournament = "tournaments/";
-var pathRound = "round/";
+var pathRound = "rounds/";
 var pathUpdate = "matchs/";
 const New = () => {
     //data--------------------------------------------------------
@@ -99,24 +99,23 @@ const New = () => {
             + "\n- club RoundId:" + roundId
             + "\n- club Status:" + status
             + "\n- club Time Start:" + date)
-        // axios.post(pathUpdate, {
-        //     "clubHomeId": clubHomeId,
-        //     "clubVisitorId": clubVisitorId,
-        //     "roundId": roundId,
-        //     "stadiumId": stadiumId,
-        //     "capacity": capacity,
-        //     "status": selectStatus,
-        //     "timeStart": timeStart
-        // })
-        //     .then(response => {
-        //         alert("Add success")
-        //         //Go to club page
-        //         return window.location.href = "../match"
-        //     })
-        //     .catch(error => {
-        //         alert(error)
-        //         console.log(error);
-        //     });
+        axios.post(pathUpdate, {
+            "clubHomeId": homeClubId,
+            "clubVisitorId": awayClubId,
+            "roundId": roundId,
+            "stadiumId": stadiumId,
+            "status": status,
+            "timeStart": date
+        })
+            .then(response => {
+                alert("Add success")
+                //Go to club page
+                return window.location.href = "../match"
+            })
+            .catch(error => {
+                alert(error)
+                console.log(error);
+            });
 
         //end to do code
     }
