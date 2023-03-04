@@ -10,19 +10,17 @@ const UpdateStadium = (props) => {
   console.log(7, props)
 
 
-  var path = "stadium";
+  var path = "stadiums";
   useEffect(
     function () {
       axios
         .get(path + "/" + props.props)
         .then(function (data) {
           console.log("data", data.data);
-          setLogo(data.data.img)
-          setStadiumId(data.data.id)
-          setStadiumName(data.data.stadiumName)
-          setCapacity(data.data.capacity)
-          setLocation(data.data.location)
-          // console.log(list);
+          setStadiumId(data.data._id)
+          setStadiumName(data.data.name)
+          setCapacity(data.data.capcity)
+          setLocation(data.data.city)
         })
         .catch(function (err) {
           console.log(32, err);
@@ -31,7 +29,6 @@ const UpdateStadium = (props) => {
     []
   );
 
-  const [logo, setLogo] = useState([]);
   const [stadiumName, setStadiumName] = useState();
   const [stadiumId, setStadiumId] = useState();
   const [capacity, setCapacity] = useState();
@@ -43,11 +40,10 @@ const UpdateStadium = (props) => {
     //To do code here
     alert("Update Stadium: " + stadiumId + " - " + stadiumName + " - " + capacity + " - " + location)
     axios.put(path, {
-      "capacity": capacity,
-      "id": stadiumId,
-      "img": logo,
-      "location": location,
-      "stadiumName": stadiumName
+      "capcity": capacity,
+      "_id": stadiumId,
+      "city": location,
+      "name": stadiumName
     })
       .then(response => {
         alert("Updated")

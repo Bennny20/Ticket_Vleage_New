@@ -4,38 +4,37 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
+//path
+var pathClub = "clubs/";
+var pathStadium = "stadiums/";
+var pathTournament = "tournaments/";
+var pathRound = "rounds/";
+var pathMatch = "matches/";
 const UpdateMatch = () => {
-
-  var pathClub = "club?page=0&size=20&sort=id%2Cdesc";
-  var pathStadium = "stadium?page=0&size=20&sort=id%2Cdesc";
-  var pathUpdate = "match";
-  var matchID = JSON.parse(localStorage.getItem("editMatchId"));
-
-  console.log("Match ID", matchID)
   //data--------------------------------------------------------
+  const [dataTournament, setDataTournament] = useState([]);
+  const [DataRound, setDataRound] = useState([]);
   const [dataClub, setDataClub] = useState([]);
   const [dataStadium, setDataStadium] = useState([]);
-  const [matchClubHomeId, setMatchClubHomeId] = useState();
-  const [matchClubVisitorId, setMathClubVisitorId] = useState();
-  const [matchStadiumId, setMatchStadiumId] = useState();
-  const [matchRoundID, setMatchRoundId] = useState();
-  const [matchStatus, setMatchStatus] = useState();
-  const [matchTimeStart, setMatchTime] = useState();
-  const [matchCapacity, setMatchCapacity] = useState();
+  const [data, setData] = useState([]);
+  var id = localStorage.getItem("editMatchId");
+  const [formValue, setFormValue] = useState({
+    clubHomeId: "",
+    clubVisitorId: "",
+    roundId: "",
+    stadiumId: "",
+    capacity: "",
+    status: "",
+    timeStart: ""
+  });
   //useEffect
   useEffect(
     function () {
-      //get data match by id
-      axios.get(pathUpdate + "/" + matchID)
+      //Match
+      axios.get(pathMatch + id)
         .then(function (data) {
-          console.log("Test search match by id", data.data);
-          setMatchClubHomeId(data.data.clubHome.id);
-          setMathClubVisitorId(data.data.clubVisitor.id);
-          setMatchStadiumId(data.data.stadium.id);
-          setMatchCapacity(data.data.stadium.capacity);
-          setMatchRoundId(data.data.roundId);
-          setMatchStatus(data.data.status);
-          setMatchTime(data.data.timeStart);
+          console.log("test data ", data.data);
+          setData(data.data);
         })
         .catch(function (err) {
           console.log(32, err);
@@ -43,8 +42,8 @@ const UpdateMatch = () => {
       //get data api Club
       axios.get(pathClub)
         .then(function (data) {
-          console.log("this is data club", data.data.clubs);
-          setDataClub(data.data.clubs);
+          console.log(data.data);
+          setDataClub(data.data);
           // console.log(list);
         })
         .catch(function (err) {
@@ -54,43 +53,72 @@ const UpdateMatch = () => {
       //get data api Stadium
       axios.get(pathStadium)
         .then(function (data) {
-          console.log(data.data.stadiums);
-          setDataStadium(data.data.stadiums);
+          console.log(data.data);
+          setDataStadium(data.data);
           // console.log(list);
         })
         .catch(function (err) {
           console.log(32, err);
         });
-      //get data api Round
+      //get data api Tournament
+      axios
+        .get(pathTournament)
+        .then(function (data) {
+          console.log(18, data.data);
+          setDataTournament(data.data);
+          // console.log(list);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
     },
     []
   );
-  //check data logs
-  console.log("================================");
-  console.log("Match ID :", matchID);
-  console.log("clubHome id onchange :", matchClubHomeId);
-  console.log("clubVisitor id onchange :", matchClubVisitorId);
-  console.log("stadium id onchange :", matchStadiumId);
-  console.log("status :", matchStatus);
-  console.log(" this is time", matchTimeStart);
+  //handle Change Value--------------------------------------------------------------------------
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name == "tournamentId") {
+      axios
+        .get(pathRound + value)
+        .then(function (data) {
+          console.log(data.data);
+          setDataRound(data.data);
+          // console.log(list);
+        })
+        .catch(function (err) {
+          console.log(32, err);
+        });
+    }
+    setFormValue((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
 
-
+  const { homeClubId, awayClubId, roundId, stadiumId, status, date } = formValue;
   //handle Change Search round by Tournament-----------------------------------------------------
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Update matchs: ")
-    axios.put(pathUpdate, {
-      "clubHomeId": matchClubHomeId,
-      "clubVisitorId": matchClubVisitorId,
-      "id": matchID,
-      "roundId": matchRoundID,
-      "stadiumId": matchStadiumId,
-      "status": matchStatus,
-      "timeStart": matchTimeStart
+    alert("Add New matchs: "
+      + "\n -Club home: " + homeClubId
+      + "\n- club Away:" + awayClubId
+      + "\n- club StadiumId:" + stadiumId
+      + "\n- club RoundId:" + roundId
+      + "\n- club Status:" + status
+      + "\n- club Time Start:" + date)
+    axios.post(pathMatch, {
+      "clubHomeId": homeClubId,
+      "clubVisitorId": awayClubId,
+      "roundId": roundId,
+      "stadiumId": stadiumId,
+      "status": status,
+      "timeStart": date
     })
       .then(response => {
-        alert("Success")
+        alert("Add success")
         //Go to club page
         return window.location.href = "../match"
       })
@@ -102,13 +130,15 @@ const UpdateMatch = () => {
     //end to do code
   }
 
+
+
   return (
-    <div className="update">
+    <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Update match</h1>
+          <h1>New match</h1>
         </div>
         <div className="bottom">
           <div className="right">
@@ -116,11 +146,12 @@ const UpdateMatch = () => {
               {/* Club Home */}
               <div className="formInput" >
                 <label>Home</label>
-                <select name="clubHomeId"
-                  value={matchClubHomeId}
-                  onChange={e => setMatchClubHomeId(e.target.value)}>
-                  {dataClub.map((entity) =>
-                    (<option value={entity.id} id={entity.id}>{entity.clubName}</option>))
+                <select name="homeClubId"
+                  value={data.homeClubId}
+                  onClick={handleChange}>
+                  {dataClub.map((entity) => (
+                    <option value={entity._id} id={entity._id}>{entity.name}</option>
+                  ))
                   }
                 </select>
               </div>
@@ -128,11 +159,11 @@ const UpdateMatch = () => {
               {/* Club Visitor */}
               <div className="formInput" >
                 <label>Away</label>
-                <select name="clubVisitorId"
-                  value={matchClubVisitorId}
-                  onChange={e => setMathClubVisitorId(e.target.value)}>
+                <select name="awayClubId"
+                  value={data.awayClubId}
+                  onClick={handleChange}>
                   {dataClub.map((entity) => (
-                    <option value={entity.id} id={entity.id}>{entity.clubName}</option>
+                    <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
                   }
                 </select>
@@ -142,37 +173,67 @@ const UpdateMatch = () => {
               <div className="formInput" >
                 <label>Stadium</label>
                 <select name="stadiumId"
-                  value={matchStadiumId}
-                  onChange={e => setMatchStadiumId(e.target.value)}>
+                  value={data.stadiumId}
+                  onClick={handleChange}>
                   {dataStadium.map((entity) => (
-                    <option value={entity.id} id={entity.id}>{entity.stadiumName}</option>
+                    <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
                   }
                 </select>
               </div>
 
+              {/* Date */}
               <div className="formInput" >
                 <label>Date</label>
-                <input type="datetime-local" placeholder="" value={matchTimeStart} onChange={e => setMatchTime(e.target.value)} />
+                <input type="Date" placeholder=""
+                  name="date"
+                  onChange={handleChange} />
               </div>
 
-              <div className="formInput" >
-                <label>Capacity</label>
-                <input type="text" placeholder="" value={matchCapacity} readOnly disabled />
-              </div>
-
-
+              {/* Quantity ticket */}
               <div className="formInput" >
                 <label>Status</label>
-                <select onChange={e => setMatchStatus(e.target.value)} value={matchStatus}>
-                  <option value="false">Ending</option>
-                  <option value="true">On-going</option>
+                <select name="selectStatus"
+                  value={data.status}
+                  onClick={handleChange}>
+                  <option value="1">Coming</option>
+                  <option value="2">Ending</option>
+                  <option value="3">On-going</option>
                 </select>
               </div>
+
+              {/* Tournament */}
+              <div className="formInput"
+                onChange={handleChange}>
+                <label>Tournament</label>
+                <select name="tournamentId"
+                  onClick={handleChange}>
+                  {dataTournament.map((entity) => (
+                    <option value={entity._id} id={entity._id}>{entity.name}</option>
+                  ))
+                  }
+                </select>
+              </div>
+
+              {/* Round */}
+              <div className="formInput" >
+                <label>Round</label>
+                <select name="roundId"
+                  value={data.roundId}
+                  onClick={handleChange}>
+                  {DataRound.map((entity) => (
+                    <option value={entity._id} id={entity._id}>{entity.numberRound}</option>
+                  ))
+                  }
+                </select>
+              </div>
+
+
               <div className="btnSend">
                 <button>Save</button>
               </div>
             </form>
+
           </div>
         </div>
       </div>

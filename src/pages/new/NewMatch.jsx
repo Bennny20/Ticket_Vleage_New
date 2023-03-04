@@ -10,7 +10,7 @@ var pathClub = "clubs/";
 var pathStadium = "stadiums/";
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
-var pathUpdate = "matchs/";
+var pathCreate = "matches/";
 const New = () => {
     //data--------------------------------------------------------
     const [dataTournament, setDataTournament] = useState([]);
@@ -95,11 +95,11 @@ const New = () => {
         alert("Add New matchs: "
             + "\n -Club home: " + homeClubId
             + "\n- club Away:" + awayClubId
-            + "\n- club StadiumId:" +  stadiumId
+            + "\n- club StadiumId:" + stadiumId
             + "\n- club RoundId:" + roundId
             + "\n- club Status:" + status
             + "\n- club Time Start:" + date)
-        axios.post(pathUpdate, {
+        axios.post(pathCreate, {
             "clubHomeId": homeClubId,
             "clubVisitorId": awayClubId,
             "roundId": roundId,

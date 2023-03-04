@@ -46,7 +46,7 @@ function List(props) {
 
   //Handle update here ----------------------------------------------------------------------
   const handleUpdate = (id) => {
-    localStorage.setItem("editMatchId", JSON.stringify(id));
+    localStorage.setItem("editMatchId", id);
     return window.location.href = "../match/updateMatch"
   };
 

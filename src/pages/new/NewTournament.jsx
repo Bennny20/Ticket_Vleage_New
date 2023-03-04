@@ -9,8 +9,7 @@ var pathTournament = "tournaments/";
 const New = () => {
     const [formValue, setFormValue] = useState({
         tournamentname: "",
-        startDate: "",
-        endDate: "",
+        year : "",
         selectsStatus: ""
     });
 
@@ -25,17 +24,16 @@ const New = () => {
         });
     };
 
-    const { tournamentname, startDate, endDate, selectsStatus } = formValue;
+    const { tournamentname, year, selectsStatus } = formValue;
     //function
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Tournament : " + tournamentname + "-" + startDate + "-" + endDate + "-" + selectsStatus)
+        alert("Add New Tournament : " + tournamentname + "-" + year + "-" + selectsStatus)
         axios.post(pathTournament, {
-            "endDate": endDate,
-            "startDate": startDate,
+            "year": year,
             "status": selectsStatus,
-            "tournamentName": tournamentname
+            "name": tournamentname
           })
             .then(response => {
               alert("Add success")
@@ -70,22 +68,13 @@ const New = () => {
                                  placeholder="V.League 1 - 2021" />
                             </div>
 
-                            {/* Start Date */}
-                            <div className="formInput" >
-                                <label>Start Date</label>
-                                <input type="Date"
-                                name="startDate"
-                                onChange={handleChange}
-                                 placeholder="" />
-                            </div>
-
                             {/* End Date */}
                             <div className="formInput" >
-                                <label>End Date</label>
-                                <input type="Date"
-                                name="endDate"
+                            <label>Year</label>
+                                <input type="text"
+                                name="year"
                                 onChange={handleChange}
-                                 placeholder="" />
+                                 placeholder="2023" />
                             </div>
 
                             {/* Status */}
