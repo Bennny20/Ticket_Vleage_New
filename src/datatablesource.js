@@ -20,25 +20,7 @@ export const userColumns = [
     field: "createdAt",
     headerName: "Date Created",
     width: 150,
-  },
-  // {
-  //   field: "phone",
-  //   headerName: "Phone",
-  //   width: 150,
-  // },
-
-  // {
-  //   field: "status",
-  //   headerName: "Status",
-  //   width: 160,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
-  // },
+  }
 ];
 
 //const of club
@@ -75,20 +57,7 @@ export const clubColumns = [
         </div>
       );
     },
-  },
-
-  // {
-  //   field: "status",
-  //   headerName: "Status",
-  //   width: 160,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
-  // },
+  }
 ];
 
 //const of stadium
@@ -113,18 +82,6 @@ export const stadiumColumns = [
     headerName: "Capacity",
     width: 150,
   }
-  // {
-  //   field: "status",
-  //   headerName: "Status",
-  //   width: 160,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
-  // },
 ];
 
 //const of ticket list
@@ -181,28 +138,23 @@ export const ticketColumns = [
 //const of oder list
 export const oderColumns = [
   {
-    field: "id",
+    field: "_id",
     headerName: "Oder ID",
     width: 100,
   },
   {
-    field: "account.firstname",
-    headerName: "Fisrt Name",
+    field: "name",
+    headerName: "Customer",
     width: 300,
   },
   {
-    field: "account.lastname",
-    headerName: "Last Name",
+    field: "phone",
+    headerName: "Phone",
     width: 300,
   },
   {
-    field: "ticket",
-    headerName: "Ticket",
-    width: 150,
-  },
-  {
-    field: "orderDate",
-    headerName: "Date",
+    field: "address",
+    headerName: "Address",
     width: 150,
   },
   {
@@ -211,7 +163,7 @@ export const oderColumns = [
     width: 150,
   },
   {
-    field: "total",
+    field: "totalPrice",
     headerName: "Total",
     width: 150,
   },

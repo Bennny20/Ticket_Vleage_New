@@ -2271,17 +2271,10 @@
   "resolved" "https://registry.npmjs.org/@remix-run/router/-/router-1.3.3.tgz"
   "version" "1.3.3"
 
-<<<<<<< HEAD
-"@restart/hooks@^0.4.6", "@restart/hooks@^0.4.7":
+"@restart/hooks@^0.4.5", "@restart/hooks@^0.4.6", "@restart/hooks@^0.4.7":
   "integrity" "sha512-3BekqcwB6Umeya+16XPooARn4qEPW6vNvwYnlofIYe6h9qG1/VeD7UvShCWx11eFz5ELYmwIEshz+MkPX3wjcQ=="
   "resolved" "https://registry.npmjs.org/@restart/hooks/-/hooks-0.4.9.tgz"
   "version" "0.4.9"
-=======
-"@restart/hooks@^0.4.5", "@restart/hooks@^0.4.6", "@restart/hooks@^0.4.7":
-  "integrity" "sha512-ZbjlEHcG+FQtpDPHd7i4FzNNvJf2enAwZfJbpM8CW7BhmOAbsHpZe3tsHwfQUrBuyrxWqPYp2x5UMnilWcY22A=="
-  "resolved" "https://registry.npmjs.org/@restart/hooks/-/hooks-0.4.7.tgz"
-  "version" "0.4.7"
->>>>>>> be6dd7df0c152df394871832ab1e0c830e4e7413
   dependencies:
     "dequal" "^2.0.2"
 
@@ -4123,17 +4116,10 @@
   "resolved" "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   "version" "1.2.2"
 
-<<<<<<< HEAD
-"classnames@^2.2.5", "classnames@^2.3.1":
+"classnames@*", "classnames@^2.2.5", "classnames@^2.3.1":
   "integrity" "sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw=="
   "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
   "version" "2.3.2"
-=======
-"classnames@*", "classnames@^2.2.5", "classnames@^2.3.1":
-  "integrity" "sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA=="
-  "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.1.tgz"
-  "version" "2.3.1"
->>>>>>> be6dd7df0c152df394871832ab1e0c830e4e7413
 
 "clean-css@^5.2.2":
   "integrity" "sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww=="
@@ -5871,11 +5857,6 @@
   "integrity" "sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw=="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-
-"fsevents@^2.3.2", "fsevents@~2.3.2":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -10194,16 +10175,7 @@
   "resolved" "https://registry.npmjs.org/thunky/-/thunky-1.1.0.tgz"
   "version" "1.1.0"
 
-<<<<<<< HEAD
-"tiny-warning@^1.0.2":
-=======
-"timsort@^0.3.0":
-  "integrity" "sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q="
-  "resolved" "https://registry.npmjs.org/timsort/-/timsort-0.3.0.tgz"
-  "version" "0.3.0"
-
 "tiny-warning@^1.0.2", "tiny-warning@^1.0.3":
->>>>>>> be6dd7df0c152df394871832ab1e0c830e4e7413
   "integrity" "sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA=="
   "resolved" "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz"
   "version" "1.0.3"
