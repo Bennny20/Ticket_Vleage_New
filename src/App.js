@@ -110,7 +110,7 @@ function App() {
             </Route>
 
             {/* Buy Ticket */}
-            <Route path="buyticket">
+            <Route path="purchase">
               <Route index element={<RequiredAuth><BuyTicket /></RequiredAuth>} />
             </Route>
 
