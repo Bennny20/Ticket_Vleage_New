@@ -21,19 +21,17 @@ const Landing = () => {
 
     var pathMatch = "/matches";
     var pathClub = "/clubs";
-    const [dataMatches, setDataMatches] = useState([]);
-    const [dataClubs, setDataClubs] = useState([]);
     const [matches, setMatches] = useState([]);
     const [clubs, setClubs] = useState([]);
 
     useEffect(
         function () {
-            axios.get(pathMatch).then(function (dataMatches) {
-                setMatches(dataMatches.data)
+            axios.get(pathMatch).then(function (response) {
+                setMatches(response.data)
                 console.log("test matches:" + JSON.stringify(matches))
             })
-            axios.get(pathClub).then(function (dataClubs) {
-                setClubs(dataClubs.data)
+            axios.get(pathClub).then(function (response) {
+                setClubs(response.data)
                 console.log("test clubs:" + JSON.stringify(clubs))
             })
                 .catch(function (err) {

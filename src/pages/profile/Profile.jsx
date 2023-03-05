@@ -1,11 +1,10 @@
 import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/landing/Navbar";
 
 const Single = () => {
   return (
     <div className="single">
-      <Sidebar />
       <div className="singleContainer">
         <Navbar />
         <div className="top">
@@ -44,6 +43,7 @@ const Single = () => {
         </div>
         <div className="bottom">
           <h1 className="title">Last Transactions</h1>
+
         </div>
       </div>
     </div>

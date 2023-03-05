@@ -27,6 +27,7 @@ const Login = () => {
             console.log(isAdmin)
             console.log(JSON.stringify(response.data.token))
             localStorage.setItem("access_token", response.data.token)
+            localStorage.setItem("userId", response.data._id)
             dispatch({ type: "LOGIN", payload: user })
 
             if (isAdmin) {
