@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
-var ticketId = JSON.parse(localStorage.getItem("editTicketId"));
+var ticketId = localStorage.getItem("editTicketId");
 var pathUpdate = "ticket";
 const UpdateTicket = () => {
 
@@ -78,37 +78,37 @@ const UpdateTicket = () => {
                 <div className="top">
                     <h1>Update Ticket</h1>
                 </div>
-                <div className="bottom">
+                 <div className="bottom">
                     <div className="right">
                         <form onSubmit={handleSubmit}>
                             {/* Club Home */}
                             <div className="formInput" >
                                 <label>Ticket ID</label>
-                                <input type="text" value={ticketId} disabled />
+                                {/* <input type="text" value={ticketId} disabled /> */}
                             </div>
 
                             <div className="formInput" >
                                 <label> Area </label>
-                                <input type="text" value={area.areaName} disabled />
+                                {/* <input type="text" value={area.areaName} disabled /> */}
                             </div>
 
                             {/* Club Visitor */}
                             <div className="formInput" >
                                 <label>Amount</label>
-                                <input type="number" value={amount} onChange={e => setAmount(e.target.value)} maxLength={area.capacity} />
+                                {/* <input type="number" value={amount} onChange={e => setAmount(e.target.value)} maxLength={area.capacity} /> */}
                             </div>
 
                             {/* Stadium for match */}
                             <div className="formInput" >
                                 <label>Price</label>
-                                <input type="number" value={price} onChange={e => setPrice(e.target.value)} />
+                                {/* <input type="number" value={price} onChange={e => setPrice(e.target.value)} /> */}
                             </div>
 
                             <div className="btnSend">
                                 <button type="submit">Save</button>
                             </div>
                         </form>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>

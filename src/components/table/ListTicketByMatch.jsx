@@ -35,7 +35,7 @@ const ListStadium = (props) => {
     
     //Handle Update here ----------------------------------------------------------------------------
     const handleUpdate = (id) => {
-        localStorage.setItem("editTicketId", JSON.stringify(id));
+        localStorage.setItem("editTicketId", id);
         return window.location.href = "../ticket/updateTicket"
     };
 
@@ -67,10 +67,8 @@ const ListStadium = (props) => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell className="tableCell">Ticket ID</TableCell>
-                            <TableCell className="tableCell">Area</TableCell>
-                            <TableCell className="tableCell">Stadium ID</TableCell>
-                            <TableCell className="tableCell">Match ID</TableCell>
+                            <TableCell className="tableCell">ID</TableCell>
+                            <TableCell className="tableCell">Stand</TableCell>
                             <TableCell className="tableCell">Amount</TableCell>
                             <TableCell className="tableCell">Price</TableCell>
                         </TableRow>
@@ -80,34 +78,19 @@ const ListStadium = (props) => {
                             <TableRow key={value.id}>
                                 <TableCell className="tableCell">
                                     <div className="cellWrapper">
-                                        {value.id}
+                                        {value._id}
                                     </div>
                                 </TableCell>
                                 <TableCell className="tableCell">
                                     <div className="cellWrapper">
-                                        {value.area.areaName}
-                                    </div>
-                                </TableCell>
-                                <TableCell className="tableCell">
-                                    <div className="cellAction">
-                                        <div className="cellWrapper">
-                                            {value.area.stadiumId}
-                                        </div>
+                                        {value.nameStand}
                                     </div>
                                 </TableCell>
 
                                 <TableCell className="tableCell">
                                     <div className="cellAction">
                                         <div className="cellWrapper">
-                                            {value.matchId}
-                                        </div>
-                                    </div>
-                                </TableCell>
-
-                                <TableCell className="tableCell">
-                                    <div className="cellAction">
-                                        <div className="cellWrapper">
-                                            {value.amount}
+                                            {value.quantity}
                                         </div>
                                     </div>
                                 </TableCell>
@@ -125,13 +108,13 @@ const ListStadium = (props) => {
                                         </Link>
                                         <Link to="" style={{ textDecoration: "none" }}>
                                             <div className="deleteButton" onClick={e => handleSoldOut(
-                                                value.id,
-                                                value.areaId,
-                                                value.area.areaName,
-                                                value.area.capacity,
-                                                value.area.stadiumId,
-                                                value.matchId,
-                                                value.price
+                                                // value.id,
+                                                // value.areaId,
+                                                // value.area.areaName,
+                                                // value.area.capacity,
+                                                // value.area.stadiumId,
+                                                // value.matchId,
+                                                // value.price
                                             )} >Sold Out</div>
                                         </Link>
                                     </div>

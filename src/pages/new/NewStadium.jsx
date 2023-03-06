@@ -5,7 +5,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState } from "react";
 import axios from "../../AxiosConfig";
 
-var path = "stadium/";
+var path = "stadiums/";
 const New = () => {
   const [formValue, setFormValue] = useState({
     name: "",

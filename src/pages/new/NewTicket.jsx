@@ -4,16 +4,14 @@ import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig"
 
-var pathMatch = "match/";
+var pathMatch = "matches/";
 var matchId = localStorage.getItem("idClickTicket");
 var stadiumId = localStorage.getItem("idClickTicketStadium");
 var pathArea = "area/stadiumId/"
-var pathAdd = "ticket"
+var pathAdd = "match/tickets/"
 const New = () => {
-  const [clubHome, setClubHome] = useState();
-  const [clubVist, setClubVist] = useState();
-  const [stadium, setStadium] = useState();
-  const [time, setTime] = useState();
+  const [dataMatch, setDataMatch] = useState([]);
+  const [dataTicket, setDataTicket] = useState([]);
   useEffect(
     function () {
       console.log(13, matchId, stadiumId)
@@ -23,10 +21,7 @@ const New = () => {
         .then(function (data) {
           console.log(data.data);
           // setData(data.data);
-          setClubHome(data.data.clubHome.clubName)
-          setClubVist(data.data.clubVisitor.clubName)
-          setStadium(data.data.stadium.stadiumName)
-          setTime(data.data.timeStart)
+          setDataMatch(data.data);
         })
         .catch(function (err) {
           console.log(32, err);
@@ -36,7 +31,7 @@ const New = () => {
         .get(pathArea + stadiumId)
         .then(function (data) {
           console.log(data.data);
-          setData(data.data);
+          setDataTicket(data.data);
         })
         .catch(function (err) {
           console.log(32, err);
@@ -84,11 +79,11 @@ const New = () => {
 
   const [data, setData] = useState([])
   const form = (
-    <div className="bottom">
+  {/*  <div className="bottom">
       <div className="right">
         <form onSubmit={handleSubmit}>
 
-          <div className="formInput" >
+           <div className="formInput" >
             <label>Match</label>
             <input type="text"
               value={clubHome + " - " + clubVist} disabled />
@@ -138,7 +133,7 @@ const New = () => {
           </div>
         </form>
       </div>
-    </div>
+    </div> */}
   )
   return (
     <div className="new">

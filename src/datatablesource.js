@@ -52,8 +52,8 @@ export const clubColumns = [
     renderCell: (img) => {
       return (
         <div className="allImage">
-          <img style={{width: "32px",height: "32px", borderRadius: "50%",marginRight: "10px",objectFit: "cover"}}
-           src={img.value} alt="" className="image"/>
+          <img style={{ width: "32px", height: "32px", borderRadius: "50%", marginRight: "10px", objectFit: "cover" }}
+            src={img.value} alt="" className="image" />
         </div>
       );
     },

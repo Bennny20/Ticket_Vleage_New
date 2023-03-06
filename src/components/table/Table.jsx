@@ -1,38 +1,32 @@
 import "./table.scss";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import TablePagination from '@mui/material/TablePagination';
+import { DataGrid } from "@mui/x-data-grid";
+import { matchColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import axios from "../../AxiosConfig";
 import { useState } from "react";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 import { useEffect } from "react";
-import { alignProperty } from "@mui/material/styles/cssUtils";
 
 function List(props) {
   console.log(props)
-  const [isShow, setShow] = useState(true)
+  const [data, setData] = useState([]);
+  const [isRender, setisRender] = useState(true);
 
   //UseEffect here ----------------------------------------------------------------------
   useEffect(
     function () {
       if (props.props.length > 0) {
-        console.log(props.props)
-        setShow(false)
+        console.log(props.props);
+        setData(props.props);
+        setisRender(false);
       }
     }
   )
 
   //Handle on click ticket here ----------------------------------------------------------------------
-  const handleOnClick = (matchId, stadiumId) => {
+  const handleOnClick = (matchId) => {
     localStorage.setItem("idClickTicket", matchId)
-    localStorage.setItem("idClickTicketStadium", stadiumId)
-    console.log("Click ticket", matchId, stadiumId)
+    console.log("Click ticket", matchId)
     return window.location.href = "/ticketbymatch"
   }
 
@@ -65,67 +59,63 @@ function List(props) {
       });
   };
 
-  //Form data here ----------------------------------------------------------------------
-  const table = (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="tableCell">Home</TableCell>
-            <TableCell className="tableCell">Away</TableCell>
-            <TableCell className="tableCell">Stadium</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.props.map((value) => (
-            <TableRow key={value._id}>
-              <TableCell className="tableCell">
-                <div className="cellWrapper">
-                  <img src={value.logoHomeClub} alt="" className="image" />
-                  {value.nameHomeClub}
-                </div>
-              </TableCell>
-              <TableCell className="tableCell">
-                <div className="cellWrapper">
-                  <img src={value.logoAwayClub} alt="" className="image" />
-                  {value.nameAwayClub}
-                </div>
-              </TableCell>
-              <TableCell className="tableCell">{value.nameStadium}</TableCell>
-              <TableCell className="tableCell">{value.date}</TableCell>
-          
-              <TableCell className="tableCell">
-                <span className={`status ${value.status}`}>{handleStatus(value.status)} </span>
-              </TableCell>
-              <TableCell className="tableCell">
+  // Form action of data grid----------------------------------------------------------
+  const actionColumn = [
+    {
+        field: "action",
+        headerName: "Action",
+        width: 200,
+        renderCell: (params) => {
+            return (
                 <div className="cellAction">
-                  <Link to="/match/updateMatch" style={{ textDecoration: "none" }}>
-                    <div className="updateButton" onClick={e => (handleUpdate(value._id))}> Update</div>
-                  </Link>
-                  <Link to="" style={{ textDecoration: "none" }}>
-                    <div className="ticketButton" onClick={() => (handleOnClick(value._id, value.stadiumId))}>Ticket</div>
-                  </Link>
+                    <div>
+                        <button
+                            className="updateButton"
+                            onClick={() => handleUpdate(params.row._id)}>
+                            Update
+                        </button>
+                    </div>
+                    <div>
+                        <button className="ticketButton"
+                            onClick={() => handleOnClick(params.row._id)}>
+                            Ticket
+                        </button>
+                    </div>
                 </div>
-              </TableCell>
+            );
+        },
+    },
+];
+  // Form data grid----------------------------------------------------------
+  const dataGrid = (
+    <><DataGrid
+        className="datagrid"
+        rows={data}
+        columns={matchColumns.concat(actionColumn)}
+        getRowId={(row) => row._id}
+        pageSize={8}
+        rowsPerPageOptions={[8]} /></>
+)
 
-            </TableRow>
+// Form check show loading if undefine data----------------------------------------------------------
+const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
 
-          ))}
+// Form render here----------------------------------------------------------
+return (
+    <div className="datatable">
+        <div className="datatableTitle">
+            List Match
+            <Link to="/match/newMatch" >
+                <button className="newButton">
+                    Add New
+                </button>
+            </Link>
+        </div>
+        {loading}
+    </div>
+);
 
-        </TableBody>
 
-      </Table>
-    </TableContainer>
-  )
-
-  //Render here ----------------------------------------------------------------------
-  return (
-    <>
-      {isShow ? <LoadingSpinner /> : table}
-    </>
-  );
 };
 
 export default List;
