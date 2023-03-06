@@ -6,40 +6,43 @@ import axios from "../../AxiosConfig"
 
 var pathMatch = "matches/";
 var matchId = localStorage.getItem("idClickTicket");
-var stadiumId = localStorage.getItem("idClickTicketStadium");
-var pathArea = "area/stadiumId/"
-var pathAdd = "match/tickets/"
+var pathStand = "stands/stadium/"
+var pathTicket = "match/tickets/";
 const New = () => {
   const [dataMatch, setDataMatch] = useState([]);
   const [dataTicket, setDataTicket] = useState([]);
+  const [stadiumId, setStadiumId] = useState([]);
   useEffect(
     function () {
       console.log(13, matchId, stadiumId)
-      //Get Data Match
+      // Get Data Match
       axios
         .get(pathMatch + matchId)
         .then(function (data) {
-          console.log(data.data);
+          console.log("Test Data Match", data.data);
           // setData(data.data);
           setDataMatch(data.data);
+          setStadiumId(data.data.stadiumId)
+          getlistStand();
         })
         .catch(function (err) {
           console.log(32, err);
         });
 
-      axios
-        .get(pathArea + stadiumId)
-        .then(function (data) {
-          console.log(data.data);
-          setDataTicket(data.data);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
-    },
-    []
+
+    }, [stadiumId]
   )
-
+  function getlistStand() {
+    axios
+      .get(pathStand + stadiumId)
+      .then(function (data) {
+        console.log("Test List Stand", data.data);
+        setDataTicket(data.data);
+      })
+      .catch(function (err) {
+        console.log(32, err);
+      });
+  }
   const [formValue, setFormValue] = useState({
     idMatch: matchId,
     idArea: "",
@@ -56,16 +59,16 @@ const New = () => {
     });
   };
 
-  const { idMatch, idArea, amount, price } = formValue;
+  const { idArea, amount, price } = formValue;
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New Ticket : " + idMatch + "-" + idArea + "-" + amount + "-" + price)
-    axios.post(pathAdd, {
-      "amount": amount,
-      "areaId": idArea,
-      "matchId": idMatch,
-      "price": price
+    alert("Add New Ticket : " + matchId + "-" + idArea + "-" + amount + "-" + price)
+    axios.post(pathTicket + matchId, {
+      "standId": idArea,
+      "matchId": matchId,
+      "price": price,
+      "quantity" : amount
     })
       .then(response => {
         alert("Add success")
@@ -77,40 +80,31 @@ const New = () => {
       });
   }
 
-  const [data, setData] = useState([])
   const form = (
-  {/*  <div className="bottom">
+    <div className="bottom">
       <div className="right">
         <form onSubmit={handleSubmit}>
 
-           <div className="formInput" >
+          <div className="formInput" >
             <label>Match</label>
             <input type="text"
-              value={clubHome + " - " + clubVist} disabled />
+              value={dataMatch.nameHomeClub + " -  vs  - " + dataMatch.nameAwayClub} disabled />
           </div>
 
           <div className="formInput" >
             <label> Date </label>
             <input type="text"
-              value={time} disabled />
+              value={dataMatch.date} disabled />
           </div>
 
 
           <div className="formInput" >
             <label> Stadium </label>
             <input type="text"
-              value={stadium} disabled />
+              value={dataMatch.nameStadium} disabled />
           </div>
 
-          <div className="formInput" >
-            <label> Area </label>
-            <select name="idArea"
-              onClick={handleChange}>
-              {data.map((entity) => (
-                <option value={entity.id} id={entity.id}>{entity.areaName}</option>
-              ))}
-            </select>
-          </div>
+
 
 
           <div className="formInput" >
@@ -120,6 +114,15 @@ const New = () => {
               onChange={handleChange} />
           </div>
 
+          <div className="formInput" >
+            <label> Stand </label>
+            <select name="idArea"
+              onClick={handleChange}>
+              {dataTicket.map((entity) => (
+                <option value={entity._id} id={entity._id}>{entity.name}</option>
+              ))}
+            </select>
+          </div>
 
           <div className="formInput" >
             <label>Price</label>
@@ -128,12 +131,13 @@ const New = () => {
               onChange={handleChange} />
           </div>
 
+
           <div className="btnSend">
             <button type="submit">Save</button>
           </div>
         </form>
       </div>
-    </div> */}
+    </div>
   )
   return (
     <div className="new">

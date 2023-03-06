@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "../../AxiosConfig";
 import moment from 'moment';
 
@@ -8,6 +8,16 @@ import moment from 'moment';
 
 const MatchCard = ({ match, showDetails = true }) => {
     console.log(match)
+    const navigate = useNavigate();
+
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(JSON.stringify(match))
+        localStorage.setItem("onClickMatch", match._id)
+        // navigate("/purchase")
+        return window.location.href = "/purchase"
+    }
 
     return (
 
@@ -73,12 +83,11 @@ const MatchCard = ({ match, showDetails = true }) => {
                         <Row>
                             <Col className="d-flex  justify-content-end align-items-center">
                                 <Button
-                                    // as={Link}
-                                    // to={`/matches/${match.id}`}
+                                    onClick={handleSubmit}
                                     variant="secondary"
                                     className="px-3 rounded-3"
                                 >
-                                    Details
+                                    Buy Ticket
                                 </Button>
                             </Col>
                         </Row>

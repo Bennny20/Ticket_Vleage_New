@@ -24,7 +24,8 @@ function List(props) {
   )
 
   //Handle on click ticket here ----------------------------------------------------------------------
-  const handleOnClick = (matchId) => {
+  const handleOnClick = (matchId, stadiumId) => {
+    localStorage.setItem("idClickTicketStadium", matchId)
     localStorage.setItem("idClickTicket", matchId)
     console.log("Click ticket", matchId)
     return window.location.href = "/ticketbymatch"

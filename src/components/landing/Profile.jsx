@@ -56,20 +56,16 @@ const Profile = () => {
 
                             <hr className="mb-0" style={{ margin: "0 -24px 0" }} />
 
-                            {/* <div
+                            <div
                                 className="list-group list-group-flush"
                                 style={{ margin: "0 -24px 0" }}
                             >
                                 <button className="list-group-item list-group-item-action px-4">
-                                    <small>Change Requests</small>
+
+                                    <a href="/profile">Profile</a>
                                 </button>
-                                <button className="list-group-item list-group-item-action px-4">
-                                    <small>Pending Requests</small>
-                                </button>
-                                <button className="list-group-item list-group-item-action px-4">
-                                    <small>Other Requests</small>
-                                </button>
-                            </div> */}
+
+                            </div>
 
                             <hr style={{ margin: "0 -24px 24px" }} />
 

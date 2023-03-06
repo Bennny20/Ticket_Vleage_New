@@ -33,6 +33,7 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
 import Landing from "./pages/Landing/Landing";
 import BuyTicket from "./pages/BuyTicket/buyTicket";
+import Single from "./pages/single/Single";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -121,6 +122,8 @@ function App() {
               <Route path="updateClub" index element={<RequiredAuth><UpdateClub /></RequiredAuth>} />
               <Route path="newClub" element={<RequiredAuth><NewClub /></RequiredAuth>} />
             </Route>
+
+
 
           </Route>
         </Routes>

@@ -1,18 +1,16 @@
 import "./single.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
 import List from "../../components/table/Table";
+import Navbar from "../../components/landing/Navbar";
 
 const Single = () => {
   return (
     <div className="single">
-      <Sidebar />
+      <Navbar />
       <div className="singleContainer">
-        <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            {/* <div className="editButton">Edit</div> */}
             <h1 className="title">Information</h1>
             <div className="item">
               <img
@@ -48,8 +46,8 @@ const Single = () => {
           </div>
         </div>
         <div className="bottom">
-        <h1 className="title">Last Transactions</h1>
-          <List/>
+          <h1 className="title">Last Transactions</h1>
+
         </div>
       </div>
     </div>

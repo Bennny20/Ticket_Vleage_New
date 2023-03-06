@@ -139,33 +139,35 @@ export const ticketColumns = [
 export const oderColumns = [
   {
     field: "_id",
-    headerName: "Oder ID",
-    width: 100,
+    headerName: "Order ID",
+    width: 200,
   },
   {
     field: "name",
-    headerName: "Customer",
-    width: 300,
+    headerName: "Username",
+    width: 100,
+  },
+
+  {
+    field: "quantity",
+    headerName: "Quantity",
+    width: 100,
+  },
+  {
+    field: "totalPrice",
+    headerName: "Total Payment",
+    width: 150,
   },
   {
     field: "phone",
     headerName: "Phone",
-    width: 300,
+    width: 100,
   },
   {
     field: "address",
     headerName: "Address",
     width: 150,
-  },
-  {
-    field: "quantity",
-    headerName: "Quantity",
-    width: 150,
-  },
-  {
-    field: "totalPrice",
-    headerName: "Total",
-    width: 150,
+    width: 100,
   },
   // {
   //   field: "status",
@@ -179,6 +181,30 @@ export const oderColumns = [
   //     );
   //   },
   // },
+];
+
+export const userOrderColumns = [
+  {
+    field: "_id",
+    headerName: "Order ID",
+    width: 300,
+  },
+  {
+    field: "name",
+    headerName: "Username",
+    width: 100,
+  },
+
+  {
+    field: "quantity",
+    headerName: "Quantity",
+    width: 100,
+  },
+  {
+    field: "totalPrice",
+    headerName: "Total Payment",
+    width: 150,
+  }
 ];
 
 
