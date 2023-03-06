@@ -180,3 +180,71 @@ export const oderColumns = [
   //   },
   // },
 ];
+
+
+//Match Colums
+export const matchColumns = [
+  {
+    field: "_id",
+    headerName: "ID",
+    width: 70,
+  },
+  {
+    field: "logoHomeClub",
+    headerName: "-",
+    width: 50,
+    renderCell: (img) => {
+      return (
+        <div className="allImage">
+          <img style={{ width: "32px", height: "32px", borderRadius: "50%", marginRight: "10px", objectFit: "cover" }}
+            src={img.value} alt="" className="image" />
+        </div>
+      );
+    },
+  },
+  {
+    field: "nameHomeClub",
+    headerName: "Home",
+    width: 200,
+  },
+  {
+    field: "logoAwayClub",
+    headerName: "-",
+    width: 50,
+    renderCell: (img) => {
+      return (
+        <div className="allImage">
+          <img style={{ width: "32px", height: "32px", borderRadius: "50%", marginRight: "10px", objectFit: "cover" }}
+            src={img.value} alt="" className="image" />
+        </div>
+      );
+    },
+  },
+  {
+    field: "nameAwayClub",
+    headerName: "Away",
+    width: 200,
+  },
+  {
+    field: "nameStadium",
+    headerName: "Stadium",
+    width: 200,
+  },
+  {
+    field: "date",
+    headerName: "Date",
+    width: 115,
+  },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 60,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.status}`}>
+          {params.row.status}
+        </div>
+      );
+    },
+  }
+];
