@@ -8,7 +8,8 @@ import { AuthContext } from "../../context/AuthContext";
 //npm install react-simple-widgets
 const Profile = () => {
     const navigate = useNavigate();
-    const { currentUser } = useContext(AuthContext)
+    const user = localStorage.getItem("user")
+    const { currentUser, dispatch } = useContext(AuthContext)
 
     // function capitalName(text) {
     //     return text.charAt(0).toUpperCase() + text.slice(100);
@@ -16,9 +17,8 @@ const Profile = () => {
 
 
     const handleLogout = () => {
-        localStorage.removeItem("user")
+        dispatch({ type: "LOGOUT", payload: user })
         localStorage.removeItem("access_token")
-        navigate("/");
         console.log("user is logged out")
     }
 
@@ -61,8 +61,7 @@ const Profile = () => {
                                 style={{ margin: "0 -24px 0" }}
                             >
                                 <button className="list-group-item list-group-item-action px-4">
-
-                                    <a href="/profile">Profile</a>
+                                    <a className="profile-btn" href="/profile">Profile</a>
                                 </button>
 
                             </div>
@@ -70,7 +69,7 @@ const Profile = () => {
                             <hr style={{ margin: "0 -24px 24px" }} />
 
                             <div className="d-grid">
-                                <a href="/" className="btn btn-secondary">
+                                <a href="/" className="btn btn-primary">
                                     <span onClick={handleLogout}>Logout</span>
                                 </a>
                             </div>

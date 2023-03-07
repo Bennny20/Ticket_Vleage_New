@@ -37,26 +37,28 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
     //handle Change Search round by Tournament-----------------------------------------------------
     function handleSubmit(event) {
         event.preventDefault();
-        axios.post("/order", { "customerId": customerId })
-            .then(response => {
-                console.log("test create order:" + response.data)
-                console.log("test amount: " + amount)
-                setOrderId(response.data._id)
-                console.log("test orderid :" + orderId)
-                axios.post("/orderDetail", {
-                    "ticketTypeId": ticketTypeId,
-                    "orderId": response.data._id,
-                    "amount": amount
-                }).then(response => {
-                    console.log("test create order detail: " + response.data)
-                    alert("orderDetail create successfully :" + response.data._id)
+        if (amount > 0) {
+            axios.post("/order", { "customerId": customerId })
+                .then(response => {
+                    console.log("test create order:" + response.data)
+                    console.log("test amount: " + amount)
+                    setOrderId(response.data._id)
+                    console.log("test orderid :" + orderId)
+                    axios.post("/orderDetail", {
+                        "ticketTypeId": ticketTypeId,
+                        "orderId": response.data._id,
+                        "amount": amount
+                    }).then(response => {
+                        console.log("test create order detail: " + response.data)
+                        alert("orderDetail create successfully :" + response.data._id)
+                    })
                 })
-            })
 
-            .catch(error => {
-                alert(error)
-                console.log(error);
-            });
+                .catch(error => {
+                    alert(error)
+                    console.log(error);
+                });
+        } else alert("Quantity at least 1.")
 
         //end to do code
     }

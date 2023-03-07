@@ -3,6 +3,12 @@ body {
     
   
     #app {
+      .profile-btn{
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: black;
+      }
       .btn-primary{
         color: black;
         padding: 0.9rem 1.75rem;
