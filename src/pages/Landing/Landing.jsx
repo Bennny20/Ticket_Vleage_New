@@ -9,14 +9,15 @@ import { Alert, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
+//npm install slick-carousel --save
 
 const Landing = () => {
 
     var pathMatch = "/matches";
-    var pathClub = "/clubs";
     const [matches, setMatches] = useState([]);
-    const [clubs, setClubs] = useState([]);
 
     useEffect(
         function () {
@@ -24,16 +25,14 @@ const Landing = () => {
                 setMatches(response.data)
                 console.log("test matches:" + JSON.stringify(matches))
             })
-            axios.get(pathClub).then(function (response) {
-                setClubs(response.data)
-                console.log("test clubs:" + JSON.stringify(clubs))
-            })
                 .catch(function (err) {
                     console.log(32, err);
                 });
         },
         []
     );
+
+
 
 
 
@@ -59,20 +58,8 @@ const Landing = () => {
             </Row>
 
             <div className="col mt-5">
-                <h1>Clubs</h1>
-
-                {clubs.length === 0 ? (
-                    <Alert className="mt-5" variant="info">
-                        No clubs found Managers Will add soon
-                    </Alert>
-                )
-                    : (
-                        Array.from(clubs).map((x) => <ClubCard key={x._id} club={x} />)
-                    )
-                }
+                <ClubCard />
             </div>
-
-            <ClubCard />
             <About />
             <Contact />
             <Footer />

@@ -14,9 +14,9 @@ const Navbar = () => {
   return (
 
     <div className="header">
-      <a class="logo" href="/"><img src={Logo} alt="logo" /></a>
+      <a className="logo" href="/"><img src={Logo} alt="logo" /></a>
       <nav>
-        <ul class="nav__links">
+        <ul className="nav__links">
           <li><a href="#">Matches</a></li>
           <li><a href="#">Clubs</a></li>
           <li><a href="#">About</a></li>
@@ -25,7 +25,7 @@ const Navbar = () => {
       {
         currentUser ? <UserButton className="cta" /> : <a className="primary-button cta" href="/login">Login</a>
       }
-    </div>
+    </div >
   );
 };
 

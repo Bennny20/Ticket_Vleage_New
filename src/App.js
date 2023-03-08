@@ -93,7 +93,7 @@ function App() {
               <Route path="newUser" element={<NewUser />} />
             </Route>
 
-            {/* Oder */}
+            {/* Order */}
             <Route path="order">
               <Route index element={<RequiredAuth><Order /></RequiredAuth>} />
             </Route>

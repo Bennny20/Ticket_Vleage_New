@@ -13,7 +13,8 @@ const Profile = () => {
 
 
   return (
-    <div><Navbar />
+    <div>
+      <Navbar />
       <div className="single">
 
         <div className="singleContainer">
