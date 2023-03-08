@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import stadiumIcon from "../assets/stadium-icon.png"
+import pinIcon from "../assets/pin.png"
 import axios from "../../AxiosConfig";
 import moment from 'moment';
 
@@ -50,7 +51,7 @@ const MatchCard = ({ match, showDetails = true }) => {
                         </div>
                     </div>
                     <div className="match-info">
-                        <img className='icon' src={stadiumIcon} alt="" /> <h4 className="group">{match.nameStadium}</h4>
+                        <img className='icon' src={pinIcon} alt="" /> <h4 className="group">{match.nameStadium}</h4>
                         <button className="match-badge" onClick={handleSubmit} >TICKET</button>
                     </div>
                 </div>
