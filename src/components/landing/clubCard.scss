@@ -10,11 +10,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  h1{
+  h3{
       width: 90%;
       text-align: left;
       text-transform: capitalize;
-      font-size: 2.2vw;
+      font-size: 1.6rem;
       font-weight: 600;
       color: rgb(58, 58, 58);
   }
@@ -33,7 +33,7 @@
   
         h2{
             color: rgb(58, 58, 58);
-            font-size: 1.3vw;
+            font-size: 1.5vw;
             font-weight: 600;
             padding-left: 8px;
             white-space: nowrap;
@@ -48,7 +48,7 @@
           font-weight: 600;
           padding-left: 8px;
           white-space: nowrap;
-          overflow: hidden;
+          // overflow: hidden;
           text-overflow: ellipsis;
           line-height: 1;
           padding-top: 8px;
@@ -94,7 +94,7 @@
           margin: 0;
         }
         p{
-        color: #0a9e88;
+        color: #636e72;
           font-weight: bold;
           margin: 0;
         }
@@ -115,9 +115,8 @@
       cursor: pointer;
       border: none;
       border-radius: 5vw;
-      background-color: #2ecc71 !important;
+      background-color: var(--10) !important;
       z-index: 99 !important;
-      box-shadow: rgba(114, 114, 114, 0.5) 0px 0px 20px 5px;
       top: 40%;
       &:hover{
       background-color:#f6f6f6 ;

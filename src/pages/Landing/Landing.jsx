@@ -23,7 +23,7 @@ const Landing = () => {
         function () {
             axios.get(pathMatch).then(function (response) {
                 setMatches(response.data)
-                console.log("test matches:" + JSON.stringify(matches))
+                console.log("test matches:" + matches)
             })
                 .catch(function (err) {
                     console.log(32, err);
@@ -39,25 +39,21 @@ const Landing = () => {
     return (
         <div className="App">
             <Home />
-
-            <Row className="d-flex justify-content-center">
-                <Col xs={12} md={10}>
-                    <div className="text-center mt-5">
-                        <h1>Incomming Matches</h1>
-                    </div>
-                    {matches.length === 0 ? (
-                        <Alert className="mt-5" variant="info">
-                            No matches found Managers Will add soon
-                        </Alert>
+            <div className="text-center pt-5">
+                <h1>Incomming Matches</h1>
+            </div>
+            <div className="matchs">
+                {matches.length === 0 ? (
+                    <Alert className="mt-5" variant="info">
+                        No matches found Managers Will add soon
+                    </Alert>
+                )
+                    : (
+                        Array.from(matches).map((x) => <MatchCard key={x._id} match={x} />)
                     )
-                        : (
-                            Array.from(matches).map((x) => <MatchCard key={x._id} match={x} />)
-                        )
-                    }
-                </Col>
-            </Row>
+                }</div>
 
-            <div className="col mt-5">
+            <div className="col">
                 <ClubCard />
             </div>
             <About />

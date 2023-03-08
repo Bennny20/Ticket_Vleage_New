@@ -2,6 +2,8 @@ import axios from "../../AxiosConfig";
 import React, { useEffect, useState } from "react";
 import "./clubCard.scss"
 import Slider from "react-slick";
+import stadiumIcon from "../assets/stadium-icon.png"
+import pinIcon from "../assets/pin.png"
 
 
 //npm install react-slick --save
@@ -16,7 +18,6 @@ const ClubCard = () => {
         function () {
             axios.get(pathClub).then(function (response) {
                 setClubs(response.data)
-                console.log("test clubs:" + clubs)
             })
                 .catch(function (err) {
                     console.log("clubCard err: ", err);
@@ -46,7 +47,7 @@ const ClubCard = () => {
 
 
         <div className="card__container">
-            <h1>TEAMS</h1>
+            <h3>TEAMS</h3>
             <Slider {...settings} className="card__container--inner">
                 {Array.from(clubs).map((club) => {
                     return (
@@ -56,13 +57,14 @@ const ClubCard = () => {
 
                             <div className="card__container--inner--card--date_time">
 
-                                <img src="https://www.wanderon.in/svg/map-pin.svg" alt="location" />
+                                <img src={pinIcon} alt="location" />
                                 <p>{club.location}</p>
                             </div>
+                            <div className="card__container--inner--card--date_time">
+                                <img src={stadiumIcon} alt="location" /><h3>{club.nameStadium}</h3>
+                            </div>
                             <div className="card__info">
-                                <h2>{club.name}</h2>
-                                <h3>{club.nameStadium}</h3>
-
+                                <h2>{club.name} FC</h2>
                             </div>
 
                         </div>

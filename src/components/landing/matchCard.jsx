@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import stadiumIcon from "../assets/stadium-icon.png"
 import axios from "../../AxiosConfig";
 import moment from 'moment';
-
 
 
 const MatchCard = ({ match, showDetails = true }) => {
@@ -21,80 +21,40 @@ const MatchCard = ({ match, showDetails = true }) => {
 
     return (
 
-        <div className="w-md-50 p-3 mt-1 mb-3">
+        <div>
             {/* 2 Teams  */}
             {match ?
-                <Row className="w-md-50 p-3 shadow-lg rounded-4 mt-5 mb-3">
-                    <Row className="justify-content-center">
-                        <Col className="d-flex flex-column justify-content-center align-items-center sh">
-                            <img
-                                src={match.logoHomeClub}
-                                alt="Team 1 flag"
-                                className="mw-100 mh-100 rounded-3 shadow border"
-                                style={{ width: '100px' }}
-                            />
-                            <p className="mt-3 text-primary fw-bold">
-                                {match.nameHomeClub}
-                            </p>
-                        </Col>
-                        <Col className="fw-bold text-primary d-flex flex-column justify-content-center align-items-center">
-                            Vs
-                        </Col>
-                        <Col className="d-flex flex-column justify-content-center align-items-center">
-                            <img
-                                src={match.logoAwayClub}
-                                alt="Team 1 flag"
-                                className="mw-100 mh-100 rounded-3 shadow border"
-                                style={{ width: '100px' }}
-                            />
-                            <p className="mt-3 text-primary fw-bold">
-                                {match.nameAwayClub}
-                            </p>
-                        </Col>
-                    </Row>
-                    {/* Stadium */}
-                    <Row className="mb-3">
-                        <Col className="d-flex flex-column justify-content-center align-items-center text-center">
-                            <div className="d-flex justify-content-evenly w-100">
-                                <h5 className="fw-bold mb-2">
-                                    Stadium :<b className="ms-1 text-primary">
-                                        {match.nameStadium}
-                                    </b>
-                                </h5>
-                            </div>
-                        </Col>
-                    </Row>
-                    <hr className="w-50 mx-auto" />
+                <div className="match-item">
 
-                    {/* Date */}
-                    <Row className="justify-content-center text-center">
-                        <Col className="d-flex  justify-content-center align-items-center">
-                            <h5 className="mt-3 ms-1 text-primary fw-bold">
+                    <div className="time-area">
+                        <div className="time">
+                            <h4 className="day">{moment(match.date).format('ddd')}</h4>
+                            <h4 className="month">{moment(match.date).format('MMM')}</h4>
+                            <h4 className="date">{moment(match.date).format('D')}</h4>
+                        </div>
+                        <h4 className="match-time">{moment(match.date).format('h:mm a')}</h4>
+                    </div>
+                    <div className="flags">
+                        <div className="home-flag">
+                            <div className='flag-div'><img src={match.logoHomeClub} className="flag" /></div>
+                            <div><h5 className="home-team">{match.nameHomeClub}</h5></div>
 
-                                {moment(match.date).isBefore(Date.now())
-                                    ? `Ended : ${moment(match.date).fromNow()}`
-                                    : `Played in : ${moment(match.date).format(
-                                        'DD/MM/YYYY -  h:mm a',
-                                    )}`}
-                            </h5>
-                        </Col>
-                    </Row>
-                    {showDetails && (
-                        <Row>
-                            <Col className="d-flex  justify-content-end align-items-center">
-                                <Button
-                                    onClick={handleSubmit}
-                                    variant="secondary"
-                                    className="px-3 rounded-3"
-                                >
-                                    Buy Ticket
-                                </Button>
-                            </Col>
-                        </Row>
-                    )}
-                </Row>
-                : <a></a>}
+                        </div>
+                        <span className="vs">
+                            VS
+                        </span>
+                        <div className="away-flag">
+                            <div className='flag-div'><img src={match.logoAwayClub} className="flag" /></div>
 
+                            <h5 className="home-team">{match.nameAwayClub}</h5>
+                        </div>
+                    </div>
+                    <div className="match-info">
+                        <img className='icon' src={stadiumIcon} alt="" /> <h4 className="group">{match.nameStadium}</h4>
+                        <button className="match-badge" onClick={handleSubmit} >TICKET</button>
+                    </div>
+                </div>
+                : <a href=""></a>}
         </div>
 
 
