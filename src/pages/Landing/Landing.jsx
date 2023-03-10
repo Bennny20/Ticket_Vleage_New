@@ -8,6 +8,7 @@ import ClubCard from "../../components/landing/clubCard";
 import { Alert, Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
+import Navbar from "../../components/landing/Navbar";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,9 +22,11 @@ const Landing = () => {
 
     useEffect(
         function () {
+            localStorage.removeItem("onClickMatch")
             axios.get(pathMatch).then(function (response) {
                 setMatches(response.data)
-                console.log("test matches:" + matches)
+                console.log("test matches before: " + matches)
+
             })
                 .catch(function (err) {
                     console.log(32, err);
@@ -37,28 +40,28 @@ const Landing = () => {
 
 
     return (
-        <div className="App">
-            <Home />
-            <div className="text-center pt-5">
-                <h1>Incomming Matches</h1>
-            </div>
-            <div className="matchs">
-                {matches.length === 0 ? (
-                    <Alert className="mt-5" variant="info">
-                        No matches found Managers Will add soon
-                    </Alert>
-                )
-                    : (
-                        Array.from(matches).map((x) => <MatchCard key={x._id} match={x} />)
+        <div>
+            <Navbar />
+            <div className="App">
+                <Home />
+                <div className="text-center pt-5">
+                    <h1>Incomming Matches</h1>
+                </div>
+                <div className="matchs">
+                    {matches.length === 0 ? (
+                        <Alert className="mt-5" variant="info">
+                            No matches found Managers Will add soon
+                        </Alert>
                     )
-                }</div>
-
-            <div className="col">
+                        : (
+                            Array.from(matches).map((x) => <MatchCard key={x._id} match={x} />)
+                        )
+                    }</div>
                 <ClubCard />
+                <About />
+                <Contact />
+                <Footer />
             </div>
-            <About />
-            <Contact />
-            <Footer />
         </div>
     )
 }

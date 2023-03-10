@@ -52,7 +52,8 @@ const MatchCard = ({ match, showDetails = true }) => {
                     </div>
                     <div className="match-info">
                         <img className='icon' src={pinIcon} alt="" /> <h4 className="group">{match.nameStadium}</h4>
-                        <button className="match-badge" onClick={handleSubmit} >TICKET</button>
+                        {showDetails ? <button className="match-badge" onClick={handleSubmit} >TICKET</button> : <p></p>}
+
                     </div>
                 </div>
                 : <a href=""></a>}

@@ -21,7 +21,7 @@ const BuyTicket = () => {
                 })
             axios.get("/match/tickets/" + matchId).then(function (response) {
                 setTicket(response.data)
-                console.log(response.data)
+                console.log("tickets: " + response.data)
             })
                 .catch(function (err) {
                     console.log(32, err);
@@ -38,9 +38,9 @@ const BuyTicket = () => {
     return (
         <div className="home-container">
             <Navbar />
-            <Row className="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center mt-5 p-5">
                 <Col xs={12} md={10}>
-                    <div className="text-center">
+                    <div className="text-center purchase-title">
                         <h1>PURCHASE</h1>
                     </div>
                     <div>
@@ -63,13 +63,17 @@ const BuyTicket = () => {
                         </div>
 
                         : <div className="text-center mt-5">
-                            Please select your stand
-                            {/* <BuyCard date={matches.date} /> */}
+                            {ticket == null ?
+                                <Alert className="mt-5" variant="info">
+                                    No ticket found! Managers will add soon
+                                </Alert> :
+                                <div>Please select your stand
+                                    <BuyCard date={matches.date} matchId={matchId} ticket={ticket} />
+                                </div>
+                            }
+
                         </div>
                     }
-                    <BuyCard date={matches.date} matchId={matchId} ticket={ticket} />
-
-
                 </Col>
             </Row>
 
