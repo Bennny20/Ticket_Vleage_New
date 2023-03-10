@@ -8,6 +8,8 @@ import axios from "../../AxiosConfig";
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
 const Update = () => {
+    const roundId = localStorage.getItem("roundId")
+    const tournamentId = localStorage.getItem("TournamentId")
     //Tournament list
     useEffect(
         function () {
@@ -24,7 +26,6 @@ const Update = () => {
         []
     );
     const [data, setData] = useState([]);
-    const rowsTournament = data;
 
     //State Round
     const [formValue, setFormValue] = useState({
@@ -48,14 +49,14 @@ const Update = () => {
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Round : " + roundname + "-" + selectsTournament)
+        alert("Update Round : " + roundname + "-" + selectsTournament)
 
-        axios.post(pathRound, {
+        axios.put(pathRound + roundId, {
             "numberRound": roundname,
             "tournamentId": selectsTournament
         })
             .then(response => {
-                alert("Add success")
+                alert("Update success")
                 //Go to club page
                 return window.location.href = "../match"
             })
@@ -91,8 +92,9 @@ const Update = () => {
                             <div className="formInput" >
                                 <label>Tournament</label>
                                 <select name="selectsTournament"
+                                    value={tournamentId}
                                     onChange={handleChange}>
-                                    {rowsTournament.map((entity) => (
+                                    {data.map((entity) => (
                                         <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))
                                     }

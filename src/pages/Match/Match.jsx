@@ -2,13 +2,13 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import "./match.scss";
 import Table from "../../components/table/Table";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
 //path
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
@@ -45,6 +45,7 @@ const Match = () => {
   const handleChange = (event) => {
     var select = document.querySelector('.NameTour');
     var value = select.options[select.selectedIndex].value;
+    localStorage.setItem("TournamentId", value)
     setTournamentId(value)
     console.log(value);
     //to do search
@@ -65,9 +66,10 @@ const Match = () => {
     setShow(true)
     var select = document.querySelector('.Round');
     var valueRound = select.options[select.selectedIndex].value;
+    localStorage.setItem("roundId", valueRound)
     setRoundId(valueRound)
     axios
-      .get(pathMatch + roundId)
+      .get(pathMatch + valueRound)
       .then(function (data) {
         console.log(62, data.data);
         setDataRoundbId(data.data)
@@ -140,7 +142,7 @@ const Match = () => {
               ))}
             </select>
             <a className="button touch new-btn" href="/match/newRound"><i className="fa-duotone fa-plus"></i></a>
-            <a className="button touch edit-btn" href="/match/updateRound"><i className="fa-solid fa-pen"></i></a>
+            {/* <a className="button touch edit-btn" href="#"><i className="fa-solid fa-pen"></i></a> */}
             {/*onClick={handleDeleteRound(roundId)} */}
             <a className="button touch delete-btn" href="#"><i className="fa-solid fa-trash"></i></a>
           </div>

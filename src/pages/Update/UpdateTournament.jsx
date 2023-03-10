@@ -11,7 +11,7 @@ const Update = () => {
         year: ""
     });
     const id = localStorage.getItem("TournamentId");
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
 
     useEffect(
         function () {
@@ -26,6 +26,7 @@ const Update = () => {
                 });
         }
     )
+
 
     //handle Change value
     const handleChange = (event) => {
@@ -44,12 +45,12 @@ const Update = () => {
         event.preventDefault();
         //To do code here
         alert("Add New Tournament : " + tournamentname + "-" + year)
-        axios.put(path, {
+        axios.put(path + id, {
             "year": year,
             "name": tournamentname
         })
             .then(response => {
-                alert("Add success")
+                alert("Update success")
                 //Go to club page
                 return window.location.href = "../match"
             })
@@ -77,20 +78,20 @@ const Update = () => {
                                 <label>Tournament Name</label>
                                 <input type="text"
                                     name="tournamentname"
-                                    onChange={handleChange}
-                                    placeholder="V.League 1 - 2021" />
+                                    value={data.name}
+                                    onChange = {handleChange}/>
                             </div>
 
-                            {/* End Date */}
+                            {/* Year */}
                             <div className="formInput" >
                                 <label>Year</label>
-                                <input type="text"
+                                <input type="number"
                                     name="year"
-                                    onChange={handleChange}
-                                    placeholder="2023" />
+                                    value={data.year}
+                                    onChange={handleChange}/>
                             </div>
 
-                            {/* Button Send to add new */}
+                            {/* Button Send */}
                             <div className="btnSend">
                                 <button>Save</button>
                             </div>
