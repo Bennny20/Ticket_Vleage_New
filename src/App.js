@@ -8,6 +8,8 @@ import NewUser from "./pages/new/NewUser";
 import NewStadium from "./pages/new/NewStadium";
 import NewClub from "./pages/new/NewClub";
 import NewTicket from "./pages/new/NewTicket";
+import NewStand from "./pages/new/NewStand";
+
 //View List
 import List from "./pages/list/List";
 import Profile from "./pages/profile/Profile"
@@ -17,6 +19,7 @@ import Club from "./pages/Club/Club"
 import TicketByMatch from "./pages/Ticket/Ticket"
 import Ticket from "./pages/Ticket/Ticket"
 import Order from "./pages/order/Order"
+import StandByStadium from "./pages/Stand/Stand";
 
 //Update
 import UpdateMatch from "./pages/Update/UpdateMatch"
@@ -76,6 +79,12 @@ function App() {
             {/* Ticket  By Match*/}
             <Route path="ticketbymatch">
               <Route index element={<RequiredAuth><TicketByMatch /></RequiredAuth>} />
+            </Route>
+
+            {/* Stand  By Stadium*/}
+            <Route path="standbystadium">
+              <Route index element={<RequiredAuth><StandByStadium /></RequiredAuth>} />
+              <Route path="newStand" element={<RequiredAuth><NewStand /></RequiredAuth>} />
             </Route>
 
 

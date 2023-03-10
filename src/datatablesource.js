@@ -65,24 +65,43 @@ export const stadiumColumns = [
   {
     field: "_id",
     headerName: "ID",
-    width: 70,
+    width: 250,
   },
   {
     field: "name",
     headerName: "Name",
-    width: 300,
+    width: 250,
   },
   {
     field: "city",
     headerName: "Localtion",
-    width: 500,
+    width: 200,
   },
   {
     field: "capcity",
     headerName: "Capacity",
-    width: 150,
+    width: 100,
   }
 ];
+
+export const standColums = [
+  {
+    field: "_id",
+    headerName: "ID",
+    width: 250,
+  },
+  {
+    field: "name",
+    headerName: "Name",
+    width: 100,
+  },
+  {
+    field: "quantitySeat",
+    headerName: "Seat Quantity",
+    width: 120,
+  },
+];
+
 
 //const of ticket list
 export const ticketColumns = [

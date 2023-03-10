@@ -50,15 +50,27 @@ const ListStadium = () => {
         setisShow(!isShow)
     };
 
+    const handleStand = (id) => {
+        localStorage.setItem("idStandStadium", id)
+        return window.location.href = "/standbystadium"
+    };
+
     //Form action here ----------------------------------------------------------------------------
     const actionColumn = [
         {
             field: "action",
             headerName: "",
-            width: 200,
+            width: 300,
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
+                        <div>
+                            <button
+                                className="ticketButton"
+                                onClick={() => handleStand(params.row._id)}>
+                                Stand
+                            </button>
+                        </div>
                         <div>
                             <button
                                 className="updateButton"
@@ -66,6 +78,7 @@ const ListStadium = () => {
                                 Update
                             </button>
                         </div>
+
                         <div>
                             <button
                                 className="deleteButtonn"
