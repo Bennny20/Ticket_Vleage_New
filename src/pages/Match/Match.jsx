@@ -98,9 +98,9 @@ const Match = () => {
               ))
               }
             </select>
-            <a className="button touch new-btn" href="/match/newTournament"><i class="fa-duotone fa-plus"></i></a>
-            <a className="button touch edit-btn" href="/match/newRound"><i class="fa-solid fa-pen"></i></a>
-            <a className="button touch delete-btn" href="/match/newRound"><i class="fa-solid fa-trash"></i></a>
+            <a className="button touch new-btn" href="/match/newTournament"><i className="fa-duotone fa-plus"></i></a>
+            <a className="button touch edit-btn" href="/match/newRound"><i className="fa-solid fa-pen"></i></a>
+            <a className="button touch delete-btn" href="/match/newRound"><i className="fa-solid fa-trash"></i></a>
           </div>
           <div className="listTitle" style={{ fontSize: "20px" }}>
             Round: </div>
@@ -112,9 +112,9 @@ const Match = () => {
                 <option value={entity._id} id={entity._id} key={entity._id}>{entity.numberRound}</option>
               ))}
             </select>
-            <a class="button touch new-btn" href="/match/newRound"><i class="fa-duotone fa-plus"></i></a>
-            <a class="button touch edit-btn" href="/match/newRound"><i class="fa-solid fa-pen"></i></a>
-            <a class="button touch delete-btn" href="/match/newRound"><i class="fa-solid fa-trash"></i></a>
+            <a className="button touch new-btn" href="/match/newRound"><i className="fa-duotone fa-plus"></i></a>
+            <a className="button touch edit-btn" href="/match/newRound"><i className="fa-solid fa-pen"></i></a>
+            <a className="button touch delete-btn" href="/match/newRound"><i className="fa-solid fa-trash"></i></a>
           </div>
           {isShow ? <LoadingSpinner /> : <Table props={DataRoundbyId} />}
 
