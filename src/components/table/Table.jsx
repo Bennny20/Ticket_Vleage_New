@@ -53,7 +53,7 @@ function List(props) {
       .then(res => {
         console.log("check delete ", res);
         alert('Deleted club by id: ' + id);
-
+        setData(data.filter((item) => item.id !== id));
       })
       .catch(function (err) {
         console.log(err);
@@ -65,7 +65,7 @@ function List(props) {
     {
         field: "action",
         headerName: "Action",
-        width: 200,
+        width: 250,
         renderCell: (params) => {
             return (
                 <div className="cellAction">
@@ -80,6 +80,12 @@ function List(props) {
                         <button className="ticketButton"
                             onClick={() => handleOnClick(params.row._id)}>
                             Ticket
+                        </button>
+                    </div>
+                    <div>
+                        <button className="deleteButtonn"
+                            onClick={() => handleDelete(params.row._id)}>
+                            Delete
                         </button>
                     </div>
                 </div>
@@ -106,11 +112,6 @@ return (
     <div className="datatable">
         <div className="datatableTitle">
             List Match
-            <Link to="/match/newMatch" >
-                <button className="newButton">
-                    Add New
-                </button>
-            </Link>
         </div>
         {loading}
     </div>

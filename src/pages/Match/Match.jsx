@@ -86,6 +86,9 @@ const Match = () => {
         </div> */}
         <div className="listContainer">
           <div className="listTitle">List Match
+          {/* */}
+
+          {/* */}
             <Link to="/match/newMatch" className="newButton">
               Add New Match
             </Link>
@@ -104,7 +107,7 @@ const Match = () => {
             <select className="NameTour"
               onChange={handleChange}>
               {rowsTournament.map((entity) => (
-                <option value={entity._id} id={entity._id}>{entity.name}</option>
+                <option value={entity._id} id={entity._id} key={entity._id}>{entity.name}</option>
               ))
               }
             </select>
@@ -114,7 +117,7 @@ const Match = () => {
             <select className="Round"
               onChange={handleChangeRound}>
               {rowsRound.map((entity) => (
-                <option value={entity._id} id={entity._id}>{entity.numberRound}</option>
+                <option value={entity._id} id={entity._id} key={entity._id}>{entity.numberRound}</option>
               ))}
             </select>
           </div>

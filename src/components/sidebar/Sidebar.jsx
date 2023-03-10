@@ -82,15 +82,7 @@ const Sidebar = () => {
               <span>Match</span>
             </li>
           </Link>
-          {/* <Link to="/ticket/newTicket" style={{ textDecoration: "none" }}>
-            <li>
-              <StoreIcon className="icon" />
-              <span>New ticket</span>
-            </li>
-          </Link> */}
-          <p className="title"></p>
-          <p className="title"></p>
-          <hr></hr>
+     
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
               <ExitToAppIcon className="icon" />

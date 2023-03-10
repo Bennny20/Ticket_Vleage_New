@@ -64,7 +64,7 @@ const Ticket = () => {
               <div className="detailItem">
                 <span className="itemKey">Stadium: </span>
                 <span className="itemValue">
-                  {data.namStadium}
+                  {data.nameStadium}
                 </span>
               </div>
               <div className="detailItem">

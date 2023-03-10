@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import stadiumIcon from "../assets/stadium-icon.png"
 import pinIcon from "../assets/pin.png"
-import axios from "../../AxiosConfig";
 import moment from 'moment';
 
 
 const MatchCard = ({ match, showDetails = true }) => {
-    console.log(match)
     const navigate = useNavigate();
 
 

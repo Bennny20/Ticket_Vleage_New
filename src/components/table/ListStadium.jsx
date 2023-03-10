@@ -7,7 +7,7 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
-var path = "stadiums";
+var path = "stadiums/";
 const ListStadium = () => {
     const [isRender, setisRender] = useState(true);
     const [isShow, setisShow] = useState(true);
@@ -20,7 +20,6 @@ const ListStadium = () => {
             axios
                 .get(path)
                 .then(function (data) {
-                    console.log(data.data);
                     setData(data.data);
                     setisRender(false)
                 })

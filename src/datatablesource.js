@@ -213,12 +213,12 @@ export const matchColumns = [
   {
     field: "_id",
     headerName: "ID",
-    width: 70,
+    width: 50,
   },
   {
     field: "logoHomeClub",
     headerName: "-",
-    width: 50,
+    width: 45,
     renderCell: (img) => {
       return (
         <div className="allImage">
@@ -231,12 +231,12 @@ export const matchColumns = [
   {
     field: "nameHomeClub",
     headerName: "Home",
-    width: 200,
+    width: 190,
   },
   {
     field: "logoAwayClub",
     headerName: "-",
-    width: 50,
+    width: 45,
     renderCell: (img) => {
       return (
         <div className="allImage">
@@ -249,12 +249,12 @@ export const matchColumns = [
   {
     field: "nameAwayClub",
     headerName: "Away",
-    width: 200,
+    width: 190,
   },
   {
     field: "nameStadium",
     headerName: "Stadium",
-    width: 200,
+    width: 180,
   },
   {
     field: "date",

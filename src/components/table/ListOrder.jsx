@@ -15,7 +15,6 @@ const Datatable = () => {
     function () {
       axios.get(path)
         .then(function (data) {
-          console.log(data.data);
           setData(data.data);
           setShow(false)
         })

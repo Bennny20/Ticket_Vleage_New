@@ -25,8 +25,6 @@ const Landing = () => {
             localStorage.removeItem("onClickMatch")
             axios.get(pathMatch).then(function (response) {
                 setMatches(response.data)
-                console.log("test matches before: " + matches)
-
             })
                 .catch(function (err) {
                     console.log(32, err);

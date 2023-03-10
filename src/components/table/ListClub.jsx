@@ -20,7 +20,6 @@ const ListStadium = () => {
             axios
                 .get(path)
                 .then(function (data) {
-                    console.log(data.data);
                     setData(data.data);
                     setisRender(false)
                 })

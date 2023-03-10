@@ -34,11 +34,13 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-simple-widgets": "^6.7.0",
+    "react-slick": "^0.29.0",
     "react-widgets": "^5.8.4",
     "reactjs-popup": "^2.0.5",
     "recharts": "^2.1.9",
     "redux": "^4.2.1",
     "sass": "^1.49.9",
+    "slick-carousel": "^1.8.1",
     "split": "^1.0.1",
     "web-vitals": "^2.1.4"
   },

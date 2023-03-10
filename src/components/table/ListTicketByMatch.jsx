@@ -22,7 +22,6 @@ const ListStadium = (props) => {
             axios
                 .get(path + matchId)
                 .then(function (data) {
-                    console.log("check data ", data.data);
                     setData(data.data);
                     setShow(false)
                 })
@@ -44,19 +43,9 @@ const ListStadium = (props) => {
         alert("Update amount = 0: ")
         console.log("id checking ", id);
         console.log("check", areaId + " " + areaName + " " + capacity + " " + stadiumId + " " + matchId + " " + price)
-        axios.put(path + "/" + id, {
-            "amount": 0,
-            "area": {
-                "areaName": areaName,
-                "capacity": capacity,
-                "id": areaId,
-                "stadiumId": stadiumId
-            },
-            "areaId": areaId,
-            "id": id,
-            "matchId": matchId,
-            "price": price
-        })
+        // axios.put(path + "/" + id, {
+        //     "amount": 0,
+        // })
         return window.location.href = "../ticket"
     }
 
@@ -104,10 +93,10 @@ const ListStadium = (props) => {
                                 <TableCell className="tableCell">
                                     <div className="cellAction">
                                         <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="viewButton" onClick={e => (handleUpdate(value.id))} > Update</div>
+                                            <div className="updateButton" onClick={e => (handleUpdate(value.id))} > Update</div>
                                         </Link>
                                         <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="deleteButton" onClick={e => handleSoldOut(
+                                            <div className="deleteButtonn" onClick={e => handleSoldOut(
                                                 // value.id,
                                                 // value.areaId,
                                                 // value.area.areaName,
