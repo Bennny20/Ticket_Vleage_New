@@ -1,4 +1,4 @@
-
+import moment from "moment";
 //const of user
 export const userColumns = [
   {
@@ -277,6 +277,8 @@ export const matchColumns = [
   {
     field: "date",
     headerName: "Date",
-    width: 115,
+    valueFormatter: params =>
+      moment(params?.value).format("DD/MM/YYYY hh:mm A"),
+    width: 130,
   },
 ];

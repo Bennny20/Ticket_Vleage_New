@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
+import moment from "moment";
 
 //path
 var pathClub = "clubs/";
@@ -17,29 +18,35 @@ const UpdateMatch = () => {
   const [dataClub, setDataClub] = useState([]);
   const [dataStadium, setDataStadium] = useState([]);
   const [data, setData] = useState([]);
+  const [homeClubId, setHomeClubId] = useState();
+  const [awayClubId, setAwayClubId] = useState();
+  const [roundId, setRoundId] = useState();
+  const [stadiumId, setStadiumId] = useState();
+  const [date, setDate] = useState();
+
   var id = localStorage.getItem("editMatchId");
   const [formValue, setFormValue] = useState({
-    clubHomeId: "",
-    clubVisitorId: "",
-    roundId: "",
     stadiumId: "",
-    capacity: "",
-    status: "",
-    timeStart: ""
+    date: ""
   });
   //useEffect
   useEffect(
     function () {
       //Match
       axios.get(pathMatch + id)
-        .then(function (data) {
+        .then(function (respone) {
           console.log("test data ", data.data);
-          setData(data.data);
+          setData(respone.data);
+          setHomeClubId(respone.data.homeClubId)
+          setAwayClubId(respone.data.awayClubId)
+          setStadiumId(respone.data.stadiumId)
+          setDate(respone.data.date)
+          console.log("testtt: " + homeClubId + awayClubId + stadiumId + date)
         })
         .catch(function (err) {
           console.log(32, err);
         });
-      //get data api Club
+      // get data api Club
       axios.get(pathClub)
         .then(function (data) {
           console.log(data.data);
@@ -60,64 +67,29 @@ const UpdateMatch = () => {
         .catch(function (err) {
           console.log(32, err);
         });
-      //get data api Tournament
-      axios
-        .get(pathTournament)
-        .then(function (data) {
-          console.log(18, data.data);
-          setDataTournament(data.data);
-          // console.log(list);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
     },
     []
   );
-  //handle Change Value--------------------------------------------------------------------------
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "tournamentId") {
-      axios
-        .get(pathRound + value)
-        .then(function (data) {
-          console.log(data.data);
-          setDataRound(data.data);
-          // console.log(list);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
-    }
-    setFormValue((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  };
 
-  const { homeClubId, awayClubId, roundId, stadiumId, status, date } = formValue;
+
   //handle Change Search round by Tournament-----------------------------------------------------
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New matchs: "
+    alert("Update matchs: "
       + "\n -Club home: " + homeClubId
       + "\n- club Away:" + awayClubId
       + "\n- club StadiumId:" + stadiumId
-      + "\n- club RoundId:" + roundId
-      + "\n- club Status:" + status
       + "\n- club Time Start:" + date)
     axios.put(pathMatch + id, {
       "homeClubId": homeClubId,
       "awayClubId": awayClubId,
-      "roundId": roundId,
       "stadiumId": stadiumId,
       "date": date
     })
       .then(response => {
         alert("Update success")
+        console.log(response.data)
         //Go to club page
         return window.location.href = "../match"
       })
@@ -145,11 +117,9 @@ const UpdateMatch = () => {
               {/* Club Home */}
               <div className="formInput" >
                 <label>Home</label>
-                <select name="homeClubId"
-                  value={data.homeClubId}
-                  onChange={handleChange}>
+                <select disabled name="homeClubId" value={homeClubId} onChange={(e) => setHomeClubId(e.target.value)}>
                   {dataClub.map((entity) => (
-                    <option value={entity._id} id={entity._id}>{entity.name}</option>
+                    <option value={entity._id} key={entity._id} id={entity._id}>{entity.name}</option>
                   ))
                   }
                 </select>
@@ -158,11 +128,10 @@ const UpdateMatch = () => {
               {/* Club Visitor */}
               <div className="formInput" >
                 <label>Away</label>
-                <select name="awayClubId"
-                  value={data.awayClubId}
-                  onClick={handleChange}>
+                <select name="awayClubId" disabled
+                  value={awayClubId} onChange={(e) => setAwayClubId(e.target.value)} >
                   {dataClub.map((entity) => (
-                    <option value={entity._id} id={entity._id}>{entity.name}</option>
+                    <option value={entity._id} key={entity._id} id={entity._id}>{entity.name}</option>
                   ))
                   }
                 </select>
@@ -172,10 +141,10 @@ const UpdateMatch = () => {
               <div className="formInput" >
                 <label>Stadium</label>
                 <select name="stadiumId"
-                  value={data.stadiumId}
-                  onClick={handleChange}>
+                  value={stadiumId}
+                  onChange={(e) => setStadiumId(e.target.value)}>
                   {dataStadium.map((entity) => (
-                    <option value={entity._id} id={entity._id}>{entity.name}</option>
+                    <option value={entity._id} key={entity._id} id={entity._id}>{entity.name}</option>
                   ))
                   }
                 </select>
@@ -184,38 +153,11 @@ const UpdateMatch = () => {
               {/* Date */}
               <div className="formInput" >
                 <label>Date</label>
-                <input type="Date"
-                value={data.date}
+                <input type="date"
+                  value={moment(date).format('yyyy-MM-DD')}
                   name="date"
-                  onChange={handleChange} />
+                  onChange={(e) => setDate(e.target.value)} />
               </div>
-
-
-              {/* Tournament */}
-              <div className="formInput"
-                onChange={handleChange}>
-                <label>Tournament</label>
-                <select name="tournamentId"
-                  onClick={handleChange}>
-                  {dataTournament.map((entity) => (
-                    <option value={entity._id} id={entity._id}>{entity.name}</option>
-                  ))
-                  }
-                </select>
-              </div>
-
-              {/* Round */}
-              <div className="formInput" >
-                <label>Round</label>
-                <select name="roundId"
-                  onClick={handleChange}>
-                  {DataRound.map((entity) => (
-                    <option value={entity._id} id={entity._id}>{entity.numberRound}</option>
-                  ))
-                  }
-                </select>
-              </div>
-
 
               <div className="btnSend">
                 <button>Save</button>
