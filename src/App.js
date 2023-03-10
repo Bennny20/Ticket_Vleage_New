@@ -24,6 +24,8 @@ import StandByStadium from "./pages/Stand/Stand";
 //Update
 import UpdateMatch from "./pages/Update/UpdateMatch"
 import UpdateStadium from "./pages/Update/UpdateStadium";
+import UpdateRound from "./pages/Update/UpdateRound"
+import UpdateTournament from "./pages/Update/UpdateTournament";
 import UpdateClub from "./pages/Update/UpdateClub";
 import UpdateUser from "./pages/Update/UpdateUser";
 import UpdateTicket from "./pages/Update/UpdateTicket";
@@ -70,6 +72,8 @@ function App() {
             <Route path="match">
               <Route index element={<RequiredAuth><Match /></RequiredAuth>} />
               <Route path="updateMatch" element={<RequiredAuth><UpdateMatch /></RequiredAuth>} />
+              <Route path="updateRound" element={<RequiredAuth><UpdateRound /></RequiredAuth>} />
+              <Route path="updateTournament" element={<RequiredAuth><UpdateTournament /></RequiredAuth>} />
               <Route path="newMatch" element={<NewMatch />} />
               <Route path="newRound" element={<NewRound />} />
               <Route path="newTournament" element={<NewTournament />} />

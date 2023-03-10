@@ -9,8 +9,7 @@ var pathTournament = "tournaments/";
 const New = () => {
     const [formValue, setFormValue] = useState({
         tournamentname: "",
-        year : "",
-        selectsStatus: ""
+        year : ""
     });
 
     //handle Change value
@@ -24,15 +23,14 @@ const New = () => {
         });
     };
 
-    const { tournamentname, year, selectsStatus } = formValue;
+    const { tournamentname, year } = formValue;
     //function
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Tournament : " + tournamentname + "-" + year + "-" + selectsStatus)
+        alert("Add New Tournament : " + tournamentname + "-" + year)
         axios.post(pathTournament, {
             "year": year,
-            "status": selectsStatus,
             "name": tournamentname
           })
             .then(response => {
@@ -77,16 +75,6 @@ const New = () => {
                                  placeholder="2023" />
                             </div>
 
-                            {/* Status */}
-                            <div className="formInput" >
-                                <label>Status</label>
-                                <select name="selectsStatus"
-                                    onChange={handleChange}>
-                                    <option value="true">Coming</option>
-                                    <option value="false">Ending</option>
-                                    <option value="true">On-going</option>
-                                </select>
-                            </div>
 
                             {/* Button Send to add new */}
                             <div className="btnSend">
