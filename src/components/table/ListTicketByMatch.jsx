@@ -39,15 +39,19 @@ const ListStadium = (props) => {
     };
 
     //Handle Sold Out here ----------------------------------------------------------------------------
-    const handleSoldOut = (id, areaId, areaName, capacity, stadiumId, matchId, price) => {
-        alert("Update amount = 0: ")
-        console.log("id checking ", id);
-        console.log("check", areaId + " " + areaName + " " + capacity + " " + stadiumId + " " + matchId + " " + price)
-        // axios.put(path + "/" + id, {
-        //     "amount": 0,
-        // })
-        return window.location.href = "../ticket"
-    }
+    const handleDelete = (id) => {
+        // setData(data.filter((item) => item.id !== id));
+        console.log(id);
+        axios.delete(path + matchId + "/" + id)
+          .then(res => {
+            console.log("check delete ", res);
+            alert('Deleted ticket by id: ' + id);
+            setData(data.filter((item) => item.id !== id));
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      };
 
     //Form table here ----------------------------------------------------------------------------
     const render = (
@@ -93,18 +97,10 @@ const ListStadium = (props) => {
                                 <TableCell className="tableCell">
                                     <div className="cellAction">
                                         <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="updateButton" onClick={e => (handleUpdate(value.id))} > Update</div>
+                                            <div className="updateButton" onClick={e => (handleUpdate(value._id))} > Update</div>
                                         </Link>
                                         <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="deleteButtonn" onClick={e => handleSoldOut(
-                                                // value.id,
-                                                // value.areaId,
-                                                // value.area.areaName,
-                                                // value.area.capacity,
-                                                // value.area.stadiumId,
-                                                // value.matchId,
-                                                // value.price
-                                            )} >Sold Out</div>
+                                            <div className="deleteButtonn" onClick={e =>  (handleDelete(value._id))} >Delete</div>
                                         </Link>
                                     </div>
                                 </TableCell>

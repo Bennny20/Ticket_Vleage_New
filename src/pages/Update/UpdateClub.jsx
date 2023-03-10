@@ -4,13 +4,19 @@ import { useState, useEffect } from "react";
 
 
 var path = "clubs/";
+var pathStadium = "stadiums/";
 const UpdateClub = (props) => {
-    console.log(7, props)
+    const [dataStadium, setDataStadium] = useState([]);
+    const [logo, setLogo] = useState([]);
+    const [clubId, setClubId] = useState();
+    const [stadiumId, setStadiumId] = useState();
+    const [clubName, setClubName] = useState();
+    const [location, setLocation] = useState();
 
     useEffect(
         function () {
-            axios
-                .get(path + "/" + props.props)
+            //data club
+            axios.get(path + "/" + props.props)
                 .then(function (data) {
                     console.log("data", data.data);
                     setClubId(data.data._id)
@@ -22,24 +28,29 @@ const UpdateClub = (props) => {
                 .catch(function (err) {
                     console.log(32, err);
                 });
+
+            //data stadium
+            axios.get(pathStadium)
+                .then(function (data) {
+                    console.log(data.data);
+                    setDataStadium(data.data);
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
         },
         []
     );
 
-    const [logo, setLogo] = useState([]);
-    const [clubId, setClubId] = useState();
-    const [stadiumId, setStadiumId] = useState();
-    const [clubName, setClubName] = useState();
-    const [location, setLocation] = useState();
+
 
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
         alert("Update Club : " + clubId + " - " + clubName + " - " + location + " - " + stadiumId + " - " + logo)
-        axios.put(path, {
+        axios.put(path + clubId, {
             "name": clubName,
             "location": location,
-            "_id": clubId,
             "logo": logo,
             "stadiumId": stadiumId
         })
@@ -64,28 +75,34 @@ const UpdateClub = (props) => {
                     <div className="right">
                         <form onSubmit={handleSubmit}>
                             <div className="formInput" >
-                                <label>ID</label>
-                                <input id="txtNameClub" type="text" name="id" placeholder="ID" value={clubId} readOnly />
-                            </div>
-                            <div className="formInput" >
                                 <label>Name</label>
-                                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" value={clubName} onChange={e => setClubName(e.target.value)} />
+                                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" value={clubName} onChange={e => setClubName(e.target.value)} required/>
                             </div>
 
                             <div className="formInput" >
                                 <label>Location</label>
-                                <input id="txtLocation" type="text" name="location" placeholder="Location" value={location} onChange={e => setLocation(e.target.value)} />
+                                <input id="txtLocation" type="text" name="location" placeholder="Location" value={location} onChange={e => setLocation(e.target.value)} required/>
                             </div>
 
+                            {/* Stadium for club */}
                             <div className="formInput" >
                                 <label>Stadium</label>
-                                <input id="txtStadium" type="text" name="stadium" placeholder="Stadium" value={stadiumId} onChange={e => setStadiumId(e.target.value)} />
+                                <select name="stadiumId"
+                                    value={stadiumId}
+                                    onChange={e => setStadiumId(e.target.value)}>
+                                    {dataStadium.map((entity) => (
+                                        <option value={entity._id} id={entity._id}>{entity.name}</option>
+                                    ))
+                                    }
+                                </select>
                             </div>
 
                             <div className="formInput" >
                                 <label>Logo</label>
-                                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" value={logo} onChange={e => setLogo(e.target.value)} />
+                                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" value={logo} onChange={e => setLogo(e.target.value)} required/>
                             </div>
+
+
                             <div className="btnSend">
                                 <button type="submit" >Save</button>
                             </div>

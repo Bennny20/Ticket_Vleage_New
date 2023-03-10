@@ -90,19 +90,22 @@ const ListStadium = () => {
     )
 
     // Form check show loading if undefine data----------------------------------------------------------
-    const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
+    const loading = (<>
+        <div className="datatableTitle">
+            List Club
+            <Link to="/club/newClub" >
+                <button className="newButton">
+                    Add New
+                </button>
+            </Link>
+        </div>
+        {isRender ? <LoadingSpinner /> : dataGrid}
+    </>)
 
     // Form render here----------------------------------------------------------
     return (
         <div className="datatable">
-            <div className="datatableTitle">
-                List Club
-                <Link to="/club/newClub" >
-                    <button className="newButton">
-                        Add New
-                    </button>
-                </Link>
-            </div>
+
             {isShow ? loading : <Update props={formValue} />}
         </div>
     );

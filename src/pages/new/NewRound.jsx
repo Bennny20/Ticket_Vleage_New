@@ -16,7 +16,6 @@ const New = () => {
                 .then(function (data) {
                     console.log(data.data);
                     setData(data.data);
-                    // console.log(list);
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -30,10 +29,7 @@ const New = () => {
     //State Round
     const [formValue, setFormValue] = useState({
         roundname: "",
-        startDate: "",
-        endDate: "",
-        selectsTournament: "",
-        selectsStatus: ""
+        selectsTournament: ""
     });
 
     //handle Change value
@@ -47,18 +43,15 @@ const New = () => {
         });
     };
 
-    const { roundname, startDate, endDate, selectsTournament, selectsStatus } = formValue;
+    const { roundname, selectsTournament } = formValue;
     //function
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Round : " + roundname + "-" + startDate + "-" + endDate + "-" + selectsTournament + "-" + selectsStatus)
-        
+        alert("Add New Round : " + roundname + "-" + selectsTournament)
+
         axios.post(pathRound, {
-            "endDate": endDate,
-            "roundName": roundname,
-            "startDate": startDate,
-            "status": selectsStatus,
+            "numberRound": roundname,
             "tournamentId": selectsTournament
         })
             .then(response => {
@@ -88,10 +81,10 @@ const New = () => {
                             {/* Round name */}
                             <div className="formInput" >
                                 <label>Round name</label>
-                                <input type="text"
+                                <input type="number"
                                     name="roundname"
                                     onChange={handleChange}
-                                    placeholder="EX:Round 1" />
+                                    placeholder="EX: 1" />
                             </div>
 
                             {/* Tournament */}
@@ -100,40 +93,9 @@ const New = () => {
                                 <select name="selectsTournament"
                                     onChange={handleChange}>
                                     {rowsTournament.map((entity) => (
-                                        <option value={entity.id} id={entity.id}>{entity.name}</option>
+                                        <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))
                                     }
-                                </select>
-                            </div>
-
-                            {/* Start Date */}
-                            <div className="formInput" >
-                                <label>Start Date</label>
-                                <input type="Date"
-                                    name="startDate"
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-
-                            {/* End Date */}
-                            <div className="formInput" >
-                                <label>End Date</label>
-                                <input type="Date"
-                                    name="endDate"
-                                    onChange={handleChange}
-                                    placeholder="" />
-                            </div>
-
-
-                            {/* Status */}
-                            <div className="formInput" >
-                                <label>Status</label>
-                                <select name="selectsStatus"
-                                    onChange={handleChange}>
-                                    <option value="true">Coming</option>
-                                    <option value="false">Ending</option>
-                                    <option value="true">On-going</option>
                                 </select>
                             </div>
 

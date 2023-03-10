@@ -82,10 +82,6 @@ const Match = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        {/* <div className="search">
-          <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon />
-        </div> */}
         <div className="listContainer">
           <div className="listTitle" style={{ fontSize: "20px" }}>
             Tournament: </div>

@@ -52,7 +52,7 @@ function List(props) {
     axios.delete("matches/" + id)
       .then(res => {
         console.log("check delete ", res);
-        alert('Deleted club by id: ' + id);
+        alert('Deleted match by id: ' + id);
         setData(data.filter((item) => item.id !== id));
       })
       .catch(function (err) {

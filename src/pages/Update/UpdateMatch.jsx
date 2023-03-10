@@ -77,7 +77,7 @@ const UpdateMatch = () => {
   //handle Change Value--------------------------------------------------------------------------
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name == "tournamentId") {
+    if (name === "tournamentId") {
       axios
         .get(pathRound + value)
         .then(function (data) {
@@ -109,16 +109,15 @@ const UpdateMatch = () => {
       + "\n- club RoundId:" + roundId
       + "\n- club Status:" + status
       + "\n- club Time Start:" + date)
-    axios.post(pathMatch, {
-      "clubHomeId": homeClubId,
-      "clubVisitorId": awayClubId,
+    axios.put(pathMatch + id, {
+      "homeClubId": homeClubId,
+      "awayClubId": awayClubId,
       "roundId": roundId,
       "stadiumId": stadiumId,
-      "status": status,
-      "timeStart": date
+      "date": date
     })
       .then(response => {
-        alert("Add success")
+        alert("Update success")
         //Go to club page
         return window.location.href = "../match"
       })
@@ -138,7 +137,7 @@ const UpdateMatch = () => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>New match</h1>
+          <h1>Update match</h1>
         </div>
         <div className="bottom">
           <div className="right">
@@ -148,7 +147,7 @@ const UpdateMatch = () => {
                 <label>Home</label>
                 <select name="homeClubId"
                   value={data.homeClubId}
-                  onClick={handleChange}>
+                  onChange={handleChange}>
                   {dataClub.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
@@ -185,22 +184,12 @@ const UpdateMatch = () => {
               {/* Date */}
               <div className="formInput" >
                 <label>Date</label>
-                <input type="Date" placeholder=""
+                <input type="Date"
+                value={data.date}
                   name="date"
                   onChange={handleChange} />
               </div>
 
-              {/* Quantity ticket */}
-              <div className="formInput" >
-                <label>Status</label>
-                <select name="selectStatus"
-                  value={data.status}
-                  onClick={handleChange}>
-                  <option value="1">Coming</option>
-                  <option value="2">Ending</option>
-                  <option value="3">On-going</option>
-                </select>
-              </div>
 
               {/* Tournament */}
               <div className="formInput"
@@ -219,7 +208,6 @@ const UpdateMatch = () => {
               <div className="formInput" >
                 <label>Round</label>
                 <select name="roundId"
-                  value={data.roundId}
                   onClick={handleChange}>
                   {DataRound.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.numberRound}</option>

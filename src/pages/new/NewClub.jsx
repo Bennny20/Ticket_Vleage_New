@@ -7,22 +7,19 @@ import axios from "../../AxiosConfig";
 var path = "clubs/";
 var pathStadium = "stadiums/";
 const New = () => {
-  const [formValue, setFormValue] = useState({
-    name: "",
-    location: "",
-    stadiumId: "",
-    logo: ""
-  });
-  const { name, location, stadiumId, logo } = formValue;
-  const [data, setData] = useState([]);
-  //UseEffect here-----------------------------------------------------------------------------
+  const [dataStadium, setDataStadium] = useState([]);
+  const [logo, setLogo] = useState([]);
+  const [stadiumId, setStadiumId] = useState();
+  const [clubName, setClubName] = useState();
+  const [location, setLocation] = useState();
+
   useEffect(
     function () {
-      axios
-        .get(pathStadium)
+      //data stadium
+      axios.get(pathStadium)
         .then(function (data) {
           console.log(data.data);
-          setData(data.data);
+          setDataStadium(data.data);
         })
         .catch(function (err) {
           console.log(32, err);
@@ -30,29 +27,21 @@ const New = () => {
     },
     []
   );
-  //handle Change value here-----------------------------------------------------------------------------
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormValue((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  };
-  //Handle Submit here--------------------------------------------------------------------------------------
+
+
+
   function handleSubmit(event) {
     event.preventDefault();
     //To do code here
-    alert("Add New Club : " + name + "-" + location + "-" + stadiumId + "-" + logo)
+    alert("Update Club : " + clubName + " - " + location + " - " + stadiumId + " - " + logo)
     axios.post(path, {
-      "name": name,
+      "name": clubName,
       "location": location,
-      "img": logo,
+      "logo": logo,
       "stadiumId": stadiumId
     })
       .then(response => {
-        alert("Add success")
+        alert("Created")
         return window.location.href = "../club"
       })
       .catch(error => {
@@ -61,65 +50,51 @@ const New = () => {
       });
   }
 
-  //render
-  //Add onSubmit in tag form
-  //Add onChange={handleChange}
-  //HandleChange lấy value theo name của thuộc tính trong state
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>New club</h1>
+          <h1>New match</h1>
         </div>
         <div className="bottom">
           <div className="right">
             <form onSubmit={handleSubmit}>
-              {/* Name of club */}
               <div className="formInput" >
-                <label>Name of club</label>
-                <input type="text"
-                  name="name"
-                  onChange={handleChange}
-                />
+                <label>Name</label>
+                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" value={clubName} onChange={e => setClubName(e.target.value)} required/>
               </div>
 
-              {/* Location of club */}
               <div className="formInput" >
-                <label>Location of club</label>
-                <input type="text"
-                  name="location"
-                  onChange={handleChange}
-                />
+                <label>Location</label>
+                <input id="txtLocation" type="text" name="location" placeholder="Location" value={location} onChange={e => setLocation(e.target.value)} required/>
               </div>
 
-              {/* Stadium */}
+              {/* Stadium for club */}
               <div className="formInput" >
                 <label>Stadium</label>
-                <select type="text"
-                  name="stadiumId"
-                  onClick={handleChange}>
-                  {data.map((value) => (
-                    <option value={value._id} key={value._id}>{value.name}</option>
-                  ))}
+                <select name="stadiumId"
+                  value={stadiumId}
+                  onChange={e => setStadiumId(e.target.value)}>
+                  {dataStadium.map((entity) => (
+                    <option value={entity._id} id={entity._id}>{entity.name}</option>
+                  ))
+                  }
                 </select>
               </div>
 
-              {/* Logo */}
               <div className="formInput" >
                 <label>Logo</label>
-                <input type="text"
-                  name="logo"
-                  onChange={handleChange}
-                />
+                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" value={logo} onChange={e => setLogo(e.target.value)} required/>
               </div>
 
-              {/* Button Send to Add new */}
+
               <div className="btnSend">
-                <button>Send</button>
+                <button type="submit" >Save</button>
               </div>
             </form>
+
           </div>
         </div>
       </div>

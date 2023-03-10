@@ -1,6 +1,4 @@
 import "./update.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 
@@ -10,11 +8,11 @@ const UpdateStadium = (props) => {
   console.log(7, props)
 
 
-  var path = "stadiums";
+  var path = "stadiums/";
   useEffect(
     function () {
       axios
-        .get(path + "/" + props.props)
+        .get(path + props.props)
         .then(function (data) {
           console.log("data", data.data);
           setStadiumId(data.data._id)
@@ -39,7 +37,7 @@ const UpdateStadium = (props) => {
     event.preventDefault();
     //To do code here
     alert("Update Stadium: " + stadiumId + " - " + stadiumName + " - " + capacity + " - " + location)
-    axios.put(path, {
+    axios.put(path + stadiumId, {
       "capcity": capacity,
       "_id": stadiumId,
       "city": location,
@@ -70,11 +68,6 @@ const UpdateStadium = (props) => {
         <div className="bottom">
           <div className="right">
             <form onSubmit={handleSubmit}>
-              <div className="formInput" >
-                <label>ID</label>
-                <input type="text" name="id" value={stadiumId} readOnly />
-              </div>
-
               <div className="formInput" >
                 <label>Name</label>
                 <input type="text" placeholder="Stadium Name" name="stadiumName" value={stadiumName} onChange={e => setStadiumName(e.target.value)} />

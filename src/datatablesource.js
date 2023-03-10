@@ -166,8 +166,7 @@ export const oderColumns = [
   {
     field: "address",
     headerName: "Address",
-    width: 150,
-    width: 100,
+    width: 150
   },
   // {
   //   field: "status",
@@ -213,7 +212,7 @@ export const matchColumns = [
   {
     field: "_id",
     headerName: "ID",
-    width: 50,
+    width: 70,
   },
   {
     field: "logoHomeClub",
@@ -261,16 +260,4 @@ export const matchColumns = [
     headerName: "Date",
     width: 115,
   },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 60,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
-  }
 ];
