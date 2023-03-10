@@ -63,7 +63,7 @@ const BuyTicket = () => {
                         </div>
 
                         : <div className="text-center mt-5">
-                            {ticket == null ?
+                            {ticket.length == 0 ?
                                 <Alert className="mt-5" variant="info">
                                     No ticket found! Managers will add soon
                                 </Alert> :
