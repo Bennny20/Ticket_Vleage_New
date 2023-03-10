@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Open Sans");
+
 .NameTour {
   width: 300px;
   padding: 12px;
   border: 0 !important;
   background-color: #e9f0ea;
-  border-radius: 15%;
+  border-radius: 10px;
   /* needed */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -17,13 +19,59 @@
 .NameTour::-ms-expand {
     display: none;
 }
+//new button
+.button {
+  margin-left: 15px;
+  font-family:'Open Sans';
+  font-size: 20px;
+  font-weight:700;
+  display:inline-block;
+  color:#FFF;
+  border-radius: .25em;
+  text-shadow: -1px -1px 0px rgba(0,0,0,0.4);
+}
+.touch {
+  transition:ease-in-out .2s;
+  line-height:40px;
+  width:40px;
+  padding: 0px;
+  text-align: center;
+}
+.touch:hover {
+  color: #e9f0ea;
+  transform:scale(1.02);
+  box-shadow:2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
+}
+.touch.delete-btn:before,
+.touch.edit-btn:before,
+.touch.new-btn:before{
+  width:100%;
+  text-align:center;
+  font-size:1.25rem;
+}
+.new-btn {
+  background: #4CAF50 ;
+  text-decoration: none;
+}
+.edit-btn{
+  background: #74b9ff;
+  text-decoration: none;
+}
+
+.delete-btn {
+  background: #EE5253;
+  text-decoration: none;
+}
+
+
+//new button end
 
 .Round {
   width: 300px;
   padding: 12px;
   border: 0 !important;
   background-color: #eff7f0;
-  border-radius: 15%;
+  border-radius: 10px;
   /* needed */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -119,7 +167,6 @@
         }.formInput1 {
   
           select {
-            width: 40%;
             padding: 10px;
             border: none;
             border-bottom: 1px solid gray;

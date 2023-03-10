@@ -16,11 +16,11 @@ const Navbar = () => {
     <div className="header">
       <a className="logo" href="/"><img src={Logo} alt="logo" /></a>
       <nav>
-        <ul className="nav__links">
+        {/* <ul className="nav__links">
           <li><a href="#">Matches</a></li>
           <li><a href="#">Clubs</a></li>
           <li><a href="#">About</a></li>
-        </ul>
+        </ul> */}
       </nav>
       {
         currentUser ? <UserButton className="cta" /> : <a className="primary-button cta" href="/login">Login</a>

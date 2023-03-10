@@ -63,59 +63,62 @@ function List(props) {
   // Form action of data grid----------------------------------------------------------
   const actionColumn = [
     {
-        field: "action",
-        headerName: "Action",
-        width: 250,
-        renderCell: (params) => {
-            return (
-                <div className="cellAction">
-                    <div>
-                        <button
-                            className="updateButton"
-                            onClick={() => handleUpdate(params.row._id)}>
-                            Update
-                        </button>
-                    </div>
-                    <div>
-                        <button className="ticketButton"
-                            onClick={() => handleOnClick(params.row._id)}>
-                            Ticket
-                        </button>
-                    </div>
-                    <div>
-                        <button className="deleteButtonn"
-                            onClick={() => handleDelete(params.row._id)}>
-                            Delete
-                        </button>
-                    </div>
-                </div>
-            );
-        },
+      field: "action",
+      headerName: "Action",
+      width: 250,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <div>
+              <button
+                className="updateButton"
+                onClick={() => handleUpdate(params.row._id)}>
+                Update
+              </button>
+            </div>
+            <div>
+              <button className="ticketButton"
+                onClick={() => handleOnClick(params.row._id)}>
+                Ticket
+              </button>
+            </div>
+            <div>
+              <button className="deleteButtonn"
+                onClick={() => handleDelete(params.row._id)}>
+                Delete
+              </button>
+            </div>
+          </div>
+        );
+      },
     },
-];
+  ];
   // Form data grid----------------------------------------------------------
   const dataGrid = (
     <><DataGrid
-        className="datagrid"
-        rows={data}
-        columns={matchColumns.concat(actionColumn)}
-        getRowId={(row) => row._id}
-        pageSize={8}
-        rowsPerPageOptions={[8]} /></>
-)
+      className="datagrid"
+      rows={data}
+      columns={matchColumns.concat(actionColumn)}
+      getRowId={(row) => row._id}
+      pageSize={8}
+      rowsPerPageOptions={[8]} /></>
+  )
 
-// Form check show loading if undefine data----------------------------------------------------------
-const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
+  // Form check show loading if undefine data----------------------------------------------------------
+  const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
 
-// Form render here----------------------------------------------------------
-return (
+  // Form render here----------------------------------------------------------
+  return (
     <div className="datatable">
-        <div className="datatableTitle">
-            List Match
-        </div>
-        {loading}
+      <div className="datatableTitle">
+        List Match
+        <Link to="/match/newMatch" className="newButton">
+          New Match
+        </Link>
+      </div>
+      {loading}
     </div>
-);
+  );
 
 
 };

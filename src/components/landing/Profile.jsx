@@ -17,9 +17,11 @@ const Profile = () => {
 
 
     const handleLogout = () => {
-        dispatch({ type: "LOGOUT", payload: user })
+        localStorage.removeItem("user")
         localStorage.removeItem("access_token")
         console.log("user is logged out")
+        window.location.href = "/"
+
     }
 
 

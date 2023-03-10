@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
 //path
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
@@ -85,21 +87,6 @@ const Match = () => {
           <SearchOutlinedIcon />
         </div> */}
         <div className="listContainer">
-          <div className="listTitle">List Match
-          {/* */}
-
-          {/* */}
-            <Link to="/match/newMatch" className="newButton">
-              Add New Match
-            </Link>
-            <Link to="/match/newRound" className="newButton">
-              Add New Round
-            </Link>
-            <Link to="/match/newTournament" className="newButton">
-              Add New Tournament
-            </Link>
-          </div>
-
           <div className="listTitle" style={{ fontSize: "20px" }}>
             Tournament: </div>
 
@@ -111,15 +98,23 @@ const Match = () => {
               ))
               }
             </select>
+            <a class="button touch new-btn" href="/match/newTournament"><i class="fa-duotone fa-plus"></i></a>
+            <a class="button touch edit-btn" href="/match/newRound"><i class="fa-solid fa-pen"></i></a>
+            <a class="button touch delete-btn" href="/match/newRound"><i class="fa-solid fa-trash"></i></a>
           </div>
-
+          <div className="listTitle" style={{ fontSize: "20px" }}>
+            Round: </div>
           <div className="formInput" >
+
             <select className="Round"
               onChange={handleChangeRound}>
               {rowsRound.map((entity) => (
                 <option value={entity._id} id={entity._id} key={entity._id}>{entity.numberRound}</option>
               ))}
             </select>
+            <a class="button touch new-btn" href="/match/newRound"><i class="fa-duotone fa-plus"></i></a>
+            <a class="button touch edit-btn" href="/match/newRound"><i class="fa-solid fa-pen"></i></a>
+            <a class="button touch delete-btn" href="/match/newRound"><i class="fa-solid fa-trash"></i></a>
           </div>
           {isShow ? <LoadingSpinner /> : <Table props={DataRoundbyId} />}
 
