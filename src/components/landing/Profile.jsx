@@ -11,17 +11,12 @@ const Profile = () => {
     const user = localStorage.getItem("user")
     const { currentUser, dispatch } = useContext(AuthContext)
 
-    // function capitalName(text) {
-    //     return text.charAt(0).toUpperCase() + text.slice(100);
-    // }
 
 
-    const handleLogout = () => {
-        localStorage.removeItem("user")
-        localStorage.removeItem("access_token")
+    function handleLogout () {
+        localStorage.clear()
         console.log("user is logged out")
         window.location.href = "/"
-
     }
 
 

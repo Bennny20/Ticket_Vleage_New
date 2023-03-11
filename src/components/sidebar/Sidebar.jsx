@@ -7,23 +7,16 @@ import FactCheckIcon from '@mui/icons-material/FactCheck';
 import StadiumIcon from '@mui/icons-material/Stadium';
 import SportsIcon from '@mui/icons-material/Sports';
 import { Link } from "react-router-dom";
-import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import logo from "./logo.png"
 
 const Sidebar = () => {
-  const [error, setError] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("user")
-    localStorage.removeItem("access_token")
+    localStorage.clear()
     console.log("user is logged out")
     window.location.href = "/"
   }
 
-  const { dispatch } = useContext(DarkModeContext);
   return (
 
     <div className="sidebar">

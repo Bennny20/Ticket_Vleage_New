@@ -11,7 +11,6 @@ const Update = () => {
         year: ""
     });
     const id = localStorage.getItem("TournamentId");
-    const [data, setData] = useState();
 
     useEffect(
         function () {
@@ -19,7 +18,8 @@ const Update = () => {
                 .get(path + id)
                 .then(function (data) {
                     console.log(data.data);
-                    setData(data.data);
+                    year = data.data.year;
+                    tournamentname = data.data.name;
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -78,7 +78,7 @@ const Update = () => {
                                 <label>Tournament Name</label>
                                 <input type="text"
                                     name="tournamentname"
-                                    value={data.name}
+                                    value={tournamentname}
                                     onChange = {handleChange}/>
                             </div>
 
@@ -87,7 +87,7 @@ const Update = () => {
                                 <label>Year</label>
                                 <input type="number"
                                     name="year"
-                                    value={data.year}
+                                    value={year}
                                     onChange={handleChange}/>
                             </div>
 
