@@ -12,13 +12,16 @@ import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "match/tickets/"
-var matchId = localStorage.getItem("idClickTicketByMatch")
-const ListStadium = (props) => {
+
+const ListStadium = () => {
+    var matchId = localStorage.getItem("idClickTicketByMatch")
+
     const [data, setData] = useState([])
     const [isShow, setShow] = useState(true)
     //UseEffect here ----------------------------------------------------------------------------
     useEffect(
         function () {
+            console.log(matchId)
             axios
                 .get(path + matchId)
                 .then(function (data) {

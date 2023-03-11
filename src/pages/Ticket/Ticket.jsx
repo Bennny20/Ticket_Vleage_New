@@ -7,11 +7,10 @@ import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../LoadingWait/LoadingSpinner";
 import moment from "moment";
-import Chart from "../../components/chart/Chart";
 
 var path = "matches/";
 const Ticket = () => {
-  var id = localStorage.getItem("idClickTicket");
+  var id = localStorage.getItem("idClickTicketByMatch");
   const [isloading, setloading] = useState(true);
   const [data, setData] = useState([])
 

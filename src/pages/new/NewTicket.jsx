@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig"
 
 var pathMatch = "matches/";
-var matchId = localStorage.getItem("idClickTicket");
+var matchId = localStorage.getItem("idClickTicketByMatch");
 var pathStand = "stands/stadium/"
 var pathTicket = "match/tickets/";
 const New = () => {
