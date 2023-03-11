@@ -12,7 +12,7 @@ import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
 var path = "match/tickets/"
-var matchId = localStorage.getItem("idClickTicket")
+var matchId = localStorage.getItem("idClickTicketByMatch")
 const ListStadium = (props) => {
     const [data, setData] = useState([])
     const [isShow, setShow] = useState(true)
@@ -31,7 +31,7 @@ const ListStadium = (props) => {
         },
         []
     );
-    
+
     //Handle Update here ----------------------------------------------------------------------------
     const handleUpdate = (id) => {
         localStorage.setItem("editTicketId", id);
@@ -43,15 +43,15 @@ const ListStadium = (props) => {
         // setData(data.filter((item) => item.id !== id));
         console.log(id);
         axios.delete(path + matchId + "/" + id)
-          .then(res => {
-            console.log("check delete ", res);
-            alert('Deleted ticket by id: ' + id);
-            setData(data.filter((item) => item.id !== id));
-          })
-          .catch(function (err) {
-            console.log(err);
-          });
-      };
+            .then(res => {
+                console.log("check delete ", res);
+                alert('Deleted ticket by id: ' + id);
+                setData(data.filter((item) => item.id !== id));
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    };
 
     //Form table here ----------------------------------------------------------------------------
     const render = (
@@ -100,7 +100,7 @@ const ListStadium = (props) => {
                                             <div className="updateButton" onClick={e => (handleUpdate(value._id))} > Update</div>
                                         </Link>
                                         <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="deleteButtonn" onClick={e =>  (handleDelete(value._id))} >Delete</div>
+                                            <div className="deleteButtonn" onClick={e => (handleDelete(value._id))} >Delete</div>
                                         </Link>
                                     </div>
                                 </TableCell>
@@ -117,7 +117,7 @@ const ListStadium = (props) => {
     //Render here ----------------------------------------------------------------------------
     return (
         <>
-        {isShow ? <LoadingSpinner /> : render}
+            {isShow ? <LoadingSpinner /> : render}
         </>
 
     );

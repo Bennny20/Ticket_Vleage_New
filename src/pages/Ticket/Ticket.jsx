@@ -6,6 +6,7 @@ import "./ticket.scss";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../LoadingWait/LoadingSpinner";
+import moment from "moment";
 import Chart from "../../components/chart/Chart";
 
 var path = "matches/";
@@ -18,6 +19,7 @@ const Ticket = () => {
   useEffect(
     function () {
       //Load Match
+      localStorage.removeItem("editTicketId");
       axios
         .get(path + id)
         .then(function (data) {
@@ -48,7 +50,7 @@ const Ticket = () => {
                 </div>
               </div>
             </div>
-             <div className="right">
+            <div className="right">
               <h1 className="title">Visitor Club</h1>
               <img
                 src={data.logoAwayClub}
@@ -69,7 +71,7 @@ const Ticket = () => {
               </div>
               <div className="detailItem">
                 <span className="itemKey">Date: </span>
-                <span className="itemValue">{data.date}</span>
+                <span className="itemValue">{moment(data.date).format('DD/MM/YYYY -  h:mm a')}</span>
               </div>
             </div>
           </div>
@@ -86,7 +88,7 @@ const Ticket = () => {
             <ListTicket />
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
   //Render here ---------------------------------------------------------------------------------------------

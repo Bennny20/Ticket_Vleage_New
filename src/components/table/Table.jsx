@@ -24,19 +24,10 @@ function List(props) {
   )
 
   //Handle on click ticket here ----------------------------------------------------------------------
-  const handleOnClick = (matchId, stadiumId) => {
-    localStorage.setItem("idClickTicketStadium", matchId)
-    localStorage.setItem("idClickTicket", matchId)
+  const handleOnClick = (matchId) => {
+    localStorage.setItem("idClickTicketByMatch", matchId)
     console.log("Click ticket", matchId)
     return window.location.href = "/ticketbymatch"
-  }
-
-  //Handle on click status here ----------------------------------------------------------------------
-  const handleStatus = (status) => {
-    if (status == true) {
-      return "On-Going";
-    }
-    return "Ending";
   }
 
   //Handle update here ----------------------------------------------------------------------

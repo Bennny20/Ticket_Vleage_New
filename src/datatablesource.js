@@ -9,17 +9,19 @@ export const userColumns = [
   {
     field: "username",
     headerName: "Name",
-    width: 300,
+    width: 150,
   },
   {
     field: "email",
     headerName: "email",
-    width: 150,
+    width: 250,
   },
   {
     field: "createdAt",
     headerName: "Date Created",
-    width: 150,
+    valueFormatter: params =>
+      moment(params?.value).format("DD/MM/YYYY hh:mm A"),
+    width: 170,
   }
 ];
 
