@@ -33,7 +33,6 @@ p{
     background: #4CAF50;
     background-size: cover;
   position:relative;
-  width: 500px;
 
 
 }
@@ -97,11 +96,12 @@ p{
     color: #A19F9C;
     font-size: 0.7em;
     letter-spacing: 1px;
-    margin-top: 35px;
+    margin-top: 20px;
     text-align: center;
     width: 100%;
 }
-.signup-wrapper .signup-form .form input[type=text],.signup-wrapper .signup-form .form input[type=password]{
+.signup-wrapper .signup-form .form input[type=text],.signup-wrapper .signup-form .form input[type=email],
+.signup-wrapper .signup-form .form input[type=password]{
     border: none;
     border-bottom: 1px solid #e4e4e4;
     padding-top: 10px;
@@ -189,14 +189,16 @@ input::placeholder {
         width: 76%;
     }
     .signup-wrapper .signup-form .wrapper-2{
-        padding: 50px 40px;
+        padding: 30px 40px;
         margin: 0;
     }
 
     .signup-wrapper .signup-form .form .content-item{
         text-align: initial;
     }
-    .signup-wrapper .signup-form .form input[type=text],.signup-wrapper .signup-form .form input[type=password]{
+    .signup-wrapper .signup-form .form input[type=text],
+    .signup-wrapper .signup-form .form input[type=email],
+    .signup-wrapper .signup-form .form input[type=password]{
         text-align: initial;
 
     }
