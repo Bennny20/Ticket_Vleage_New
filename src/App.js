@@ -1,5 +1,6 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
+import Register from "./pages/Register/Register";
 //Add new
 import NewRound from "./pages/new/NewRound"
 import NewTournament from "./pages/new/NewTournament"
@@ -63,6 +64,7 @@ function App() {
           <Route path="/">
             <Route index element={<Landing />} />
             <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
 
             {/* Admin */}
             <Route path="admin">
