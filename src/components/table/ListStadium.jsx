@@ -104,17 +104,18 @@ const ListStadium = () => {
     )
 
     //Check show loading wait here ----------------------------------------------------------------------------
-    const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
+    const loading = (<>
+        <div className="datatableTitle">
+            List Stadium
+            <Link to="/stadium/newStadium" className="newButton">
+                Add New
+            </Link>
+        </div>
+        {isRender ? <LoadingSpinner /> : dataGrid}</>)
 
     //Render here ----------------------------------------------------------------------------
     return (
         <div className="datatable">
-            <div className="datatableTitle">
-                List Stadium
-                <Link to="/stadium/newStadium" className="newButton">
-                    Add New
-                </Link>
-            </div>
             {isShow ? loading : <Update props={formvalue} />}
         </div>
     );

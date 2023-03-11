@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
-import Update from "../../pages/Update/UpdateStadium"
+import Update from "../../pages/Update/UpdateStand"
 
 var path = "/stands/";
 var stadiumId = localStorage.getItem("idStandStadium");
@@ -95,17 +95,18 @@ const ListStand = () => {
     )
 
     //Check show loading wait here ----------------------------------------------------------------------------
-    const loading = (<>{isRender ? <LoadingSpinner /> : dataGrid}</>)
+    const loading = (<>
+        <div className="datatableTitle">
+            List Stand
+            <Link to="/standbystadium/newStand" className="newButton">
+                New Stand
+            </Link>
+        </div>
+        {isRender ? <LoadingSpinner /> : dataGrid}</>)
 
     //Render here ----------------------------------------------------------------------------
     return (
         <div className="datatable">
-            <div className="datatableTitle">
-                List Stand
-                <Link to="/standbystadium/newStand" className="newButton">
-                    New Stand
-                </Link>
-            </div>
             {isShow ? loading : <Update props={formvalue} />}
         </div>
     );
