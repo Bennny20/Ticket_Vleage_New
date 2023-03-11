@@ -21,6 +21,7 @@ import TicketByMatch from "./pages/Ticket/Ticket"
 import Ticket from "./pages/Ticket/Ticket"
 import Order from "./pages/order/Order"
 import OrderDetails from "./pages/orderDetails/OrderDetails";
+import UserOrderDetails from "./pages/orderDetails/UserOrderDetail";
 import StandByStadium from "./pages/Stand/Stand";
 
 //Update
@@ -69,18 +70,18 @@ function App() {
 
             {/* Admin */}
             <Route path="admin">
-              <Route index element={<RequiredAuth><Home /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><Home /></RequiredAdmin>} />
             </Route>
 
             {/* Match */}
             <Route path="match">
-              <Route index element={<RequiredAuth><Match /></RequiredAuth>} />
-              <Route path="updateMatch" element={<RequiredAuth><UpdateMatch /></RequiredAuth>} />
-              <Route path="updateRound" element={<RequiredAuth><UpdateRound /></RequiredAuth>} />
-              <Route path="updateTournament" element={<RequiredAuth><UpdateTournament /></RequiredAuth>} />
-              <Route path="newMatch" element={<NewMatch />} />
-              <Route path="newRound" element={<NewRound />} />
-              <Route path="newTournament" element={<NewTournament />} />
+              <Route index element={<RequiredAdmin><Match /></RequiredAdmin>} />
+              <Route path="updateMatch" element={<RequiredAdmin><UpdateMatch /></RequiredAdmin>} />
+              <Route path="updateRound" element={<RequiredAdmin><UpdateRound /></RequiredAdmin>} />
+              <Route path="updateTournament" element={<RequiredAdmin><UpdateTournament /></RequiredAdmin>} />
+              <Route path="newMatch" element={<RequiredAdmin><NewMatch /></RequiredAdmin>} />
+              <Route path="newRound" element={<RequiredAdmin><NewRound /></RequiredAdmin>} />
+              <Route path="newTournament" element={<RequiredAdmin><NewTournament /></RequiredAdmin>} />
             </Route>
 
 
@@ -91,42 +92,43 @@ function App() {
 
             {/* Stand  By Stadium*/}
             <Route path="standbystadium">
-              <Route index element={<RequiredAuth><StandByStadium /></RequiredAuth>} />
-              <Route path="newStand" element={<RequiredAuth><NewStand /></RequiredAuth>} />
-              <Route path="updateStand" element={<RequiredAuth><UpdateStand /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><StandByStadium /></RequiredAdmin>} />
+              <Route path="newStand" element={<RequiredAdmin><NewStand /></RequiredAdmin>} />
+              <Route path="updateStand" element={<RequiredAdmin><UpdateStand /></RequiredAdmin>} />
             </Route>
 
 
             {/* Ticket  */}
             <Route path="ticket">
-              <Route index element={<RequiredAuth><Ticket /></RequiredAuth>} />
-              <Route path="updateTicket" element={<RequiredAuth><UpdateTicket /></RequiredAuth>} />
-              <Route path="newTicket" element={<RequiredAuth><NewTicket /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><Ticket /></RequiredAdmin>} />
+              <Route path="updateTicket" element={<RequiredAdmin><UpdateTicket /></RequiredAdmin>} />
+              <Route path="newTicket" element={<RequiredAdmin><NewTicket /></RequiredAdmin>} />
             </Route>
 
             {/* User */}
             <Route path="users">
-              <Route index element={<RequiredAuth><List /></RequiredAuth>} />
-              <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><List /></RequiredAdmin>} />
+              <Route path="updateUser" element={<RequiredAdmin><UpdateUser /></RequiredAdmin>} />
             </Route>
 
             {/* Order */}
             <Route path="order">
-              <Route index element={<RequiredAuth><Order /></RequiredAuth>} />
-              <Route path="order-detail" element={<OrderDetails />} />
+              <Route index element={<RequiredAdmin><Order /></RequiredAdmin>} />
+              <Route path="order-detail" element={<RequiredAdmin><OrderDetails /></RequiredAdmin>} />
 
             </Route>
 
             {/* Profile */}
             <Route path="profile">
               <Route index element={<RequiredAuth><Profile /></RequiredAuth>} />
+              <Route path="order-detail" element={<RequiredAuth><UserOrderDetails /></RequiredAuth>} />
             </Route>
 
             {/* Stadium */}
             <Route path="stadium">
-              <Route index element={<RequiredAuth><Stadium /></RequiredAuth>} />
-              <Route path="updateStadium" element={<RequiredAuth><UpdateStadium /></RequiredAuth>} />
-              <Route path="newStadium" element={<RequiredAuth><NewStadium /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><Stadium /></RequiredAdmin>} />
+              <Route path="updateStadium" element={<RequiredAdmin><UpdateStadium /></RequiredAdmin>} />
+              <Route path="newStadium" element={<RequiredAdmin><NewStadium /></RequiredAdmin>} />
             </Route>
 
             {/* Buy Ticket */}
@@ -137,9 +139,9 @@ function App() {
 
             {/* Club */}
             <Route path="club">
-              <Route index element={<RequiredAuth><Club /></RequiredAuth>} />
-              <Route path="updateClub" index element={<RequiredAuth><UpdateClub /></RequiredAuth>} />
-              <Route path="newClub" element={<RequiredAuth><NewClub /></RequiredAuth>} />
+              <Route index element={<RequiredAdmin><Club /></RequiredAdmin>} />
+              <Route path="updateClub" index element={<RequiredAdmin><UpdateClub /></RequiredAdmin>} />
+              <Route path="newClub" element={<RequiredAdmin><NewClub /></RequiredAdmin>} />
             </Route>
 
 
