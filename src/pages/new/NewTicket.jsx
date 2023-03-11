@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig"
+import { Alert } from "react-bootstrap";
 
 var pathMatch = "matches/";
 var matchId = localStorage.getItem("idClickTicketByMatch");
@@ -62,25 +63,28 @@ const New = () => {
   const { idArea, amount, price } = formValue;
   function handleSubmit(event) {
     event.preventDefault();
-    //To do code here
-    alert("Add New Ticket : " + matchId + "-" + idArea + "-" + amount + "-" + price)
-    axios.post(pathTicket + matchId, {
-      "standId": idArea,
-      "matchId": matchId,
-      "price": price,
-      "quantity" : amount
-    })
-      .then(response => {
-        alert("Add success")
-        return window.location.href = "../ticket"
+    if (idArea) {
+      //To do code here
+      alert("Add New Ticket : " + matchId + "-" + idArea + "-" + amount + "-" + price)
+      axios.post(pathTicket + matchId, {
+        "standId": idArea,
+        "matchId": matchId,
+        "price": price,
+        "quantity": amount
       })
-      .catch(error => {
-        alert(error)
-        console.log(error);
-      });
+        .then(response => {
+          alert("Add success")
+          return window.location.href = "../ticket"
+        })
+        .catch(error => {
+          alert(error)
+          console.log(error);
+        });
+    } else alert("Please pick a stand!")
   }
 
   const form = (
+
     <div className="bottom">
       <div className="right">
         <form onSubmit={handleSubmit}>
@@ -111,12 +115,12 @@ const New = () => {
             <label>Amount</label>
             <input type="number"
               name="amount"
-              onChange={handleChange} />
+              onChange={handleChange} required />
           </div>
 
           <div className="formInput" >
             <label> Stand </label>
-            <select name="idArea"
+            <select name="idArea" required
               onClick={handleChange}>
               {dataTicket.map((entity) => (
                 <option value={entity._id} id={entity._id}>{entity.name}</option>
@@ -128,7 +132,7 @@ const New = () => {
             <label>Price</label>
             <input type="number"
               name="price"
-              onChange={handleChange} />
+              onChange={handleChange} required />
           </div>
 
 
@@ -147,7 +151,11 @@ const New = () => {
         <div className="top">
           <h1>New Ticket</h1>
         </div>
-        {form}
+        {dataTicket.length == 0 ?
+          <Alert className="mt-5" variant="info">
+            There no stand for this stadium
+          </Alert>
+          : form}
       </div>
     </div>
   );
