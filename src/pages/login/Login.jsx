@@ -1,6 +1,6 @@
 
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./login.scss";
 import axios from "../../AxiosConfig";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
   const { dispatch } = useContext(AuthContext)
+
+  useEffect(
+    function () {
+      const user = localStorage.getItem("user")
+      if (user != "null") {
+        navigate("/")
+      }
+    },
+    []
+  );
 
 
   const handleLogin = (e) => {
@@ -86,10 +96,8 @@ const Login = () => {
                       <button className="btn btn-dark btn-lg btn-block" type="submit">Login</button>
 
                       {error && <span>Wrong email or password!</span>}
-                      <br />
-                      <a href="#!" className="small text-muted">Terms of use.</a>
-                      <br />
-                      <a href="#!" className="small text-muted">Privacy policy</a>
+                      <p>Don't have any account? </p>
+                      <a href="/register" className="small text-muted">Register</a>
                     </form>
 
                   </div>

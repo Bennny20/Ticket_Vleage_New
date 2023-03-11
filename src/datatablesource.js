@@ -168,26 +168,10 @@ export const oderColumns = [
     headerName: "Username",
     width: 100,
   },
-
-  {
-    field: "quantity",
-    headerName: "Quantity",
-    width: 100,
-  },
   {
     field: "totalPrice",
     headerName: "Total Payment",
     width: 150,
-  },
-  {
-    field: "phone",
-    headerName: "Phone",
-    width: 100,
-  },
-  {
-    field: "address",
-    headerName: "Address",
-    width: 150
   },
   // {
   //   field: "status",

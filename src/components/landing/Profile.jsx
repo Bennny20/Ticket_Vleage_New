@@ -17,8 +17,7 @@ const Profile = () => {
 
 
     const handleLogout = () => {
-        localStorage.removeItem("user")
-        localStorage.removeItem("access_token")
+        localStorage.clear();
         console.log("user is logged out")
         window.location.href = "/"
 

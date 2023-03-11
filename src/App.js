@@ -20,6 +20,7 @@ import Club from "./pages/Club/Club"
 import TicketByMatch from "./pages/Ticket/Ticket"
 import Ticket from "./pages/Ticket/Ticket"
 import Order from "./pages/order/Order"
+import OrderDetails from "./pages/orderDetails/OrderDetails";
 import StandByStadium from "./pages/Stand/Stand";
 
 //Update
@@ -107,12 +108,13 @@ function App() {
             <Route path="users">
               <Route index element={<RequiredAuth><List /></RequiredAuth>} />
               <Route path="updateUser" element={<RequiredAuth><UpdateUser /></RequiredAuth>} />
-              <Route path="newUser" element={<NewUser />} />
             </Route>
 
             {/* Order */}
             <Route path="order">
               <Route index element={<RequiredAuth><Order /></RequiredAuth>} />
+              <Route path="order-detail" element={<OrderDetails />} />
+
             </Route>
 
             {/* Profile */}

@@ -17,8 +17,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("user")
-    localStorage.removeItem("access_token")
+    localStorage.clear();
     console.log("user is logged out")
     window.location.href = "/"
   }
@@ -82,7 +81,7 @@ const Sidebar = () => {
               <span>Match</span>
             </li>
           </Link>
-     
+
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
               <ExitToAppIcon className="icon" />
