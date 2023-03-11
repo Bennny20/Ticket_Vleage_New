@@ -6,13 +6,40 @@ import background from "./backgroundLogin.jpeg"
 
 const Register = () => {
     const [error, setError] = useState(false);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+    const [email, setEmail] = useState();
+    const [confirm, setConfirm] = useState();
     const navigate = useNavigate()
+
+    const handleConfirm = (pw, conf) => {
+        if (pw == conf) {
+            return true
+        } else return false
+    }
+
+    console.log("==================")
+    console.log("username onchange: ", username)
+    console.log("email onchange: ", email)
+    console.log("password onchange: ", password)
+    console.log("confirm onchange: ", confirm)
 
 
     const handleRegister = (e) => {
         e.preventDefault();
+        if (handleConfirm(password, confirm)) {
+            axios.post("auth/register", {
+                "username": username,
+                "password": password,
+                "email": email,
+            }).then(response => {
+                alert("User has been created!", response.data._id)
+                console.log(response.data)
+            }).catch(error => {
+                alert(error)
+                console.log(error);
+            });
+        } else alert("Confirmation password does not match! Please try again")
     };
 
 
@@ -23,41 +50,34 @@ const Register = () => {
             <div className="content-wrapper">
                 <div className="content">
                     <div className="signup-wrapper shadow-box">
-                        <div className="company-details ">
-                            <img src={background} alt="" />
-                            <div className="shadow"></div>
-                            <div className="wrapper-1">
 
-                            </div>
-
-                        </div>
                         <div className="signup-form ">
                             <div className="wrapper-2">
                                 <div className="form-title">Sign up today!</div>
                                 <div className="form">
-                                    <form>
+                                    <form onSubmit={handleRegister}>
                                         <div className="content-item">
                                             <label>Username </label>
-                                            <input type="text" required />
+                                            <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} required />
 
                                         </div>
 
                                         <div className="content-item">
                                             <label>email address</label>
-                                            <input type="text" name="email" required />
+                                            <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
 
                                         </div>
 
                                         <div className="content-item">
 
                                             <label>Password</label>
-                                            <input type="password" name="password" required />
+                                            <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} required />
 
                                         </div>
                                         <div className="content-item">
 
                                             <label>Password confirmation</label>
-                                            <input type="password" name="password-con" required />
+                                            <input type="password" name="password-con" onChange={(e) => setConfirm(e.target.value)} required />
                                         </div>
 
 
@@ -67,6 +87,12 @@ const Register = () => {
                                 </div>
                             </div>
 
+                        </div>
+                        <div className="company-details ">
+                            <img src={background} alt="" />
+                            <div className="shadow"></div>
+                            <div className="wrapper-1">
+                            </div>
                         </div>
 
                     </div>
