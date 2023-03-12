@@ -12,7 +12,8 @@ import logo from "./logo.png"
 const Sidebar = () => {
 
   const handleLogout = () => {
-    localStorage.clear()
+    localStorage.removeItem("user")
+    localStorage.removeItem("access_token")
     console.log("user is logged out")
     window.location.href = "/"
   }
@@ -75,7 +76,7 @@ const Sidebar = () => {
               <span>Match</span>
             </li>
           </Link>
-     
+
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>
               <ExitToAppIcon className="icon" />

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./register.scss";
 import axios from "../../AxiosConfig";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,16 @@ const Register = () => {
     const [email, setEmail] = useState();
     const [confirm, setConfirm] = useState();
     const navigate = useNavigate()
+
+    useEffect(
+        function () {
+            const user = localStorage.getItem("user")
+            if (user != "null") {
+                navigate("/")
+            }
+        },
+        []
+    );
 
     const handleConfirm = (pw, conf) => {
         if (pw == conf) {
@@ -82,7 +92,7 @@ const Register = () => {
 
 
                                         <button type="submit" className="signup">SIGN UP </button>
-                                        <a href="#" className="loginbtn">login</a>
+                                        <a href="/login" className="loginbtn">login</a>
                                     </form>
                                 </div>
                             </div>
