@@ -42,35 +42,17 @@ export const userInputs = [
   
   export const clubInput = [
     {
-      id: 1,
-      label: "ID",
-      type: "text",
-      placeholder: "Club01",
-    },
-    {
-      id: 2,
+      id: "name",
       label: "Name",
       type: "text",
       placeholder: "Name of club",
     },
     {
-      id: 3,
+      id: "location",
       label: "Location",
       type: "text",
       placeholder: "Localtion of club",
-    },
-    {
-      id: 4,
-      label: "Stadium",
-      type: "text",
-      placeholder: "Thong Nhat",
-    },
-    {
-      id: 5,
-      label: "Logo",
-      type: "text",
-      placeholder: "Thong Nhat",
-    },
+    }
   ];
   
   

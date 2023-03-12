@@ -2,24 +2,25 @@ import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
+import { clubInput } from "../../formSource";
 import axios from "../../AxiosConfig";
+import { DriveFolderUploadOutlined } from "@mui/icons-material";
 
 var path = "clubs/";
 var pathStadium = "stadiums/";
 const New = () => {
+  const [file, setFile] = useState("");
+  const [info, setInfo] = useState({});
+  const [stadiumId, setStadiumId] = useState([]);
   const [dataStadium, setDataStadium] = useState([]);
-  const [logo, setLogo] = useState([]);
-  const [stadiumId, setStadiumId] = useState();
-  const [clubName, setClubName] = useState();
-  const [location, setLocation] = useState();
-
+  const { loading } = useState(false);
   useEffect(
     function () {
       //data stadium
-      axios.get(pathStadium)
+      axios.get("stadiums/")
         .then(function (data) {
           console.log(data.data);
-          setDataStadium(data.data);
+          setDataStadium(data.data)
         })
         .catch(function (err) {
           console.log(32, err);
@@ -28,73 +29,92 @@ const New = () => {
     []
   );
 
+  const handleChange = (e) => {
+    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "upload");
+    try {
+      const uploadRes = await axios.post("https://api.cloudinary.com/dg7i8w3xh/image/upload", data);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    //To do code here
-    alert("Update Club : " + clubName + " - " + location + " - " + stadiumId + " - " + logo)
-    axios.post(path, {
-      "name": clubName,
-      "location": location,
-      "logo": logo,
-      "stadiumId": stadiumId
-    })
-      .then(response => {
-        alert("Created")
-        return window.location.href = "../club"
-      })
-      .catch(error => {
-        alert(error)
-        console.log(error);
-      });
-  }
+      const { url } = uploadRes.data;
+
+      const newClub = {
+        ...info,
+        stadiumId: stadiumId,
+        logo: url,
+      };
+      console.log("handle click", newClub)
+      await axios.post("/clubs", newClub);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
-        <div className="top">
-          <h1>New match</h1>
-        </div>
+        <div className="top"></div>
         <div className="bottom">
+          <div className="left">
+            <img
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt=""
+            />
+          </div>
           <div className="right">
-            <form onSubmit={handleSubmit}>
-              <div className="formInput" >
-                <label>Name</label>
-                <input id="txtNameClub" type="text" name="name" placeholder="Name of club" value={clubName} onChange={e => setClubName(e.target.value)} required/>
+            <form>
+              <div className="formInput">
+                <label htmlFor="file">
+                  Image: <DriveFolderUploadOutlined className="icon" />
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                  style={{ display: "none" }}
+                />
               </div>
 
-              <div className="formInput" >
-                <label>Location</label>
-                <input id="txtLocation" type="text" name="location" placeholder="Location" value={location} onChange={e => setLocation(e.target.value)} required/>
-              </div>
+              {clubInput.map((input) => (
+                <div className="formInput" key={input.id}>
+                  <label>{input.label}</label>
+                  <input
+                    onChange={handleChange}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    id={input.id}
+                  />
+                </div>
+              ))}
 
-              {/* Stadium for club */}
+
               <div className="formInput" >
                 <label>Stadium</label>
                 <select name="stadiumId"
-                  value={stadiumId}
                   onChange={e => setStadiumId(e.target.value)}>
-                  {dataStadium.map((entity) => (
-                    <option value={entity._id} id={entity._id}>{entity.name}</option>
-                  ))
-                  }
+                  {loading
+                    ? "loading.."
+                    : dataStadium &&
+                    dataStadium.map((data) => (
+                      <option key={data._id} value={data._id}>
+                        {data.name}
+                      </option>
+                    ))}
                 </select>
               </div>
-
-              <div className="formInput" >
-                <label>Logo</label>
-                <input id="txtLogoUrl" type="text" name="logo" placeholder="Logo url" value={logo} onChange={e => setLogo(e.target.value)} required/>
-              </div>
-
-
-              <div className="btnSend">
-                <button type="submit" >Save</button>
-              </div>
+              <button onClick={handleClick} type="submit">Send</button>
             </form>
-
           </div>
         </div>
       </div>
