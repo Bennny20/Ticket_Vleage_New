@@ -1,9 +1,10 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
+import { Col } from "react-bootstrap";
+import StadiumMap from "./stadium-map.png"
 
 var path = "stands/";
 
@@ -74,6 +75,11 @@ const NewStand = () => {
                 <div className="top">
                     <h1>New Stand</h1>
                 </div>
+                <Col xs={12} md={12}>
+                    <div className="stadium-map">
+                        <img src={StadiumMap} alt="" />
+                    </div>
+                </Col>
                 <div className="bottom">
                     <div className="right">
                         <form onSubmit={handleSubmit}>

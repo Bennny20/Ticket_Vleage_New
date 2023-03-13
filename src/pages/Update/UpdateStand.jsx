@@ -1,13 +1,14 @@
 import "./update.scss";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
+import { Col } from "react-bootstrap";
+import StadiumMap from "./stadium-map.png"
 
 var path = "stands/";
 
 const UpdateStand = (props) => {
     const idStandStadium = localStorage.getItem("idStandStadium")
     const [stadium, setStadium] = useState([]);
-    const [stand, setStand] = useState([]);
 
     useEffect(
         function () {
@@ -22,11 +23,14 @@ const UpdateStand = (props) => {
                 });
 
             axios
-                .get(path + props.props)
+                .get("stands/" + props.props)
                 .then(function (respone) {
-                    name = respone.data.name;
-                    quantitySeat = respone.data.quantitySeat
-                    console.log(respone.data)
+                    console.log("Data stand:", respone.data)
+                    setFormValue({
+                        name: respone.data.name,
+                        quantitySeat: respone.data.quantitySeat,
+                        stadiumId: respone.data.stadiumId
+                    })
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -57,7 +61,7 @@ const UpdateStand = (props) => {
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Round : " + name + "-" + quantitySeat + "-" + idStandStadium)
+        alert("Update Round : " + name + "-" + quantitySeat + "-" + idStandStadium)
         axios.put(path + props.props, {
             "name": name,
             "quantitySeat": quantitySeat,
@@ -81,6 +85,11 @@ const UpdateStand = (props) => {
                 <div className="top">
                     <h1>Update Stand</h1>
                 </div>
+                <Col xs={12} md={12}>
+                    <div className="stadium-map">
+                        <img src={StadiumMap} alt="" />
+                    </div>
+                </Col>
                 <div className="bottom">
                     <div className="right">
                         <form onSubmit={handleSubmit}>
@@ -113,8 +122,6 @@ const UpdateStand = (props) => {
                                     onChange={handleChange}
                                     placeholder="" />
                             </div>
-
-
 
                             {/* Button Send to add new */}
                             <div className="btnSend">
