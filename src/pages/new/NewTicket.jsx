@@ -61,6 +61,7 @@ const New = () => {
   };
 
   const { idArea, amount, price } = formValue;
+  console.log("test stand id onchange:", idArea)
   function handleSubmit(event) {
     event.preventDefault();
     if (idArea) {
@@ -121,7 +122,7 @@ const New = () => {
           <div className="formInput" >
             <label> Stand </label>
             <select name="idArea" required
-              onClick={handleChange}>
+              onChange={handleChange}>
               {dataTicket.map((entity) => (
                 <option value={entity._id} id={entity._id}>{entity.name}</option>
               ))}
