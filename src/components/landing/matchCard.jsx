@@ -22,15 +22,23 @@ const MatchCard = ({ match, showDetails = true }) => {
             {/* 2 Teams  */}
             {match ?
                 <div className="match-item">
-
-                    <div className="time-area">
-                        <div className="time">
-                            <h4 className="day">{moment(match.date).format('ddd')}</h4>
-                            <h4 className="month">{moment(match.date).format('MMM')}</h4>
-                            <h4 className="date">{moment(match.date).format('D')}</h4>
+                    {moment(match.date).isBefore(Date.now()) ?
+                        <div className="time-area">
+                            <div className="time">
+                                <h4>MATCH ENDED</h4>
+                            </div>
+                            <h4 className="match-time">{moment(match.date).fromNow()}</h4>
                         </div>
-                        <h4 className="match-time">{moment(match.date).format('h:mm a')}</h4>
-                    </div>
+                        :
+
+                        <div className="time-area">
+                            <div className="time">
+                                <h4 className="day">{moment(match.date).format('ddd')}</h4>
+                                <h4 className="month">{moment(match.date).format('MMM')}</h4>
+                                <h4 className="date">{moment(match.date).format('D')}</h4>
+                            </div>
+                            <h4 className="match-time">{moment(match.date).format('h:mm a')}</h4>
+                        </div>}
                     <div className="flags">
                         <div className="home-flag">
                             <div className='flag-div'><img src={match.logoHomeClub} className="flag" /></div>
