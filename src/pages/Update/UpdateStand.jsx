@@ -54,6 +54,7 @@ const UpdateStand = (props) => {
                 [name]: value,
             };
         });
+        console.log("Set onchange :" + name + " - Value: " +value)
     };
 
     const { name, quantitySeat } = formValue;
