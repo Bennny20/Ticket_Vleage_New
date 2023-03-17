@@ -11,7 +11,7 @@ var pathTournament = "tournaments/";
 var pathRound = "rounds/";
 var pathMatch = "matches/";
 const New = () => {
-      //data--------------------------------------------------------
+  //data--------------------------------------------------------
   const [dataTournament, setDataTournament] = useState([]);
   const [DataRound, setDataRound] = useState([]);
   const [dataClub, setDataClub] = useState([]);
@@ -60,26 +60,35 @@ const New = () => {
     []
   );
   //handle Change Value--------------------------------------------------------------------------
-  const handleChange = (event) => {
+  const handleTour = (event) => {
     const { name, value } = event.target;
-    if (name === "tournamentId") {
-      axios
-        .get(pathRound + value)
-        .then(function (data) {
-          console.log(data.data);
-          setDataRound(data.data);
-          // console.log(list);
-        })
-        .catch(function (err) {
-          console.log(32, err);
-        });
-    }
     setFormValue((prevState) => {
       return {
         ...prevState,
         [name]: value,
       };
     });
+    axios
+      .get(pathRound + value)
+      .then(function (data) {
+        console.log(data.data);
+        setDataRound(data.data);
+        // console.log(list);
+      })
+      .catch(function (err) {
+        console.log(32, err);
+      });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValue((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+    console.log("Test onchange :" + name + " - Value: " + value)
   };
 
   const { homeClubId, awayClubId, roundId, stadiumId, date } = formValue;
@@ -94,11 +103,7 @@ const New = () => {
       + "\n- club RoundId:" + roundId
       + "\n- club Time Start:" + date)
     axios.post(pathMatch, {
-      "homeClubId": homeClubId,
-      "awayClubId": awayClubId,
-      "roundId": roundId,
-      "stadiumId": stadiumId,
-      "date": date
+      formValue
     })
       .then(response => {
         alert("Add success")
@@ -129,7 +134,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Home</label>
                 <select name="homeClubId"
-                  onClick={handleChange}>
+                  onChange={handleChange}>
                   {dataClub.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
@@ -141,7 +146,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Away</label>
                 <select name="awayClubId"
-                  onClick={handleChange}>
+                  onChange={handleChange}>
                   {dataClub.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
@@ -153,7 +158,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Stadium</label>
                 <select name="stadiumId"
-                  onClick={handleChange}>
+                  onChange={handleChange}>
                   {dataStadium.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
@@ -171,11 +176,10 @@ const New = () => {
 
 
               {/* Tournament */}
-              <div className="formInput"
-                onChange={handleChange}>
+              <div className="formInput">
                 <label>Tournament</label>
                 <select name="tournamentId"
-                  onClick={handleChange}>
+                  onChange={handleTour}>
                   {dataTournament.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.name}</option>
                   ))
@@ -187,7 +191,7 @@ const New = () => {
               <div className="formInput" >
                 <label>Round</label>
                 <select name="roundId"
-                  onClick={handleChange}>
+                  onChange={handleChange}>
                   {DataRound.map((entity) => (
                     <option value={entity._id} id={entity._id}>{entity.numberRound}</option>
                   ))
@@ -203,8 +207,8 @@ const New = () => {
 
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
