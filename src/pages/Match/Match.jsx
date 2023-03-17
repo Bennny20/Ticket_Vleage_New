@@ -129,7 +129,7 @@ const Match = () => {
             <a className="button touch new-btn" href="/match/newTournament"><i className="fa-duotone fa-plus"></i></a>
             <a className="button touch edit-btn" href="/match/updateTournament"><i className="fa-solid fa-pen"></i></a>
             {/* onClick={handleDeleteTournament(tournamentId)}*/}
-            <a className="button touch delete-btn" href="#" ><i className="fa-solid fa-trash"></i></a>
+            {/* <a className="button touch delete-btn" href="#" ><i className="fa-solid fa-trash"></i></a> */}
           </div>
           <div className="listTitle" style={{ fontSize: "20px" }}>
             Round: </div>
@@ -144,7 +144,7 @@ const Match = () => {
             <a className="button touch new-btn" href="/match/newRound"><i className="fa-duotone fa-plus"></i></a>
             {/* <a className="button touch edit-btn" href="#"><i className="fa-solid fa-pen"></i></a> */}
             {/*onClick={handleDeleteRound(roundId)} */}
-            <a className="button touch delete-btn" href="#"><i className="fa-solid fa-trash"></i></a>
+            {/* <a className="button touch delete-btn" href="#"><i className="fa-solid fa-trash"></i></a> */}
           </div>
           {isShow ? <LoadingSpinner /> : <Table props={DataRoundbyId} />}
 

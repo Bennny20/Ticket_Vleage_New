@@ -101,7 +101,7 @@ const New = () => {
       "date": date
     })
       .then(response => {
-        alert("Add success")
+        alert("Create success!")
         return window.location.href = "../match"
       })
       .catch(error => {
