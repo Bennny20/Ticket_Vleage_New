@@ -1,13 +1,7 @@
 import "./table.scss";
+import { DataGrid } from "@mui/x-data-grid";
+import { ticketColumns } from "../../datatablesource";
 import { useState, useEffect } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
 import axios from "../../AxiosConfig";
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 
@@ -15,9 +9,8 @@ var path = "match/tickets/"
 
 const ListStadium = () => {
     var matchId = localStorage.getItem("idClickTicketByMatch")
-
+    const [isRender, setisRender] = useState(true);
     const [data, setData] = useState([])
-    const [isShow, setShow] = useState(true)
     //UseEffect here ----------------------------------------------------------------------------
     useEffect(
         function () {
@@ -26,7 +19,7 @@ const ListStadium = () => {
                 .get(path + matchId)
                 .then(function (data) {
                     setData(data.data);
-                    setShow(false)
+                    setisRender(false)
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -43,7 +36,6 @@ const ListStadium = () => {
 
     //Handle Sold Out here ----------------------------------------------------------------------------
     const handleDelete = (id) => {
-        // setData(data.filter((item) => item.id !== id));
         console.log(id);
         axios.delete(path + matchId + "/" + id)
             .then(res => {
@@ -56,73 +48,52 @@ const ListStadium = () => {
             });
     };
 
-    //Form table here ----------------------------------------------------------------------------
-    const render = (
-        <div className="datatable">
-            <div className="datatableTitle"><TableContainer component={Paper} className="table">
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell className="tableCell">ID</TableCell>
-                            <TableCell className="tableCell">Stand</TableCell>
-                            <TableCell className="tableCell">Amount</TableCell>
-                            <TableCell className="tableCell">Price</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.map((value) => (
-                            <TableRow key={value.id}>
-                                <TableCell className="tableCell">
-                                    <div className="cellWrapper">
-                                        {value._id}
-                                    </div>
-                                </TableCell>
-                                <TableCell className="tableCell">
-                                    <div className="cellWrapper">
-                                        {value.nameStand}
-                                    </div>
-                                </TableCell>
+    //Form action here ----------------------------------------------------------------------------
+    const actionColumn = [
+        {
+            field: "action",
+            headerName: "",
+            width: 300,
+            renderCell: (params) => {
+                return (
+                    <div className="cellAction">
+                        <div>
+                            <button
+                                className="updateButton"
+                                onClick={() => handleUpdate(params.row._id)}>
+                                Update
+                            </button>
+                        </div>
 
-                                <TableCell className="tableCell">
-                                    <div className="cellAction">
-                                        <div className="cellWrapper">
-                                            {value.quantity}
-                                        </div>
-                                    </div>
-                                </TableCell>
-                                <TableCell className="tableCell">
-                                    <div className="cellAction">
-                                        <div className="cellWrapper">
-                                            {value.price}VND
-                                        </div>
-                                    </div>
-                                </TableCell>
-                                <TableCell className="tableCell">
-                                    <div className="cellAction">
-                                        <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="updateButton" onClick={e => (handleUpdate(value._id))} > Update</div>
-                                        </Link>
-                                        <Link to="" style={{ textDecoration: "none" }}>
-                                            <div className="deleteButtonn" onClick={e => (handleDelete(value._id))} >Delete</div>
-                                        </Link>
-                                    </div>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            </div>
-        </div>
+                        <div>
+                            <button
+                                className="deleteButtonn"
+                                onClick={() => handleDelete(params.row._id)}>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                );
+            },
+        },
+    ];
+
+    //Form data grid here ----------------------------------------------------------------------------
+    const dataGrid = (
+        <> <DataGrid
+            className="datagrid"
+            rows={data}
+            columns={ticketColumns.concat(actionColumn)}
+            getRowId={(row) => row._id}
+            pageSize={8}
+            rowsPerPageOptions={[8]} /></>
     )
 
-    //Loading page wait data here ----------------------------------------------------------------------------    
     //Render here ----------------------------------------------------------------------------
     return (
-        <>
-            {isShow ? <LoadingSpinner /> : render}
-        </>
-
+        <div className="datatable">
+            {isRender ? <LoadingSpinner /> : dataGrid}
+        </div>
     );
 };
 

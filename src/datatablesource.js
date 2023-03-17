@@ -108,52 +108,37 @@ export const standColums = [
 //const of ticket list
 export const ticketColumns = [
   {
-    field: "id",
+    field: "_id",
     headerName: "ID",
     width: 70,
   },
   {
-    field: "orderID",
-    headerName: "Oder ID",
-    width: 300,
+    field: "nameStand",
+    headerName: "Stand",
+    width: 120,
   },
   {
-    field: "account",
+    field: "quantity",
     headerName: "Account",
-    width: 500,
+    width: 120,
   },
   {
-    field: "ticket",
+    field: "price",
     headerName: "Ticket",
     width: 150,
   },
   {
-    field: "date",
-    headerName: "Date",
-    width: 150,
+    field: "status",
+    headerName: "Status",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.status}`}>
+          {params.row.status}
+        </div>
+      );
+    },
   },
-  {
-    field: "quantity",
-    headerName: "Quantity",
-    width: 150,
-  },
-  {
-    field: "total",
-    headerName: "Total",
-    width: 150,
-  },
-  // {
-  //   field: "status",
-  //   headerName: "Status",
-  //   width: 160,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
-  // },
 ];
 
 //const of oder list
