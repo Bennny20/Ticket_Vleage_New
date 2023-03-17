@@ -31,7 +31,7 @@ const New = () => {
     //To do code here
     alert("Add New Round : "  + name + "-" + city + "-" + capcity)
     axios.post(path, {    
-        "capacity": capcity,
+        "name": name,
         "city": city,
         "capcity": capcity  
     })
