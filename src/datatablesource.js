@@ -95,7 +95,7 @@ export const standColums = [
   {
     field: "name",
     headerName: "Name",
-    width: 100,
+    width: 200,
   },
   {
     field: "quantitySeat",

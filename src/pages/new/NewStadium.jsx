@@ -28,8 +28,8 @@ const New = () => {
   //function
   function showAlert(){
     Swal.fire({
-      title: "Success",
-      text: "Club name: " + name + " at :" + city + " with capital: " + capcity,
+      title: "Create Success",
+      text: "Stadium name: " + name + " at :" + city + " with capital: " + capcity,
       icon: "success",
       confirmButtonText: "OK",
     }).then(function () {
