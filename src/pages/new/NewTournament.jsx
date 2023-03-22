@@ -8,7 +8,7 @@ import axios from "../../AxiosConfig";
 var pathTournament = "tournaments/";
 const New = () => {
     const [formValue, setFormValue] = useState({
-        tournamentname: "",
+        name: "",
         year : ""
     });
 
@@ -23,15 +23,15 @@ const New = () => {
         });
     };
 
-    const { tournamentname, year } = formValue;
+    const { name, year } = formValue;
     //function
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-        alert("Add New Tournament : " + tournamentname + "-" + year)
+        alert("Add New Tournament : " + name + "-" + year)
         axios.post(pathTournament, {
             "year": year,
-            "name": tournamentname
+            "name": name
           })
             .then(response => {
               alert("Add success")
@@ -61,7 +61,7 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Tournament Name</label>
                                 <input type="text"
-                                name="tournamentname"
+                                name="name"
                                 onChange={handleChange}
                                  placeholder="V.League 1 - 2021" />
                             </div>

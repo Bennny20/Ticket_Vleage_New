@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
+import { Refresh } from "@mui/icons-material";
 
 var path = "stadiums/";
 const ListStadium = () => {
@@ -32,12 +33,10 @@ const ListStadium = () => {
 
     //Handle Delete here ----------------------------------------------------------------------------
     const handleDelete = (id) => {
-        console.log(id);
         axios.delete(path + id)
             .then(res => {
-                console.log(res);
-                alert('Deleted stadium by id: ' + id);
                 setData(data.filter((item) => item.id !== id));
+                window.location.reload(false);
             })
             .catch(function (err) {
                 console.log(err);
