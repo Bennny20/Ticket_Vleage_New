@@ -58,7 +58,6 @@ const NewStand = () => {
     function handleSubmit(event) {
         event.preventDefault();
         //To do code here
-
         axios.post(path + idStandStadium, {
             "name": name,
             "quantitySeat": quantitySeat,
@@ -72,6 +71,8 @@ const NewStand = () => {
                 console.log(error);
             });
         //end to do code
+
+
     }
 
     return (
@@ -108,6 +109,7 @@ const NewStand = () => {
                                         type={input.type}
                                         placeholder={input.placeholder}
                                         id={input.id}
+                                        required
                                     />
                                 </div>
                             ))}

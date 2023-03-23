@@ -41,29 +41,34 @@ const New = () => {
                 [name]: value,
             };
         });
+        console.log("Test onchange :" + name + " - Value: " + value)
     };
 
     const { roundname, selectsTournament } = formValue;
     //function
     function handleSubmit(event) {
         event.preventDefault();
-        //To do code here
-        alert("Add New Round : " + roundname + "-" + selectsTournament)
+        if (roundname == null || selectsTournament == null || selectsTournament == 0) alert("Please fill in this form!")
+        if (roundname == 0) alert("Round number must be greater than 0")
+        else {
+            //To do code here
+            alert("Add New Round : " + roundname + "-" + selectsTournament)
 
-        axios.post(pathRound, {
-            "numberRound": roundname,
-            "tournamentId": selectsTournament
-        })
-            .then(response => {
-                alert("Add success")
-                //Go to club page
-                return window.location.href = "../match"
+            axios.post(pathRound, {
+                "numberRound": roundname,
+                "tournamentId": selectsTournament
             })
-            .catch(error => {
-                alert(error)
-                console.log(error);
-            });
-        //end to do code
+                .then(response => {
+                    alert("Add success")
+                    //Go to club page
+                    return window.location.href = "../match"
+                })
+                .catch(error => {
+                    alert(error)
+                    console.log(error);
+                });
+            //end to do code
+        }
     }
 
     return (
@@ -92,6 +97,7 @@ const New = () => {
                                 <label>Tournament</label>
                                 <select name="selectsTournament"
                                     onChange={handleChange}>
+                                    <option value={0}> -- SELECT TOURNAMENT -- </option>
                                     {rowsTournament.map((entity) => (
                                         <option value={entity._id} id={entity._id}>{entity.name}</option>
                                     ))

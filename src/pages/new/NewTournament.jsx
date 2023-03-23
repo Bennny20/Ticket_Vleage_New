@@ -9,7 +9,7 @@ var pathTournament = "tournaments/";
 const New = () => {
     const [formValue, setFormValue] = useState({
         name: "",
-        year : ""
+        year: ""
     });
 
     //handle Change value
@@ -32,15 +32,15 @@ const New = () => {
         axios.post(pathTournament, {
             "year": year,
             "name": name
-          })
+        })
             .then(response => {
-              alert("Add success")
-              //Go to club page
-              return window.location.href = "../match"
+                alert("Add success")
+                //Go to club page
+                return window.location.href = "../match"
             })
             .catch(error => {
-              alert(error)
-              console.log(error);
+                alert(error)
+                console.log(error);
             });
         //end to do code
     }
@@ -61,18 +61,21 @@ const New = () => {
                             <div className="formInput" >
                                 <label>Tournament Name</label>
                                 <input type="text"
-                                name="name"
-                                onChange={handleChange}
-                                 placeholder="V.League 1 - 2021" />
+                                    name="name"
+                                    onChange={handleChange}
+                                    placeholder="V.League 1 - 2021"
+                                    required />
                             </div>
 
                             {/* End Date */}
                             <div className="formInput" >
-                            <label>Year</label>
+                                <label>Year</label>
                                 <input type="text"
-                                name="year"
-                                onChange={handleChange}
-                                 placeholder="2023" />
+                                    name="year"
+                                    onChange={handleChange}
+                                    placeholder="2023"
+                                    required
+                                />
                             </div>
 
 

@@ -59,6 +59,7 @@ const New = () => {
         [name]: value,
       };
     });
+    console.log("Test onchange :" + name + " - Value: " + value)
   };
 
   const { idArea, amount, price } = formValue;
@@ -76,7 +77,8 @@ const New = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (idArea) {
+    if (idArea == null || idArea == 0) alert("Please select a stand!")
+    else {
       //To do code here
       axios.post(pathTicket + matchId, {
         "standId": idArea,
@@ -91,7 +93,7 @@ const New = () => {
           alert(error)
           console.log(error);
         });
-    } else alert("Please pick a stand!")
+    }
   }
 
   const form = (
@@ -133,6 +135,7 @@ const New = () => {
             <label> Stand </label>
             <select name="idArea" required
               onChange={handleChange}>
+              <option value={0} >-- SELECT STAND --</option>
               {dataTicket.map((entity) => (
                 <option value={entity._id} id={entity._id}>{entity.name}</option>
               ))}

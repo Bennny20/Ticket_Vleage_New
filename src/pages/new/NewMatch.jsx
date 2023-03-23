@@ -106,6 +106,7 @@ const New = () => {
       date == null ||
       date == 0
     ) alert("Please choose all options!")
+    if (homeClubId == awayClubId) alert("2 Teams must be different!")
     //To do code here
     else {
       alert("Add New matchs: "

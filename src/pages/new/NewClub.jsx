@@ -35,28 +35,32 @@ const New = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "upload");
-    try {
-      const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+    if (stadiumId == null || stadiumId == 0) alert("Please select a stadium!")
+    else {
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "upload");
+      try {
+        const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
 
-      const { url } = uploadRes.data;
+        const { url } = uploadRes.data;
 
-      const newClub = {
-        ...info,
-        stadiumId: stadiumId,
-        logo: url,
-      };
-      console.log("handle click", newClub)
-      await axios.post("/clubs", newClub);
-      window.location.href = "/club"
-    } catch (err) {
-      console.log(err);
+        const newClub = {
+          ...info,
+          stadiumId: stadiumId,
+          logo: url,
+        };
+        console.log("handle click", newClub)
+        await axios.post("/clubs", newClub);
+        window.location.href = "/club"
+      } catch (err) {
+        console.log(err);
+      }
+
     }
   };
 
@@ -99,6 +103,7 @@ const New = () => {
                     type={input.type}
                     placeholder={input.placeholder}
                     id={input.id}
+                    required
                   />
                 </div>
               ))}
@@ -108,6 +113,7 @@ const New = () => {
                 <label>Stadium</label>
                 <select name="stadiumId"
                   onChange={e => setStadiumId(e.target.value)}>
+                  <option value={0}>-- SELECT STADIUM --</option>
                   {loading
                     ? "loading.."
                     : dataStadium &&

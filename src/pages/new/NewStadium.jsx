@@ -26,7 +26,7 @@ const New = () => {
 
   const { name, city, capcity } = formValue;
   //function
-  function showAlert(){
+  function showAlert() {
     Swal.fire({
       title: "Create Success",
       text: "Stadium name: " + name + " at :" + city + " with capital: " + capcity,
@@ -74,7 +74,7 @@ const New = () => {
                 <input type="text"
                   name="name"
                   onChange={handleChange}
-                  placeholder="Ho Chi Minh City FC" />
+                  placeholder="Ho Chi Minh City FC" required />
               </div>
 
               {/* Location of Stadium */}
@@ -83,7 +83,7 @@ const New = () => {
                 <input type="text"
                   name="city"
                   onChange={handleChange}
-                  placeholder="" />
+                  placeholder="" required />
               </div>
 
               {/* Capcity */}
@@ -92,7 +92,7 @@ const New = () => {
                 <input type="text"
                   name="capcity"
                   onChange={handleChange}
-                  placeholder="" />
+                  placeholder="" required />
               </div>
 
               {/* Button Send to add new */}
