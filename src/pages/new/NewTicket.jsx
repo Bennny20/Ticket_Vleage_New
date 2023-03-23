@@ -4,6 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig"
 import { Alert } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 var pathMatch = "matches/";
 var matchId = localStorage.getItem("idClickTicketByMatch");
@@ -61,12 +62,22 @@ const New = () => {
   };
 
   const { idArea, amount, price } = formValue;
-  console.log("test stand id onchange:", idArea)
+
+  function showAlert() {
+    Swal.fire({
+      title: "Create Success",
+      text: "Ticket amount: " + amount + " with price: " + price,
+      icon: "success",
+      confirmButtonText: "OK",
+    }).then(function () {
+      window.location.href = "../ticket"
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     if (idArea) {
       //To do code here
-      alert("Add New Ticket : " + matchId + "-" + idArea + "-" + amount + "-" + price)
       axios.post(pathTicket + matchId, {
         "standId": idArea,
         "matchId": matchId,
@@ -74,8 +85,7 @@ const New = () => {
         "quantity": amount
       })
         .then(response => {
-          alert("Add success")
-          return window.location.href = "../ticket"
+          showAlert()
         })
         .catch(error => {
           alert(error)
