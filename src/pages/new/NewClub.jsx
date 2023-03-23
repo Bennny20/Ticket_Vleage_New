@@ -39,7 +39,11 @@ const New = () => {
     data.append("file", file);
     data.append("upload_preset", "upload");
     try {
-      const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data);
+      const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
       const { url } = uploadRes.data;
 
@@ -50,6 +54,7 @@ const New = () => {
       };
       console.log("handle click", newClub)
       await axios.post("/clubs", newClub);
+      window.location.href = "/club"
     } catch (err) {
       console.log(err);
     }

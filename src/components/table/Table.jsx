@@ -45,6 +45,7 @@ function List(props) {
         console.log("check delete ", res);
         alert('Deleted match by id: ' + id);
         setData(data.filter((item) => item.id !== id));
+        window.location.href = "/match"
       })
       .catch(function (err) {
         console.log(err);
