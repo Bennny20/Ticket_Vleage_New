@@ -54,7 +54,7 @@ const UpdateStand = (props) => {
                 [name]: value,
             };
         });
-        console.log("Set onchange :" + name + " - Value: " +value)
+        console.log("Set onchange :" + name + " - Value: " + value)
     };
 
     const { name, quantitySeat } = formValue;
@@ -101,7 +101,7 @@ const UpdateStand = (props) => {
                                 <input type="text"
                                     disabled
                                     defaultValue={stadium.name}
-                                    placeholder="Ho Chi Minh City FC" />
+                                    placeholder="Ho Chi Minh City FC" required />
                             </div>
 
                             {/* Name */}
@@ -111,7 +111,7 @@ const UpdateStand = (props) => {
                                     name="name"
                                     value={name}
                                     onChange={handleChange}
-                                    placeholder="" />
+                                    placeholder="" required />
                             </div>
 
                             {/* Seat Quantity */}
@@ -121,7 +121,7 @@ const UpdateStand = (props) => {
                                     name="quantitySeat"
                                     value={quantitySeat}
                                     onChange={handleChange}
-                                    placeholder="" />
+                                    placeholder="" required />
                             </div>
 
                             {/* Button Send to add new */}

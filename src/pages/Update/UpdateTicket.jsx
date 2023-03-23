@@ -99,13 +99,13 @@ const UpdateTicket = () => {
                             {/* Club Visitor */}
                             <div className="formInput" >
                                 <label>Amount</label>
-                                <input type="number" defaultValue={quantity} onChange={e => setQuantity(e.target.value)} />
+                                <input type="number" defaultValue={quantity} onChange={e => setQuantity(e.target.value)} required />
                             </div>
 
                             {/* Stadium for match */}
                             <div className="formInput" >
                                 <label>Price</label>
-                                <input type="number" defaultValue={price} onChange={e => setPrice(e.target.value)} />
+                                <input type="number" defaultValue={price} onChange={e => setPrice(e.target.value)} required />
                             </div>
 
                             <div className="btnSend">

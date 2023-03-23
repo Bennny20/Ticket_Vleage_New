@@ -182,7 +182,7 @@ const UpdateClub = (props) => {
                                     onChange={(e) => setFile(e.target.files[0])}
                                     style={{ display: "none" }}
                                 />
-                                <input type="text" value={logo} />
+                                <input type="text" value={logo} readOnly />
                             </div>
 
                             <div className="btnSend">

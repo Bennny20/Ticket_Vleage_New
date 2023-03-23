@@ -70,17 +70,17 @@ const UpdateStadium = (props) => {
             <form onSubmit={handleSubmit}>
               <div className="formInput" >
                 <label>Name</label>
-                <input type="text" placeholder="Stadium Name" name="stadiumName" value={stadiumName} onChange={e => setStadiumName(e.target.value)} />
+                <input type="text" placeholder="Stadium Name" name="stadiumName" value={stadiumName} onChange={e => setStadiumName(e.target.value)} required />
               </div>
 
               <div className="formInput" >
                 <label>Localtion</label>
-                <input type="text" placeholder="Location" name="location" value={location} onChange={e => setLocation(e.target.value)} />
+                <input type="text" placeholder="Location" name="location" value={location} onChange={e => setLocation(e.target.value)} required />
               </div>
 
               <div className="formInput" >
                 <label>Capacity</label>
-                <input type="text" placeholder="Capacity" name="capacity" value={capacity} onChange={e => setCapacity(e.target.value)} />
+                <input type="text" placeholder="Capacity" name="capacity" value={capacity} onChange={e => setCapacity(e.target.value)} required />
               </div>
               <div className="btnSend">
                 <button>Save</button>

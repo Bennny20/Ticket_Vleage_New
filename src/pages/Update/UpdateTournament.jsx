@@ -79,7 +79,7 @@ const Update = () => {
                                 <input type="text"
                                     name="tournamentname"
                                     value={tournamentname}
-                                    onChange = {handleChange}/>
+                                    onChange={handleChange} required />
                             </div>
 
                             {/* Year */}
@@ -88,7 +88,7 @@ const Update = () => {
                                 <input type="number"
                                     name="year"
                                     value={year}
-                                    onChange={handleChange}/>
+                                    onChange={handleChange} required />
                             </div>
 
                             {/* Button Send */}
