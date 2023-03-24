@@ -8,12 +8,10 @@ var path = "clubs/";
 var pathStadium = "stadiums/";
 const UpdateClub = (props) => {
     const [file, setFile] = useState("");
-    const [info, setInfo] = useState({});
     const [stadiumId, setStadiumId] = useState();
     const [dataStadium, setDataStadium] = useState([]);
     const [logo, setLogo] = useState([]);
     const [clubId, setClubId] = useState();
-    const [clubName, setClubName] = useState();
 
     useEffect(
         function () {
@@ -66,32 +64,6 @@ const UpdateClub = (props) => {
 
     const { name, location } = formValue;
 
-
-
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     const data = new FormData();
-    //     data.append("file", file);
-    //     data.append("upload_preset", "upload");
-    //     //To do code here
-    //     alert("Update Club : " + clubId + " - " + clubName + " - " + location + " - " + stadiumId + " - " + logo)
-    //     axios.put(path + clubId, {
-    //         "name": clubName,
-    //         "location": location,
-    //         "logo": logo,
-    //         "stadiumId": stadiumId
-    //     })
-    //         .then(response => {
-    //             alert("Updated")
-    //             //Go to club page
-    //             return window.location.href = "../club"
-    //         })
-    //         .catch(error => {
-    //             alert(error)
-    //             console.log(error);
-    //         });
-    // }
-
     const handleClick = async (e) => {
         e.preventDefault();
 
@@ -134,6 +106,21 @@ const UpdateClub = (props) => {
                     <h1>Update club</h1>
                 </div>
                 <div className="bottom">
+                    <div className="left">
+                        {
+                            file ?
+                                <img
+                                    src={
+                                        file
+                                            ? URL.createObjectURL(file)
+                                            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                                    }
+                                    alt="Image here"
+                                />
+                                :
+                                <img src={logo} alt="Image here" />
+                        }
+                    </div>
                     <div className="right">
                         <form onSubmit={handleClick}>
                             <div className="formInput" >

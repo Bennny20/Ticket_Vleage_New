@@ -8,27 +8,18 @@ import moment from "moment";
 //path
 var pathClub = "clubs/";
 var pathStadium = "stadiums/";
-var pathTournament = "tournaments/";
-var pathRound = "rounds/";
 var pathMatch = "matches/";
 const UpdateMatch = () => {
   //data--------------------------------------------------------
-  const [dataTournament, setDataTournament] = useState([]);
-  const [DataRound, setDataRound] = useState([]);
   const [dataClub, setDataClub] = useState([]);
   const [dataStadium, setDataStadium] = useState([]);
   const [data, setData] = useState([]);
   const [homeClubId, setHomeClubId] = useState();
   const [awayClubId, setAwayClubId] = useState();
-  const [roundId, setRoundId] = useState();
   const [stadiumId, setStadiumId] = useState();
   const [date, setDate] = useState();
-
   var id = localStorage.getItem("editMatchId");
-  const [formValue, setFormValue] = useState({
-    stadiumId: "",
-    date: ""
-  });
+
   //useEffect
   useEffect(
     function () {

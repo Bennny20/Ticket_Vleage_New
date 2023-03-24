@@ -13,14 +13,13 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
 var pathMatch = "matches/round/";
-var roundId = null;
 const Match = () => {
   //Const-----------------------------------------------------
   const [dataTournament, setDataTournament] = useState([]);
   const [DataRoundbyId, setDataRoundbId] = useState([]);
   const [dataRound, setDataRound] = useState([]);
-  const [tournamentId, setTournamentId] = useState([]);
-  const [roundId, setRoundId] = useState([]);
+  const [setTournamentId] = useState([]);
+  const [setRoundId] = useState([]);
   const rowsRound = dataRound;
   const rowsTournament = dataTournament;
   const [isShow, setShow] = useState(true)
