@@ -94,37 +94,32 @@ const UpdateClub = (props) => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const data = new FormData();
-        data.append("file", file);
-        data.append("upload_preset", "upload");
+
         try {
-            if (file) {
-                const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data);
-                const { url } = uploadRes.data;
-                const updateClub = {
-                    ...formValue,
-                    stadiumId: stadiumId,
-                    logo: url,
-                };
+            const data = new FormData();
+            data.append("file", file);
+            data.append("upload_preset", "upload");
+            const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
 
-                console.log("handle click", updateClub)
-                axios.put("/clubs/" + clubId, updateClub)
-                    .then(respone => {
-                        alert("Update sucessfully", updateClub)
-                        console.log(respone.data)
-                    })
+            const { url } = uploadRes.data;
+            const updateClub = {
+                ...formValue,
+                stadiumId: stadiumId,
+                logo: url,
+            };
 
-            } else {
-                const updateClub = {
-                    ...formValue,
-                    stadiumId: stadiumId,
-                };
-                axios.put("/clubs/" + clubId, updateClub)
-                    .then(respone => {
-                        alert("Update sucessfully", updateClub)
-                        console.log(respone.data)
-                    })
-            }
+            console.log("handle click", updateClub)
+            axios.put("/clubs/" + clubId, updateClub)
+                .then(respone => {
+                    alert("Update sucessfully", updateClub)
+                    console.log(respone.data)
+                })
+
+
 
         } catch (err) {
             console.log(err);

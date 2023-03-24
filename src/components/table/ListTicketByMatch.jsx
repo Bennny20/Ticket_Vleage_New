@@ -42,6 +42,7 @@ const ListStadium = () => {
                 console.log("check delete ", res);
                 alert('Deleted ticket by id: ' + id);
                 setData(data.filter((item) => item.id !== id));
+                window.location.reload();
             })
             .catch(function (err) {
                 console.log(err);
