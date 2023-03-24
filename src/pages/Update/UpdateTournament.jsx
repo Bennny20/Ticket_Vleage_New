@@ -18,8 +18,10 @@ const Update = () => {
                 .get(path + id)
                 .then(function (data) {
                     console.log(data.data);
-                    year = data.data.year;
-                    tournamentname = data.data.name;
+                    setFormValue({
+                        year: data.data.year,
+                        tournamentname: data.data.name,
+                    })
                 })
                 .catch(function (err) {
                     console.log(32, err);
