@@ -56,6 +56,7 @@ const ListStadium = () => {
                             swal("Poof! " + id + " has been deleted!", {
                                 icon: "success",
                             });
+                            window.location.reload();
                         })
                         .catch(function (err) {
                             showError(err);
