@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 import { clubInput } from "../../formSource";
 import axios from "../../AxiosConfig";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
+import Swal from "sweetalert2";
 
-var path = "clubs/";
-var pathStadium = "stadiums/";
 const New = () => {
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
@@ -32,6 +31,27 @@ const New = () => {
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  // Handle Submit -----------------------------------------------
+  function showSuccess() {
+    Swal.fire({
+      title: "Create Success",
+      text: "Club " + info.name,
+      icon: "success",
+      confirmButtonText: "OK",
+    }).then(function () {
+      //Go to Stadium page
+      window.location.href = "/standbystadium"
+    });
+  }
+
+  function showError(text) {
+    Swal.fire({
+      title: "Oops...",
+      text: text,
+      icon: "error",
+      confirmButtonText: "OK",
+    })
+  }
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -45,6 +65,9 @@ const New = () => {
           headers: {
             'Content-Type': 'application/json'
           }
+        }).catch(error => {
+          showError(error)
+          console.log(error);
         });
 
         const { url } = uploadRes.data;
@@ -55,9 +78,17 @@ const New = () => {
           logo: url,
         };
         console.log("handle click", newClub)
-        await axios.post("/clubs", newClub);
+        await axios.post("/clubs", newClub)
+          .then(response => {
+            showSuccess()
+          })
+          .catch(error => {
+            showError(error)
+            console.log(error);
+          });
         window.location.href = "/club"
       } catch (err) {
+        showError(err)
         console.log(err);
       }
 

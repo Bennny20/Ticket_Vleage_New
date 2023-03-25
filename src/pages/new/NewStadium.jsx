@@ -26,16 +26,25 @@ const New = () => {
 
   const { name, city, capcity } = formValue;
   //function
-  function showAlert() {
+  function showSucces() {
     Swal.fire({
       title: "Create Success",
-      text: "Stadium name: " + name + " at :" + city + " with capital: " + capcity,
+      text: "Stadium name: " + name + " at " + city + " with capital " + capcity,
       icon: "success",
       confirmButtonText: "OK",
     }).then(function () {
       // Redirect the user
       window.location.href = "../stadium"
     });
+  }
+
+  function showError(text) {
+    Swal.fire({
+      title: 'Oops...',
+      text: text,
+      icon: "error",
+      confirmButtonText: "OK",
+    })
   }
 
   function handleSubmit(event) {
@@ -47,10 +56,10 @@ const New = () => {
       "capcity": capcity
     })
       .then(response => {
-        showAlert()
+        showSucces()
       })
       .catch(error => {
-        alert(error)
+        showError(error)
         console.log(error);
       });
     //end to do code

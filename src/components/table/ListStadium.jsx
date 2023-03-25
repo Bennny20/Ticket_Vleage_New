@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
-import { Refresh } from "@mui/icons-material";
+import swal from 'sweetalert';
 
 var path = "stadiums/";
 const ListStadium = () => {
@@ -33,13 +33,28 @@ const ListStadium = () => {
 
     //Handle Delete here ----------------------------------------------------------------------------
     const handleDelete = (id) => {
-        axios.delete(path + id)
-            .then(res => {
-                setData(data.filter((item) => item.id !== id));
-                window.location.reload(false);
-            })
-            .catch(function (err) {
-                console.log(err);
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this " + id + "!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete(path + id)
+                        .then(res => {
+                            swal("Poof! " + id + " has been deleted!", {
+                                icon: "success",
+                            });
+                            window.location.reload();
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        });
+                } else {
+                    swal(id + " is safe!");
+                }
             });
     };
 

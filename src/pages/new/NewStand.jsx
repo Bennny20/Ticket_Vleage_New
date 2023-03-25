@@ -9,9 +9,8 @@ import Swal from "sweetalert2";
 import { standInput } from "../../formSource";
 
 var path = "stands/";
-
 const NewStand = () => {
-    const idStandStadium = localStorage.getItem("idStandStadium")
+    var idStandStadium = localStorage.getItem("idStandStadium")
     const [stadium, setStadium] = useState([]);
 
     useEffect(
@@ -26,7 +25,7 @@ const NewStand = () => {
                     console.log(32, err);
                 });
         },
-        []
+        [idStandStadium]
     );
 
     const [formValue, setFormValue] = useState({
@@ -42,7 +41,7 @@ const NewStand = () => {
 
     const { name, quantitySeat } = formValue;
     //function
-    function showAlert() {
+    function showSuccess() {
         Swal.fire({
             title: "Create Success",
             text: "Stand : " + name + " with quantity seat :" + quantitySeat,
@@ -52,6 +51,15 @@ const NewStand = () => {
             //Go to Stadium page
             window.location.href = "/standbystadium"
         });
+    }
+
+    function showError(text) {
+        Swal.fire({
+            title: "Oops...",
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
     }
 
 
@@ -64,10 +72,10 @@ const NewStand = () => {
             "stadiumId": idStandStadium
         })
             .then(response => {
-                showAlert();
+                showSuccess();
             })
             .catch(error => {
-                alert(error)
+                showError(error);
                 console.log(error);
             });
         //end to do code
