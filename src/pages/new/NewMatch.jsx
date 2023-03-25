@@ -3,6 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
+import Swal from "sweetalert2";
 
 //path
 var pathClub = "clubs/";
@@ -92,7 +93,36 @@ const New = () => {
 
 
   const { homeClubId, awayClubId, roundId, stadiumId, date } = formValue;
-  //handle Change Search round by Tournament-----------------------------------------------------
+  //handle Submit-----------------------------------------------------
+  function showSuccess() {
+    Swal.fire({
+      title: "Create Success",
+      text: "Matchs Time Start: " + date,
+      icon: "success",
+      confirmButtonText: "OK",
+    }).then(function () {
+      window.location.href = "../match"
+    });
+  }
+
+  function showError(text) {
+    Swal.fire({
+      title: "Oops...",
+      text: text,
+      icon: "error",
+      confirmButtonText: "OK",
+    })
+  }
+
+  function showWarning(text) {
+    Swal.fire({
+      title: "Please !",
+      text: text,
+      icon: "info",
+      confirmButtonText: "OK",
+    })
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     if (homeClubId == null ||
@@ -105,33 +135,28 @@ const New = () => {
       stadiumId == 0 ||
       date == null ||
       date == 0
-    ) alert("Please choose all options!")
-    if (homeClubId == awayClubId) alert("2 Teams must be different!")
+    ) showWarning("Please choose all options!")
     //To do code here
     else {
-      alert("Add New matchs: "
-        + "\n -Club home: " + homeClubId
-        + "\n- club Away:" + awayClubId
-        + "\n- club StadiumId:" + stadiumId
-        + "\n- club RoundId:" + roundId
-        + "\n- club Time Start:" + date)
-      axios.post(pathMatch, {
-        "homeClubId": homeClubId,
-        "awayClubId": awayClubId,
-        "roundId": roundId,
-        "stadiumId": stadiumId,
-        "date": date
-      })
-        .then(response => {
-          alert("Add success")
-          return window.location.href = "../match"
+      if (homeClubId == awayClubId) showWarning("2 Teams must be different!")
+      else {
+        axios.post(pathMatch, {
+          "homeClubId": homeClubId,
+          "awayClubId": awayClubId,
+          "roundId": roundId,
+          "stadiumId": stadiumId,
+          "date": date
         })
-        .catch(error => {
-          alert(error)
-          console.log(error);
-        });
+          .then(response => {
+            showSuccess()
+          })
+          .catch(error => {
+            showError(error)
+            console.log(error);
+          });
+      }
+      //end to do code
     }
-    //end to do code
   }
 
 

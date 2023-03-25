@@ -75,9 +75,27 @@ const New = () => {
     });
   }
 
+  function showError(text) {
+    Swal.fire({
+      title: "Oops...",
+      text: text,
+      icon: "error",
+      confirmButtonText: "OK",
+    })
+  }
+
+  function showWarning(text) {
+    Swal.fire({
+      title: "Please !",
+      text: text,
+      icon: "info",
+      confirmButtonText: "OK",
+    })
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    if (idArea == null || idArea == 0) alert("Please select a stand!")
+    if (idArea == null || idArea == 0) showWarning("Please select a stand!")
     else {
       //To do code here
       axios.post(pathTicket + matchId, {
@@ -90,7 +108,7 @@ const New = () => {
           showAlert()
         })
         .catch(error => {
-          alert(error)
+          showError(error)
           console.log(error);
         });
     }

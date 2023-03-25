@@ -48,7 +48,6 @@ const NewStand = () => {
             icon: "success",
             confirmButtonText: "OK",
         }).then(function () {
-            //Go to Stadium page
             window.location.href = "/standbystadium"
         });
     }

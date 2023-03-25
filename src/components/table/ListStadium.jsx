@@ -7,6 +7,7 @@ import axios from "../../AxiosConfig";
 import Update from "../../pages/Update/UpdateStadium"
 import LoadingSpinner from "../../pages/LoadingWait/LoadingSpinner";
 import swal from 'sweetalert';
+import Swal from "sweetalert2";
 
 var path = "stadiums/";
 const ListStadium = () => {
@@ -32,6 +33,14 @@ const ListStadium = () => {
     );
 
     //Handle Delete here ----------------------------------------------------------------------------
+    function showError(text) {
+        Swal.fire({
+            title: "Oops...",
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
+    }
     const handleDelete = (id) => {
         swal({
             title: "Are you sure?",
@@ -50,7 +59,7 @@ const ListStadium = () => {
                             window.location.reload();
                         })
                         .catch(function (err) {
-                            console.log(err);
+                            showError(err);
                         });
                 } else {
                     swal(id + " is safe!");

@@ -1,7 +1,7 @@
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import Swal from "sweetalert2";
 import { useState } from "react";
 import axios from "../../AxiosConfig";
 
@@ -24,22 +24,38 @@ const New = () => {
     };
 
     const { name, year } = formValue;
-    //function
+    //function Handle Submit--------------------
+    function showSuccess() {
+        Swal.fire({
+            title: "Create Success",
+            text: "Tournament : " + name + " in " + year,
+            icon: "success",
+            confirmButtonText: "OK",
+        }).then(function () {
+            window.location.href = "../match"
+        });
+    }
+
+    function showError(text) {
+        Swal.fire({
+            title: "Oops...",
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
-        //To do code here
-        alert("Add New Tournament : " + name + "-" + year)
         axios.post(pathTournament, {
             "year": year,
             "name": name
         })
             .then(response => {
-                alert("Add success")
-                //Go to club page
-                return window.location.href = "../match"
+                showSuccess()
             })
             .catch(error => {
-                alert(error)
+                showError(error)
                 console.log(error);
             });
         //end to do code

@@ -33,7 +33,6 @@ const New = () => {
       icon: "success",
       confirmButtonText: "OK",
     }).then(function () {
-      // Redirect the user
       window.location.href = "../stadium"
     });
   }

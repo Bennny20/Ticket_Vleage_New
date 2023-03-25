@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useState, useEffect } from "react";
 import axios from "../../AxiosConfig";
-
+import Swal from "sweetalert2";
 
 var pathTournament = "tournaments/";
 var pathRound = "rounds/";
@@ -45,26 +45,50 @@ const New = () => {
     };
 
     const { roundname, selectsTournament } = formValue;
-    //function
+    //function Handle Submit--------------------
+    function showSuccess() {
+        Swal.fire({
+            title: "Create Success",
+            text: "Round : " + roundname,
+            icon: "success",
+            confirmButtonText: "OK",
+        }).then(function () {
+            window.location.href = "../match"
+        });
+    }
+
+    function showError(text) {
+        Swal.fire({
+            title: "Oops...",
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
+    }
+
+    function showWarning(text) {
+        Swal.fire({
+            title: "Please !",
+            text: text,
+            icon: "info",
+            confirmButtonText: "OK",
+        })
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
-        if (roundname == null || selectsTournament == null || selectsTournament == 0) alert("Please fill in this form!")
-        if (roundname == 0) alert("Round number must be greater than 0")
+        if (roundname == null || selectsTournament == null || selectsTournament == 0) showWarning("Please fill in this form!")
+        if (roundname == 0) showWarning("Round number must be greater than 0")
         else {
-            //To do code here
-            alert("Add New Round : " + roundname + "-" + selectsTournament)
-
             axios.post(pathRound, {
                 "numberRound": roundname,
                 "tournamentId": selectsTournament
             })
                 .then(response => {
-                    alert("Add success")
-                    //Go to club page
-                    return window.location.href = "../match"
+                    showSuccess()
                 })
                 .catch(error => {
-                    alert(error)
+                    showError(error)
                     console.log(error);
                 });
             //end to do code
