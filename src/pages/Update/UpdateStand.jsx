@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
 import { Col } from "react-bootstrap";
 import StadiumMap from "./stadium-map.png"
+import Swal from "sweetalert2";
 
 var path = "stands/";
-
 const UpdateStand = (props) => {
     const idStandStadium = localStorage.getItem("idStandStadium")
     const [stadium, setStadium] = useState([]);
@@ -16,7 +16,6 @@ const UpdateStand = (props) => {
                 .get("stadiums/" + idStandStadium)
                 .then(function (respone) {
                     setStadium(respone.data);
-                    console.log(respone.data)
                 })
                 .catch(function (err) {
                     console.log(32, err);
@@ -25,7 +24,6 @@ const UpdateStand = (props) => {
             axios
                 .get("stands/" + props.props)
                 .then(function (respone) {
-                    console.log("Data stand:", respone.data)
                     setFormValue({
                         name: respone.data.name,
                         quantitySeat: respone.data.quantitySeat,
@@ -54,30 +52,46 @@ const UpdateStand = (props) => {
                 [name]: value,
             };
         });
-        console.log("Set onchange :" + name + " - Value: " + value)
     };
 
     const { name, quantitySeat } = formValue;
     //function
+    function showError(text) {
+        Swal.fire({
+            title: 'Oops...',
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
-        //To do code here
-        alert("Update Round : " + name + "-" + quantitySeat + "-" + idStandStadium)
-        axios.put(path + props.props, {
-            "name": name,
-            "quantitySeat": quantitySeat,
-            "stadiumId": idStandStadium
+        Swal.fire({
+            title: 'Do you want to save the ' + name + ' changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.put(path + props.props, {
+                    "name": name,
+                    "quantitySeat": quantitySeat,
+                    "stadiumId": idStandStadium
+                })
+                    .then(response => {
+                        Swal.fire('Saved!', '', 'success')
+                            .then(response => { window.location.href = "/standbystadium" })
+                    })
+                    .catch(error => {
+                        showError(error)
+                        console.log(error);
+                    });
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
         })
-            .then(response => {
-                alert("Update success")
-                //Go to Stadium page
-                return window.location.href = "/standbystadium"
-            })
-            .catch(error => {
-                alert(error)
-                console.log(error);
-            });
-        //end to do code
     }
 
     return (

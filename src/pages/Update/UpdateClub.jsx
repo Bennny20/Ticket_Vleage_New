@@ -2,7 +2,7 @@ import "./update.scss";
 import axios from "../../AxiosConfig";
 import { useState, useEffect } from "react";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
-
+import Swal from "sweetalert2";
 
 var path = "clubs/";
 var pathStadium = "stadiums/";
@@ -18,7 +18,6 @@ const UpdateClub = (props) => {
             //data club
             axios.get(path + "/" + props.props)
                 .then(function (respone) {
-                    console.log("data", respone.data);
                     setFormValue({
                         name: respone.data.name,
                         location: respone.data.location,
@@ -34,7 +33,6 @@ const UpdateClub = (props) => {
             //data stadium
             axios.get(pathStadium)
                 .then(function (respone) {
-                    console.log(respone.data);
                     setDataStadium(respone.data);
                 })
                 .catch(function (err) {
@@ -64,38 +62,60 @@ const UpdateClub = (props) => {
 
     const { name, location } = formValue;
 
+    // Handle Update ---------------------------------
+    function showError(text) {
+        Swal.fire({
+            title: 'Oops...',
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
+    }
+
     const handleClick = async (e) => {
         e.preventDefault();
+        Swal.fire({
+            title: 'Do you want to save the ' + name + ' changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const data = new FormData();
+                    data.append("file", file);
+                    data.append("upload_preset", "upload");
+                    const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
 
-        try {
-            const data = new FormData();
-            data.append("file", file);
-            data.append("upload_preset", "upload");
-            const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data, {
-                headers: {
-                    'Content-Type': 'application/json'
+                    const { url } = uploadRes.data;
+                    const updateClub = {
+                        ...formValue,
+                        stadiumId: stadiumId,
+                        logo: url,
+                    };
+
+                    axios.put("/clubs/" + clubId, updateClub)
+                        .then(response => {
+                            Swal.fire('Saved!', '', 'success')
+                                .then(response => { window.location.href = "/club" })
+                        })
+                        .catch(error => {
+                            showError(error)
+                            console.log(error);
+                        });
+                } catch (err) {
+                    showError(err)
+                    console.log(err);
                 }
-            });
-
-            const { url } = uploadRes.data;
-            const updateClub = {
-                ...formValue,
-                stadiumId: stadiumId,
-                logo: url,
-            };
-
-            console.log("handle click", updateClub)
-            axios.put("/clubs/" + clubId, updateClub)
-                .then(respone => {
-                    alert("Update sucessfully", updateClub)
-                    console.log(respone.data)
-                })
-
-
-
-        } catch (err) {
-            console.log(err);
-        }
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
     };
 
 
