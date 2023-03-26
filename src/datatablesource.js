@@ -156,6 +156,9 @@ export const oderColumns = [
   {
     field: "totalPrice",
     headerName: "Total Payment",
+    valueFormatter: params => {
+      return params.value.toLocaleString() + " VNĐ";
+    },
     width: 150,
   },
   // {
@@ -196,6 +199,9 @@ export const userOrderColumns = [
   {
     field: "totalPrice",
     headerName: "Total Payment",
+    valueFormatter: params => {
+      return params.value.toLocaleString() + " VNĐ";
+    },
     width: 150,
   }
 ];
@@ -253,8 +259,13 @@ export const matchColumns = [
   {
     field: "date",
     headerName: "Date",
-    valueFormatter: params =>
-      moment(params?.value).format("DD/MM/YYYY hh:mm A"),
+
+    valueFormatter: params => {
+      if (moment(params?.value).isBefore(Date.now())) {
+        return "MATCH ENDED"
+      } return moment(params?.value).format("DD/MM/YYYY hh:mm A")
+    }
+    ,
     width: 130,
   },
 ];
