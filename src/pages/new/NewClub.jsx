@@ -61,7 +61,7 @@ const New = () => {
       data.append("file", file);
       data.append("upload_preset", "upload");
       try {
-        const uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/dg7i8w3xh/image/upload", data);
+        const uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data);
 
         const { url } = uploadRes.data;
 
