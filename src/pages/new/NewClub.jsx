@@ -40,7 +40,7 @@ const New = () => {
       icon: "success",
       confirmButtonText: "OK",
     }).then(function () {
-      window.location.href = "/standbystadium"
+      window.location.href = "/club"
     });
   }
 
@@ -53,9 +53,18 @@ const New = () => {
     })
   }
 
+  function showWarning(text) {
+    Swal.fire({
+      title: "Please !",
+      text: text,
+      icon: "info",
+      confirmButtonText: "OK",
+    })
+  }
+
   const handleClick = async (e) => {
     e.preventDefault();
-    if (stadiumId == null || stadiumId == 0) alert("Please select a stadium!")
+    if (stadiumId == null || stadiumId == 0) showWarning("Please select a stadium!")
     else {
       const data = new FormData();
       data.append("file", file);
@@ -77,9 +86,7 @@ const New = () => {
           })
           .catch(error => {
             showError(error)
-            console.log(error);
           });
-        window.location.href = "/club"
       } catch (err) {
         showError(err)
         console.log(err);
