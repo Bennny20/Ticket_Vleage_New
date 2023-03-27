@@ -1,11 +1,13 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/Register/Register";
+import Landing from "./pages/Landing/Landing";
+import BuyTicket from "./pages/BuyTicket/buyTicket";
+import MatchUnAuthor from "./pages/MatchUnAuth/MatchList";
 //Add new
 import NewRound from "./pages/new/NewRound"
 import NewTournament from "./pages/new/NewTournament"
 import NewMatch from "./pages/new/NewMatch"
-import NewUser from "./pages/new/NewUser";
 import NewStadium from "./pages/new/NewStadium";
 import NewClub from "./pages/new/NewClub";
 import NewTicket from "./pages/new/NewTicket";
@@ -35,14 +37,11 @@ import UpdateUser from "./pages/Update/UpdateUser";
 import UpdateTicket from "./pages/Update/UpdateTicket";
 //More libary
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { stadiumInput, userInputs, clubInput } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import Landing from "./pages/Landing/Landing";
-import BuyTicket from "./pages/BuyTicket/buyTicket";
-import Single from "./pages/single/Single";
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -63,8 +62,10 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
+
           <Route path="/">
             <Route index element={<Landing />} />
+            <Route path="matchunauth" element={<MatchUnAuthor />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
 
@@ -96,7 +97,6 @@ function App() {
               <Route path="newStand" element={<RequiredAdmin><NewStand /></RequiredAdmin>} />
               <Route path="updateStand" element={<RequiredAdmin><UpdateStand /></RequiredAdmin>} />
             </Route>
-
 
             {/* Ticket  */}
             <Route path="ticket">
