@@ -2,17 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "../../AxiosConfig";
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import moment from 'moment';
+import Swal from 'sweetalert2';
 
 
 
 const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
     const customerId = localStorage.getItem("userId");
-    const token = localStorage.getItem("access_token")
     const [price, setPrice] = useState();
-    const [orderId, setOrderId] = useState();
     const [amount, setAmount] = useState();
     const [ticketTypeId, setTicketTypeId] = useState();
     const [subPrice, setSubPrice] = useState();
@@ -22,11 +19,16 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        if (name == "stand") {
+        if (value == 0 || value == null) {
+            setStand(value)
+            setSubPrice(0)
+            setPrice(0)
+        }
+        else {
             axios
                 .get("match/tickets/" + matchId + "/" + value)
                 .then(function (response) {
-                    console.log(response.data);
+                    setStand(value)
                     setPrice(response.data.price.toLocaleString());
                     setSubPrice(response.data.price)
                     setTicketTypeId(response.data._id)
@@ -41,37 +43,62 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
 
 
 
-    //handle Change Search round by Tournament-----------------------------------------------------
+    //handle-----------------------------------------------------
+    function showSuccess(text) {
+        Swal.fire({
+            title: "Buy Success",
+            text: text,
+            icon: "success",
+            confirmButtonText: "OK",
+        }).then(function () {
+            window.location.href = "/"
+        });
+    }
+
+    function showError(text) {
+        Swal.fire({
+            title: "Oops...",
+            text: text,
+            icon: "error",
+            confirmButtonText: "OK",
+        })
+    }
+
+    function showWarning(text) {
+        Swal.fire({
+            title: "Please !",
+            text: text,
+            icon: "info",
+            confirmButtonText: "OK",
+        })
+    }
     function handleSubmit(event) {
         event.preventDefault();
         if (stand == 0 || stand == null) {
-            alert("Please pick your stand");
+            showWarning("Please pick your stand");
+        } else if (amount > 4) {
+            showWarning("Buy too much! Avalible 4 ticket/person.. ");
         }
         else {
             axios.post("/order", { "customerId": customerId })
                 .then(response => {
-                    console.log("test create order:" + response.data)
-                    console.log("test amount: " + amount)
-                    setOrderId(response.data._id)
-                    console.log("test orderid :" + orderId)
                     axios.post("/orderDetail", {
                         "ticketTypeId": ticketTypeId,
                         "orderId": response.data._id,
                         "amount": amount
                     }).then(response => {
-                        console.log("test create order detail: " + response.data)
-                        alert("orderDetail create successfully :" + response.data._id)
-                        localStorage.removeItem("onClickMatch")
-                        navigate("/")
+                        if (amount == 1) {
+                            showSuccess(amount + " Ticket")
+                        } else {
+                            showSuccess(amount + " Tickets")
+                        }
                     })
                 })
-
                 .catch(error => {
-                    alert(error)
+                    showError(error)
                     console.log(error);
                 });
         }
-        //end to do code
     }
 
     const TotalFunc = (price, amount) => {
