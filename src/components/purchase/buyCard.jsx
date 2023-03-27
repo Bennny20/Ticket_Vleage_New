@@ -15,6 +15,7 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
     const [orderId, setOrderId] = useState();
     const [amount, setAmount] = useState();
     const [ticketTypeId, setTicketTypeId] = useState();
+    const [subPrice, setSubPrice] = useState();
     const [stand, setStand] = useState();
     const navigate = useNavigate();
 
@@ -26,13 +27,15 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
                 .get("match/tickets/" + matchId + "/" + value)
                 .then(function (response) {
                     console.log(response.data);
-                    setPrice(response.data.price);
+                    setPrice(response.data.price.toLocaleString());
+                    setSubPrice(response.data.price)
                     setTicketTypeId(response.data._id)
                 })
                 .catch(function (err) {
                     console.log(32, err);
                 });
         }
+
     };
 
 
@@ -41,7 +44,10 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
     //handle Change Search round by Tournament-----------------------------------------------------
     function handleSubmit(event) {
         event.preventDefault();
-        if (amount > 0) {
+        if (stand == 0 || stand == null) {
+            alert("Please pick your stand");
+        }
+        else {
             axios.post("/order", { "customerId": customerId })
                 .then(response => {
                     console.log("test create order:" + response.data)
@@ -64,9 +70,12 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
                     alert(error)
                     console.log(error);
                 });
-        } else alert("Quantity at least 1.")
-
+        }
         //end to do code
+    }
+
+    const TotalFunc = (price, amount) => {
+        return (price * amount).toLocaleString();
     }
 
 
@@ -86,7 +95,6 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
                                     <div className="" >
                                         <label>MATCH DATE</label>
                                         <select className="purchase-input form-control" disabled
-                                        //onClick={handleChange}
                                         >
                                             <option> {moment(date).format('DD/MM/YYYY -  h:mm a')}</option>
                                         </select>
@@ -108,7 +116,8 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
                                 <div className="pt-3" >
                                     <div className="" >
                                         <label>STAND</label>
-                                        <select name="stand" className='purchase-input form-control' onClick={handleChange}>
+                                        <select name="stand" className='purchase-input form-control' onChange={handleChange}>
+                                            <option value={0}>- Please pick your stand -</option>
                                             {ticket.map((x) => (
                                                 <option className='purchase-input form-control' key={x._id} value={x._id} required>{x.nameStand}</option>
                                             ))
@@ -123,9 +132,8 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
                                         <label>PRICE</label>
                                         <select name="stand" className='purchase-input form-control'
                                             disabled
-                                        //onClick={handleChange}
                                         >
-                                            <option value={price}>{price}</option>
+                                            <option value={price}>{price} VNĐ</option>
                                         </select>
                                     </div>
                                 </div>
@@ -140,7 +148,7 @@ const BuyCard = ({ ticket, date, matchId, showDetails = true }) => {
                     <Row className="justify-content-center text-center">
                         <Col className="d-flex  justify-content-center align-items-center">
                             <h5 className="mt-3 ms-1 fw-bold">
-                                TOTAL : {price * amount}
+                                TOTAL : {TotalFunc(subPrice, amount)} VNĐ
                             </h5>
                         </Col>
                     </Row>
