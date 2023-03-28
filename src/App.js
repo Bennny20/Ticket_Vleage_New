@@ -2,6 +2,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/Register/Register";
 import Landing from "./pages/Landing/Landing";
+import About from "./pages/Landing/About";
 import BuyTicket from "./pages/BuyTicket/buyTicket";
 import MatchUnAuthor from "./pages/MatchUnAuth/MatchList";
 //Add new
@@ -66,6 +67,7 @@ function App() {
           <Route path="/">
             <Route index element={<Landing />} />
             <Route path="matchunauth" element={<MatchUnAuthor />} />
+            <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
 

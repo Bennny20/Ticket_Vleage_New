@@ -19,7 +19,7 @@ const Navbar = () => {
         <ul className="nav__links">
           <li><a href="matchunauth">Matches</a></li>
           {/* <li><a href="#">Clubs</a></li> */}
-          {/* <li><a href="#">About</a></li> */}
+          <li><a href="about">About</a></li>
         </ul>
       </nav>
       {

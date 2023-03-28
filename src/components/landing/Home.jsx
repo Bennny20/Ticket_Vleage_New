@@ -20,9 +20,9 @@ const Home = () => {
             The league was founded in 1980 as the All Vietnam Football Championship
             & turned professional in the 2000–01 season.
           </p>
-          <button className="secondary-button">
+          {/* <button className="secondary-button">
             Buy Ticket <FiArrowRight />{" "}
-          </button>
+          </button> */}
         </div>
         <div className="home-image-section">
           <img src={BannerImage} alt="" />

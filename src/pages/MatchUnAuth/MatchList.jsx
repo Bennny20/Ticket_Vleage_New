@@ -1,4 +1,3 @@
-import "./match.scss"
 import Footer from "../../components/landing/Footer";
 import MatchCard from "../../components/landing/matchCard";
 import { Alert } from "react-bootstrap";
@@ -34,7 +33,7 @@ const Landing = ({ itemsPerPage }) => {
         },
         []
     );
-    itemsPerPage = 4;
+    itemsPerPage = 6;
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
@@ -68,19 +67,19 @@ const Landing = ({ itemsPerPage }) => {
                                 <MatchCard key={x._id} match={x} />
                             ))}
                             <ReactPaginate
-                                activeClassName={'item active '}
-                                breakClassName={'item break-me '}
+                                activeClassName={'itempaging active '}
+                                breakClassName={'itempaging break-me '}
                                 breakLabel={'...'}
                                 containerClassName={'pagination'}
                                 disabledClassName={'disabled-page'}
                                 marginPagesDisplayed={2}
-                                nextClassName={"item next "}
+                                nextClassName={"itempaging next "}
                                 nextLabel={<ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />}
                                 onPageChange={handlePageClick}
                                 pageCount={pageCount}
-                                pageClassName={'item pagination-page '}
+                                pageClassName={'itempaging pagination-page '}
                                 pageRangeDisplayed={2}
-                                previousClassName={"item previous"}
+                                previousClassName={"itempaging previous"}
                                 previousLabel={<ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />}
                             />
                         </>
