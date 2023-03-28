@@ -1,6 +1,5 @@
 import "./landing.scss"
 import Home from "../../components/landing/Home";
-import About from "../../components/landing/About";
 import Contact from "../../components/landing/Contact";
 import Footer from "../../components/landing/Footer";
 import MatchCard from "../../components/landing/matchCard";

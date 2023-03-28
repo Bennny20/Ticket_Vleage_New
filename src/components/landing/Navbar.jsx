@@ -17,8 +17,8 @@ const Navbar = () => {
       <a className="logo" href="/"><img src={Logo} alt="logo" /></a>
       <nav>
         <ul className="nav__links">
+          <li><a href="/">Home</a></li>
           <li><a href="matchunauth">Matches</a></li>
-          {/* <li><a href="#">Clubs</a></li> */}
           <li><a href="about">About</a></li>
         </ul>
       </nav>

@@ -5,7 +5,6 @@ import Contact from "../../components/landing/Contact";
 import Footer from "../../components/landing/Footer";
 import Navbar from "../../components/landing/Navbar";
 
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -17,7 +16,6 @@ const Landing = () => {
             <Navbar />
             <div className="App">
                 <About />
-                <Contact />
                 <Footer />
             </div>
         </div>
