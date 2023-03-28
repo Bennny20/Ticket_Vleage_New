@@ -4,6 +4,7 @@ import "./orderDetails.scss"
 import Sidebar from "../../components/sidebar/Sidebar";
 import axios from "../../AxiosConfig";
 import DetailCard from "../../components/detailCard/DetailCard";
+import { Link, useNavigate } from "react-router-dom";
 
 
 var orderId = sessionStorage.getItem("onClickOrderDetail");
@@ -13,6 +14,7 @@ const OrderDetails = () => {
     const [dataOrder, setDataOrder] = useState([]);
     const [total, setTotal] = useState();
     const [customer, setCustomer] = useState([]);
+    const negative = useNavigate();
 
     useEffect(
         function () {
@@ -39,6 +41,10 @@ const OrderDetails = () => {
         []
     );
 
+    const handleBack = () => {
+        negative(-1);
+    }
+
     return (
         <div className="new">
             <Sidebar />
@@ -46,9 +52,13 @@ const OrderDetails = () => {
                 <div className="container mt-6 mb-7">
                     <div className="row justify-content-center">
                         <div className="col-lg-12 col-xl-7">
+
+
                             <div className="card">
                                 <div className="card-body p-5">
-
+                                    <button onClick={handleBack} className="btn btn-secondary">
+                                        Back
+                                    </button>
                                     <div className="mt-4">
                                         <div className="row">
                                             <div className="col-md-6">

@@ -5,6 +5,7 @@ import DetailCard from "../../components/detailCard/DetailCard";
 import Navbar from "../../components/landing/Navbar";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 import moment from "moment";
 
 
@@ -15,6 +16,7 @@ const UserOrderDetails = () => {
     const { currentUser } = useContext(AuthContext)
     const [data, setData] = useState([]);
     const [total, setTotal] = useState();
+    const negative = useNavigate();
     const username = currentUser.username.charAt(0).toUpperCase() + currentUser.username.slice(1);
 
     useEffect(
@@ -36,6 +38,10 @@ const UserOrderDetails = () => {
         },
         []
     );
+
+    const handleBack = () => {
+        negative(-1);
+    }
 
     return (
         <div>
@@ -84,7 +90,11 @@ const UserOrderDetails = () => {
                             <div className="row justify-content-center">
                                 <div className="col-lg-12 col-xl-7">
                                     <div className="card">
+
                                         <div className="card-body p-5">
+                                            <button onClick={handleBack} className="btn btn-secondary mb-3">
+                                                Back
+                                            </button>
                                             <h2>
                                                 Hey {username},
                                             </h2>

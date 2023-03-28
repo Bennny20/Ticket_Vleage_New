@@ -1,7 +1,7 @@
 import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import ListTicket from "../../components/table/ListTicketByMatch"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ticket.scss";
 import { useEffect, useState } from "react";
 import axios from "../../AxiosConfig";
@@ -13,6 +13,7 @@ const Ticket = () => {
   var id = localStorage.getItem("idClickTicketByMatch");
   const [isloading, setloading] = useState(true);
   const [data, setData] = useState([])
+  const negative = useNavigate();
 
   //UseEffect here ---------------------------------------------------------------------------------------------
   useEffect(
@@ -32,21 +33,29 @@ const Ticket = () => {
     },
     []
   );
+
+  const handleBack = () => {
+    negative(-1);
+  }
+
+
   //Form data tag ticket here ---------------------------------------------------------------------------------------------
   const renderTicket = (
     <>
       <div className="single">
         <div className="singleContainer">
+          <div className="m-3">
+            <button onClick={handleBack} className="btn btn-secondary">
+              Back
+            </button></div>
           <div className="top">
             <div className="left">
               <h1 className="title">Home Club</h1>
               <div className="itemImg">
                 <img src={data.logoHomeClub} />
               </div>
-              <div className="item">
-                <div className="details">
-                  <h1 className="itemTitle" name="clubHome">{data.nameHomeClub}</h1>
-                </div>
+              <div className="details">
+                <h3 className="itemTitle" name="clubHome">{data.nameHomeClub}</h3>
               </div>
             </div>
             <div className="left">
@@ -56,7 +65,7 @@ const Ticket = () => {
                 alt=""
                 className="itemImg"
               />
-              <h1 className="itemTitle" name="clubVisitor">{data.nameAwayClub}</h1>
+              <h3 className="itemTitle" name="clubVisitor">{data.nameAwayClub}</h3>
 
             </div>
           </div>
