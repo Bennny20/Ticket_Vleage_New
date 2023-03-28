@@ -25,36 +25,33 @@ const Datatable = () => {
           console.log(32, err);
         });
 
-        var  x =5;
-        
+      var x = 5;
+
     },
     []
   );
 
   const [data, setData] = useState([]);
 
-  // xóa
-  const handleDelete = (email) => {
-    setData(data.filter((item) => item.email !== email));
-    console.log(email)
+  const handleUpdate = (id) => {
+    sessionStorage.setItem("updateUserId", id)
+    return window.location.href = "/users/updateUser"
   };
 
   const actionColumn = [
     {
       field: "action",
-      headerName: "",
-      width: 200,
+      headerName: "Action",
+      width: 250,
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/updateUser" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
+            <div>
+              <button
+                className="updateButton"
+                onClick={() => handleUpdate(params.row._id)}>
+                Update
+              </button>
             </div>
           </div>
         );
@@ -68,7 +65,7 @@ const Datatable = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={userColumns}
+        columns={userColumns.concat(actionColumn)}
         getRowId={(row) => row._id}
         pageSize={9}
         rowsPerPageOptions={[9]}

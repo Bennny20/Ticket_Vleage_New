@@ -36,6 +36,7 @@ import UpdateTournament from "./pages/Update/UpdateTournament";
 import UpdateClub from "./pages/Update/UpdateClub";
 import UpdateUser from "./pages/Update/UpdateUser";
 import UpdateTicket from "./pages/Update/UpdateTicket";
+import UpdateUserByUser from "./pages/Update/UpdateUserByUser";
 //More libary
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./style/dark.scss";
@@ -124,6 +125,7 @@ function App() {
             <Route path="profile">
               <Route index element={<RequiredAuth><Profile /></RequiredAuth>} />
               <Route path="order-detail" element={<RequiredAuth><UserOrderDetails /></RequiredAuth>} />
+              <Route path="update" element={<RequiredAuth><UpdateUserByUser /></RequiredAuth>} />
             </Route>
 
             {/* Stadium */}

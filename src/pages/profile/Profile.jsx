@@ -21,7 +21,7 @@ const Profile = () => {
 
           <div className="top">
             <div className="left">
-              {/* <div className="editButton">Edit</div> */}
+
               <h1 className="title">Information</h1>
               <div className="item">
                 <img
@@ -50,6 +50,7 @@ const Profile = () => {
                   <span className="itemKey">Country:</span>
                   <span className="itemValue">USA</span>
                 </div> */}
+                  <a className="btn btn-primary" style={{ opacity: '80%' }} href="../profile/update">Update</a>
                 </div>
               </div>
             </div>
@@ -57,7 +58,6 @@ const Profile = () => {
           <div className="bottom">
             <h1 className="title">Last Transactions</h1>
             <Datatable />
-
           </div>
         </div>
       </div>

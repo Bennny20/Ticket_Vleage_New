@@ -33,10 +33,24 @@ export const clubColumns = [
     width: 70,
   },
   {
+    field: "logo",
+    headerName: "Logo",
+    width: 60,
+    renderCell: (img) => {
+      return (
+        <div className="allImage">
+          <img style={{ width: "32px", height: "32px", borderRadius: "50%", marginRight: "10px", objectFit: "cover" }}
+            src={img.value} alt="" className="image" />
+        </div>
+      );
+    },
+  },
+  {
     field: "name",
     headerName: "Name",
     width: 300,
   },
+
   {
     field: "location",
     headerName: "Localtion",
@@ -47,19 +61,7 @@ export const clubColumns = [
     headerName: "Stadium",
     width: 250,
   },
-  {
-    field: "logo",
-    headerName: "Logo",
-    width: 150,
-    renderCell: (img) => {
-      return (
-        <div className="allImage">
-          <img style={{ width: "32px", height: "32px", borderRadius: "50%", marginRight: "10px", objectFit: "cover" }}
-            src={img.value} alt="" className="image" />
-        </div>
-      );
-    },
-  }
+
 ];
 
 //const of stadium

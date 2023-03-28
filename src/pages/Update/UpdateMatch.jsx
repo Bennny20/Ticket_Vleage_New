@@ -107,7 +107,7 @@ const UpdateMatch = () => {
 
 
   return (
-    <div className="new">
+    <div className="update">
       <Sidebar />
       <div className="newContainer">
         <Navbar />

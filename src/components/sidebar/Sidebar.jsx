@@ -6,6 +6,7 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import StadiumIcon from '@mui/icons-material/Stadium';
 import SportsIcon from '@mui/icons-material/Sports';
+import HomeIcon from '@mui/icons-material/Home';
 import { Link } from "react-router-dom";
 import logo from "./logo.png"
 
@@ -28,7 +29,12 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <p className="title">Main</p>
-
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <HomeIcon className="icon" />
+              <span>Home</span>
+            </li>
+          </Link>
           <Link to="/admin" style={{ textDecoration: "none" }}>
             <li>
               <DashboardIcon className="icon" />

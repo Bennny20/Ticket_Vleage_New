@@ -7,11 +7,12 @@
 
     .top,
     .bottom {
-      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-      padding: 10px;
-      margin: 20px;
-      display: flex;
+      background-color: white;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    border-radius: 5px;
 
       h1 {
         color: #6ab04c;
@@ -44,20 +45,26 @@
 
             input {
               width: 100%;
-              padding: 5px;
-              border: none;
-              border-bottom: 1px solid gray;
+              margin: 5px 0px;
+              padding: 10px;
+              border-radius: 3px;
+              background-color: #e8e8e8;
+              border:none;
             } 
 
             select {
               width: 100%;
-              padding: 5px;
-              border: none;
-              border-bottom: 1px solid gray;    
+              margin: 5px 0px;
+              padding: 10px;
+              border-radius: 3px;
+              background-color: #e8e8e8;
+              border:none;
             }
           }
         }
       }
+
+      
 
       button {
         padding: 10px;
@@ -66,11 +73,47 @@
         color: white;
         font-weight: bold;
         cursor: pointer;
-        margin-top: 20px;
-        margin-left: 30px;
         border: white;
         display: block;
         width: 750px;
+        margin: 0px 15px;
+      }
+
+      .btnUpdateUser{
+        display: flex;
+justify-content: center;
+width: 100%;
+      }
+      .btnCancel{
+        background-color: grey;
+        width: 50%;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: white;
+        display: block;
+        margin: 0px 15px;
+        text-align: center;
+      }
+      .btnUpdate{
+        width: 50%;
+      }
+
+      .spanButton{
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #ff031c;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: white;
+        display: block;
+        width: 100%;
+        margin: 0px 15px;
+        text-align: center;
+        opacity: 50%;
       }
     }
   }

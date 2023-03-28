@@ -10,7 +10,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const user = localStorage.getItem("user")
     const { currentUser, dispatch } = useContext(AuthContext)
-
+    const usernameFirstLetter = currentUser.username.charAt(0).toUpperCase();
 
 
     const handleLogout = () => {
@@ -33,7 +33,7 @@ const Profile = () => {
                     <div className="card text-start">
                         <div className="card-body px-4 py-4">
                             <div id="circle-avatar" className="text-center mx-auto mb-4">
-                                <span>A</span>
+                                <span>{usernameFirstLetter}</span>
                             </div>
 
                             <h5 className="text-center mb-0">{currentUser.name}</h5>
@@ -60,6 +60,12 @@ const Profile = () => {
                                 <button className="list-group-item list-group-item-action px-4">
                                     <a className="profile-btn" href="/profile">Profile</a>
                                 </button>
+                                {currentUser.isAdmin ?
+                                    <button className="list-group-item list-group-item-action px-4">
+                                        <a className="profile-btn" href="/admin">Dashboard</a>
+                                    </button>
+                                    : <></>
+                                }
 
                             </div>
 
