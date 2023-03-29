@@ -69,7 +69,7 @@ const UpdateTicket = () => {
                         .then(response => { window.location.href = "../ticket" })
                 })
                     .catch(error => {
-                        showError(error)
+                        showError(error.response.data.message)
                         console.log(error);
                     });
             } else if (result.isDenied) {

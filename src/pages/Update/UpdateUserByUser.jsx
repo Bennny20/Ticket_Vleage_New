@@ -10,7 +10,21 @@ import "./update.scss";
 
 const UpdateUserByUser = () => {
     const { currentUser } = useContext(AuthContext)
+    const [data, setData] = useState([]);
 
+    useEffect(
+        function () {
+            axios
+                .get("users/" + currentUser._id)
+                .then(function (response) {
+                    setData(response.data)
+                })
+                .catch(function (err) {
+                    console.log(32, err);
+                });
+        },
+        []
+    );
 
     return (
         <div>
@@ -33,17 +47,17 @@ const UpdateUserByUser = () => {
                                     <h1 className="itemTitle">{currentUser.username}</h1>
                                     <div className="detailItem">
                                         <span className="itemKey">Email:</span>
-                                        <span className="itemValue">{currentUser.email}</span>
+                                        <span className="itemValue">{data.email}</span>
                                     </div>
                                     <div className="detailItem">
                                         <span className="itemKey">ROLE:</span>
-                                        {currentUser.isAdmin ? <span className="itemValue">ADMIN</span> : <span className="itemValue">USER</span>}
+                                        {data.isAdmin ? <span className="itemValue">ADMIN</span> : <span className="itemValue">USER</span>}
 
                                     </div>
                                     <div className="detailItem">
                                         <span className="itemKey">CREATED AT:</span>
                                         <span className="itemValue">
-                                            {moment(currentUser.createdAt).format('DD/MM/YYYY -  h:mm a')}
+                                            {moment(currentUser.createdAt).format('DD/MM/YYYY -  h:mm A')}
                                         </span>
                                     </div>
 

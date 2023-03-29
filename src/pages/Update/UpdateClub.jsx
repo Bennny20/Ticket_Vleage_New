@@ -102,11 +102,11 @@ const UpdateClub = (props) => {
                                 .then(response => { window.location.href = "/club" })
                         })
                         .catch(error => {
-                            showError(error)
+                            showError(error.response.data.message)
                             console.log(error);
                         });
                 } catch (err) {
-                    showError(err)
+                    showError(err.response.data.message)
                     console.log(err);
                 }
             } else if (result.isDenied) {

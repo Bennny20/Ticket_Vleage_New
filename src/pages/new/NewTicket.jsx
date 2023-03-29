@@ -67,7 +67,7 @@ const New = () => {
   function showSuccess() {
     Swal.fire({
       title: "Create Success",
-      text: "Ticket amount: " + amount + " with price: " + price.toLocaleString() ,
+      text: "Ticket amount: " + amount + " with price: " + price.toLocaleString(),
       icon: "success",
       confirmButtonText: "OK",
     }).then(function () {
@@ -108,7 +108,7 @@ const New = () => {
           showSuccess()
         })
         .catch(error => {
-          showError(error)
+          showError(error.response.data.message)
           console.log(error);
         });
     }

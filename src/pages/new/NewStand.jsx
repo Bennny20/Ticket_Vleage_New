@@ -55,7 +55,7 @@ const NewStand = () => {
     function showError(text) {
         Swal.fire({
             title: "Oops...",
-            text: text,
+            text: text.response.data.message,
             icon: "error",
             confirmButtonText: "OK",
         })

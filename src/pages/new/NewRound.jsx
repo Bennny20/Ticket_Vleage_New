@@ -88,7 +88,7 @@ const New = () => {
                     showSuccess()
                 })
                 .catch(error => {
-                    showError(error)
+                    showError(error.response.data.message)
                     console.log(error);
                 });
             //end to do code

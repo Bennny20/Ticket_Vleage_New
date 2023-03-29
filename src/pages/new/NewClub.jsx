@@ -85,7 +85,7 @@ const New = () => {
             showSuccess()
           })
           .catch(error => {
-            showError(error)
+            showError(error.response.data.message)
           });
       } catch (err) {
         showError(err)
