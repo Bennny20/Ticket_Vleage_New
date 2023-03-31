@@ -18,7 +18,7 @@ const New = () => {
                     setData(data.data);
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log(err.response.data.message);
                 });
         },
         []
@@ -89,7 +89,7 @@ const New = () => {
                 })
                 .catch(error => {
                     showError(error.response.data.message)
-                    console.log(error);
+                    console.log(error.response.data.message);
                 });
             //end to do code
         }

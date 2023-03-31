@@ -15,6 +15,7 @@ const Landing = () => {
         <div>
             <Navbar />
             <div className="App">
+                <Home />
                 <About />
                 <Footer />
             </div>

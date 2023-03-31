@@ -28,7 +28,7 @@ const UpdateClub = (props) => {
                     setLogo(respone.data.logo)
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log(err.response.data.message);
                 });
 
             //data stadium
@@ -37,7 +37,7 @@ const UpdateClub = (props) => {
                     setDataStadium(respone.data);
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log(err.response.data.message);
                 });
         },
         []
@@ -87,7 +87,10 @@ const UpdateClub = (props) => {
                     const data = new FormData();
                     data.append("file", file);
                     data.append("upload_preset", "upload");
-                    const uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data);
+                    const uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data).catch(error => {
+                        showError(error.response.data.message)
+                        console.log(error.response.data.message);
+                    });
 
                     const { url } = uploadRes.data;
                     const updateClub = {
@@ -103,11 +106,11 @@ const UpdateClub = (props) => {
                         })
                         .catch(error => {
                             showError(error.response.data.message)
-                            console.log(error);
+                            console.log(error.response.data.message);
                         });
                 } catch (err) {
                     showError(err.response.data.message)
-                    console.log(err);
+                    console.log(err.response.data.message);
                 }
             } else if (result.isDenied) {
                 Swal.fire('Changes are not saved', '', 'info')

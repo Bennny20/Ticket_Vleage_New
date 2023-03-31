@@ -27,26 +27,23 @@ const UpdateMatch = () => {
       //Match
       axios.get(pathMatch + id)
         .then(function (respone) {
-          console.log("test data ", data.data);
           setData(respone.data);
           setHomeClubId(respone.data.homeClubId)
           setAwayClubId(respone.data.awayClubId)
           setStadiumId(respone.data.stadiumId)
           setDate(respone.data.date)
-          console.log("testtt: " + homeClubId + awayClubId + stadiumId + date)
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
       // get data api Club
       axios.get(pathClub)
         .then(function (data) {
           console.log(data.data);
           setDataClub(data.data);
-          // console.log(list);
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
 
       //get data api Stadium
@@ -57,7 +54,7 @@ const UpdateMatch = () => {
           // console.log(list);
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
     },
     []
@@ -96,7 +93,7 @@ const UpdateMatch = () => {
           })
           .catch(error => {
             showError(error.response.data.message)
-            console.log(error);
+            console.log(error.response.data.message);
           });
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')

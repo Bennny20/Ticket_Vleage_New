@@ -9,6 +9,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./style.scss";
 
 //npm install slick-carousel --save
 
@@ -66,25 +67,27 @@ const Landing = ({ itemsPerPage }) => {
                             {Array.from(currentItems).sort().map((x) => (
                                 <MatchCard key={x._id} match={x} />
                             ))}
-                            <ReactPaginate
-                                activeClassName={'itempaging active '}
-                                breakClassName={'itempaging break-me '}
-                                breakLabel={'...'}
-                                containerClassName={'pagination'}
-                                disabledClassName={'disabled-page'}
-                                marginPagesDisplayed={2}
-                                nextClassName={"itempaging next "}
-                                nextLabel={<ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />}
-                                onPageChange={handlePageClick}
-                                pageCount={pageCount}
-                                pageClassName={'itempaging pagination-page '}
-                                pageRangeDisplayed={2}
-                                previousClassName={"itempaging previous"}
-                                previousLabel={<ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />}
-                            />
                         </>
                         )
                     }</div>
+                <div className="pagin-box">
+                    <ReactPaginate
+                        activeClassName={'itempaging active '}
+                        breakClassName={'itempaging break-me '}
+                        breakLabel={'...'}
+                        containerClassName={'pagination'}
+                        disabledClassName={'disabled-page'}
+                        marginPagesDisplayed={2}
+                        nextClassName={"itempaging next "}
+                        nextLabel={<ArrowForwardIosIcon style={{ fontSize: 18, width: 150 }} />}
+                        onPageChange={handlePageClick}
+                        pageCount={pageCount}
+                        pageClassName={'itempaging pagination-page '}
+                        pageRangeDisplayed={2}
+                        previousClassName={"itempaging previous"}
+                        previousLabel={<ArrowBackIosIcon style={{ fontSize: 18, width: 150 }} />}
+                    />
+                </div>
                 <Footer />
             </div>
         </div>

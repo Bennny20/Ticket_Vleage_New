@@ -34,7 +34,7 @@ const New = () => {
           setDataClub(data.data);
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
 
       //get data api Stadium
@@ -44,7 +44,7 @@ const New = () => {
           setDataStadium(data.data);
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
       //get data api Tournament
       axios
@@ -54,7 +54,7 @@ const New = () => {
           setDataTournament(data.data);
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log( err.response.data.message);
         });
     },
     []
@@ -76,7 +76,7 @@ const New = () => {
         // console.log(list);
       })
       .catch(function (err) {
-        console.log(32, err);
+        console.log(err.response.data.message);
       });
   };
 
@@ -152,7 +152,7 @@ const New = () => {
           })
           .catch(error => {
             showError(error.response.data.message)
-            console.log(error);
+            console.log(error.response.data.message);
           });
       }
       //end to do code

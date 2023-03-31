@@ -23,7 +23,7 @@ const New = () => {
           setDataStadium(data.data)
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
     },
     []
@@ -70,7 +70,10 @@ const New = () => {
       data.append("file", file);
       data.append("upload_preset", "upload");
       try {
-        const uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data);
+        const uploadRes = await Axios.post("https://api.cloudinary.com/v1_1/dlpfx0tnv/image/upload", data)
+          .catch(error => {
+            showError(error.response.data.message)
+          });
 
         const { url } = uploadRes.data;
 

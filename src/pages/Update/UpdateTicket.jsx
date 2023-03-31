@@ -31,7 +31,7 @@ const UpdateTicket = () => {
                     setStatus(data.data.status)
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log(err.response.data.message);
                 });
         },
         []
@@ -70,7 +70,7 @@ const UpdateTicket = () => {
                 })
                     .catch(error => {
                         showError(error.response.data.message)
-                        console.log(error);
+                        console.log(error.response.data.messages);
                     });
             } else if (result.isDenied) {
                 Swal.fire('Changes are not saved', '', 'info')

@@ -18,7 +18,7 @@ const UpdateStand = (props) => {
                     setStadium(respone.data);
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log(err.response.data.message);
                 });
 
             axios
@@ -31,7 +31,7 @@ const UpdateStand = (props) => {
                     })
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log(err.response.data.message);
                 });
         },
         []
@@ -59,7 +59,7 @@ const UpdateStand = (props) => {
     function showError(text) {
         Swal.fire({
             title: 'Oops...',
-            text: text.response.data.message,
+            text: text,
             icon: "error",
             confirmButtonText: "OK",
         })
@@ -85,8 +85,8 @@ const UpdateStand = (props) => {
                             .then(response => { window.location.href = "/standbystadium" })
                     })
                     .catch(error => {
-                        showError(error)
-                        console.log(error);
+                        showError(error.response.data.message)
+                        console.log(error.response.data.message);
                     });
             } else if (result.isDenied) {
                 Swal.fire('Changes are not saved', '', 'info')

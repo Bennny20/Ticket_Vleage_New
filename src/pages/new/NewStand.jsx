@@ -22,7 +22,7 @@ const NewStand = () => {
                     console.log(respone.data)
                 })
                 .catch(function (err) {
-                    console.log(32, err);
+                    console.log( err.response.data.message);
                 });
         },
         [idStandStadium]
@@ -55,7 +55,7 @@ const NewStand = () => {
     function showError(text) {
         Swal.fire({
             title: "Oops...",
-            text: text.response.data.message,
+            text: text,
             icon: "error",
             confirmButtonText: "OK",
         })
@@ -74,8 +74,8 @@ const NewStand = () => {
                 showSuccess();
             })
             .catch(error => {
-                showError(error);
-                console.log(error);
+                showError(error.response.data.message);
+                console.log(error.response.data.message);
             });
         //end to do code
 

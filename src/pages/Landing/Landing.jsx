@@ -12,6 +12,7 @@ import moment from 'moment';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import About from "../../components/landing/About";
 
 //npm install slick-carousel --save
 
@@ -47,6 +48,7 @@ const Landing = () => {
             <Navbar />
             <div className="App">
                 <Home />
+
                 <div className="text-center pt-5">
                     <h1>Incomming Matches</h1>
                 </div>
@@ -62,6 +64,7 @@ const Landing = () => {
                             )
                         )
                     }</div>
+                <About />
                 <ClubCard />
                 <Contact />
                 <Footer />

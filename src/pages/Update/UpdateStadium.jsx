@@ -18,7 +18,7 @@ const UpdateStadium = (props) => {
           setLocation(data.data.city)
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
     },
     []
@@ -60,8 +60,8 @@ const UpdateStadium = (props) => {
               .then(response => { window.location.href = "../stadium" })
           })
           .catch(error => {
-            showError(error)
-            console.log(error);
+            showError(error.response.data.message)
+            console.log(error.response.data.message);
           });
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')

@@ -28,7 +28,7 @@ const New = () => {
           getlistStand();
         })
         .catch(function (err) {
-          console.log(32, err);
+          console.log(err.response.data.message);
         });
 
 
@@ -42,7 +42,7 @@ const New = () => {
         setDataTicket(data.data);
       })
       .catch(function (err) {
-        console.log(32, err);
+        console.log(err.response.data.message);
       });
   }
   const [formValue, setFormValue] = useState({
@@ -109,7 +109,7 @@ const New = () => {
         })
         .catch(error => {
           showError(error.response.data.message)
-          console.log(error);
+          console.log(error.response.data.message);
         });
     }
   }

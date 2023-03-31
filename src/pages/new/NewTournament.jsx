@@ -56,7 +56,7 @@ const New = () => {
             })
             .catch(error => {
                 showError(error.response.data.message)
-                console.log(error);
+                console.log(error.response.data.message);
             });
         //end to do code
     }
